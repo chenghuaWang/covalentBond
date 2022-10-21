@@ -1,6 +1,6 @@
 # Data Middle Office
 
-Our Data Middle Office(dbo) is named covalent bond. A tool for managing distributed database, gathering/cleaning data, etc. This tool is a final project for 2022-2023 Fall Soft Engineering lecture. 
+Our Data Middle Office(dbo) is named covalent bond. A tool for managing distributed database, gathering/cleaning data, etc. This tool is a final project for 2022-2023 Fall Software Engineering lecture. 
 
 ## Architecture
 
@@ -59,7 +59,7 @@ Hi there 👋
 
 ![Wang's GitHub stats](https://github-readme-stats.vercel.app/api?username=chenghuaWang&bg_color=30,e96443,904e95&title_color=fff&text_color=fff)
 
-### [caibo Feng]()
+### [caibo Feng](https://github.com/caibofeng)
 
 ## Reference
 
