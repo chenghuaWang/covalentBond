@@ -15,3 +15,6 @@ project(
 add_precompiled_header(cb-client ../pch.hpp)
 add_executable(cb-client main.cpp)
 target_link_libraries(cb-client ${WORKFLOW_LIB} ${SRPC_LIB})
+if(GLOG_FOUND)
+target_link_libraries(cb-client glog)
+endif(GLOG_FOUND)

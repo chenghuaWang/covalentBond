@@ -72,11 +72,6 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 message(STATUS "CMAKE_CXX_COMPILER_VERSION: " ${CMAKE_CXX_COMPILER_VERSION})
 
-# Processing the pre-compiled head.
-include_directories(${PROJECT_SOURCE_DIR}/third_party/)
-add_library(cb-pch src/core/pch.cpp src/core/pch.hpp)
-include(${CB_CMAKE_DIR}/pre_compiled_head.cmake)
-
 # prepare the related libs.
 
 if (WIN32)
@@ -94,6 +89,9 @@ find_package(workflow REQUIRED CONFIG HINTS ..)
 include_directories(${OPENSSL_INCLUDE_DIR} ${WORKFLOW_INCLUDE_DIR})
 link_directories(${WORKFLOW_LIB_DIR})
 set(WORKFLOW_LIB workflow pthread OpenSSL::SSL OpenSSL::Crypto ${LIBRT})
+
+# glog
+include(${CB_CMAKE_DIR}/FindGlog.cmake)
 
 # srpc
 find_package(srpc REQUIRED CONFIG HINTS ..)
@@ -159,6 +157,16 @@ else ()
 		${LZ4_LIB}
 		)
 endif ()
+
+# Processing the pre-compiled head.
+include_directories(${PROJECT_SOURCE_DIR}/third_party/)
+include_directories(${GLOG_INCLUDE_DIR})
+add_library(cb-pch src/core/pch.cpp src/core/pch.hpp)
+if(GLOG_FOUND)
+target_link_libraries(cb-pch glog)
+endif(GLOG_FOUND)
+include(${CB_CMAKE_DIR}/pre_compiled_head.cmake)
+
 
 add_subdirectory(src/core/server)
 add_subdirectory(src/core/client)
