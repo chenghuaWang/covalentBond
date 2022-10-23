@@ -158,6 +158,11 @@ else ()
 		)
 endif ()
 
+# set the output directories
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
+
 # Processing the pre-compiled head.
 include_directories(${PROJECT_SOURCE_DIR}/third_party/)
 include_directories(${GLOG_INCLUDE_DIR})
@@ -167,6 +172,10 @@ target_link_libraries(cb-pch glog)
 endif(GLOG_FOUND)
 include(${CB_CMAKE_DIR}/pre_compiled_head.cmake)
 
+# prepare the files from public files' directories
+include_directories(${PROJECT_SOURCE_DIR}/src/)
+file(GLOB_RECURSE UTILS_FILE_SRC *.cpp)
+file(GLOB_RECURSE UTILS_FILE_HEAD *.cpp)
 
 add_subdirectory(src/core/server)
 add_subdirectory(src/core/client)

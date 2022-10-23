@@ -13,7 +13,7 @@ project(
 )
 
 add_precompiled_header(cb-server ../pch.hpp)
-add_executable(cb-server main.cpp)
+add_executable(cb-server main.cpp ${UTILS_FILE_SRC} ${UTILS_FILE_HEAD})
 target_link_libraries(cb-server ${WORKFLOW_LIB} ${SRPC_LIB})
 if(GLOG_FOUND)
 target_link_libraries(cb-server glog)
