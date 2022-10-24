@@ -12,6 +12,8 @@ You can find all information on the WSL doc [how-to-install](https://learn.micro
 
 ## Dependencies
 
+**❗❗ Before you start, please make sure you have installed `CMake v3.22+` and `clang v12+` ❗❗**
+
 ### Core components
 
 **📌📌I have integrated all installation commands in a shell script. If you don't want to know the details or modify the installation settings, just run the commands below in the ./scripts directory.📌📌**
@@ -48,6 +50,7 @@ sudo make check
 sudo make install
 sudo ldconfig
 cd ..
+# !!! restart machine if needed !!!
 # install the sRPC framework.
 git clone --recursive https://github.com/sogou/srpc.git
 cd srpc
@@ -69,4 +72,22 @@ sudo apt install redis-server
 sudo apt-get install libgoogle-glog-dev
 ```
 
+#### fmt
+
+```shell
+git clone https://github.com/fmtlib/fmt.git
+cd fmt
+mkdir build
+cd build
+cmake ..
+sudo make cc=clang install
+cd ..
+cd ..
+```
+
 ### Frontend components
+
+We adopt [flutter](https://flutter.dev) to build our front end. The dart packages we used is illustrated bellow:
+
+* foo 1
+* foo 2

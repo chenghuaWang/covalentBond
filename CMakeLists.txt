@@ -93,6 +93,9 @@ set(WORKFLOW_LIB workflow pthread OpenSSL::SSL OpenSSL::Crypto ${LIBRT})
 # glog
 include(${CB_CMAKE_DIR}/FindGlog.cmake)
 
+# fmt
+find_package(fmt)
+
 # srpc
 find_package(srpc REQUIRED CONFIG HINTS ..)
 set(protobuf_MODULE_COMPATIBLE ON CACHE BOOL "")

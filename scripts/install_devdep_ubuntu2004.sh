@@ -13,3 +13,5 @@ echo "[ info ] Try to get redis-server lib and installing."
 sudo apt install redis-server
 echo "[ info ] Try to get glog-dev lib and installing."
 sudo apt-get install libgoogle-glog-dev
+echo "[ info ] Try to get fmt lib and installing."
+bash ./install_fmt_ubuntu2004.sh
