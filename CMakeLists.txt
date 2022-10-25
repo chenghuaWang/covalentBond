@@ -180,8 +180,8 @@ endif(GLOG_FOUND)
 include(${CB_CMAKE_DIR}/pre_compiled_head.cmake)
 
 # prepare the files from public files' directories
-file(GLOB_RECURSE UTILS_FILE_SRC *.cpp)
-file(GLOB_RECURSE UTILS_FILE_HEAD *.cpp)
+file(GLOB_RECURSE UTILS_FILE_SRC ${PROJECT_SOURCE_DIR}/src/utils/*.cpp)
+file(GLOB_RECURSE UTILS_FILE_HEAD ${PROJECT_SOURCE_DIR}/src/utils/*.cpp)
 
 add_subdirectory(src/core/server)
 add_subdirectory(src/core/client)

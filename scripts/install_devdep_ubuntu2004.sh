@@ -8,6 +8,11 @@ sudo apt-get install libssl-dev
 echo "[ info ] Try to get workflow lib and installing."
 bash ./install_workflow_ubuntu2004.sh
 echo "[ info ] Try to get sRPC lib and installing."
+git clone https://github.com/lz4/lz4
+cd lz4
+make cc=clang
+sudo make install
+cd ..
 bash ./install_srpc_ubuntu2004.sh
 echo "[ info ] Try to get redis-server lib and installing."
 sudo apt install redis-server

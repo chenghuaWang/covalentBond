@@ -37,6 +37,16 @@ make CC=clang
 sudo make CC=clang install
 ```
 
+#### [lz4](https://github.com/lz4/lz4)
+
+```shell
+git clone https://github.com/lz4/lz4
+cd lz4
+make cc=clang
+sudo make install
+cd ..
+```
+
 #### [sRPC](https://github.com/sogou/srpc)
 
 ```shell
