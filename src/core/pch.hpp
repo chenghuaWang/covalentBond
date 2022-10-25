@@ -39,6 +39,7 @@
 #define CB_DLL_IMPORT
 #endif  //! __unix__
 
+#define FMT_HEADER_ONLY
 #include <fmt/core.h>
 #include <fmt/chrono.h>
 #include <fmt/ranges.h>

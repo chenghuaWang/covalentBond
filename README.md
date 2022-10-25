@@ -42,6 +42,10 @@ Go to [DETAILS](./docs/prepare.md) for more information.
 
 * [Zlib](https://github.com/madler/zlib)
 
+* [LuaJit](https://github.com/LuaJIT/LuaJIT) Integrate in. For hot update.
+
+* [lz4](https://github.com/lz4/lz4) Extremely fast compression
+
 ### Frontend
 
 ## Install

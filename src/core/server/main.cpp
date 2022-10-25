@@ -1,1 +1,2 @@
-int main() {}
+#include "../pch.hpp"
+int main() { fmt::print("hello."); }

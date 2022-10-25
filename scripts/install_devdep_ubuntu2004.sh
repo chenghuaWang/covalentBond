@@ -15,3 +15,5 @@ echo "[ info ] Try to get glog-dev lib and installing."
 sudo apt-get install libgoogle-glog-dev
 echo "[ info ] Try to get fmt lib and installing."
 bash ./install_fmt_ubuntu2004.sh
+echo "[ info ] Try to get luajit lib and installing."
+bash ./install_luajit_ubuntu2004.sh

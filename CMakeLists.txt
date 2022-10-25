@@ -96,6 +96,10 @@ include(${CB_CMAKE_DIR}/FindGlog.cmake)
 # fmt
 find_package(fmt)
 
+# luaJit51
+include(${CB_CMAKE_DIR}/FindLuaJit.cmake)
+include_directories(${LUAJIT_INCLUDE_DIR})
+
 # srpc
 find_package(srpc REQUIRED CONFIG HINTS ..)
 set(protobuf_MODULE_COMPATIBLE ON CACHE BOOL "")
@@ -176,7 +180,6 @@ endif(GLOG_FOUND)
 include(${CB_CMAKE_DIR}/pre_compiled_head.cmake)
 
 # prepare the files from public files' directories
-include_directories(${PROJECT_SOURCE_DIR}/src/)
 file(GLOB_RECURSE UTILS_FILE_SRC *.cpp)
 file(GLOB_RECURSE UTILS_FILE_HEAD *.cpp)
 

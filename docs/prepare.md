@@ -85,6 +85,16 @@ cd ..
 cd ..
 ```
 
+#### lua jit
+
+```
+git clone https://github.com/LuaJIT/LuaJIT
+cd LuaJIT
+make CC=clang
+sudo make install
+cd ..
+```
+
 ### Frontend components
 
 We adopt [flutter](https://flutter.dev) to build our front end. The dart packages we used is illustrated bellow:
