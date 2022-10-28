@@ -16,16 +16,31 @@
 
 class frontThread {
  public:
-  frontThread(const std::string& name, const std::string& describe) {
-    // init all infos. created all directory, files if not exists.
+  frontThread(unsigned short httpServerPort, const std::string& name, const std::string& describe)
+      : m_httpServerPort(httpServerPort) {
+    // init all infos
     cb::utils::getMemoryInfo(m_sysInfo);
     cb::utils::getOsInfo(m_sysInfo);
-    strcpy(m_sysInfo.m_osInfo, m_cacheFile.osInfo);
+    strcpy(m_cacheFile.osInfo, m_sysInfo.m_osInfo);
+    strcpy(m_cacheFile.name, name.c_str());
+    strcpy(m_cacheFile.describe, describe.c_str());
+    // create files. store lock. creat html if not exists
+    trivial::writeCacheFileBinary(m_cacheFile);
+    if (access("./index.html", F_OK)) {
+      std::ofstream fp("./index.html");
+      fp << "<html>Hello World!</html>";
+      fp.close();
+    }
   }
 
+  virtual void exec();
+
  private:
+  unsigned short m_httpServerPort = 8888;
   cb::utils::sysInfo m_sysInfo;
   trivial::cacheFile m_cacheFile;
 };
+
+class daemonThread {};
 
 #endif  //! __SERVER_LIVE_THREAD_HPP_
