@@ -39,6 +39,11 @@ extern "C" {
 extern "C" {
 // reference https://github.com/ThePhD/sol2
 // reference https://aiplay.github.io/2016/08/09/2016-08-09-sol2-tutorail/
+
+/**
+ * @brief
+ *
+ */
 class luaJitThread {
  public:
   luaJitThread() : m_lua_handle(sol::state()) { m_lua_handle.open_libraries(); }

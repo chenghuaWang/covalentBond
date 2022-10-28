@@ -25,23 +25,38 @@
 
 #include "../pch.hpp"
 
-#define __DESCRIBE_CHAR_MAX_NUMS 64
+#define __DESCRIBE_CHAR_MAX_NUMS 512
+#define __DESCRIBE_CHAR_MAX_NUMS_DOUBLE 1024
+#define COVER_KB2MB(x) ((float)x / 1024.f)
+#define COVER_KB2GB(x) (COVER_KB2MB(x) / 1024.f)
 
 namespace cb {
 namespace utils {
 
 struct sysInfo {
-  int32_t m_memAll;
-  int32_t m_memUsed;
-  int32_t m_cpuCores;
-  int32_t m_cpuHz;
-  char m_cpuType[__DESCRIBE_CHAR_MAX_NUMS];
+  int32_t m_memAll;   // kB
+  int32_t m_memFree;  // kB
+  char m_osInfo[__DESCRIBE_CHAR_MAX_NUMS_DOUBLE];
   char m_netCardType[__DESCRIBE_CHAR_MAX_NUMS];
   // TODO get IP/MAC/etc.
 };
 
 #if defined(_WIN32)
 #elif defined(__unix__)
+
+/**
+ * @brief Get the Memory Info object
+ *
+ * @param si
+ */
+void getMemoryInfo(sysInfo& si);
+
+/**
+ * @brief Get the Os Info object
+ *
+ * @param si
+ */
+void getOsInfo(sysInfo& si);
 
 #endif
 
