@@ -176,4 +176,6 @@ inline std::ostream& operator,(std::ostream& out, std::ostream& (*f)(std::ostrea
 #define CB_MEM_ERROR_EXIT 3
 #define CB_OTHER_ERROR_EXIT 4
 
+#define CB_USE_SOL true
+
 #endif  //! __PCH_HPP_

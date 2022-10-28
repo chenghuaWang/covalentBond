@@ -97,11 +97,20 @@ cd ..
 
 #### lua jit
 
-```
+```shell
 git clone https://github.com/LuaJIT/LuaJIT
 cd LuaJIT
 make CC=clang
 sudo make install
+cd ..
+```
+
+#### sol2
+
+```shell
+git clone https://github.com/ThePhD/sol2.git
+cd sol2
+sudo make
 cd ..
 ```
 

@@ -12,8 +12,13 @@ project(
     LANGUAGES C CXX
 )
 
+set(TASK_FILES
+./task/luaEngine.cpp
+./task/luaEngine.hpp
+)
+
 add_precompiled_header(cb-server ../pch.hpp)
-add_executable(cb-server main.cpp ${UTILS_FILE_SRC} ${UTILS_FILE_HEAD})
+add_executable(cb-server main.cpp ${UTILS_FILE_SRC} ${UTILS_FILE_HEAD} ${TASK_FILES})
 target_link_libraries(cb-server ${WORKFLOW_LIB} ${SRPC_LIB})
 if(GLOG_FOUND)
 target_link_libraries(cb-server glog fmt::fmt ${LUAJIT_LIBRARY})
