@@ -32,8 +32,11 @@ extern "C" {
 #include <lauxlib.h>
 #include <lualib.h>
 }
+#include <any>
 #else
+#define SOL_ALL_SAFETIES_ON 1
 #include <sol/sol.hpp>
+#include <any>
 #endif
 
 extern "C" {
@@ -52,6 +55,7 @@ class luaJitThread {
   void loadScriptFromFile(const std::string& file_path);
 
   sol::state& self();
+  std::vector<std::any> execMain();
 
  private:
   std::string m_script;

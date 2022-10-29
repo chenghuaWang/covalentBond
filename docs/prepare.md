@@ -110,7 +110,12 @@ cd ..
 ```shell
 git clone https://github.com/ThePhD/sol2.git
 cd sol2
+mkdir build
+cd build
+cmake ..
 sudo make
+sudo make install
+cd ..
 cd ..
 ```
 
