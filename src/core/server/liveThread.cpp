@@ -1,3 +1,13 @@
+/**
+ * @file liveThread.cpp
+ * @author chenghua Wang (chenghua.wang.edu@gmail.com)
+ * @brief The impl of live thread.
+ * @version 0.1
+ * @date 2022-10-29
+ *
+ * @copyright Copyright (c) 2022
+ *
+ */
 #include "liveThread.hpp"
 #include <workflow/WFHttpServer.h>
 

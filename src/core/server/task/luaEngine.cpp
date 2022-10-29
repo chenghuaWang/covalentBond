@@ -1,4 +1,54 @@
+/**
+ * @file luaEngine.cpp
+ * @author chenghua Wang (chenghua.wang.edu@gmail.com)
+ * @brief The impl of lua engine and meta class.
+ * @version 0.1
+ * @date 2022-10-29
+ *
+ * @copyright Copyright (c) 2022
+ *
+ */
 #include "luaEngine.hpp"
+
+std::string luaTypeReminder(int32_t nums, std::vector<std::vector<__baseObj>>& rhs,
+                            const std::vector<__baseObj>& outs) {
+  int32_t cnt = 0;
+  std::stringstream ss;
+  // re-write the data types.
+  ss << "--[[\n";
+  // loop the vector, get all datatypes.
+  ss << __LUA_IN_SCRIPT_AUTO_GEN_(nums);
+  ss << "Input:\n\n";
+  for (auto& ele : rhs) {
+    ss << "Input-nums=" << cnt++ << "\n";
+    for (auto& item : ele) {
+      ss << "[key:  ] " << item.m_name << ", ";
+      ss << "[Type: ] ";
+      switch (item.m_type) {
+        case __baseType::Int: ss << "Int, "; break;
+        case __baseType::Float: ss << "Float, "; break;
+        case __baseType::String: ss << "String, "; break;
+      }
+      ss << "\n";
+    }
+  }
+  ss << "\nOutput:\n\n";
+  for (auto& item : outs) {
+    ss << "[key:  ] " << item.m_name << ", ";
+    ss << "[Type: ] ";
+    switch (item.m_type) {
+      case __baseType::Int: ss << "Int, "; break;
+      case __baseType::Float: ss << "Float, "; break;
+      case __baseType::String: ss << "String, "; break;
+    }
+    ss << "\n";
+  }
+  ss << "]]\n\n";
+  // re-write the main functions.
+  ss << "function CBMain()\n\n";
+  ss << "end\n";
+  return ss.str();
+}
 
 extern "C" {
 void luaJitThread::loadScript2Mem(const std::string& rhs) {
@@ -21,13 +71,31 @@ void luaJitThread::loadScriptFromFile(const std::string& file_path) {
 
 sol::state& luaJitThread::self() { return m_lua_handle; }
 
-std::vector<std::any> luaJitThread::execMain() {
+void luaJitThread::execMain(int32_t nums, std::vector<std::vector<__baseObj>>& rhs,
+                            std::vector<__baseObj>& outs) {
   m_lua_handle.stack_clear();
-  m_lua_handle["rhs"] = m_lua_handle.create_table_with("num", 1);
-  // m_lua_handle["CBMain"]();
-  sol::table abc = m_lua_handle["rhs"];
-  int p = abc["num"];
-  std::cout << p;
-  return std::vector<std::any>();
+  if (nums != rhs.size()) {
+    fmt::print(fg(fmt::color::crimson) | fmt::emphasis::bold, "Nums{} != rhs.size({})", nums,
+               rhs.size());
+    return;
+  }
+  int32_t cnt = 0;
+  std::string __keyBuffer;
+  for (auto& ele : rhs) {
+    ++cnt;
+    __keyBuffer = "atom_" + std::to_string(cnt);
+    m_lua_handle[__keyBuffer] = m_lua_handle.create_table();
+    for (auto& item : ele) { __TYPE_REINTERPRET_(m_lua_handle[__keyBuffer][item.m_name], item); }
+  }
+  for (auto& item : outs) {
+    m_lua_handle["ans"] = m_lua_handle.create_table();
+    __TYPE_REINTERPRET_(m_lua_handle["ans"][item.m_name], item);
+  }
+  // TODO return all;
+  // m_lua_handle["rhs"] = m_lua_handle.create_table();
+  // m_lua_handle["rhs"]["num"] = 1;
+  // m_lua_handle["rhs"]["num2"] = 2;
+  // sol::table abc = m_lua_handle["rhs"];
+  // int p = abc["num"];
 }
 }

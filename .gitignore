@@ -3,3 +3,4 @@ build/
 .cache/
 scripts/tmpd/
 bin/
+src/frontend/cb_native/.dist/
