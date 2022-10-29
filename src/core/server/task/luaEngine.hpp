@@ -40,11 +40,11 @@ extern "C" {
 #include <any>
 #endif
 
-#define __TYPE_REINTERPRET_(x, y)                               \
-  switch (y.m_type) {                                           \
-    case __baseType::Int: x = y.as<cbInt>().get(); break;       \
-    case __baseType::Float: x = y.as<cbFloat>().get(); break;   \
-    case __baseType::String: x = y.as<cbString>().get(); break; \
+#define __TYPE_REINTERPRET_(x, y)                                \
+  switch (y.m_type) {                                            \
+    case __baseType::Int: x = y.as<cbInt>()->get(); break;       \
+    case __baseType::Float: x = y.as<cbFloat>()->get(); break;   \
+    case __baseType::String: x = y.as<cbString>()->get(); break; \
   }
 
 #define __LUA_IN_SCRIPT_AUTO_GEN_(x) \
@@ -84,8 +84,8 @@ struct __baseObj {
   __baseObj(const __baseType& type, const std::string& name) : m_type(type), m_name(name) {}
 
   template<typename T>
-  T& as() {
-    return static_cast<T>(*this);
+  T* as() {
+    return static_cast<T*>(this);
   }
 
   __baseType m_type = __baseType::Int;
