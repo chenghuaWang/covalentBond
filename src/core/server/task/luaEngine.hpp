@@ -12,7 +12,6 @@
 #ifndef __SERVER_LUA_ENGINE_HPP_
 #define __SERVER_LUA_ENGINE_HPP_
 
-#include <string>
 #ifdef _WIN32
 #if _MSC_VER > 1000
 #pragma once
@@ -45,6 +44,13 @@ extern "C" {
     case __baseType::Int: x = y.as<cbInt>()->get(); break;       \
     case __baseType::Float: x = y.as<cbFloat>()->get(); break;   \
     case __baseType::String: x = y.as<cbString>()->get(); break; \
+  }
+
+#define __TYPE_REINTERPRET_GIVE(x, y)                            \
+  switch (x.m_type) {                                            \
+    case __baseType::Int: x.as<cbInt>()->get() = y; break;       \
+    case __baseType::Float: x.as<cbFloat>()->get() = y; break;   \
+    case __baseType::String: x.as<cbString>()->get() = y; break; \
   }
 
 #define __LUA_IN_SCRIPT_AUTO_GEN_(x) \
@@ -95,7 +101,7 @@ struct __baseObj {
 struct cbInt : public __baseObj {
   cbInt(const std::string& key, int32_t value) : __baseObj(__baseType::Int, key), m_data(value) {}
 
-  int32_t get() { return std::any_cast<int32_t>(m_data); }
+  int32_t& get() { return std::any_cast<int32_t&>(m_data); }
 
  public:
   std::any m_data;
@@ -104,7 +110,7 @@ struct cbInt : public __baseObj {
 struct cbFloat : public __baseObj {
   cbFloat(const std::string& key, float value) : __baseObj(__baseType::Float, key), m_data(value) {}
 
-  float get() { return std::any_cast<float>(m_data); }
+  float& get() { return std::any_cast<float&>(m_data); }
 
  public:
   std::any m_data;

@@ -23,8 +23,15 @@ void frontThread::exec() {
   fmt::print("[ info ] Get the ./index.html file. Start HTTP server at {}{}\n",
              "http://localhost:", m_httpServerPort);
   fmt::print("[ info ] Press ^C to stop server.\n");
-  WFHttpServer server(
-      [=](WFHttpTask* task) { task->get_resp()->append_output_body(__htmlIndexBody.c_str()); });
+
+  WFHttpServer server([=](WFHttpTask* task) {
+    protocol::HttpResponse* resp = task->get_resp();
+    resp->add_header_pair("Content-Type", "text/html; charset=utf-8");
+    resp->set_http_version("HTTP/1.1");
+    resp->set_status_code("200");
+    resp->set_reason_phrase("OK");
+    resp->append_output_body(__htmlIndexBody.c_str());
+  });
   // Fork a daemon thread here and do other things.
   // And in the scope below, need to reduce the thread forked.
   if (server.start(m_httpServerPort) == 0) {

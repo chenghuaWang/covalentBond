@@ -73,12 +73,14 @@ sol::state& luaJitThread::self() { return m_lua_handle; }
 
 void luaJitThread::execMain(int32_t nums, std::vector<std::vector<__baseObj>>& rhs,
                             std::vector<__baseObj>& outs) {
+  // Clear current stack. Erase previous data.
   m_lua_handle.stack_clear();
   if (nums != rhs.size()) {
     fmt::print(fg(fmt::color::crimson) | fmt::emphasis::bold, "Nums{} != rhs.size({})", nums,
                rhs.size());
     return;
   }
+  // Pass all data to lua JIT stack.
   int32_t cnt = 0;
   std::string __keyBuffer;
   for (auto& ele : rhs) {
@@ -91,11 +93,7 @@ void luaJitThread::execMain(int32_t nums, std::vector<std::vector<__baseObj>>& r
     m_lua_handle["ans"] = m_lua_handle.create_table();
     __TYPE_REINTERPRET_(m_lua_handle["ans"][item.m_name], item);
   }
-  // TODO return all;
-  // m_lua_handle["rhs"] = m_lua_handle.create_table();
-  // m_lua_handle["rhs"]["num"] = 1;
-  // m_lua_handle["rhs"]["num2"] = 2;
-  // sol::table abc = m_lua_handle["rhs"];
-  // int p = abc["num"];
+  // Get data from lua JIT Stack.
+  for (auto& item : outs) { __TYPE_REINTERPRET_GIVE(item, m_lua_handle["ans"][item.m_name]); }
 }
 }

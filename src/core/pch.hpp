@@ -178,4 +178,7 @@ inline std::ostream& operator,(std::ostream& out, std::ostream& (*f)(std::ostrea
 
 #define CB_USE_SOL true
 
+#define MAKE_SHARED(x) std::make_shared<x>
+#define SHARED_PTR(x) std::shared_ptr<x>
+
 #endif  //! __PCH_HPP_

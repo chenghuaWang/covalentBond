@@ -15,6 +15,10 @@ project(
 set(TASK_FILES
 ./task/luaEngine.cpp
 ./task/luaEngine.hpp
+./task/cbTask.hpp
+./task/cbTask.cpp
+./task/cbOp.hpp
+./task/cbOp.cpp
 ./trivial/cfgIO.cpp
 ./trivial/cfgIO.hpp
 )
