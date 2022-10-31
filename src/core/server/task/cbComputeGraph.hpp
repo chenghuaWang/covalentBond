@@ -1,0 +1,6 @@
+#ifndef __SERVER_CB_COMPUTE_GRAPH_HPP_
+#define __SERVER_CB_COMPUTE_GRAPH_HPP_
+
+// TODO check graph is DAG
+
+#endif  //!__SERVER_CB_COMPUTE_GRAPH_HPP_
