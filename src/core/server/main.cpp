@@ -1,6 +1,4 @@
-#include <sol/forward.hpp>
-#include "liveThread.hpp"
-#include "task/luaEngine.hpp"
+#include <sol/sol.hpp>
 
 class my_class {
  public:
@@ -19,14 +17,21 @@ int main() {
   // luaJitThread l;
   // l.loadScriptFromFile("/home/wang/covalentBond/scripts/builtinOP/op_direct_combine.lua");
   // l.execMain(3, b, a);
+
+  // lua
   auto class_ptr = new my_class(10);
+  auto class_ptr_1 = new my_class(0);
   sol::state lua;
   lua.open_libraries();
   auto bark = lua["cpp"].get_or_create<sol::table>();
   bark.new_usertype<my_class>("my_class", "asInt", &my_class::asInt, "setAsInt",
                               &my_class::setAsInt);
-  lua["obj"].get_or_create<sol::usertype<my_class>>(class_ptr);
-  lua.script("obj:setAsInt(obj:asInt() + 1);");
-  std::cout << class_ptr->asInt();
+  lua["obj_in"].get_or_create<sol::usertype<my_class>>(class_ptr);
+  lua["obj_out"].get_or_create<sol::usertype<my_class>>(class_ptr_1);
+  lua.script("obj_in:setAsInt(obj_in:asInt() + 1);");
+  lua.script("obj_out = obj_in");
+  std::cout << class_ptr->asInt() << std::endl;
+  std::cout << class_ptr_1->asInt() << std::endl;
   delete class_ptr;
+  delete class_ptr_1;
 }

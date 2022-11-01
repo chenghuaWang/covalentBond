@@ -13,20 +13,42 @@
 #include <variant>
 
 #include "../../pch.hpp"
+
 #include "sol/sol.hpp"
 
+///!
 typedef std::variant<int32_t, float, std::string, bool> __metaObj;
 
+///!
 #define Seq(x, y) std::pair<int32_t, int32_t>(x, y)
 
+/**
+ * @brief
+ *
+ */
 enum class cbTableSlice : uint8_t {
   all = 0,
   seq = 1,
   no = 2,
 };
 
+/**
+ * @brief
+ *
+ */
+enum class typeType : uint32_t {
+  Int = 0,
+  Float = 1,
+  String = 2,
+  Bool = 3,
+};
+
+/**
+ * @brief
+ *
+ */
 struct cbCell {
-  cbCell() = delete;
+  cbCell() = default;
   cbCell(const cbCell& rhs) = delete;
   cbCell operator=(const cbCell& rhs) = delete;
   cbCell(int32_t rhs) : data(rhs) {}
@@ -51,62 +73,264 @@ struct cbCell {
   __metaObj data;
 };
 
+/**
+ * @brief
+ *
+ */
 struct cbTableHead {
+ public:
+  cbTableHead();
+  cbTableHead(const int32_t& nums) : m_nums(nums), m_data(nums), m_types(nums) {}
+  cbTableHead(const int32_t& nums, const std::initializer_list<std::string>& data,
+              const std::initializer_list<typeType>& types)
+      : m_nums(nums), m_data(data) {}
+
+  std::vector<std::string>::iterator begin() { return m_data.begin(); }
+  std::vector<std::string>::iterator end() { return m_data.end(); }
+  const std::vector<std::string>::const_iterator cbegin() { return m_data.cbegin(); }
+  const std::vector<std::string>::const_iterator cend() { return m_data.cend(); }
+
+  std::pair<std::string&, typeType&> operator[](int32_t idx) { return {m_data[idx], m_types[idx]}; }
+
+  void set(const std::string& n, int32_t idx) {
+    if (idx >= 0 && idx < m_nums) m_data[idx] = n;
+  }
+
+  void set(const typeType& t, int32_t idx) {
+    if (idx >= 0 && idx < m_nums) m_types[idx] = t;
+  }
+
+  void addNameAndType(const std::string& name, const typeType& t) {
+    m_data.push_back(name);
+    m_types.push_back(t);
+  }
+
  private:
   int32_t m_nums = 0;
   std::vector<std::string> m_data;
+  std::vector<typeType> m_types;
 };
 
+/**
+ * @brief
+ *
+ * @tparam Dims
+ */
 template<int32_t Dims>
 struct cbShape {
   cbShape() = default;
-  cbShape(const cbShape& rhs) {
-    this->m_dims = rhs.m_dims;
+  cbShape(const cbShape<Dims>& rhs) {
+#pragma unroll
+    for (int32_t i = 0; i < Dims; ++i) { this->m_dims[i] = rhs.m_dims[i]; }
     this->m_stride = rhs.m_stride;
   }
   cbShape(const std::initializer_list<int32_t>& rhs) : m_dims(rhs) {}
 
-  inline const int32_t& operator[](int32_t idx) { return m_dims[idx]; }
+  inline int32_t& operator[](int32_t idx) { return m_dims[idx]; }
+
+  int32_t numElements() {
+    int32_t ans = 1;
+#pragma unroll
+    for (int32_t i = 0; i < Dims; ++i) { ans *= m_dims[i]; }
+    return ans;
+  }
 
   int32_t m_stride;
   int32_t m_dims[Dims];
 };
 
-cbShape<1> makeShapeRow(int32_t a);
-cbShape<2> makeShapeCol(int32_t a);
-cbShape<2> makeShapeFull(int32_t a, int32_t b);
+/**
+ * @brief
+ *
+ * @param a
+ * @return cbShape<2>
+ */
+inline cbShape<2> makeShapeRow(int32_t a) {
+  cbShape<2> ans;
+  ans[0] = 1;
+  ans[1] = a;
+  return ans;
+}
 
-template<int32_t Dims>
-struct __metaMatrix;
+/**
+ * @brief
+ *
+ * @param a
+ * @return cbShape<2>
+ */
+inline cbShape<2> makeShapeCol(int32_t a) {
+  cbShape<2> ans;
+  ans[0] = a;
+  ans[1] = 1;
+  return ans;
+}
 
-template<int32_t Dims>
-inline void mallocMetaMatrix(__metaMatrix<Dims>* a) {}
+/**
+ * @brief
+ *
+ * @param a
+ * @param b
+ * @return cbShape<2>
+ */
+inline cbShape<2> makeShapeFull(int32_t a, int32_t b) {
+  cbShape<2> ans;
+  ans[0] = a;
+  ans[1] = b;
+  return ans;
+}
 
-template<int32_t Dims>
-inline void freeMetaMatrix(__metaMatrix<Dims>* a) {}
-
+/**
+ * @brief row major table.
+ *
+ * @tparam Dims
+ */
 template<int32_t Dims>
 struct __metaMatrix {
   __metaMatrix() = default;
+  __metaMatrix(const cbShape<Dims>& shape) : m_shape(shape) {}
+  __metaMatrix(const cbShape<Dims>& shape, cbCell* dataptr) : m_shape(shape), __dataptr(dataptr) {}
   __metaMatrix(const __metaMatrix& rhs) {
     this->m_shape = rhs.m_shape;
     this->__dataptr = rhs.__dataptr;
   }
 
-  void free() { freeMetaMatrix(this); }
+  void free() {
+    if (m_trueDataContainer) { delete __dataptr; }
+  }
 
- private:
   cbShape<Dims> m_shape;
   cbCell* __dataptr = nullptr;
-};
-
-struct cbTableRow : protected __metaMatrix<1> {};
-
-struct cbTableCol : protected __metaMatrix<2> {};
-
-class cbTable : protected __metaMatrix<2> {
- public:
   bool m_trueDataContainer = false;
 };
+
+/**
+ * @brief
+ *
+ */
+struct cbTableRow : public __metaMatrix<2> {
+ public:
+  cbTableRow() = delete;
+  cbTableRow(const cbShape<2>& shape) : __metaMatrix<2>(shape) {}
+  cbTableRow(const cbShape<2>& shape, cbCell* dataptr) : __metaMatrix<2>(shape, dataptr) {}
+  cbTableRow(const cbTableRow& rhs) {
+    this->__dataptr = rhs.__dataptr;
+    this->m_shape = rhs.m_shape;
+  }
+
+  void setThisAsTrueDataContainer() { m_trueDataContainer = true; }
+
+  cbCell* at(int32_t i) { return __dataptr + i; }
+
+  cbTableHead head;
+};
+
+/**
+ * @brief
+ *
+ */
+struct cbTableCol : public __metaMatrix<2> {
+ public:
+  cbTableCol() = delete;
+  cbTableCol(const cbShape<2>& shape) : __metaMatrix<2>(shape), m_stride(1) {}
+  cbTableCol(const cbShape<2>& shape, int32_t stride) : __metaMatrix<2>(shape), m_stride(stride) {}
+  cbTableCol(const cbShape<2>& shape, int32_t stride, cbCell* dataptr)
+      : __metaMatrix<2>(shape, dataptr), m_stride(stride) {}
+  cbTableCol(const cbTableCol& rhs) {
+    this->__dataptr = rhs.__dataptr;
+    this->m_shape = rhs.m_shape;
+    this->m_stride = rhs.m_stride;
+  }
+
+  cbCell* at(int32_t i) { return __dataptr + i * m_stride; }
+
+  void setThisAsTrueDataContainer() { m_trueDataContainer = true; }
+
+  void setStride(int32_t rhs) { m_stride = rhs; }
+
+  cbTableHead head;
+
+ private:
+  int32_t m_stride = 0;
+};
+
+/**
+ * @brief
+ *
+ */
+class cbTable : public __metaMatrix<2> {
+ public:
+  cbTable() = delete;
+  cbTable(const cbTable& rhs) {
+    this->m_shape = rhs.m_shape;
+    this->__dataptr = rhs.__dataptr;
+    this->m_stride = this->m_shape[1];
+  }
+  cbTable(cbShape<2>& shape) : __metaMatrix<2>(shape), m_stride(shape[1]) {}
+  cbTable(cbShape<2>& shape, cbCell* dataptr)
+      : __metaMatrix<2>(shape, dataptr), m_stride(shape[1]) {}
+
+  void setThisAsTrueDataContainer() { m_trueDataContainer = true; }
+
+  inline cbCell* at(int32_t i, int32_t j) { return __dataptr + (i * m_stride + j); }
+
+  inline cbCell* operator()(int32_t i, int32_t j) { return at(i, j); }
+
+  inline cbTable operator()(const std::pair<int32_t, int32_t>& row_i, const cbTableSlice& cbSl) {
+    int32_t rows = row_i.second - row_i.first;
+    int32_t cols = 0;
+    switch (cbSl) {
+      case cbTableSlice::all: cols = m_shape[1]; break;
+      case cbTableSlice::no: break;
+      case cbTableSlice::seq: break;
+    }
+    cbShape<2> res = makeShapeFull(rows, cols);
+
+    cbTable ans(res, __dataptr);
+    ans.head = this->head;
+
+    return ans;
+  }
+
+  inline cbTableRow getRow(int32_t i) {
+    cbTableRow ans(makeShapeRow(m_shape[1]), __dataptr + i * m_stride);
+    ans.head = this->head;
+    return ans;
+  }
+
+  inline cbTableCol getCol(int32_t i) {
+    cbTableCol ans(makeShapeCol(m_shape[0]), m_stride, __dataptr + i);
+    auto tmp_heads_ele = this->head[i];
+    ans.head = cbTableHead(1);
+    ans.head.set(tmp_heads_ele.first, i);
+    ans.head.set(tmp_heads_ele.second, i);
+    return ans;
+  }
+
+  cbTableHead head;
+
+ private:
+  int32_t m_stride = 0;
+};
+
+/**
+ * @brief
+ *
+ * @param rhs
+ */
+inline void mallocMetaMatrix(cbTable& rhs) {
+  rhs.__dataptr = new cbCell[rhs.m_shape.numElements()];
+  rhs.setThisAsTrueDataContainer();
+}
+
+/**
+ * @brief
+ *
+ * @param rhs
+ */
+inline void mallocMetaMatrix(cbTableCol& rhs) {
+  rhs.__dataptr = new cbCell[rhs.m_shape.numElements()];
+  rhs.setStride(1);
+  rhs.setThisAsTrueDataContainer();
+}
 
 #endif  //! __SERVER_CB_TABLE_HPP_
