@@ -29,6 +29,7 @@
 #include <vector>
 #include <cstdint>
 #include <unordered_map>
+#include <functional>
 
 #ifdef _WIN32
 #define CB_DLL_EXPORT __declspec(dllexport)
