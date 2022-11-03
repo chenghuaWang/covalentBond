@@ -85,6 +85,10 @@ WFRedisTask* cbRedisDevice::get() {
 
 void cbRedisDevice::execMain(WFRedisTask* task) { task->start(); }
 
+void cbKafkaDevice::updateUrl() {
+  // TODO
+}
+
 int32_t cbVirtualDeviceManager::m_numsMySql = 0;
 int32_t cbVirtualDeviceManager::m_numsRedis = 0;
 int32_t cbVirtualDeviceManager::m_numsKafka = 0;

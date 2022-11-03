@@ -1,6 +1,6 @@
 /**
  * @file cbVirtualDevice.hpp
- * @author chenghua Wang (chenghua.wang@gmail.com)
+ * @author chenghua Wang (chenghua.wang.edu@gmail.com)
  * @brief abstract virtual device. Provide MySql/Redis/Kafka warper.
  * All virtual device will handle the connection time and connection nums.
  * @version 0.1
@@ -170,6 +170,7 @@ struct cbRedisDevice final : public cbVirtualDevice {
         m_idx(idx) {
     // if no ssl: redis://:password@host:port/dbnum?query#fragment
     // if ssl: rediss://:password@host:port/dbnum?query#fragment
+    updateUrl();
   }
 
   void updateUrl() override final;
@@ -207,7 +208,9 @@ struct cbRedisDevice final : public cbVirtualDevice {
  * @brief
  *
  */
-struct cbKafkaDevice final : public cbVirtualDevice {};
+struct cbKafkaDevice final : public cbVirtualDevice {
+  void updateUrl() override final;
+};
 
 /**
  * @brief

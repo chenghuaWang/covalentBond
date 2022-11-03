@@ -15,6 +15,7 @@
 #include "../../pch.hpp"
 
 #include "sol/sol.hpp"
+#include <workflow/MySQLResult.h>
 
 ///!
 typedef std::variant<int32_t, float, std::string, bool> __metaObj;
@@ -332,5 +333,84 @@ inline void mallocMetaMatrix(cbTableCol& rhs) {
   rhs.setStride(1);
   rhs.setThisAsTrueDataContainer();
 }
+
+/**
+ * @brief cbVirtualSharedTable is a container of shared memory.
+ *
+ */
+class cbVirtualSharedTable {
+ public:
+  ~cbVirtualSharedTable();
+  cbVirtualSharedTable() = default;
+  /**
+   * @brief Construct a new cb Virtual Shared Table object
+   * Only loop one result set.
+   * @param cursor
+   */
+  cbVirtualSharedTable(protocol::MySQLResultCursor* cursor);
+  const cbShape<2> getShape() const { return m_shape; }
+  protocol::MySQLCell* at(int32_t i, int32_t j);
+  protocol::MySQLField** getInfo() { return m_info; }
+  int32_t getFiledCount() { return m_fieldCount; }
+
+ private:
+  int32_t m_fieldCount = 0;
+  cbShape<2> m_shape;
+  protocol::MySQLField** m_info = nullptr;
+  std::vector<std::vector<protocol::MySQLCell>> m_data;
+};
+
+/**
+ * @brief cbVirtualTable works as a reference from shared memory. It
+ * only use a shape and SqlCell to define different tables.
+ *
+ */
+class cbVirtualTable {
+ public:
+  cbVirtualTable() = default;
+  cbVirtualTable(const cbVirtualTable& rhs) {
+    this->m_shape = rhs.m_shape;
+    this->m_data = rhs.m_data;
+    this->m_info = rhs.m_info;
+  }
+  cbVirtualTable(cbShape<2>& shape)
+      : m_info(nullptr),
+        m_shape(shape),
+        m_data(shape[0], std::vector<protocol::MySQLCell*>(shape[1])) {
+    m_data.shrink_to_fit();
+  }
+
+  cbVirtualTable operator=(const cbVirtualTable& rhsOp) {
+    cbVirtualTable ans;
+    ans.m_data = rhsOp.m_data;
+    ans.m_info = rhsOp.m_info;
+    ans.m_shape = rhsOp.m_shape;
+    return ans;
+  }
+
+  void resetShape(const cbShape<2>& shape);
+  protocol::MySQLField** getInfo();
+  std::vector<std::vector<protocol::MySQLCell*>>& getData();
+  cbShape<2> getShape() { return m_shape; }
+
+  /**
+   * @brief row major
+   *
+   * @param i row
+   * @param j col
+   * @return protocol::MySQLCell*
+   */
+  protocol::MySQLCell* at(int32_t i, int32_t j);
+
+  std::string colNameAt(int32_t i);
+  std::string colTypeAt(int32_t i);
+
+ private:
+  protocol::MySQLField** m_info = nullptr;
+  cbShape<2> m_shape;
+  std::vector<std::vector<protocol::MySQLCell*>> m_data;
+};
+
+void mapShared2Virtual(cbVirtualSharedTable* sharedT, cbVirtualTable* virtualT);
 
 #endif  //! __SERVER_CB_TABLE_HPP_
