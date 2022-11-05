@@ -13,6 +13,8 @@
 
 #include "../../pch.hpp"
 
+#include "luaEngine.hpp"
+
 enum class opType : uint32_t {
   rowWise = 0,
   tableWise = 1,

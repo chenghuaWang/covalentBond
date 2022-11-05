@@ -17,6 +17,10 @@
 #include "sol/sol.hpp"
 #include <workflow/MySQLResult.h>
 
+// ------------------------- The code below is dropped.--------------
+// --- Go to len=340 for latest code. -------------------------------
+// ------------------------- The code below is dropped.--------------
+
 ///!
 typedef std::variant<int32_t, float, std::string, bool> __metaObj;
 
@@ -334,6 +338,70 @@ inline void mallocMetaMatrix(cbTableCol& rhs) {
   rhs.setThisAsTrueDataContainer();
 }
 
+// -------------- below is for actually use. ---------------------------------
+// -------------- below is for actually use. ---------------------------------
+// -------------- below is for actually use. ---------------------------------
+
+// And I will provide a bunch of function for sol::lua to use.
+
+typedef std::variant<std::string, float, double, int, unsigned long long> __cbMySQLMeta;
+
+enum class cbMySQLType {
+  Float,
+  Double,
+  Int,
+  ULL,
+  String,
+  Date,
+  Time,
+  DataTime,
+  Null,
+};
+
+class cbMySQLCell {
+ public:
+  cbMySQLCell() : m_type(cbMySQLType::Null) {}
+  cbMySQLCell(const protocol::MySQLCell& m);
+  cbMySQLCell(int value) : m_type(cbMySQLType::Int), m_data(value) {}
+  cbMySQLCell(float value) : m_type(cbMySQLType::Float), m_data(value) {}
+  cbMySQLCell(double value) : m_type(cbMySQLType::Double), m_data(value) {}
+  cbMySQLCell(unsigned long long value) : m_type(cbMySQLType::ULL), m_data(value) {}
+  cbMySQLCell(const std::string& value) : m_type(cbMySQLType::String), m_data(value) {}
+  cbMySQLCell(const std::string& value, const cbMySQLType& t) : m_type(t), m_data(value) {}
+
+  bool isNull() const;
+  bool isInt() const;
+  bool isString() const;
+  bool isFloat() const;
+  bool isDouble() const;
+  bool isULL() const;
+  bool isDate() const;
+  bool isTime() const;
+  bool isDatetime() const;
+
+  int asInt() const;
+  std::string asString() const;
+  float asFloat() const;
+  double asDouble() const;
+  unsigned long long asULL() const;
+  std::string asDate() const;
+  std::string asTime() const;
+  std::string asDatetime() const;
+
+  void setInt(int value);
+  void setString(const std::string& value);
+  void setFloat(float value);
+  void setDouble(double value);
+  void setULL(unsigned long long value);
+  void setDate(const std::string& value);
+  void setTime(const std::string& value);
+  void setDatetime(const std::string& value);
+
+ private:
+  cbMySQLType m_type = cbMySQLType::Null;
+  __cbMySQLMeta m_data;
+};
+
 /**
  * @brief cbVirtualSharedTable is a container of shared memory.
  *
@@ -350,8 +418,8 @@ class cbVirtualSharedTable {
   cbVirtualSharedTable(protocol::MySQLResultCursor* cursor);
   const cbShape<2> getShape() const { return m_shape; }
 
-  protocol::MySQLCell* atPtr(int32_t i, int32_t j);
-  protocol::MySQLCell* atPtrRef(int32_t i, int32_t j);
+  cbMySQLCell* atPtr(int32_t i, int32_t j);
+  cbMySQLCell* atPtrRef(int32_t i, int32_t j);
 
   protocol::MySQLField** getInfo() { return m_info; }
 
@@ -364,7 +432,7 @@ class cbVirtualSharedTable {
   int32_t m_fieldCount = 0;
   cbShape<2> m_shape;
   protocol::MySQLField** m_info = nullptr;
-  std::vector<std::vector<protocol::MySQLCell>> m_data;
+  std::vector<std::vector<cbMySQLCell>> m_data;
 };
 
 /**
@@ -381,9 +449,7 @@ class cbVirtualTable {
     this->m_info = rhs.m_info;
   }
   cbVirtualTable(cbShape<2>& shape)
-      : m_info(nullptr),
-        m_shape(shape),
-        m_data(shape[0], std::vector<protocol::MySQLCell*>(shape[1])) {
+      : m_info(nullptr), m_shape(shape), m_data(shape[0], std::vector<cbMySQLCell*>(shape[1])) {
     m_data.shrink_to_fit();
   }
 
@@ -397,7 +463,7 @@ class cbVirtualTable {
 
   void resetShape(const cbShape<2>& shape);
   protocol::MySQLField** getInfo();
-  std::vector<std::vector<protocol::MySQLCell*>>& getData();
+  std::vector<std::vector<cbMySQLCell*>>& getData();
   cbShape<2> getShape() { return m_shape; }
 
   /**
@@ -405,10 +471,10 @@ class cbVirtualTable {
    *
    * @param i row
    * @param j col
-   * @return protocol::MySQLCell*
+   * @return cbMySQLCell*
    */
-  protocol::MySQLCell* atPtr(int32_t i, int32_t j);
-  protocol::MySQLCell*& atPtrRef(int32_t i, int32_t j);
+  cbMySQLCell* atPtr(int32_t i, int32_t j);
+  cbMySQLCell*& atPtrRef(int32_t i, int32_t j);
 
   std::string colNameAt(int32_t i);
   std::string colTypeAt(int32_t i);
@@ -416,11 +482,9 @@ class cbVirtualTable {
  private:
   protocol::MySQLField** m_info = nullptr;
   cbShape<2> m_shape;
-  std::vector<std::vector<protocol::MySQLCell*>> m_data;
+  std::vector<std::vector<cbMySQLCell*>> m_data;
 };
 
 void mapShared2Virtual(cbVirtualSharedTable* sharedT, cbVirtualTable* virtualT);
-
-void createSharedTable(cbVirtualSharedTable* sharedT);
 
 #endif  //! __SERVER_CB_TABLE_HPP_

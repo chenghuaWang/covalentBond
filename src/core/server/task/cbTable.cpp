@@ -1,4 +1,9 @@
 #include "cbTable.hpp"
+#include <workflow/MySQLResult.h>
+
+// ------------------------- The code below is dropped.--------------
+// --- Go to len=340 for latest code. -------------------------------
+// ------------------------- The code below is dropped.--------------
 
 int cbCell::asInt() { return std::get<int>(data); }
 
@@ -24,6 +29,12 @@ void cbCell::setAsCppBool(bool rhs) { data = rhs; }
 
 void cbCell::setAsCppString(std::string rhs) { data = rhs; }
 
+// -------------- below is for actually use. ---------------------------------
+// -------------- below is for actually use. ---------------------------------
+// -------------- below is for actually use. ---------------------------------
+
+// And I will provide a bunch of function for sol::lua to use.
+
 cbVirtualSharedTable::~cbVirtualSharedTable() {
   for (int32_t i = 0; i < m_fieldCount; ++i) { delete m_info[i]; }
   delete[] m_info;
@@ -42,15 +53,19 @@ cbVirtualSharedTable::cbVirtualSharedTable(protocol::MySQLResultCursor* cursor) 
     // no loop. just get the first result set !!!
     // Note that the implementation of workflow's MySqlCell use void* to store
     // different data types, so I adopt RAII programming style in this class.
-    cursor->fetch_all(m_data);  ///! with copy.
+    std::vector<std::vector<protocol::MySQLCell>> __data;
+    cursor->fetch_all(__data);  ///! with copy.
     m_shape[0] = cursor->get_rows_count();
     m_shape[1] = static_cast<int32_t>(m_data[0].size());
+    for (int32_t i = 0; i < m_shape[0]; ++i) {
+      for (int32_t j = 0; j < m_shape[1]; ++j) { m_data[i][j] = __data[i][j]; }
+    }
   }
 }
 
-protocol::MySQLCell* cbVirtualSharedTable::atPtr(int32_t i, int32_t j) { return &m_data[i][j]; }
+cbMySQLCell* cbVirtualSharedTable::atPtr(int32_t i, int32_t j) { return &m_data[i][j]; }
 
-protocol::MySQLCell* cbVirtualSharedTable::atPtrRef(int32_t i, int32_t j) { return &m_data[i][j]; }
+cbMySQLCell* cbVirtualSharedTable::atPtrRef(int32_t i, int32_t j) { return &m_data[i][j]; }
 
 void cbVirtualSharedTable::resetShape(cbShape<2>& shape) {
   m_shape = shape;
@@ -82,11 +97,11 @@ void cbVirtualTable::resetShape(const cbShape<2>& shape) {
 
 protocol::MySQLField** cbVirtualTable::getInfo() { return m_info; }
 
-std::vector<std::vector<protocol::MySQLCell*>>& cbVirtualTable::getData() { return m_data; }
+std::vector<std::vector<cbMySQLCell*>>& cbVirtualTable::getData() { return m_data; }
 
-protocol::MySQLCell* cbVirtualTable::atPtr(int32_t i, int32_t j) { return m_data[i][j]; }
+cbMySQLCell* cbVirtualTable::atPtr(int32_t i, int32_t j) { return m_data[i][j]; }
 
-protocol::MySQLCell*& cbVirtualTable::atPtrRef(int32_t i, int32_t j) { return m_data[i][j]; }
+cbMySQLCell*& cbVirtualTable::atPtrRef(int32_t i, int32_t j) { return m_data[i][j]; }
 
 std::string cbVirtualTable::colNameAt(int32_t i) { return m_info[i]->get_name(); }
 
@@ -106,4 +121,163 @@ void mapShared2Virtual(cbVirtualSharedTable* sharedT, cbVirtualTable* virtualT) 
   for (int32_t i = 0; i < row; ++i) {
     for (int32_t j = 0; j < col; ++j) { virtualT->atPtrRef(i, j) = sharedT->atPtr(i, j); }
   }
+}
+
+cbMySQLCell::cbMySQLCell(const protocol::MySQLCell& m) {
+  if (m.is_date()) {
+    m_type = cbMySQLType::Date;
+    m_data = m.as_date();
+  } else if (m.is_datetime()) {
+    m_type = cbMySQLType::DataTime;
+    m_data = m.as_datetime();
+  } else if (m.is_time()) {
+    m_type = cbMySQLType::Time;
+    m_data = m.as_time();
+  } else if (m.is_float()) {
+    m_type = cbMySQLType::Float;
+    m_data = m.as_float();
+  } else if (m.is_double()) {
+    m_type = cbMySQLType::Double;
+    m_data = m.as_double();
+  } else if (m.is_int()) {
+    m_type = cbMySQLType::Int;
+    m_data = m.as_int();
+  } else if (m.is_string()) {
+    m_type = cbMySQLType::String;
+    m_data = m.as_string();
+  } else if (m.is_ulonglong()) {
+    m_type = cbMySQLType::ULL;
+    m_data = m.as_ulonglong();
+  } else {
+    m_type = cbMySQLType::Null;
+  }
+}
+
+bool cbMySQLCell::isNull() const {
+  switch (m_type) {
+    case cbMySQLType::Null: return true; break;
+    default: return false; break;
+  }
+}
+
+bool cbMySQLCell::isInt() const {
+  switch (m_type) {
+    case cbMySQLType::Int: return true; break;
+    default: return false; break;
+  }
+}
+
+bool cbMySQLCell::isString() const {
+  switch (m_type) {
+    case cbMySQLType::String:
+    case cbMySQLType::DataTime:
+    case cbMySQLType::Date:
+    case cbMySQLType::Time: return true; break;
+    default: return false; break;
+  }
+}
+
+bool cbMySQLCell::isFloat() const {
+  switch (m_type) {
+    case cbMySQLType::Float: return true; break;
+    default: return false; break;
+  }
+}
+
+bool cbMySQLCell::isDouble() const {
+  switch (m_type) {
+    case cbMySQLType::Double: return true; break;
+    default: return false; break;
+  }
+}
+
+bool cbMySQLCell::isULL() const {
+  switch (m_type) {
+    case cbMySQLType::ULL: return true; break;
+    default: return false; break;
+  }
+}
+
+bool cbMySQLCell::isDate() const {
+  switch (m_type) {
+    case cbMySQLType::Date: return true; break;
+    default: return false; break;
+  }
+}
+
+bool cbMySQLCell::isTime() const {
+  switch (m_type) {
+    case cbMySQLType::Time: return true; break;
+    default: return false; break;
+  }
+}
+
+bool cbMySQLCell::isDatetime() const {
+  switch (m_type) {
+    case cbMySQLType::DataTime: return true; break;
+    default: return false; break;
+  }
+}
+
+int cbMySQLCell::asInt() const {
+  if (isInt()) { return std::get<int>(m_data); }
+  return 0;
+}
+
+std::string cbMySQLCell::asString() const {
+  if (isString()) { return std::get<std::string>(m_data); }
+  return "";
+}
+
+float cbMySQLCell::asFloat() const {
+  if (isFloat()) { return std::get<float>(m_data); }
+  return NAN;
+}
+
+double cbMySQLCell::asDouble() const {
+  if (isDouble()) { return std::get<double>(m_data); }
+  return NAN;
+}
+
+unsigned long long cbMySQLCell::asULL() const {
+  if (isULL()) { return std::get<unsigned long long>(m_data); }
+  return 0;
+}
+
+std::string cbMySQLCell::asDate() const { return asString(); }
+
+std::string cbMySQLCell::asTime() const { return asString(); }
+
+std::string cbMySQLCell::asDatetime() const { return asString(); }
+
+void cbMySQLCell::setInt(int value) {
+  if (isInt()) { m_data = value; }
+}
+
+void cbMySQLCell::setString(const std::string& value) {
+  if (isString()) { m_data = value; }
+}
+
+void cbMySQLCell::setFloat(float value) {
+  if (isFloat()) { m_data = value; }
+}
+
+void cbMySQLCell::setDouble(double value) {
+  if (isDouble()) { m_data = value; }
+}
+
+void cbMySQLCell::setULL(unsigned long long value) {
+  if (isULL()) { m_data = value; }
+}
+
+void cbMySQLCell::setDate(const std::string& value) {
+  if (isDate()) { m_data = value; }
+}
+
+void cbMySQLCell::setTime(const std::string& value) {
+  if (isTime()) { m_data = value; }
+}
+
+void cbMySQLCell::setDatetime(const std::string& value) {
+  if (isDatetime()) { m_data = value; }
 }
