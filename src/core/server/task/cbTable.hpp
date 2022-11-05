@@ -349,9 +349,16 @@ class cbVirtualSharedTable {
    */
   cbVirtualSharedTable(protocol::MySQLResultCursor* cursor);
   const cbShape<2> getShape() const { return m_shape; }
-  protocol::MySQLCell* at(int32_t i, int32_t j);
+
+  protocol::MySQLCell* atPtr(int32_t i, int32_t j);
+  protocol::MySQLCell* atPtrRef(int32_t i, int32_t j);
+
   protocol::MySQLField** getInfo() { return m_info; }
+
   int32_t getFiledCount() { return m_fieldCount; }
+
+  void resetShape(cbShape<2>& shape);
+  void resetFieldInfo(int32_t fieldCount, protocol::MySQLField** info);
 
  private:
   int32_t m_fieldCount = 0;
@@ -400,7 +407,8 @@ class cbVirtualTable {
    * @param j col
    * @return protocol::MySQLCell*
    */
-  protocol::MySQLCell* at(int32_t i, int32_t j);
+  protocol::MySQLCell* atPtr(int32_t i, int32_t j);
+  protocol::MySQLCell*& atPtrRef(int32_t i, int32_t j);
 
   std::string colNameAt(int32_t i);
   std::string colTypeAt(int32_t i);
@@ -412,5 +420,7 @@ class cbVirtualTable {
 };
 
 void mapShared2Virtual(cbVirtualSharedTable* sharedT, cbVirtualTable* virtualT);
+
+void createSharedTable(cbVirtualSharedTable* sharedT);
 
 #endif  //! __SERVER_CB_TABLE_HPP_

@@ -48,7 +48,26 @@ cbVirtualSharedTable::cbVirtualSharedTable(protocol::MySQLResultCursor* cursor) 
   }
 }
 
-protocol::MySQLCell* cbVirtualSharedTable::at(int32_t i, int32_t j) { return &m_data[i][j]; }
+protocol::MySQLCell* cbVirtualSharedTable::atPtr(int32_t i, int32_t j) { return &m_data[i][j]; }
+
+protocol::MySQLCell* cbVirtualSharedTable::atPtrRef(int32_t i, int32_t j) { return &m_data[i][j]; }
+
+void cbVirtualSharedTable::resetShape(cbShape<2>& shape) {
+  m_shape = shape;
+  m_data.resize(m_shape[0]);
+  for (auto& item : m_data) {
+    item.resize(m_shape[1]);
+    item.shrink_to_fit();
+  }
+  m_data.shrink_to_fit();
+}
+
+void cbVirtualSharedTable::resetFieldInfo(int32_t fieldCount, protocol::MySQLField** info) {
+  for (int32_t i = 0; i < m_fieldCount; ++i) { delete m_info[i]; }
+  delete[] m_info;
+  m_info = info;
+  m_fieldCount = fieldCount;
+}
 
 void cbVirtualTable::resetShape(const cbShape<2>& shape) {
   // row major
@@ -65,7 +84,9 @@ protocol::MySQLField** cbVirtualTable::getInfo() { return m_info; }
 
 std::vector<std::vector<protocol::MySQLCell*>>& cbVirtualTable::getData() { return m_data; }
 
-protocol::MySQLCell* cbVirtualTable::at(int32_t i, int32_t j) { return m_data[i][j]; }
+protocol::MySQLCell* cbVirtualTable::atPtr(int32_t i, int32_t j) { return m_data[i][j]; }
+
+protocol::MySQLCell*& cbVirtualTable::atPtrRef(int32_t i, int32_t j) { return m_data[i][j]; }
 
 std::string cbVirtualTable::colNameAt(int32_t i) { return m_info[i]->get_name(); }
 
@@ -78,13 +99,11 @@ void mapShared2Virtual(cbVirtualSharedTable* sharedT, cbVirtualTable* virtualT) 
   int32_t row = virtualT->getShape()[0];
   int32_t col = virtualT->getShape()[1];
 
+  // left value is temp.
   auto p = virtualT->getInfo();
   p = sharedT->getInfo();
 
   for (int32_t i = 0; i < row; ++i) {
-    for (int32_t j = 0; j < col; ++j) {
-      auto p = virtualT->at(i, j);
-      p = sharedT->at(i, j);
-    }
+    for (int32_t j = 0; j < col; ++j) { virtualT->atPtrRef(i, j) = sharedT->atPtr(i, j); }
   }
 }

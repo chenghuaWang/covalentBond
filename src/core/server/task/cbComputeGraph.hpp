@@ -16,4 +16,24 @@
 #ifndef __SERVER_CB_COMPUTE_GRAPH_HPP_
 #define __SERVER_CB_COMPUTE_GRAPH_HPP_
 
+#include "cbOperator.hpp"
+
+namespace graph {
+
+enum class nodeType : uint32_t {
+  Leave = 1,
+  Final = 2,
+  Operator = 3,
+};
+
+/**
+ * @brief
+ *
+ */
+struct node {};
+
+class cbComputeGraph {};
+
+};  // namespace graph
+
 #endif  //!__SERVER_CB_COMPUTE_GRAPH_HPP_
