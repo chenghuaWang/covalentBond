@@ -1,6 +1,6 @@
 # Data Middle Office
 
-Our Data Middle Office(dbo) is named covalent bond. A tool for managing distributed database, gathering/cleaning data, etc. This tool is a final project for 2022-2023 Fall Software Engineering lecture. 
+Our Data Middle Office(dbo) is named covalent bond. A tool for managing distributed database, gathering/cleaning data, etc. This tool is a final project for 2022-2023 Fall Software Engineering lecture.
 
 ## Architecture
 
@@ -25,27 +25,16 @@ Go to [DETAILS](./docs/prepare.md) for more information.
 ### Core
 
 * [workflow](https://github.com/sogou/workflow) Sogou`s C++ server engine which can satisfy most C++ back-end development requirements.
-
 * [sRPC](https://github.com/sogou/srpc) An enterprise-level RPC system
-
 * [gLog](https://github.com/google/glog) Google logging module
-
 * [fmt](https://github.com/fmtlib/fmt) A modern formatting library
-
 * [protobuf](https://github.com/protocolbuffers/protobuf) Protocol Buffers - Google's data interchange format
-
 * [redis](https://github.com/redis/redis) in-memory database that persists on disk.
-
 * [rapidJson](https://github.com/Tencent/rapidjson) A fast JSON parser/generator for C++ with both SAX/DOM style API
-
 * [zeroMQ](https://github.com/zeromq/libzmq) attention👀, this lib may not be used. `workflow` provide a message queue already.
-
 * [Zlib](https://github.com/madler/zlib)
-
 * [LuaJit](https://github.com/LuaJIT/LuaJIT) Integrate in. For hot update.
-
 * [lz4](https://github.com/lz4/lz4) Extremely fast compression
-
 * [sol2](https://github.com/ThePhD/sol2) bind C++ and lua.
 
 ### Frontend
@@ -66,6 +55,8 @@ Hi there 👋
 ![Wang's GitHub stats](https://github-readme-stats.vercel.app/api?username=chenghuaWang&bg_color=30,e96443,904e95&title_color=fff&text_color=fff)
 
 ### [caibo Feng](https://github.com/caibofeng)
+
+Yahooo
 
 ## Reference
 
