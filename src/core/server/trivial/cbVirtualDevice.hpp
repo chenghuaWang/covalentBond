@@ -86,7 +86,7 @@ struct cbMySqlDevice final : public cbVirtualDevice {
   cbMySqlDevice(int32_t _idx) : m_idx(_idx) { m_conn = new WFMySQLConnection(_idx); }
   cbMySqlDevice(int32_t _idx, const std::string& _port, const std::string& _host,
                 const std::string& _userName, const std::string& _passWord,
-                const std::string& _charSet, const std::string& _dataBaseName)
+                const std::string& _dataBaseName, const std::string& _charSet = "")
       : cbVirtualDevice(_port, _host, _userName, _passWord, _charSet, _dataBaseName,
                         virtualDeviceType::MySql),
         m_idx(_idx) {
@@ -96,7 +96,10 @@ struct cbMySqlDevice final : public cbVirtualDevice {
     // And I assume the charset of result and original database are same.
     std::stringstream ss;
     ss << "mysql://" << _userName << ":" << _passWord << "@" << _host << ":" << _port << "/"
-       << _dataBaseName << "?character_set=" << _charSet << "&character_set_results=" << _charSet;
+       << _dataBaseName;
+    if (!_charSet.empty()) {
+      ss << "?character_set=" << _charSet << "&character_set_results=" << _charSet;
+    }
     Url = ss.str();
     // Init the connection;
     m_conn->init(Url);

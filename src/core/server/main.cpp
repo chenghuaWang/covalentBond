@@ -1,52 +1,70 @@
-#include <sol/sol.hpp>
-// reference https://github.com/ThePhD/sol2/blob/develop/examples/source/usertype_constructors.cpp
+#include <workflow/WFFacilities.h>
+#include "trivial/cbVirtualDevice.hpp"
 
-#include "task/cbTable.hpp"
+using namespace protocol;
 
-struct my_class {
-  my_class() : data(2) {}
-  void setAt(int i, cbMySQLCell* a) { data[i] = a; }
-  std::vector<cbMySQLCell*> data;
-};
+static WFFacilities::WaitGroup wait_group(1);
 
 int main() {
-  cbMySQLCell a(10), b("Hello");
-  cbMySQLCell* c = new cbMySQLCell("lua aaaaaa !!!");
-  my_class container;
-  sol::state lua;
-  lua.open_libraries(sol::lib::base);
-  lua.new_usertype<my_class>("my_class", "setAt", &my_class::setAt);
-  lua.new_usertype<cbMySQLCell>(
-      "cbMySQLCell", sol::meta_function::construct,
-      sol::factories([](const double& d) { return std::make_shared<cbMySQLCell>(d); },
-                     [](const int& d) { return std::make_shared<cbMySQLCell>(d); },
-                     [](const std::string& d) { return std::make_shared<cbMySQLCell>(d); }),
-      sol::call_constructor,
-      sol::factories([](const double& d) { return std::make_shared<cbMySQLCell>(d); },
-                     [](const int& d) { return std::make_shared<cbMySQLCell>(d); },
-                     [](const std::string& d) { return std::make_shared<cbMySQLCell>(d); }),
-      "asString", &cbMySQLCell::asString, "asInt", &cbMySQLCell::asInt, "asDouble",
-      &cbMySQLCell::asDouble, "setString", &cbMySQLCell::setString, "setInt", &cbMySQLCell::setInt,
-      "setDouble", &cbMySQLCell::setDouble);
-  lua["container"].get_or_create<my_class>(&container);
-  lua["cell_1"].get_or_create<cbMySQLCell>(&a);
-  lua["cell_2"].get_or_create<cbMySQLCell>(&b);
-  lua["create"] = [=]() -> cbMySQLCell* { return c; };
-  sol::optional<sol::error> maybe_error = lua.safe_script(R"(
-		print(cell_1:asInt());
-		print(cell_2:asString());
-        cell_3_lua = cbMySQLCell("From lua!!!");
-        print(cell_3_lua:asString());
-        container:setAt(0, cell_2);
-	)",
-                                                          sol::script_pass_on_error);
+  WFMySQLConnection conn(1);
+  conn.init("*");
+  WFMySQLTask* t1;
+  // test transaction
+  const char* query = "select * from runoob_tbl;";
+  t1 = conn.create_query_task(query, [](WFMySQLTask* task) {
+    if (task->get_state() != WFT_STATE_SUCCESS) {
+      fprintf(stderr, "task error = %d\n", task->get_error());
+      return;
+    }
+    MySQLResultCursor cursor(task->get_resp());
 
-  if (maybe_error) {
-    std::cerr << "Something has gone horribly unexpected "
-                 "and wrong:\n"
-              << maybe_error->what() << std::endl;
-    return 1;
-  }
-  // The only one still need to figure out is the ownership of members created in lua.
-  std::cout << container.data[0]->asString() << std::endl;
+    // step-2. 判断回复包其他状态
+    if (task->get_resp()->get_packet_type() == MYSQL_PACKET_ERROR) {
+      fprintf(stderr, "ERROR. error_code=%d %s\n", task->get_resp()->get_error_code(),
+              task->get_resp()->get_error_msg().c_str());
+    }
+    // step-3. 遍历结果集
+    // step-4. 判断结果集状态
+    if (cursor.get_cursor_status() == MYSQL_STATUS_OK) {
+      // step-5. MYSQL_STATUS_OK结果集的基本内容
+      fprintf(stderr, "OK. %llu rows affected. %d warnings. insert_id=%llu.\n",
+              cursor.get_affected_rows(), cursor.get_warnings(), cursor.get_insert_id());
+    } else if (cursor.get_cursor_status() == MYSQL_STATUS_GET_RESULT) {
+      fprintf(stderr, "field_count=%u rows_count=%u ", cursor.get_field_count(),
+              cursor.get_rows_count());
+
+      // step-6. 读取每个fields。这是个nocopy api
+      const MySQLField* const* fields = cursor.fetch_fields();
+      for (int i = 0; i < cursor.get_field_count(); i++) {
+        fprintf(stderr, "db=%s table=%s name[%s] type[%s]\n", fields[i]->get_db().c_str(),
+                fields[i]->get_table().c_str(), fields[i]->get_name().c_str(),
+                datatype2str(fields[i]->get_data_type()));
+      }
+
+      // step-8. 把所有行读出，也可以while (cursor.fetch_row(map/vector)) 按step-7拿每一行
+      std::vector<std::vector<MySQLCell>> rows;
+
+      cursor.fetch_all(rows);
+      for (unsigned int j = 0; j < rows.size(); j++) {
+        // step-12. 具体每个cell的读取
+        for (unsigned int i = 0; i < rows[j].size(); i++) {
+          fprintf(stderr, "[%s][%s]", fields[i]->get_name().c_str(),
+                  datatype2str(rows[j][i].get_data_type()));
+          // step-12. 判断具体类型is_string()和转换具体类型as_string()
+          if (rows[j][i].is_string()) {
+            std::string res = rows[j][i].as_string();
+            fprintf(stderr, "[%s]\n", res.c_str());
+          } else if (rows[j][i].is_int()) {
+            fprintf(stderr, "[%d]\n", rows[j][i].as_int());
+          }  // else if ...
+        }
+      }
+    }
+    // step-10. 拿下一个结果集
+    wait_group.done();
+    return;
+  });
+  t1->start();
+  wait_group.wait();
+  return 0;
 }

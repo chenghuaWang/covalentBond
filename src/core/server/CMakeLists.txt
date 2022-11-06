@@ -17,8 +17,11 @@ set(TASK_FILES
 ./task/luaEngine.hpp
 ./task/cbTable.cpp
 ./task/cbTable.cpp
+./task/cbTable.cpp
 ./trivial/cfgIO.cpp
 ./trivial/cfgIO.hpp
+./trivial/cbVirtualDevice.cpp
+./trivial/cbVirtualDevice.hpp
 )
 
 include_directories(../utils)

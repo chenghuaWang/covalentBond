@@ -17,7 +17,10 @@ void cbVirtualDevice::reloadConnection(const std::string& _port, const std::stri
 void cbMySqlDevice::updateUrl() {
   std::stringstream ss;
   ss << "mysql://" << usrName << ":" << passWord << "@" << host << ":" << port << "/"
-     << dataBaseName << "?character_set=" << charSet << "&character_set_results=" << charSet;
+     << dataBaseName;
+  if (!charSet.empty()) {
+    ss << "?character_set=" << charSet << "&character_set_results=" << charSet;
+  }
   Url = ss.str();
   m_conn->deinit();
   m_conn->init(Url);
