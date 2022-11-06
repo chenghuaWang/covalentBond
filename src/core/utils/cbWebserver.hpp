@@ -35,12 +35,9 @@
 #endif  //! defined(__unix__) && defined(__clang__)
 
 #include "../pch.hpp"
-#include <workflow/http_parser.h>
-#include "workflow/HttpMessage.h"
-#include "workflow/HttpUtil.h"
-#include "workflow/WFServer.h"
-#include "workflow/WFHttpServer.h"
-#include "workflow/WFFacilities.h"
+#include <signal.h>
+#include <workflow/WFHttpServer.h>
+#include <workflow/WFFacilities.h>
 
 typedef std::function<void(WFHttpTask*, char*)> http_func_handle;
 
@@ -50,12 +47,15 @@ class cbWebserver {
  public:
   cbWebserver() = default;
   cbWebserver(const int32_t& port, const std::string& root);
-  ~cbWebserver() = default;
+  ~cbWebserver();
   void execMain();
 
- public:
+ private:
+  static void signal_kill(int signo);
+
   int32_t m_port;
   std::string m_root;
+  static WFFacilities::WaitGroup __wait_group;
   WFHttpServer* m_server;
 };
 

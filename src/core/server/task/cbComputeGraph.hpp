@@ -20,9 +20,13 @@
 
 namespace graph {
 
+/**
+ * @brief
+ *
+ */
 enum class nodeType : uint32_t {
-  Leave = 1,
-  Final = 2,
+  Leaf = 1,
+  Output = 2,
   Operator = 3,
 };
 
@@ -30,9 +34,32 @@ enum class nodeType : uint32_t {
  * @brief
  *
  */
-struct node {};
+struct cbGraphSharedMem {};
 
-class cbComputeGraph {};
+/**
+ * @brief
+ *
+ */
+struct cbGraphSharedLuaStack {};
+
+/**
+ * @brief
+ *
+ */
+struct cbNode {};
+
+/**
+ * @brief
+ *
+ */
+class cbComputeGraph {
+ public:
+  void initLuaStack();
+
+ private:
+  cbGraphSharedMem m_sharedMem;
+  cbGraphSharedLuaStack m_sharedLuaStack;
+};
 
 };  // namespace graph
 

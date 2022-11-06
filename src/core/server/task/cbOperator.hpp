@@ -1,3 +1,13 @@
+/**
+ * @file cbOperator.hpp
+ * @author chenghua Wang (chenghua.wang.edu@gmail.com)
+ * @brief The operator of compute graph
+ * @version 0.1
+ * @date 2022-11-06
+ *
+ * @copyright Copyright (c) 2022
+ *
+ */
 #ifndef __SERVER_CB_OPERATOR_HPP_
 #define __SERVER_CB_OPERATOR_HPP_
 
@@ -13,6 +23,7 @@
 
 #include "../../pch.hpp"
 
+#include "cbTable.hpp"
 #include "luaEngine.hpp"
 
 enum class opType : uint32_t {

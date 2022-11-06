@@ -1,3 +1,13 @@
+/**
+ * @file cbTable.hpp
+ * @author chenghua Wang (chenghua.wang.edu@gmail.com)
+ * @brief the virtual table and shared table.
+ * @version 0.1
+ * @date 2022-11-06
+ *
+ * @copyright Copyright (c) 2022
+ *
+ */
 #ifndef __SERVER_CB_TABLE_HPP_
 #define __SERVER_CB_TABLE_HPP_
 
