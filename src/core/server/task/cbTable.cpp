@@ -1,8 +1,18 @@
+/**
+ * @file cbTable.cpp
+ * @author chenghua Wang (chenghua.wang.edu@gmail.com)
+ * @brief The impl of table.
+ * @version 0.1
+ * @date 2022-11-10
+ *
+ * @copyright Copyright (c) 2022
+ *
+ */
 #include "cbTable.hpp"
 #include <workflow/MySQLResult.h>
 
 // ------------------------- The code below is dropped.--------------
-// --- Go to len=340 for latest code. -------------------------------
+// --- Go to len=46 for latest code. -------------------------------
 // ------------------------- The code below is dropped.--------------
 
 int cbCell::asInt() { return std::get<int>(data); }
