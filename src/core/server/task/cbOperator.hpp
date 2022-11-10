@@ -23,7 +23,6 @@
 
 #include "../../pch.hpp"
 
-#include "cbTable.hpp"
 #include "luaEngine.hpp"
 
 enum class opType : uint32_t {
@@ -32,6 +31,32 @@ enum class opType : uint32_t {
   notTableMatrix = 2,
 };
 
-class baseOp {};
+/**
+ * @brief The input and output of one Operator.
+ *
+ */
+struct cbOpIO {};
+
+/**
+ * @brief basic operator.
+ *
+ */
+struct baseOp {
+  ~baseOp(){};
+  baseOp(){};
+
+  virtual void overload(sol::function) = 0;
+  virtual void execMain();
+
+  bool isOverload = false;
+  cbOpIO io;
+  opType type = opType::rowWise;
+};
+
+class cbOpRowWise : public baseOp {};
+
+class cbOpTableWise : public baseOp {};
+
+class cbOpNotTable : public baseOp {};
 
 #endif  //! __SERVER_CB_OPERATOR_HPP_

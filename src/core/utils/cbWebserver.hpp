@@ -43,11 +43,28 @@ typedef std::function<void(WFHttpTask*, char*)> http_func_handle;
 
 namespace cb {
 namespace utils {
+
+/**
+ * @brief
+ *
+ */
 class cbWebserver {
  public:
   cbWebserver() = default;
+
+  /**
+   * @brief Construct a new cb Webserver object
+   *
+   * @param port
+   * @param root
+   */
   cbWebserver(const int32_t& port, const std::string& root);
   ~cbWebserver();
+
+  /**
+   * @brief
+   *
+   */
   void execMain();
 
  private:

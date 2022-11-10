@@ -39,10 +39,21 @@ extern "C" {
 #endif
 
 #include "cbTable.hpp"
+#include "cbOperator.hpp"
+
+void bindAllFuncByDefault(sol::state* handle);
 
 class luaJitThread {
- private:
  public:
+  ~luaJitThread();
+  luaJitThread();
+
+  void execMain(const std::string& script);
+
+  sol::state& operator()();
+
+ private:
+  sol::state* m_luaHandle;
 };
 
 #endif  //! __SERVER_LUA_ENGINE_HPP_
