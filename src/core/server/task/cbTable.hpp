@@ -368,6 +368,75 @@ enum class cbMySQLType {
   Null,
 };
 
+/**
+ * @brief A copy move from workflow MySQLResult.h and .inl file.
+ *
+ * Copyright (c) 2019 Sogou, Inc.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+ */
+class cbMySQLField {
+ public:
+  cbMySQLField();
+  cbMySQLField(const protocol::MySQLField* wfPtr);
+
+  // get data.
+  std::string getName() const;
+  std::string getOrgName() const;
+  std::string getTable() const;
+  std::string getOrgTable() const;
+  std::string getDB() const;
+  std::string getCatalog() const;
+  std::string getDef() const;
+  int getCharsetnr() const;
+  int getLength() const;
+  int getFlags() const;
+  int getDecimals() const;
+  int getDataType() const;
+
+  // set data.
+  void setName(const std::string& value);
+  void setOrgName(const std::string& value);
+  void setTable(const std::string& value);
+  void setOrgTable(const std::string& value);
+  void setDB(const std::string& value);
+  void setCatalog(const std::string& value);
+  void setDef(const std::string& value);
+  void setCharsetnr(int32_t value);
+  void setLength(int32_t value);
+  void setFlags(int32_t value);
+  void setDecimals(int32_t value);
+  void setDataType(int32_t value);
+
+ private:
+  std::string m_name;     /* Name of column */
+  std::string m_orgName;  /* Original column name, if an alias */
+  std::string m_table;    /* Table of column if column was a field */
+  std::string m_orgTable; /* Org table name, if table was an alias */
+  std::string m_db;       /* Database for table */
+  std::string m_catalog;  /* Catalog for table */
+  std::string m_def;      /* Default value (set by mysql_list_fields) */
+  int m_length;           /* Width of column (create length) */
+  int m_flags;            /* Div flags */
+  int m_decimals;         /* Number of decimals in field */
+  int m_charsetnr;        /* Character set */
+  int m_data_type;        /* Type of field. See mysql_types.h for types */
+};
+
+/**
+ * @brief
+ *
+ */
 class cbMySQLCell {
  public:
   cbMySQLCell() : m_type(cbMySQLType::Null) {}
@@ -431,17 +500,17 @@ class cbVirtualSharedTable {
   cbMySQLCell* atPtr(int32_t i, int32_t j);
   cbMySQLCell* atPtrRef(int32_t i, int32_t j);
 
-  protocol::MySQLField** getInfo() { return m_info; }
+  cbMySQLField** getInfo() { return m_info; }
 
   int32_t getFiledCount() { return m_fieldCount; }
 
   void resetShape(cbShape<2>& shape);
-  void resetFieldInfo(int32_t fieldCount, protocol::MySQLField** info);
+  void resetFieldInfo(int32_t fieldCount, cbMySQLField** info);
 
  private:
   int32_t m_fieldCount = 0;
   cbShape<2> m_shape;
-  protocol::MySQLField** m_info = nullptr;
+  cbMySQLField** m_info = nullptr;
   std::vector<std::vector<cbMySQLCell>> m_data;
 };
 
@@ -472,7 +541,7 @@ class cbVirtualTable {
   }
 
   void resetShape(const cbShape<2>& shape);
-  protocol::MySQLField** getInfo();
+  cbMySQLField** getInfo();
   std::vector<std::vector<cbMySQLCell*>>& getData();
   cbShape<2> getShape() { return m_shape; }
 
@@ -490,7 +559,7 @@ class cbVirtualTable {
   std::string colTypeAt(int32_t i);
 
  private:
-  protocol::MySQLField** m_info = nullptr;
+  cbMySQLField** m_info = nullptr;
   cbShape<2> m_shape;
   std::vector<std::vector<cbMySQLCell*>> m_data;
 };
