@@ -112,6 +112,12 @@ class cbComputeGraph {
 
   // TODO multi initialize function impl.
   cbMySQLCell* createCell();
+  cbMySQLCell* createCell(int value);
+  cbMySQLCell* createCell(float value);
+  cbMySQLCell* createCell(double value);
+  cbMySQLCell* createCell(unsigned long long value);
+  cbMySQLCell* createCell(const std::string& value);
+  cbMySQLCell* createCell(const std::string& value, const cbMySQLType& t);
 
   void registerNode(cbNode* node);
 

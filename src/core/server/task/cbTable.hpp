@@ -354,8 +354,16 @@ inline void mallocMetaMatrix(cbTableCol& rhs) {
 
 // And I will provide a bunch of function for sol::lua to use.
 
+/**
+ * @brief
+ *
+ */
 typedef std::variant<std::string, float, double, int, unsigned long long> __cbMySQLMeta;
 
+/**
+ * @brief
+ *
+ */
 enum class cbMySQLType {
   Float,
   Double,
@@ -387,7 +395,17 @@ enum class cbMySQLType {
  */
 class cbMySQLField {
  public:
+  /**
+   * @brief Construct a new cb My S Q L Field object
+   *
+   */
   cbMySQLField();
+
+  /**
+   * @brief Construct a new cb My S Q L Field object
+   *
+   * @param wfPtr
+   */
   cbMySQLField(const protocol::MySQLField* wfPtr);
 
   // get data.
@@ -487,24 +505,77 @@ class cbMySQLCell {
  */
 class cbVirtualSharedTable {
  public:
+  /**
+   * @brief Destroy the cb Virtual Shared Table object
+   *
+   */
   ~cbVirtualSharedTable();
+
+  /**
+   * @brief Construct a new cb Virtual Shared Table object
+   *
+   */
   cbVirtualSharedTable() = default;
+
   /**
    * @brief Construct a new cb Virtual Shared Table object
    * Only loop one result set.
    * @param cursor
    */
   cbVirtualSharedTable(protocol::MySQLResultCursor* cursor);
+
+  /**
+   * @brief Get the Shape object
+   *
+   * @return const cbShape<2>
+   */
   const cbShape<2> getShape() const { return m_shape; }
 
+  /**
+   * @brief
+   *
+   * @param i
+   * @param j
+   * @return cbMySQLCell*
+   */
   cbMySQLCell* atPtr(int32_t i, int32_t j);
+
+  /**
+   * @brief
+   *
+   * @param i
+   * @param j
+   * @return cbMySQLCell*
+   */
   cbMySQLCell* atPtrRef(int32_t i, int32_t j);
 
+  /**
+   * @brief Get the Info object
+   *
+   * @return cbMySQLField**
+   */
   cbMySQLField** getInfo() { return m_info; }
 
+  /**
+   * @brief Get the Filed Count object
+   *
+   * @return int32_t
+   */
   int32_t getFiledCount() { return m_fieldCount; }
 
+  /**
+   * @brief
+   *
+   * @param shape
+   */
   void resetShape(cbShape<2>& shape);
+
+  /**
+   * @brief
+   *
+   * @param fieldCount
+   * @param info
+   */
   void resetFieldInfo(int32_t fieldCount, cbMySQLField** info);
 
  private:
@@ -540,9 +611,32 @@ class cbVirtualTable {
     return ans;
   }
 
+  /**
+   * @brief
+   *
+   * @param shape
+   */
   void resetShape(const cbShape<2>& shape);
+
+  /**
+   * @brief Get the Info object
+   *
+   * @return cbMySQLField**
+   */
   cbMySQLField** getInfo();
+
+  /**
+   * @brief Get the Data object
+   *
+   * @return std::vector<std::vector<cbMySQLCell*>>&
+   */
   std::vector<std::vector<cbMySQLCell*>>& getData();
+
+  /**
+   * @brief Get the Shape object
+   *
+   * @return cbShape<2>
+   */
   cbShape<2> getShape() { return m_shape; }
 
   /**
@@ -553,9 +647,36 @@ class cbVirtualTable {
    * @return cbMySQLCell*
    */
   cbMySQLCell* atPtr(int32_t i, int32_t j);
+
+  /**
+   * @brief
+   *
+   * @param i
+   * @param j
+   * @return cbMySQLCell*&
+   */
   cbMySQLCell*& atPtrRef(int32_t i, int32_t j);
 
+  // TODO Get Row / Get Col.
+
+  // TODO iteration get Row.
+
+  // TODO Key by "x" get iteration.
+
+  /**
+   * @brief
+   *
+   * @param i
+   * @return std::string
+   */
   std::string colNameAt(int32_t i);
+
+  /**
+   * @brief
+   *
+   * @param i
+   * @return std::string
+   */
   std::string colTypeAt(int32_t i);
 
  private:

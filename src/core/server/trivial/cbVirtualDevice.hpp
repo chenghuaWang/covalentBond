@@ -67,10 +67,24 @@ struct cbVirtualDevice {
 
   std::string Url;
 
+  /**
+   * @brief
+   *
+   * @param _port
+   * @param _host
+   * @param _userName
+   * @param _passWord
+   * @param _charSet
+   * @param _dataBaseName
+   */
   void reloadConnection(const std::string& _port, const std::string& _host,
                         const std::string& _userName, const std::string& _passWord,
                         const std::string& _charSet, const std::string& _dataBaseName);
 
+  /**
+   * @brief
+   *
+   */
   virtual void updateUrl() = 0;
 };
 

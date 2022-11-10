@@ -35,6 +35,7 @@ cbNode::cbNode(const nodeType& nt) : nodeT(nt) {}
 void cbNode::PointTo(cbNode* ptr) { nextNode = ptr; }
 
 WFMySQLTask* cbNode::asSQLTask(void* metaTask) { return (WFMySQLTask*)metaTask; }
+
 WFGoTask* cbNode::asGoTask(void* metaTask) { return (WFGoTask*)metaTask; }
 
 cbVirtualDeviceNode::~cbVirtualDeviceNode() {
@@ -65,14 +66,51 @@ bool cbComputeGraph::isDAG() {
   return false;
 }
 
-bool isSingleOutput() {
+bool cbComputeGraph::isSingleOutput() {
   // TODO
   return false;
 }
 
-cbMySQLCell* createCell() {
-  // TODO
-  return nullptr;
+cbMySQLCell* cbComputeGraph::createCell() {
+  cbMySQLCell* ans = new cbMySQLCell();
+  m_sharedMem->push(ans);
+  return ans;
+}
+
+cbMySQLCell* cbComputeGraph::createCell(int value) {
+  cbMySQLCell* ans = new cbMySQLCell(value);
+  m_sharedMem->push(ans);
+  return ans;
+}
+
+cbMySQLCell* cbComputeGraph::createCell(float value) {
+  cbMySQLCell* ans = new cbMySQLCell(value);
+  m_sharedMem->push(ans);
+  return ans;
+}
+
+cbMySQLCell* cbComputeGraph::createCell(double value) {
+  cbMySQLCell* ans = new cbMySQLCell(value);
+  m_sharedMem->push(ans);
+  return ans;
+}
+
+cbMySQLCell* cbComputeGraph::createCell(unsigned long long value) {
+  cbMySQLCell* ans = new cbMySQLCell(value);
+  m_sharedMem->push(ans);
+  return ans;
+}
+
+cbMySQLCell* cbComputeGraph::createCell(const std::string& value) {
+  cbMySQLCell* ans = new cbMySQLCell(value);
+  m_sharedMem->push(ans);
+  return ans;
+}
+
+cbMySQLCell* cbComputeGraph::createCell(const std::string& value, const cbMySQLType& t) {
+  cbMySQLCell* ans = new cbMySQLCell(value, t);
+  m_sharedMem->push(ans);
+  return ans;
 }
 
 void cbComputeGraph::registerNode(cbNode* node) { m_nodes.push_back(node); }
