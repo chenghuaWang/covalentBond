@@ -181,7 +181,7 @@ include(${CB_CMAKE_DIR}/pre_compiled_head.cmake)
 
 # prepare the files from public files' directories
 file(GLOB_RECURSE UTILS_FILE_SRC ${PROJECT_SOURCE_DIR}/src/core/utils/*.cpp)
-file(GLOB_RECURSE UTILS_FILE_HEAD ${PROJECT_SOURCE_DIR}/src/core/utils/*.cpp)
+file(GLOB_RECURSE UTILS_FILE_HEAD ${PROJECT_SOURCE_DIR}/src/core/utils/*.hpp)
 
 add_subdirectory(src/core/server)
 add_subdirectory(src/core/client)
