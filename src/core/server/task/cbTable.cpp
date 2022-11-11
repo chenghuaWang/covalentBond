@@ -1,8 +1,18 @@
+/**
+ * @file cbTable.cpp
+ * @author chenghua Wang (chenghua.wang.edu@gmail.com)
+ * @brief The impl of table.
+ * @version 0.1
+ * @date 2022-11-10
+ *
+ * @copyright Copyright (c) 2022
+ *
+ */
 #include "cbTable.hpp"
 #include <workflow/MySQLResult.h>
 
 // ------------------------- The code below is dropped.--------------
-// --- Go to len=340 for latest code. -------------------------------
+// --- Go to len=46 for latest code. -------------------------------
 // ------------------------- The code below is dropped.--------------
 
 int cbCell::asInt() { return std::get<int>(data); }
@@ -44,11 +54,11 @@ cbVirtualSharedTable::cbVirtualSharedTable(protocol::MySQLResultCursor* cursor) 
   if (cursor->get_cursor_status() == MYSQL_STATUS_GET_RESULT) {
     // create filed buffer. move the memory from cursor to virtual table.
     m_fieldCount = cursor->get_field_count();
-    m_info = new protocol::MySQLField*[m_fieldCount];
+    m_info = new cbMySQLField*[m_fieldCount];
     const protocol::MySQLField* const* __tmpCursorFieldPtr =
         cursor->fetch_fields();  ///! no copy api
     for (int32_t i = 0; i < m_fieldCount; ++i) {
-      m_info[i] = new protocol::MySQLField(*__tmpCursorFieldPtr[i]);
+      m_info[i] = new cbMySQLField(__tmpCursorFieldPtr[i]);
     }
     // no loop. just get the first result set !!!
     // Note that the implementation of workflow's MySqlCell use void* to store
@@ -77,7 +87,7 @@ void cbVirtualSharedTable::resetShape(cbShape<2>& shape) {
   m_data.shrink_to_fit();
 }
 
-void cbVirtualSharedTable::resetFieldInfo(int32_t fieldCount, protocol::MySQLField** info) {
+void cbVirtualSharedTable::resetFieldInfo(int32_t fieldCount, cbMySQLField** info) {
   for (int32_t i = 0; i < m_fieldCount; ++i) { delete m_info[i]; }
   delete[] m_info;
   m_info = info;
@@ -95,7 +105,7 @@ void cbVirtualTable::resetShape(const cbShape<2>& shape) {
   m_data.shrink_to_fit();
 }
 
-protocol::MySQLField** cbVirtualTable::getInfo() { return m_info; }
+cbMySQLField** cbVirtualTable::getInfo() { return m_info; }
 
 std::vector<std::vector<cbMySQLCell*>>& cbVirtualTable::getData() { return m_data; }
 
@@ -103,11 +113,9 @@ cbMySQLCell* cbVirtualTable::atPtr(int32_t i, int32_t j) { return m_data[i][j]; 
 
 cbMySQLCell*& cbVirtualTable::atPtrRef(int32_t i, int32_t j) { return m_data[i][j]; }
 
-std::string cbVirtualTable::colNameAt(int32_t i) { return m_info[i]->get_name(); }
+std::string cbVirtualTable::colNameAt(int32_t i) { return m_info[i]->getName(); }
 
-std::string cbVirtualTable::colTypeAt(int32_t i) {
-  return datatype2str(m_info[i]->get_data_type());
-}
+std::string cbVirtualTable::colTypeAt(int32_t i) { return datatype2str(m_info[i]->getDataType()); }
 
 void mapShared2Virtual(cbVirtualSharedTable* sharedT, cbVirtualTable* virtualT) {
   virtualT->resetShape(sharedT->getShape());
@@ -122,6 +130,50 @@ void mapShared2Virtual(cbVirtualSharedTable* sharedT, cbVirtualTable* virtualT) 
     for (int32_t j = 0; j < col; ++j) { virtualT->atPtrRef(i, j) = sharedT->atPtr(i, j); }
   }
 }
+
+cbMySQLField::cbMySQLField(const protocol::MySQLField* wfPtr) {
+  m_name = wfPtr->get_name();
+  m_orgName = wfPtr->get_org_name();
+  m_table = wfPtr->get_table();
+  m_orgTable = wfPtr->get_org_table();
+  m_db = wfPtr->get_db();
+  m_catalog = wfPtr->get_catalog();
+  m_def = wfPtr->get_def();
+  m_length = wfPtr->get_length();
+  m_flags = wfPtr->get_flags();
+  m_decimals = wfPtr->get_decimals();
+  m_charsetnr = wfPtr->get_charsetnr();
+  m_data_type = wfPtr->get_data_type();
+}
+
+// get data.
+std::string cbMySQLField::getName() const { return m_name; }
+
+std::string cbMySQLField::getOrgName() const { return m_orgName; }
+std::string cbMySQLField::getTable() const { return m_table; }
+std::string cbMySQLField::getOrgTable() const { return m_orgTable; }
+std::string cbMySQLField::getDB() const { return m_db; }
+std::string cbMySQLField::getCatalog() const { return m_catalog; }
+std::string cbMySQLField::getDef() const { return m_def; }
+int cbMySQLField::getCharsetnr() const { return m_charsetnr; }
+int cbMySQLField::getLength() const { return m_length; }
+int cbMySQLField::getFlags() const { return m_flags; }
+int cbMySQLField::getDecimals() const { return m_decimals; }
+int cbMySQLField::getDataType() const { return m_data_type; }
+
+// set data.
+void cbMySQLField::setName(const std::string& value) { m_name = value; }
+void cbMySQLField::setOrgName(const std::string& value) { m_orgName = value; }
+void cbMySQLField::setTable(const std::string& value) { m_table = value; }
+void cbMySQLField::setOrgTable(const std::string& value) { m_orgTable = value; }
+void cbMySQLField::setDB(const std::string& value) { m_db = value; }
+void cbMySQLField::setCatalog(const std::string& value) { m_catalog = value; }
+void cbMySQLField::setDef(const std::string& value) { m_def = value; }
+void cbMySQLField::setCharsetnr(int32_t value) { m_charsetnr = value; }
+void cbMySQLField::setLength(int32_t value) { m_length = value; }
+void cbMySQLField::setFlags(int32_t value) { m_flags = value; }
+void cbMySQLField::setDecimals(int32_t value) { m_decimals = value; }
+void cbMySQLField::setDataType(int32_t value) { m_data_type = value; }
 
 cbMySQLCell::cbMySQLCell(const protocol::MySQLCell& m) {
   if (m.is_date()) {

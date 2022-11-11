@@ -8,7 +8,7 @@ Our Data Middle Office(dbo) is named covalent bond. A tool for managing distribu
 
 Our implementation of dbo is highly rely on cpp and python. The dev platform is Windows10/Ubuntu20.04(for server and client), Ubuntu20.04(for manager).
 
-For cpp coding style, we provide a `.clang-format` file to reformat all cpp based codes. And all codes should pass the cpp-hint check. The compiler we used are `clang v12/10(on ubuntu20.04)`, `clang(GNU CLI) v14(on windows10)`. **Cpp std=17** For each component, there must be a test module attach with it, we adopt GTest here.
+For cpp coding style, we provide a `.clang-format` file to reformat all cpp based codes. And all codes should pass the cpp-lint check. The compiler we used are `clang v12/10(on ubuntu20.04)`, `clang(GNU CLI) v14(on windows10)`. **Cpp std=17**. For each component, there must be a test module attach with it, we adopt GTest here.
 
 For python code style, we follow the PEP8.
 
