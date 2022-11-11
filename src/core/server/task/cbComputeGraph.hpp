@@ -96,6 +96,19 @@ struct cbVirtualDeviceNode final : public cbNode {
   void* generateTask() override final;
 };
 
+/**
+ * @brief
+ *
+ */
+struct cbOperatorNode final : public cbNode {
+  ~cbOperatorNode() override final;
+  cbOperatorNode(baseOp* op);
+
+  void* generateTask() override final;
+
+  baseOp* Op;
+};
+
 // operator Node;
 
 /**

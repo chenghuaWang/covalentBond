@@ -107,11 +107,74 @@ void cbVirtualTable::resetShape(const cbShape<2>& shape) {
 
 cbMySQLField** cbVirtualTable::getInfo() { return m_info; }
 
+void cbVirtualTable::setInfo(cbMySQLField** v) { m_info = v; }
+
 std::vector<std::vector<cbMySQLCell*>>& cbVirtualTable::getData() { return m_data; }
 
 cbMySQLCell* cbVirtualTable::atPtr(int32_t i, int32_t j) { return m_data[i][j]; }
 
 cbMySQLCell*& cbVirtualTable::atPtrRef(int32_t i, int32_t j) { return m_data[i][j]; }
+
+cbVirtualTable cbVirtualTable::getRow(int32_t i) {
+  if (i >= 0 && i < m_shape[0]) [[likely]] {
+    int32_t col = m_shape[1];
+    cbVirtualTable tmp(makeShapeFull(1, col));
+    for (int32_t c = 0; c < col; ++c) { tmp.atPtrRef(0, c) = this->atPtrRef(i, c); }
+    tmp.setInfo(this->m_info);
+    return tmp;
+  }
+  return cbVirtualTable(makeShapeFull(0, 0));
+}
+
+cbVirtualTable cbVirtualTable::getCol(int32_t i) {
+  if (i >= 0 && i < m_shape[1]) [[likely]] {
+    int32_t row = m_shape[0];
+    cbVirtualTable tmp(makeShapeFull(row, 1));
+    for (int32_t r = 0; r < row; ++r) { tmp.atPtrRef(r, 0) = this->atPtrRef(r, i); }
+    tmp.setInfo(this->getInfo() + i);
+    return tmp;
+  }
+  return cbVirtualTable(makeShapeFull(0, 0));
+}
+
+std::map<int32_t, int32_t> cbVirtualTable::keyBy(const std::string& colName) const {
+  std::map<int32_t, int32_t> tmp;
+  int32_t row = m_shape[0];
+  int32_t col = m_shape[1];
+  int atCol = 0;
+  // hash funcs
+  std::hash<std::string> hash_string;
+  [[maybe_unused]] std::hash<float> hash_float;
+  [[maybe_unused]] std::hash<double> hash_double;
+  [[maybe_unused]] std::hash<int> hash_int;
+  [[maybe_unused]] std::hash<unsigned long long> hash_ull;
+
+  // loops
+  for (atCol = 0; atCol < col; ++atCol) {
+    if (m_info[atCol]->getName() == colName) break;
+  }
+  if (atCol == col) [[unlikely]] { return tmp; }
+  for (int32_t r = 0; r < row; ++r) {
+    switch (m_data[r][atCol]->getType()) {
+      case cbMySQLType::String:
+      case cbMySQLType::DataTime:
+      case cbMySQLType::Date:
+      case cbMySQLType::Time: tmp[hash_string(m_data[r][atCol]->asString())] = r; break;
+      case cbMySQLType::Float: tmp[hash_float(m_data[r][atCol]->asFloat())] = r; break;
+      case cbMySQLType::Double: tmp[hash_double(m_data[r][atCol]->asFloat())] = r; break;
+      case cbMySQLType::Int: tmp[hash_int(m_data[r][atCol]->asInt())] = r; break;
+      case cbMySQLType::ULL: tmp[hash_ull(m_data[r][atCol]->asULL())] = r; break;
+      case cbMySQLType::Null: return tmp;
+    }
+  }
+  return tmp;
+}
+
+void cbVirtualTable::pushRow(const std::vector<cbMySQLCell*>& row) {
+  if (row.size() != m_shape[1]) [[unlikely]] { return; }
+  m_data.push_back(row);
+  m_shape[0]++;
+}
 
 std::string cbVirtualTable::colNameAt(int32_t i) { return m_info[i]->getName(); }
 
@@ -123,8 +186,7 @@ void mapShared2Virtual(cbVirtualSharedTable* sharedT, cbVirtualTable* virtualT) 
   int32_t col = virtualT->getShape()[1];
 
   // left value is temp.
-  auto p = virtualT->getInfo();
-  p = sharedT->getInfo();
+  virtualT->setInfo(sharedT->getInfo());
 
   for (int32_t i = 0; i < row; ++i) {
     for (int32_t j = 0; j < col; ++j) { virtualT->atPtrRef(i, j) = sharedT->atPtr(i, j); }
@@ -333,3 +395,5 @@ void cbMySQLCell::setTime(const std::string& value) {
 void cbMySQLCell::setDatetime(const std::string& value) {
   if (isDatetime()) { m_data = value; }
 }
+
+cbMySQLType cbMySQLCell::getType() { return m_type; }
