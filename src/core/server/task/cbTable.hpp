@@ -142,6 +142,7 @@ struct cbShape {
   cbShape(const std::initializer_list<int32_t>& rhs) : m_dims(rhs) {}
 
   inline int32_t& operator[](int32_t idx) { return m_dims[idx]; }
+  inline int32_t const operator[](int32_t idx) const { return m_dims[idx]; }
 
   int32_t numElements() {
     int32_t ans = 1;
@@ -494,6 +495,8 @@ class cbMySQLCell {
   void setTime(const std::string& value);
   void setDatetime(const std::string& value);
 
+  cbMySQLType getType();
+
  private:
   cbMySQLType m_type = cbMySQLType::Null;
   __cbMySQLMeta m_data;
@@ -602,6 +605,10 @@ class cbVirtualTable {
       : m_info(nullptr), m_shape(shape), m_data(shape[0], std::vector<cbMySQLCell*>(shape[1])) {
     m_data.shrink_to_fit();
   }
+  cbVirtualTable(const cbShape<2>& shape)
+      : m_info(nullptr), m_shape(shape), m_data(shape[0], std::vector<cbMySQLCell*>(shape[1])) {
+    m_data.shrink_to_fit();
+  }
 
   cbVirtualTable operator=(const cbVirtualTable& rhsOp) {
     cbVirtualTable ans;
@@ -624,6 +631,7 @@ class cbVirtualTable {
    * @return cbMySQLField**
    */
   cbMySQLField** getInfo();
+  void setInfo(cbMySQLField** v);
 
   /**
    * @brief Get the Data object
@@ -657,11 +665,36 @@ class cbVirtualTable {
    */
   cbMySQLCell*& atPtrRef(int32_t i, int32_t j);
 
-  // TODO Get Row / Get Col.
+  /**
+   * @brief Get the Row object
+   *
+   * @param i
+   * @return cbVirtualTable
+   */
+  cbVirtualTable getRow(int32_t i);
 
-  // TODO iteration get Row.
+  /**
+   * @brief Get the Col object
+   *
+   * @param i
+   * @return cbVirtualTable
+   */
+  cbVirtualTable getCol(int32_t i);
 
-  // TODO Key by "x" get iteration.
+  /**
+   * @brief
+   *
+   * @param colName
+   * @return std::map<int32_t, int32_t>
+   */
+  std::map<int32_t, int32_t> keyBy(const std::string& colName) const;
+
+  /**
+   * @brief
+   *
+   * @param vt
+   */
+  void pushRow(const std::vector<cbMySQLCell*>& row);
 
   /**
    * @brief

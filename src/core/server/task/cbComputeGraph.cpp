@@ -49,6 +49,15 @@ void* cbVirtualDeviceNode::generateTask() {
 
 cbVirtualDeviceNode::cbVirtualDeviceNode() : cbNode(nodeType::Leaf) {}
 
+cbOperatorNode::~cbOperatorNode() { delete Op; }
+
+cbOperatorNode::cbOperatorNode(baseOp* op) : cbNode(nodeType::Operator), Op(op) {}
+
+void* cbOperatorNode::generateTask() {
+  // TODO
+  return nullptr;
+}
+
 cbComputeGraph::cbComputeGraph(int32_t idx)
     : m_idx(idx),
       m_sharedMem(new cbGraphSharedMem()),
