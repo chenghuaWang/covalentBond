@@ -44,6 +44,14 @@ void cbOpCombine::__innerFunc() {
     // TODO
   } else {
     // For simple combine. Don't consider other errors.
+    int32_t realRow = 0;
+    int32_t tmpRows = std::numeric_limits<int32_t>().min(), tmpCols = 0;
+    for (auto& item : io.I) {
+      tmpRows = std::max(tmpRows, item.getShape()[0]);
+      tmpCols += (item.getShape()[1] - 1);
+    }
+    io.O.resetShape(makeShapeFull(tmpRows, tmpCols));
+    // TODO
   }
 }
 

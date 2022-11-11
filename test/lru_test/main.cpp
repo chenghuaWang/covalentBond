@@ -9,18 +9,18 @@ int main(int argc, char* argv[]) {
   int32_t i = 0;
   int32_t ind = 14;
   int32_t* j;
-  while (1) {
+  int32_t cnt = 1024;
+  while (cnt--) {
     if (i > 72) { i = 0; }
     if (ind < 0) { ind = 14; }
-    ke[3] = static_cast<char>(i) + '0';
+    ke[3] = *std::to_string(i).c_str();
     fmt::print(ke);
     std::cout << ':' << values[ind] << std::endl;
-    // key 值 相同则更新value
     buf = ke;
     test_cache.push(buf, values[ind]);
     if (!(i % 10)) {
       j = test_cache.get("key0");
-      std::cout << "key0 : value: " << *j << std::endl;
+      // std::cout << "key0 : value: " << *j << std::endl;
     }
     i++;
     ind--;

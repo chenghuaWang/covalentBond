@@ -1,10 +1,22 @@
-#include <cstddef>
-#include <cstdint>
+/**
+ * @file cbLRUCache.hpp
+ * @author caibo Feng (3418552929@qq.com)
+ * @brief The impl of LRU cache.
+ * @version 0.1
+ * @date 2022-11-11
+ *
+ * @copyright Copyright (c) 2022
+ *
+ */
 #include <map>
 #include <list>
-#include <iostream>
-#include <string>
 #include "../../pch.hpp"
+
+/**
+ * @brief
+ * Macro define of loop in cache list
+ */
+#define find_list for (auto i = m_cacheList.begin(); i != m_cacheList.end(); i++)
 
 namespace cb {
 /**
@@ -15,6 +27,8 @@ struct listNode {
   std::string key;
 };
 
+typedef listNode node;
+
 /**
  * @brief  We used LRU alogrithm to implement our cache
  *
@@ -23,31 +37,19 @@ struct listNode {
  */
 template<typename V>
 class cbLRUCache {
- protected:
-  typedef listNode node;
-  /**
-   * @brief
-   * Macro define of loop in cache list
-   */
-#define find_list for (auto i = m_cache_list.begin(); i != m_cache_list.end(); i++)
-
  public:
   /**
    * @brief Construct a new cb Least Recently Use Cache object
    *
    * @param max_size Maximum sixe of cache
    */
-  cbLRUCache(int32_t max_size) : m_max_size(max_size) {
-    m_size_counter = 0;
-    m_buf_node = nullptr;
-  }
+  cbLRUCache(int32_t max_size) : m_maxSize(max_size), m_sizeCounter(0), m_bufNode(nullptr) {}
+
   /**
    * @brief Destroy the cb Least Recently Use Cache object
    *
    */
-  ~cbLRUCache() {
-    if (m_buf_node) delete m_buf_node;
-  }
+  ~cbLRUCache() { delete m_bufNode; }
 
   /**
    * @brief Push key and value into cache. If key has been existed,
@@ -59,19 +61,19 @@ class cbLRUCache {
   void push(std::string key, V value) {
     find_list {
       if (i->key == key) {
-        m_cache_map[key] = value;
+        m_cacheMap[key] = value;
         this->update(key);
         return;
       }
     }
 
-    m_size_counter++;
-    if (m_size_counter > m_max_size) {
-      m_size_counter = m_max_size;
-      this->erase_tail();
+    m_sizeCounter++;
+    if (m_sizeCounter > m_maxSize) {
+      m_sizeCounter = m_maxSize;
+      this->eraseTail();
     }
-    m_cache_map.insert({key, value});
-    this->insert_top(key);
+    m_cacheMap.insert({key, value});
+    this->insertTop(key);
   }
 
   /**
@@ -82,10 +84,10 @@ class cbLRUCache {
    * @return V* the pointer of type V
    */
   V* get(const std::string& key) {
-    if (m_cache_map.count(key)) {
+    if (m_cacheMap.count(key)) {
       this->update(key);
       V* exit = nullptr;
-      exit = &m_cache_map[key];
+      exit = &m_cacheMap[key];
       // this->__loop_map();
       return exit;
     }
@@ -98,12 +100,12 @@ class cbLRUCache {
    * @brief delete the last element of list
    *
    */
-  void erase_tail() {
-    m_buf_node = &m_cache_list.back();
-    buf_key = m_buf_node->key;
-    auto buf_ptr = m_cache_map.find(buf_key);
-    m_cache_map.erase(buf_ptr);
-    m_cache_list.pop_back();
+  void eraseTail() {
+    m_bufNode = &m_cacheList.back();
+    m_bufKey = m_bufNode->key;
+    auto buf_ptr = m_cacheMap.find(m_bufKey);
+    m_cacheMap.erase(buf_ptr);
+    m_cacheList.pop_back();
   }
 
   /**
@@ -115,11 +117,11 @@ class cbLRUCache {
   void update(const std::string& key) {
     find_list {
       if (i->key == key) {
-        m_cache_list.erase(i);
+        m_cacheList.erase(i);
         break;
       }
     }
-    this->insert_top(key);
+    this->insertTop(key);
   }
 
   /**
@@ -127,12 +129,12 @@ class cbLRUCache {
    *
    * @param key key of cache map
    */
-  void insert_top(const std::string& key) {
-    m_buf_node = new (node);
-    m_buf_node->key = key;
-    m_cache_list.push_front(*m_buf_node);
-    delete (m_buf_node);
-    m_buf_node = nullptr;
+  void insertTop(const std::string& key) {
+    m_bufNode = new (node);
+    m_bufNode->key = key;
+    m_cacheList.push_front(*m_bufNode);
+    delete (m_bufNode);
+    m_bufNode = nullptr;
   }
 
   /**
@@ -142,18 +144,19 @@ class cbLRUCache {
   [[deprecated("For debug only")]] void __loop_map() {
     std::string bs;
     int32_t n = 0;
-    for (auto i = m_cache_list.begin(); i != m_cache_list.end(); i++) {
+    for (auto i = m_cacheList.begin(); i != m_cacheList.end(); i++) {
       bs = i->key;
-      std::cout << "第" << n << "个元素：" << bs << " : " << m_cache_map[bs] << std::endl;
+      std::cout << "The" << n << "th element" << bs << " : " << m_cacheMap[bs] << std::endl;
       n++;
     }
   }
 
-  int32_t m_max_size;
-  int32_t m_size_counter;
-  node* m_buf_node;
-  std::string buf_key;
-  std::list<node> m_cache_list;
-  std::map<std::string, V> m_cache_map;
+ private:
+  int32_t m_maxSize;
+  int32_t m_sizeCounter;
+  node* m_bufNode;
+  std::string m_bufKey;
+  std::list<node> m_cacheList;
+  std::map<std::string, V> m_cacheMap;
 };
 }  // namespace cb
