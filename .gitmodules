@@ -1,0 +1,3 @@
+[submodule "src/frontend/cb_native"]
+	path = src/frontend/cb_native
+	url = https://github.com/chenghuaWang/covalentBondBoard.git
