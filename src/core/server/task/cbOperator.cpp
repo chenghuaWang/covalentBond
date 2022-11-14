@@ -41,7 +41,8 @@ void cbOpCombine::execMain() {
 
 void cbOpCombine::__innerFunc() {
   if (isOverload) {
-    // TODO
+    // TODO need test
+    luaOverrideFunc(io.I, io.O);
   } else {
     // For simple combine. Don't consider other errors.
     int32_t realRow = 0;

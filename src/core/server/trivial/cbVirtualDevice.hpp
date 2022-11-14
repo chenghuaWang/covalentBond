@@ -263,10 +263,11 @@ class cbVirtualDeviceManager {
   cbRedisDevice* getRedisDevice(int32_t idx);
   cbKafkaDevice* getKafkaDevice(int32_t idx);
 
- private:
   static int32_t m_numsMySql;
   static int32_t m_numsRedis;
   static int32_t m_numsKafka;
+
+ private:
   std::map<int32_t, std::pair<cbMySqlDevice*, bool>> m_mySqlPool;  ///! index, {pointer, visibility}
   std::map<int32_t, std::pair<cbRedisDevice*, bool>> m_redisPool;  ///! index, {pointer, visibility}
   std::map<int32_t, std::pair<cbKafkaDevice*, bool>> m_kafkaPool;  ///! index, {pointer, visibility}

@@ -124,15 +124,18 @@ void cbVirtualDeviceManager::removeKafkaDevice(int32_t idx) {
 }
 
 cbMySqlDevice* cbVirtualDeviceManager::getMySqlDevice(int32_t idx) {
-  return m_mySqlPool[idx].first;
+  if (m_mySqlPool[idx].second) { return m_mySqlPool[idx].first; }
+  return nullptr;
 }
 
 cbRedisDevice* cbVirtualDeviceManager::getRedisDevice(int32_t idx) {
-  return m_redisPool[idx].first;
+  if (m_redisPool[idx].second) { return m_redisPool[idx].first; }
+  return nullptr;
 }
 
 cbKafkaDevice* cbVirtualDeviceManager::getKafkaDevice(int32_t idx) {
-  return m_kafkaPool[idx].first;
+  if (m_kafkaPool[idx].second) { return m_kafkaPool[idx].first; }
+  return nullptr;
 }
 
 }  // namespace trivial

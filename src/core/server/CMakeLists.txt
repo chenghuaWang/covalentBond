@@ -18,6 +18,10 @@ set(TASK_FILES
 ./task/cbTable.cpp
 ./task/cbTable.cpp
 ./task/cbTable.cpp
+./task/cbOperator.cpp
+./task/cbOperator.hpp
+./task/cbComputeGraph.cpp
+./task/cbComputeGraph.hpp
 ./trivial/cfgIO.cpp
 ./trivial/cfgIO.hpp
 ./trivial/cbVirtualDevice.cpp
@@ -25,6 +29,7 @@ set(TASK_FILES
 )
 
 include_directories(../utils)
+include_directories(.)
 
 add_precompiled_header(cb-server ../pch.hpp)
 add_executable(cb-server main.cpp 

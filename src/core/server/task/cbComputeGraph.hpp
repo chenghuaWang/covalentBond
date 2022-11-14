@@ -16,13 +16,17 @@
 #ifndef __SERVER_CB_COMPUTE_GRAPH_HPP_
 #define __SERVER_CB_COMPUTE_GRAPH_HPP_
 
-#include "cbOperator.hpp"
 #include <workflow/WFGraphTask.h>
 #include <workflow/WFFacilities.h>
+
+#include "cbOperator.hpp"
+#include "trivial/cbVirtualDevice.hpp"
 
 typedef std::function<void(WFGraphTask*)> graph_callback;
 
 namespace graph {
+
+class cbComputeGraph;
 
 /**
  * @brief
@@ -72,7 +76,7 @@ struct cbGraphSharedLuaStack {
  *
  */
 struct cbNode {
-  virtual ~cbNode() = 0;  // TODO maybe bugs !!!
+  virtual ~cbNode(){};  // TODO maybe bugs !!!
   cbNode(const nodeType& nt);
   void PointTo(cbNode* ptr);
 
@@ -81,30 +85,59 @@ struct cbNode {
   static WFMySQLTask* asSQLTask(void* metaTask);
   static WFGoTask* asGoTask(void* metaTask);
 
+  // The output.
+  cbOpIO io;
+
+  // others
   nodeType nodeT;
   void* task = nullptr;
   cbNode* nextNode = nullptr;
+  cbComputeGraph* graph = nullptr;
 };
 
 /**
- * @brief
+ * @brief This node include virtual device infomation and
+ * perform the final operation of how to get the data from
+ * remote sql database.
+ * @note This node just support SQL for now. But it's quite
+ * easy to extened to other relationship database.
  *
  */
 struct cbVirtualDeviceNode final : public cbNode {
+  friend cbComputeGraph;
+
   ~cbVirtualDeviceNode() override final;
   cbVirtualDeviceNode();
+
+  /**
+   * @brief generate a SQL wf task for now.
+   *
+   * @return void* WFMySQLTask* actually.
+   */
   void* generateTask() override final;
+
+  /**
+   * @brief Add a String type sql sentence to this node. Waiting to be execute.
+   *
+   * @param q string
+   */
+  void addQuery(const std::string& q);
+
+ private:
+  void setMySQLDevice(trivial::cbMySqlDevice* device = nullptr);
+  trivial::cbMySqlDevice* m_device;
+  std::vector<std::string> m_queries;
 };
 
 /**
  * @brief
  *
  */
-struct cbOperatorNode final : public cbNode {
-  ~cbOperatorNode() override final;
+struct cbOperatorNode : public cbNode {
+  ~cbOperatorNode() override;
   cbOperatorNode(baseOp* op);
 
-  void* generateTask() override final;
+  void* generateTask() override;
 
   baseOp* Op;
 };
@@ -117,36 +150,138 @@ struct cbOperatorNode final : public cbNode {
  */
 class cbComputeGraph {
  public:
+  friend cbVirtualDeviceNode;
+
   cbComputeGraph(int32_t idx);
   ~cbComputeGraph();
 
+  /**
+   * @brief To judge the Graph is DAG or not.
+   *
+   * @return true
+   * @return false
+   */
   bool isDAG();
+
+  /**
+   * @brief To judge the graph has single output or not.
+   *
+   * @return true
+   * @return false
+   */
   bool isSingleOutput();
 
-  // TODO multi initialize function impl.
+  // create cells belongs to this graph.
+  /**
+   * @brief Create a Cell object
+   *
+   * @return cbMySQLCell*
+   */
   cbMySQLCell* createCell();
+
+  /**
+   * @brief Create a Cell object
+   *
+   * @param value int
+   * @return cbMySQLCell*
+   */
   cbMySQLCell* createCell(int value);
+
+  /**
+   * @brief Create a Cell object
+   *
+   * @param value float
+   * @return cbMySQLCell*
+   */
   cbMySQLCell* createCell(float value);
+
+  /**
+   * @brief Create a Cell object
+   *
+   * @param value double
+   * @return cbMySQLCell*
+   */
   cbMySQLCell* createCell(double value);
+
+  /**
+   * @brief Create a Cell object
+   *
+   * @param value unsigned long long
+   * @return cbMySQLCell*
+   */
   cbMySQLCell* createCell(unsigned long long value);
+
+  /**
+   * @brief Create a Cell object
+   *
+   * @param value string
+   * @return cbMySQLCell*
+   */
   cbMySQLCell* createCell(const std::string& value);
+
+  /**
+   * @brief Create a Cell object
+   *
+   * @param value string
+   * @param t the type. such as String, Date, DateTime.
+   * @return cbMySQLCell*
+   */
   cbMySQLCell* createCell(const std::string& value, const cbMySQLType& t);
 
+  /**
+   * @brief create nodes belongs to this graph.
+   *
+   * @param idx
+   * @return cbVirtualDeviceNode*
+   */
+  cbVirtualDeviceNode* createVirtualDeviceNode(int32_t idx);  ///! for sql only, now.
+
+  /**
+   * @brief Set the Virtual Device Manager object
+   *
+   * @param virtualDeviceM
+   */
+  void setVirtualDeviceManager(trivial::cbVirtualDeviceManager* virtualDeviceM);
+
+  /**
+   * @brief register a node. Not used by lua binding.
+   *
+   * @param node
+   */
   void registerNode(cbNode* node);
 
+  /**
+   * @brief Get the Id object
+   *
+   * @return int32_t
+   */
   int32_t getId();
 
-  WFGraphTask* generateGraphTask(const graph_callback& func);
+  /**
+   * @brief Create the graph task.
+   *
+   * @param func
+   * @return WFGraphTask*
+   */
+  WFGraphTask* generateGraphTask(const graph_callback& func = nullptr);
 
+  /**
+   * @brief Execute the graph task.
+   *
+   * @param task
+   * @param graph
+   */
   static void execMain(WFGraphTask* task, cbComputeGraph* graph);
 
  private:
   int32_t m_idx = 0;
   std::vector<cbNode*> m_nodes;
-  cbGraphSharedMem* m_sharedMem;
-  cbGraphSharedLuaStack* m_sharedLuaStack;
+  cbGraphSharedMem* m_sharedMem = nullptr;
+  cbGraphSharedLuaStack* m_sharedLuaStack = nullptr;
   // For wait the graph done.
   WFFacilities::WaitGroup m_waitGroup;
+  // Have the state of all Virtual device
+  trivial::cbVirtualDeviceManager* m_virtualDevice = nullptr;
 };
 
 };  // namespace graph
