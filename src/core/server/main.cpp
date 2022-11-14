@@ -12,13 +12,20 @@ int main() {
                                           "27.208.84.114", "django_user", "django_user", "testdb"));
 
   cbg->setVirtualDeviceManager(cbVDM);
-  auto vdn_1 = cbg->createVirtualDeviceNode(0);
-  auto vdn_2 = cbg->createVirtualDeviceNode(0);
 
-  vdn_1->PointTo(vdn_2);
+  cbg->execScript("node_vd_1 = ThisGraph:createVirtualDeviceNode(0);"
+                  "node_vd_2 = ThisGraph:createVirtualDeviceNode(0);"
+                  "node_vd_1:addQuery(\"SELECT * FROM runoob_tbl;\");"
+                  "node_vd_2:addQuery(\"SELECT * FROM runoob_tbl;\");"
+                  "node_vd_1:PointTo(cb.F.refNode(node_vd_2));");
 
-  vdn_1->addQuery("SELECT * FROM runoob_tbl;");
-  vdn_2->addQuery("SELECT * FROM runoob_tbl;");
+  // auto vdn_1 = cbg->createVirtualDeviceNode(0);
+  // auto vdn_2 = cbg->createVirtualDeviceNode(0);
+
+  // vdn_1->PointTo(vdn_2);
+
+  // vdn_1->addQuery("SELECT * FROM runoob_tbl;");
+  // vdn_2->addQuery("SELECT * FROM runoob_tbl;");
 
   cbComputeGraph::execMain(cbg->generateGraphTask(), cbg);
 

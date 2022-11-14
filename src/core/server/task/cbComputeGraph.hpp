@@ -19,6 +19,7 @@
 #include <workflow/WFGraphTask.h>
 #include <workflow/WFFacilities.h>
 
+#include "luaEngine.hpp"
 #include "cbOperator.hpp"
 #include "trivial/cbVirtualDevice.hpp"
 
@@ -68,7 +69,33 @@ struct cbGraphSharedMem {
  *
  */
 struct cbGraphSharedLuaStack {
-  // TODO
+  cbGraphSharedLuaStack() = default;
+  cbGraphSharedLuaStack(const cbGraphSharedLuaStack&) = delete;
+  cbGraphSharedLuaStack operator=(const cbGraphSharedLuaStack&) = delete;
+
+  /**
+   * @brief execute the script file from disk directly.
+   *
+   * @param filePath string.
+   */
+  void execScriptFile(const std::string& filePath);
+
+  /**
+   * @brief execute the hard coded script.
+   *
+   * @param script
+   */
+  void execScript(const std::string& script);
+
+  /**
+   * @brief get the lua state.
+   *
+   * @return luaJitThread&
+   */
+  luaJitThread& get();
+
+ private:
+  luaJitThread m_lua;
 };
 
 /**
@@ -272,6 +299,20 @@ class cbComputeGraph {
    * @param graph
    */
   static void execMain(WFGraphTask* task, cbComputeGraph* graph);
+
+  /**
+   * @brief execute the script from file.
+   *
+   * @param filePath
+   */
+  void execScriptFile(const std::string& filePath);
+
+  /**
+   * @brief execute the script
+   *
+   * @param script
+   */
+  void execScript(const std::string& script);
 
  private:
   int32_t m_idx = 0;

@@ -30,6 +30,14 @@ int32_t cbGraphSharedMem::getCellNum() {
   return tmp;
 }
 
+void cbGraphSharedLuaStack::execScriptFile(const std::string& filePath) {
+  m_lua().script_file(filePath);
+}
+
+void cbGraphSharedLuaStack::execScript(const std::string& script) { m_lua().script(script); }
+
+luaJitThread& cbGraphSharedLuaStack::get() { return m_lua; }
+
 cbNode::cbNode(const nodeType& nt) : nodeT(nt) {}
 
 void cbNode::PointTo(cbNode* ptr) { nextNode = ptr; }
@@ -100,7 +108,44 @@ cbComputeGraph::cbComputeGraph(int32_t idx)
     : m_idx(idx),
       m_sharedMem(new cbGraphSharedMem()),
       m_sharedLuaStack(new cbGraphSharedLuaStack()),
-      m_waitGroup(1) {}
+      m_waitGroup(1) {
+  // bind all functions to lua state.
+  auto covalentBound = m_sharedLuaStack->get()()["cb"].get_or_create<sol::table>();
+  auto covalentBoundF = covalentBound["F"].get_or_create<sol::table>();
+
+  // bind enumerate cbMySQLType
+  // TODO
+
+  // bind graph.
+  covalentBound.new_usertype<cbComputeGraph>(
+      "ComputeGraph", sol::meta_function::construct,
+      sol::factories([](const int32_t idx) { return MAKE_SHARED(cbComputeGraph)(idx); }),
+      sol::call_constructor,
+      sol::factories([](const int32_t idx) { return MAKE_SHARED(cbComputeGraph)(idx); }), "isDAG",
+      &cbComputeGraph::isDAG, "isSingleOutput", &cbComputeGraph::isSingleOutput, "createCell",
+      sol::overload([=]() { return this->createCell(); },
+                    [=](int value) { return this->createCell(value); },
+                    [=](float value) { return this->createCell(value); },
+                    [=](double value) { return this->createCell(value); },
+                    [=](unsigned long long value) { return this->createCell(value); },
+                    [=](const std::string& value) { return this->createCell(value); },
+                    [=](const std::string& value, const cbMySQLType& t) {
+                      return this->createCell(value, t);
+                    }),
+      "createVirtualDeviceNode", &cbComputeGraph::createVirtualDeviceNode);
+
+  // bind this to graph
+  m_sharedLuaStack->get()()["ThisGraph"].get_or_create<cbComputeGraph>(this);
+
+  // ref Node
+  covalentBoundF.set_function(
+      "refNode", sol::overload([](cbVirtualDeviceNode* v) -> cbNode* { return (cbNode*)v; }));
+
+  // bind cbVirtualDeviceNode
+  covalentBound.new_usertype<cbVirtualDeviceNode>("VirtualDeviceNode", "PointTo",
+                                                  &cbVirtualDeviceNode::PointTo, "addQuery",
+                                                  &cbVirtualDeviceNode::addQuery);
+}
 
 cbComputeGraph::~cbComputeGraph() {
   delete m_sharedMem;
@@ -226,5 +271,11 @@ void cbComputeGraph::execMain(WFGraphTask* task, cbComputeGraph* graph) {
     fmt::print(fg(fmt::color::red), "The pointer to task or graph is nullptr\n");
   }
 }
+
+void cbComputeGraph::execScriptFile(const std::string& filePath) {
+  m_sharedLuaStack->execScriptFile(filePath);
+}
+
+void cbComputeGraph::execScript(const std::string& script) { m_sharedLuaStack->execScript(script); }
 
 };  // namespace graph
