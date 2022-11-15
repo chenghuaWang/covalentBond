@@ -36,22 +36,14 @@ void cbOpCombine::overload(sol::function& func) {
 }
 
 void cbOpCombine::execMain() {
+  for (;;) { __innerFunc(0); }
   // TODO
 }
 
-void cbOpCombine::__innerFunc() {
+void cbOpCombine::__innerFunc(int32_t index) {
   if (isOverload) {
-    // TODO need test
-    luaOverrideFunc(io.I, io.O);
+    luaOverrideFunc(index);
   } else {
-    // For simple combine. Don't consider other errors.
-    int32_t realRow = 0;
-    int32_t tmpRows = std::numeric_limits<int32_t>().min(), tmpCols = 0;
-    for (auto& item : io.I) {
-      tmpRows = std::max(tmpRows, item.getShape()[0]);
-      tmpCols += (item.getShape()[1] - 1);
-    }
-    io.O.resetShape(makeShapeFull(tmpRows, tmpCols));
     // TODO
   }
 }
@@ -67,7 +59,7 @@ void cbOpMultiMap::execMain() {
   // TODO
 }
 
-void cbOpMultiMap::__innerFunc() {
+void cbOpMultiMap::__innerFunc(int32_t index) {
   if (isOverload) {
     // TODO
   } else {

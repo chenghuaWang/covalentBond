@@ -17,7 +17,10 @@ int main() {
                   "node_vd_2 = ThisGraph:createVirtualDeviceNode(0);"
                   "node_vd_1:addQuery(\"SELECT * FROM runoob_tbl;\");"
                   "node_vd_2:addQuery(\"SELECT * FROM runoob_tbl;\");"
-                  "node_vd_1:PointTo(cb.F.refNode(node_vd_2));");
+                  "node_vd_1:PointTo(cb.F.refNode(node_vd_2));"
+                  "shape_test = cb.F.makeShapeFull(10, 10);"
+                  "shape_test[0] = 12;"
+                  "print(shape_test[0]);");
 
   // auto vdn_1 = cbg->createVirtualDeviceNode(0);
   // auto vdn_2 = cbg->createVirtualDeviceNode(0);

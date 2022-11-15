@@ -75,16 +75,13 @@ void* cbVirtualDeviceNode::generateTask() {
               task->get_resp()->get_error_msg().c_str());
     }
 
-    std::cout << cursor.fetch_fields()[0]->get_name() << std::endl;
-    return;
-
     // store all data.
     cbVirtualSharedTable* __data = new cbVirtualSharedTable(&cursor);
     graph->m_sharedMem->push(__data);
 
     // Store the virtual table to the io.O port. And pass to the next Node's inputs port.
     mapShared2Virtual(__data, &io.O);
-    nextNode->io.I.push_back(io.O);
+    if (nextNode) { nextNode->io.I.push_back(io.O); }
     return;
   });
 }
@@ -112,17 +109,60 @@ cbComputeGraph::cbComputeGraph(int32_t idx)
   // bind all functions to lua state.
   auto covalentBound = m_sharedLuaStack->get()()["cb"].get_or_create<sol::table>();
   auto covalentBoundF = covalentBound["F"].get_or_create<sol::table>();
+  auto covalentBoundTable = covalentBound["data"].get_or_create<sol::table>();
+
+  // bind virtual table/shape, etc;
+  covalentBoundTable.new_usertype<cbShape<2>>(
+      "Shape",
+
+      "numElements", &cbShape<2>::numElements,
+
+      sol::meta_function::index, sol::resolve<int32_t&(cbShape<2>&, int32_t)>(fetchShapeIndex),
+
+      sol::meta_function::new_index,
+      sol::resolve<void(cbShape<2>&, int32_t, int32_t const&)>(storeShapeIndex)
+
+  );
+
+  covalentBoundTable.new_usertype<cbVirtualTable>(
+      "KVTable",
+
+      sol::meta_function::construct,
+      sol::factories([](cbShape<2>& shape) { return MAKE_SHARED(cbVirtualTable)(shape); }),
+
+      sol::call_constructor,
+      sol::factories([](cbShape<2>& shape) { return MAKE_SHARED(cbVirtualTable)(shape); }),
+
+      "resetShape", &cbVirtualTable::resetShape,
+
+      "getShape", &cbVirtualTable::getShape,
+
+      "atPtrRef", &cbVirtualTable::atPtrRef,
+
+      "colNameAt", &cbVirtualTable::colNameAt,
+
+      "colTypeAt", &cbVirtualTable::colTypeAt
+
+  );
 
   // bind enumerate cbMySQLType
   // TODO
 
   // bind graph.
   covalentBound.new_usertype<cbComputeGraph>(
-      "ComputeGraph", sol::meta_function::construct,
+      "ComputeGraph",
+
+      sol::meta_function::construct,
       sol::factories([](const int32_t idx) { return MAKE_SHARED(cbComputeGraph)(idx); }),
+
       sol::call_constructor,
-      sol::factories([](const int32_t idx) { return MAKE_SHARED(cbComputeGraph)(idx); }), "isDAG",
-      &cbComputeGraph::isDAG, "isSingleOutput", &cbComputeGraph::isSingleOutput, "createCell",
+      sol::factories([](const int32_t idx) { return MAKE_SHARED(cbComputeGraph)(idx); }),
+
+      "isDAG", &cbComputeGraph::isDAG,
+
+      "isSingleOutput", &cbComputeGraph::isSingleOutput,
+
+      "createCell",
       sol::overload([=]() { return this->createCell(); },
                     [=](int value) { return this->createCell(value); },
                     [=](float value) { return this->createCell(value); },
@@ -132,7 +172,10 @@ cbComputeGraph::cbComputeGraph(int32_t idx)
                     [=](const std::string& value, const cbMySQLType& t) {
                       return this->createCell(value, t);
                     }),
-      "createVirtualDeviceNode", &cbComputeGraph::createVirtualDeviceNode);
+
+      "createVirtualDeviceNode", &cbComputeGraph::createVirtualDeviceNode
+
+  );
 
   // bind this to graph
   m_sharedLuaStack->get()()["ThisGraph"].get_or_create<cbComputeGraph>(this);
@@ -141,10 +184,29 @@ cbComputeGraph::cbComputeGraph(int32_t idx)
   covalentBoundF.set_function(
       "refNode", sol::overload([](cbVirtualDeviceNode* v) -> cbNode* { return (cbNode*)v; }));
 
+  // cbIO
+  covalentBound.new_usertype<cbOpIO>(
+
+      "OpIO",
+
+      "I", &cbOpIO::I,
+
+      "O", &cbOpIO::O
+
+  );
+
   // bind cbVirtualDeviceNode
-  covalentBound.new_usertype<cbVirtualDeviceNode>("VirtualDeviceNode", "PointTo",
-                                                  &cbVirtualDeviceNode::PointTo, "addQuery",
-                                                  &cbVirtualDeviceNode::addQuery);
+  covalentBound.new_usertype<cbVirtualDeviceNode>(
+
+      "VirtualDeviceNode",
+
+      "PointTo", &cbVirtualDeviceNode::PointTo,
+
+      "addQuery", &cbVirtualDeviceNode::addQuery,
+
+      "IO", &cbVirtualDeviceNode::io
+
+  );
 }
 
 cbComputeGraph::~cbComputeGraph() {

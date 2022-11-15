@@ -70,7 +70,7 @@ class cbOpRowWise : public baseOp {
   cbOpRowWise();
   virtual void overload(sol::function& func) = 0;
   virtual void execMain() = 0;
-  virtual void __innerFunc() = 0;
+  virtual void __innerFunc(int32_t index) = 0;  ///! Stream.
 };
 
 /**
@@ -83,7 +83,7 @@ class cbOpTableWise : public baseOp {
   cbOpTableWise();
   virtual void overload(sol::function& func) = 0;
   virtual void execMain() = 0;
-  virtual void __innerFunc() = 0;
+  virtual void __innerFunc() = 0;  ///! Batch.
 };
 
 /**
@@ -96,7 +96,7 @@ class cbOpNotTable : public baseOp {
   cbOpNotTable();
   virtual void overload(sol::function& func) = 0;
   virtual void execMain() = 0;
-  virtual void __innerFunc() = 0;
+  virtual void __innerFunc() = 0;  ///! Batch
 };
 
 // Details operation.
@@ -111,7 +111,7 @@ class cbOpCombine final : public cbOpRowWise {
   cbOpCombine(const std::string& key);
   void overload(sol::function& func) override final;
   void execMain() override final;
-  void __innerFunc() override final;
+  void __innerFunc(int32_t index) override final;
 
  private:
   const std::string m_key;
@@ -127,7 +127,7 @@ class cbOpMultiMap : public cbOpRowWise {
   cbOpMultiMap() = default;
   void overload(sol::function& func) override final;
   void execMain() override final;
-  void __innerFunc() override final;
+  void __innerFunc(int32_t index) override final;
 };
 
 /**

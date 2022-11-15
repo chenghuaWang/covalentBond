@@ -66,7 +66,8 @@ cbVirtualSharedTable::cbVirtualSharedTable(protocol::MySQLResultCursor* cursor) 
     std::vector<std::vector<protocol::MySQLCell>> __data;
     cursor->fetch_all(__data);  ///! with copy.
     m_shape[0] = cursor->get_rows_count();
-    m_shape[1] = static_cast<int32_t>(m_data[0].size());
+    m_shape[1] = static_cast<int32_t>(__data[0].size());
+    resetShape(m_shape);
     for (int32_t i = 0; i < m_shape[0]; ++i) {
       for (int32_t j = 0; j < m_shape[1]; ++j) { m_data[i][j] = __data[i][j]; }
     }
@@ -187,7 +188,7 @@ void mapShared2Virtual(cbVirtualSharedTable* sharedT, cbVirtualTable* virtualT) 
 
   // left value is temp.
   virtualT->setInfo(sharedT->getInfo());
-
+  virtualT->resetShape(makeShapeFull(row, col));
   for (int32_t i = 0; i < row; ++i) {
     for (int32_t j = 0; j < col; ++j) { virtualT->atPtrRef(i, j) = sharedT->atPtr(i, j); }
   }

@@ -20,13 +20,17 @@ void bindAllFuncByDefault(sol::state* handle) {
 
   // Bind MySQLCell to lua.
   covalentBound.new_usertype<cbMySQLCell>(
-      "KVCell", sol::meta_function::construct,
+
+      "KVCell",
+
+      sol::meta_function::construct,
       sol::factories(
           [](const float& value) { return MAKE_SHARED(cbMySQLCell)(value); },
           [](const double& value) { return MAKE_SHARED(cbMySQLCell)(value); },
           [](const std::string& value) { return MAKE_SHARED(cbMySQLCell)(value); },
           [](const int& value) { return MAKE_SHARED(cbMySQLCell)(value); },
           [](const unsigned long long& value) { return MAKE_SHARED(cbMySQLCell)(value); }),
+
       sol::call_constructor,
       sol::factories(
           [](const float& value) { return MAKE_SHARED(cbMySQLCell)(value); },
@@ -34,23 +38,44 @@ void bindAllFuncByDefault(sol::state* handle) {
           [](const std::string& value) { return MAKE_SHARED(cbMySQLCell)(value); },
           [](const int& value) { return MAKE_SHARED(cbMySQLCell)(value); },
           [](const unsigned long long& value) { return MAKE_SHARED(cbMySQLCell)(value); }),
-      "asInt", &cbMySQLCell::asInt, "asFloat", &cbMySQLCell::asFloat, "asULL", &cbMySQLCell::asULL,
-      "asString", &cbMySQLCell::asString, "asTime", &cbMySQLCell::asTime, "asDataTime",
-      &cbMySQLCell::asDatetime, "setInt", &cbMySQLCell::setInt, "setFloat", &cbMySQLCell::setFloat,
-      "setULL", &cbMySQLCell::setULL, "setString", &cbMySQLCell::setString, "setTime",
-      &cbMySQLCell::setTime, "setDataTime", &cbMySQLCell::setDatetime, "isInt", &cbMySQLCell::isInt,
-      "isFloat", &cbMySQLCell::isFloat, "isULL", &cbMySQLCell::isULL, "isString",
-      &cbMySQLCell::isString, "isTime", &cbMySQLCell::isTime, "isDataTime",
-      &cbMySQLCell::isDatetime);
-  // Bind MySQLVirtualTable
-  covalentBound.new_usertype<cbVirtualTable>(
-      "KVTable", sol::meta_function::construct,
-      sol::factories([](cbShape<2>& shape) { return MAKE_SHARED(cbVirtualTable)(shape); }),
-      sol::call_constructor,
-      sol::factories([](cbShape<2>& shape) { return MAKE_SHARED(cbVirtualTable)(shape); }),
-      "resetShape", &cbVirtualTable::resetShape, "getShape", &cbVirtualTable::getShape, "atPtrRef",
-      &cbVirtualTable::atPtrRef, "colNameAt", &cbVirtualTable::colNameAt, "colTypeAt",
-      &cbVirtualTable::colTypeAt);
+
+      "asInt", &cbMySQLCell::asInt,
+
+      "asFloat", &cbMySQLCell::asFloat,
+
+      "asULL", &cbMySQLCell::asULL,
+
+      "asString", &cbMySQLCell::asString,
+
+      "asTime", &cbMySQLCell::asTime,
+
+      "asDataTime", &cbMySQLCell::asDatetime,
+
+      "setInt", &cbMySQLCell::setInt,
+
+      "setFloat", &cbMySQLCell::setFloat,
+
+      "setULL", &cbMySQLCell::setULL,
+
+      "setString", &cbMySQLCell::setString,
+
+      "setTime", &cbMySQLCell::setTime,
+
+      "setDataTime", &cbMySQLCell::setDatetime,
+
+      "isInt", &cbMySQLCell::isInt,
+
+      "isFloat", &cbMySQLCell::isFloat,
+
+      "isULL", &cbMySQLCell::isULL,
+
+      "isString", &cbMySQLCell::isString,
+
+      "isTime", &cbMySQLCell::isTime,
+
+      "isDataTime", &cbMySQLCell::isDatetime
+
+  );
 }
 
 luaJitThread::~luaJitThread() { delete m_luaHandle; }

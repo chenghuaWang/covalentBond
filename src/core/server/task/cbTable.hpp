@@ -720,4 +720,14 @@ class cbVirtualTable {
 
 void mapShared2Virtual(cbVirtualSharedTable* sharedT, cbVirtualTable* virtualT);
 
+template<typename T>
+auto fetchShapeIndex(T& c, int32_t idx) -> int32_t& {
+  return c[idx];
+}
+
+template<typename T>
+auto storeShapeIndex(T& c, int32_t idx, int32_t const& v) -> void {
+  c[idx] = v;
+}
+
 #endif  //! __SERVER_CB_TABLE_HPP_
