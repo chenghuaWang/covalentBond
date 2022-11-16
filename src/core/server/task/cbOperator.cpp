@@ -28,7 +28,7 @@ cbOpNotTable::cbOpNotTable() : baseOp(opType::notTableMatrix) {}
 
 cbOpCombine::~cbOpCombine() {}
 
-cbOpCombine::cbOpCombine(const std::string& key) : m_key(key) {}
+cbOpCombine::cbOpCombine(const std::vector<std::string>& key) : m_key(key) {}
 
 void cbOpCombine::overload(sol::function& func) {
   luaOverrideFunc = func;
@@ -36,13 +36,13 @@ void cbOpCombine::overload(sol::function& func) {
 }
 
 void cbOpCombine::execMain() {
-  for (;;) { __innerFunc(0); }
   // TODO
+  // pass the output to the next node. (in node's stage, not op stage)
 }
 
-void cbOpCombine::__innerFunc(int32_t index) {
+void cbOpCombine::__innerFunc(baseOp* thisOp) {
   if (isOverload) {
-    luaOverrideFunc(index);
+    luaOverrideFunc((baseOp*)this, m_key);
   } else {
     // TODO
   }
@@ -59,7 +59,7 @@ void cbOpMultiMap::execMain() {
   // TODO
 }
 
-void cbOpMultiMap::__innerFunc(int32_t index) {
+void cbOpMultiMap::__innerFunc(baseOp* thisOp) {
   if (isOverload) {
     // TODO
   } else {
@@ -77,7 +77,7 @@ void cbOpFilter::execMain() {
   // TODO
 }
 
-void cbOpFilter::__innerFunc() {
+void cbOpFilter::__innerFunc(baseOp* thisOp) {
   if (isOverload) {
     // TODO
   } else {
@@ -95,7 +95,7 @@ void cbOpSort::execMain() {
   // TODO
 }
 
-void cbOpSort::__innerFunc() {
+void cbOpSort::__innerFunc(baseOp* thisOp) {
   if (isOverload) {
     // TODO
   } else {
@@ -113,7 +113,7 @@ void cbOpAverage::execMain() {
   // TODO
 }
 
-void cbOpAverage::__innerFunc() {
+void cbOpAverage::__innerFunc(baseOp* thisOp) {
   if (isOverload) {
     // TODO
   } else {
@@ -131,7 +131,7 @@ void cbOpVar::execMain() {
   // TODO
 }
 
-void cbOpVar::__innerFunc() {
+void cbOpVar::__innerFunc(baseOp* thisOp) {
   if (isOverload) {
     // TODO
   } else {
@@ -149,7 +149,7 @@ void cbOpSum::execMain() {
   // TODO
 }
 
-void cbOpSum::__innerFunc() {
+void cbOpSum::__innerFunc(baseOp* thisOp) {
   if (isOverload) {
     // TODO
   } else {

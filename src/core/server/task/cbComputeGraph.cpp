@@ -214,7 +214,7 @@ cbComputeGraph::cbComputeGraph(int32_t idx)
 
       "addQuery", &cbVirtualDeviceNode::addQuery,
 
-      "IO", &cbVirtualDeviceNode::io
+      "io", &cbVirtualDeviceNode::io
 
   );
 }

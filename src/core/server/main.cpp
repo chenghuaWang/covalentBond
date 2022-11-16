@@ -24,14 +24,6 @@ int main() {
                   "tmp = Cb.F.createKVCell(ThisGraph, 5);"
                   "print(tmp:asInt());");
 
-  // auto vdn_1 = cbg->createVirtualDeviceNode(0);
-  // auto vdn_2 = cbg->createVirtualDeviceNode(0);
-
-  // vdn_1->PointTo(vdn_2);
-
-  // vdn_1->addQuery("SELECT * FROM runoob_tbl;");
-  // vdn_2->addQuery("SELECT * FROM runoob_tbl;");
-
   cbComputeGraph::execMain(cbg->generateGraphTask(), cbg);
 
   delete cbg;

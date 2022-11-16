@@ -36,6 +36,34 @@ function Cb.F.createKVCell(graph, value, celltype)
     return graph:createKVCell(value, celltype);
 end
 
-function Cb.Op.combine()
-
+function Cb.Op.CombineOp(baseOpPtr, primaryKeys)
+    local inputs = baseOpPtr.io.I; -- vector.
+    local output = baseOpPtr.io.O; -- virtual table.
+    -- this program is a default behavior of combine operation.
+    if #inputs ~= #primaryKeys then
+        print("[ CB engine Error ] when execute Cb.Op.CombineOp. #inputs ~= #primaryKeys");
+        return;
+    end
+    local inputs_len = #inputs;
+    local colum_size = 0;
+    local keys = {};
+    local visited = {};
+    -- get the index of primaryKeys, and calculate all colum_size.
+    for i = 1, inputs_len do
+        colum_size = colum_size + #inputs[i];
+        keys.add(inputs[i]:KeyBy(primaryKeys[i]));
+        visited[i] = {};
+        for j = 1, #inputs[i] do
+            visited[i][j] = false;
+        end
+    end
+    -- reunit the Header info of virtual table.
+    -- loop all Keys' index. And combine all.
+    for i = 1, #keys do
+        local cpp_vec_row = {};
+        -- some fancy logic.
+        -- TODO. How std::map works in lua table state?
+        -- push to output's table.
+        output:pushRow(cpp_vec_row);
+    end
 end
