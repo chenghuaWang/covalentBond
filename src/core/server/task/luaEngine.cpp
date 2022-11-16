@@ -11,7 +11,9 @@
 #include "luaEngine.hpp"
 
 void bindAllFuncByDefault(sol::state* handle) {
-  auto covalentBound = (*handle)["cb"].get_or_create<sol::table>();
+  (*handle).script_file("../scripts/libCB.lua");
+
+  auto covalentBound = (*handle)["Cb"].get_or_create<sol::table>();
   auto covalentBoundF = covalentBound["F"].get_or_create<sol::table>();
   // Bind Make Shape Function
   covalentBoundF.set_function("makeShapeFull", makeShapeFull);

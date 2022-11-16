@@ -730,4 +730,6 @@ auto storeShapeIndex(T& c, int32_t idx, int32_t const& v) -> void {
   c[idx] = v;
 }
 
+std::vector<cbMySQLCell*> __luaPackedAsVec(cbMySQLCell* v = nullptr);
+
 #endif  //! __SERVER_CB_TABLE_HPP_

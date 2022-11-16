@@ -107,9 +107,15 @@ cbComputeGraph::cbComputeGraph(int32_t idx)
       m_sharedLuaStack(new cbGraphSharedLuaStack()),
       m_waitGroup(1) {
   // bind all functions to lua state.
-  auto covalentBound = m_sharedLuaStack->get()()["cb"].get_or_create<sol::table>();
+  auto covalentBound = m_sharedLuaStack->get()()["Cb"].get_or_create<sol::table>();
   auto covalentBoundF = covalentBound["F"].get_or_create<sol::table>();
-  auto covalentBoundTable = covalentBound["data"].get_or_create<sol::table>();
+  auto covalentBoundTable = covalentBound["Data"].get_or_create<sol::table>();
+
+  // bind numerous functions.
+  covalentBoundF.set_function(
+      "refNode", sol::overload([](cbVirtualDeviceNode* v) -> cbNode* { return (cbNode*)v; }));
+
+  covalentBoundF.set_function("__cpp_packedAsVec", &__luaPackedAsVec);
 
   // bind virtual table/shape, etc;
   covalentBoundTable.new_usertype<cbShape<2>>(
@@ -141,7 +147,15 @@ cbComputeGraph::cbComputeGraph(int32_t idx)
 
       "colNameAt", &cbVirtualTable::colNameAt,
 
-      "colTypeAt", &cbVirtualTable::colTypeAt
+      "colTypeAt", &cbVirtualTable::colTypeAt,
+
+      "pushRow", &cbVirtualTable::pushRow,
+
+      "keyBy", &cbVirtualTable::keyBy,
+
+      "getCol", &cbVirtualTable::getCol,
+
+      "getRow", &cbVirtualTable::getRow
 
   );
 
@@ -162,15 +176,15 @@ cbComputeGraph::cbComputeGraph(int32_t idx)
 
       "isSingleOutput", &cbComputeGraph::isSingleOutput,
 
-      "createCell",
-      sol::overload([=]() { return this->createCell(); },
-                    [=](int value) { return this->createCell(value); },
-                    [=](float value) { return this->createCell(value); },
-                    [=](double value) { return this->createCell(value); },
-                    [=](unsigned long long value) { return this->createCell(value); },
-                    [=](const std::string& value) { return this->createCell(value); },
-                    [=](const std::string& value, const cbMySQLType& t) {
-                      return this->createCell(value, t);
+      "createKVCell",
+      sol::overload([](cbComputeGraph& p) { return p.createCell(); },
+                    [](cbComputeGraph& p, int value) { return p.createCell(value); },
+                    [](cbComputeGraph& p, float value) { return p.createCell(value); },
+                    [](cbComputeGraph& p, double value) { return p.createCell(value); },
+                    [](cbComputeGraph& p, unsigned long long value) { return p.createCell(value); },
+                    [](cbComputeGraph& p, const std::string& value) { return p.createCell(value); },
+                    [](cbComputeGraph& p, const std::string& value, const cbMySQLType& t) {
+                      return p.createCell(value, t);
                     }),
 
       "createVirtualDeviceNode", &cbComputeGraph::createVirtualDeviceNode
@@ -179,10 +193,6 @@ cbComputeGraph::cbComputeGraph(int32_t idx)
 
   // bind this to graph
   m_sharedLuaStack->get()()["ThisGraph"].get_or_create<cbComputeGraph>(this);
-
-  // ref Node
-  covalentBoundF.set_function(
-      "refNode", sol::overload([](cbVirtualDeviceNode* v) -> cbNode* { return (cbNode*)v; }));
 
   // cbIO
   covalentBound.new_usertype<cbOpIO>(

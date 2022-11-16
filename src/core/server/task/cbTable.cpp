@@ -398,3 +398,10 @@ void cbMySQLCell::setDatetime(const std::string& value) {
 }
 
 cbMySQLType cbMySQLCell::getType() { return m_type; }
+
+std::vector<cbMySQLCell*> __luaPackedAsVec(cbMySQLCell* v) {
+  if (v)
+    return {v};
+  else
+    return {};
+}
