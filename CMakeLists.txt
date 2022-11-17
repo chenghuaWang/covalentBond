@@ -19,6 +19,12 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON CACHE BOOL "")
 option(USE_CLANG_FORMAT "" ON)
 option(USE_CLANG_TIDY "" ON)
 option(BUILD_TESTING "" OFF)
+option(BUILD_CO_DOC "" OFF)
+
+if(BUILD_CO_DOC)
+include(cmake/build_doxygen.cmake)
+build_doxygen()
+endif()
 
 # Reference:
 # https://medium.com/@alasher/colored-c-compiler-output-with-ninja-clang-gcc-10bfe7f2b949
