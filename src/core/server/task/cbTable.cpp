@@ -399,9 +399,11 @@ void cbMySQLCell::setDatetime(const std::string& value) {
 
 cbMySQLType cbMySQLCell::getType() { return m_type; }
 
-std::vector<cbMySQLCell*> __luaPackedAsVec(cbMySQLCell* v) {
+std::vector<cbMySQLCell*> __luaPackedCellAsVec(cbMySQLCell* v) {
   if (v)
     return {v};
   else
     return {};
 }
+
+std::vector<std::string> __luaPackedStringAsVec() { return {}; }

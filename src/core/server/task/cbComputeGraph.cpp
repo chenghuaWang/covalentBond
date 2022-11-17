@@ -97,9 +97,25 @@ cbOperatorNode::~cbOperatorNode() { delete Op; }
 cbOperatorNode::cbOperatorNode(baseOp* op) : cbNode(nodeType::Operator), Op(op) {}
 
 void* cbOperatorNode::generateTask() {
-  // TODO
-  return nullptr;
+  WFGoTask* goTask = WFTaskFactory::create_go_task("execMain", [=]() {
+    Op->io.I = io.I;
+    Op->execMain();
+  });
+
+  goTask->set_callback([=](WFGoTask* task) {
+    if (task->get_state() == WFT_STATE_SUCCESS) {
+      io.O = Op->io.O;
+      if (nextNode) { nextNode->io.I.push_back(io.O); }
+    } else {
+      fmt::print(fg(fmt::color::red), "Go Task exec failed.");
+      return;
+    }
+  });
+
+  return (void*)goTask;
 }
+
+void cbOperatorNode::overload(sol::function& funcPtr) { Op->overload(funcPtr); }
 
 cbComputeGraph::cbComputeGraph(int32_t idx)
     : m_idx(idx),
@@ -113,9 +129,11 @@ cbComputeGraph::cbComputeGraph(int32_t idx)
 
   // bind numerous functions.
   covalentBoundF.set_function(
-      "refNode", sol::overload([](cbVirtualDeviceNode* v) -> cbNode* { return (cbNode*)v; }));
+      "refNode", sol::overload([](cbVirtualDeviceNode* v) -> cbNode* { return (cbNode*)v; },
+                               [](cbOperatorNode* v) -> cbNode* { return (cbNode*)v; }));
 
-  covalentBoundF.set_function("__cpp_packedAsVec", &__luaPackedAsVec);
+  covalentBoundF.set_function("__cpp_packedCellAsVec", &__luaPackedCellAsVec);
+  covalentBoundF.set_function("__cpp_packedStringAsVec", &__luaPackedStringAsVec);
 
   // bind virtual table/shape, etc;
   covalentBoundTable.new_usertype<cbShape<2>>(
@@ -187,7 +205,9 @@ cbComputeGraph::cbComputeGraph(int32_t idx)
                       return p.createCell(value, t);
                     }),
 
-      "createVirtualDeviceNode", &cbComputeGraph::createVirtualDeviceNode
+      "createVirtualDeviceNode", &cbComputeGraph::createVirtualDeviceNode,
+
+      "createCombineNode", &cbComputeGraph::createCombineNode
 
   );
 
@@ -215,6 +235,17 @@ cbComputeGraph::cbComputeGraph(int32_t idx)
       "addQuery", &cbVirtualDeviceNode::addQuery,
 
       "io", &cbVirtualDeviceNode::io
+
+  );
+
+  // bind operation node
+  covalentBound.new_usertype<cbOperatorNode>(
+
+      "OperatorNode",
+
+      "PointTo", &cbOperatorNode::PointTo,
+
+      "io", &cbOperatorNode::io
 
   );
 }
@@ -292,6 +323,13 @@ cbMySQLCell* cbComputeGraph::createCell(const std::string& value, const cbMySQLT
 cbVirtualDeviceNode* cbComputeGraph::createVirtualDeviceNode(int32_t idx) {
   cbVirtualDeviceNode* ans = new cbVirtualDeviceNode();
   ans->setMySQLDevice(m_virtualDevice->getMySqlDevice(idx));
+  this->registerNode(ans);
+  return ans;
+}
+
+cbOperatorNode* cbComputeGraph::createCombineNode(const std::vector<std::string>& keys) {
+  cbOpCombine* ansOp = new cbOpCombine(keys);
+  cbOperatorNode* ans = new cbOperatorNode(ansOp);
   this->registerNode(ans);
   return ans;
 }

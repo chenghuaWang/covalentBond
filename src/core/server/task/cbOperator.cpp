@@ -38,6 +38,7 @@ void cbOpCombine::overload(sol::function& func) {
 void cbOpCombine::execMain() {
   // TODO
   // pass the output to the next node. (in node's stage, not op stage)
+  std::cout << "Go Task runs here!!!\n";
 }
 
 void cbOpCombine::__innerFunc(baseOp* thisOp) {

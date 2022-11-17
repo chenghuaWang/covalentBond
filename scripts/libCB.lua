@@ -16,10 +16,19 @@ Cb['Op'] = Op;
 function Cb.F.PackedCellsToVec(...)
     local nums = select('#', ...);
     if nums < 1 then
-        return Cb.F.__cpp_packedAsVec();
+        return Cb.F.__cpp_packedCellAsVec();
     end
-    local ans = Cb.F.__cpp_packedAsVec(select(1, ...));
+    local ans = Cb.F.__cpp_packedCellAsVec(select(1, ...));
     for i = 2, select('#', ...) do
+        ans:add(select(i, ...));
+    end
+    return ans;
+end
+
+function Cb.F.PackedStringToVec(...)
+    local nums = select('#', ...);
+    local ans = Cb.F.__cpp_packedStringAsVec();
+    for i = 1, nums do
         ans:add(select(i, ...));
     end
     return ans;

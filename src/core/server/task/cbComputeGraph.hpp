@@ -18,6 +18,7 @@
 
 #include <workflow/WFGraphTask.h>
 #include <workflow/WFFacilities.h>
+#include <workflow/WFTaskFactory.h>
 
 #include "luaEngine.hpp"
 #include "cbOperator.hpp"
@@ -157,14 +158,27 @@ struct cbVirtualDeviceNode final : public cbNode {
 };
 
 /**
- * @brief
+ * @brief A operator node. Generate all go task. Then pass the output
+ * to the next node's inputs.
  *
  */
 struct cbOperatorNode : public cbNode {
   ~cbOperatorNode() override;
   cbOperatorNode(baseOp* op);
 
+  /**
+   * @brief
+   *
+   * @return void*
+   */
   void* generateTask() override;
+
+  /**
+   * @brief
+   *
+   * @param funcPtr The functions belong to lua.
+   */
+  void overload(sol::function& funcPtr);
 
   baseOp* Op;
 };
@@ -262,6 +276,14 @@ class cbComputeGraph {
    * @return cbVirtualDeviceNode*
    */
   cbVirtualDeviceNode* createVirtualDeviceNode(int32_t idx);  ///! for sql only, now.
+
+  /**
+   * @brief Create a Combine Node object
+   *
+   * @param keys
+   * @return cbOperatorNode*
+   */
+  cbOperatorNode* createCombineNode(const std::vector<std::string>& keys);
 
   /**
    * @brief Set the Virtual Device Manager object

@@ -55,7 +55,7 @@ struct baseOp {
   opType type = opType::rowWise;
 
   bool isOverload = false;
-  sol::function luaOverrideFunc = nullptr;
+  sol::function luaOverrideFunc = sol::nil;
 };
 
 // Basic operation.
