@@ -72,10 +72,10 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="liveThread_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;liveThread.hpp&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="liveThread_8hpp.html">liveThread.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;workflow/WFHttpServer.h&gt;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">void</span> frontThread::exec() {</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classfrontThread.html#a61c71c2cf84d0411032b651f0c7cd841">   14</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classfrontThread.html#a61c71c2cf84d0411032b651f0c7cd841">frontThread::exec</a>() {</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  <span class="comment">// start execute the website.</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  std::ifstream fp(<span class="stringliteral">&quot;./index.html&quot;</span>);</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  std::string __htmlIndexBody((std::istreambuf_iterator&lt;char&gt;(fp)),</div>
@@ -83,9 +83,9 @@ $(function() {
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  fp.close();</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  fmt::print(fg(fmt::color::floral_white) | bg(fmt::color::slate_gray) | fmt::emphasis::underline,</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;             <span class="stringliteral">&quot;--- OS info ---\n&quot;</span>);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  fmt::print(fg(fmt::color::steel_blue) | fmt::emphasis::italic, <span class="stringliteral">&quot;{}\n&quot;</span>, m_sysInfo.m_osInfo);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  fmt::print(fg(fmt::color::steel_blue) | fmt::emphasis::italic, <span class="stringliteral">&quot;{}\n&quot;</span>, <a class="code" href="classfrontThread.html#ac6cf2a68f2f39769013375b8a9692101">m_sysInfo</a>.m_osInfo);</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  fmt::print(<span class="stringliteral">&quot;[ info ] Get the ./index.html file. Start HTTP server at {}{}\n&quot;</span>,</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;             <span class="stringliteral">&quot;http://localhost:&quot;</span>, m_httpServerPort);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;             <span class="stringliteral">&quot;http://localhost:&quot;</span>, <a class="code" href="classfrontThread.html#ae16904d984d93348b740500fd8ee3265">m_httpServerPort</a>);</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  fmt::print(<span class="stringliteral">&quot;[ info ] Press ^C to stop server.\n&quot;</span>);</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  WFHttpServer server([=](WFHttpTask* task) {</div>
@@ -98,12 +98,16 @@ $(function() {
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  });</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="comment">// Fork a daemon thread here and do other things.</span></div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="comment">// And in the scope below, need to reduce the thread forked.</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="keywordflow">if</span> (server.start(m_httpServerPort) == 0) {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="keywordflow">if</span> (server.start(<a class="code" href="classfrontThread.html#ae16904d984d93348b740500fd8ee3265">m_httpServerPort</a>) == 0) {</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    pause();</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    server.stop();</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  }</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclassfrontThread_html_ac6cf2a68f2f39769013375b8a9692101"><div class="ttname"><a href="classfrontThread.html#ac6cf2a68f2f39769013375b8a9692101">frontThread::m_sysInfo</a></div><div class="ttdeci">cb::utils::sysInfo m_sysInfo</div><div class="ttdef"><b>Definition:</b> <a href="liveThread_8hpp_source.html#l00040">liveThread.hpp:40</a></div></div>
+<div class="ttc" id="aliveThread_8hpp_html"><div class="ttname"><a href="liveThread_8hpp.html">liveThread.hpp</a></div></div>
+<div class="ttc" id="aclassfrontThread_html_ae16904d984d93348b740500fd8ee3265"><div class="ttname"><a href="classfrontThread.html#ae16904d984d93348b740500fd8ee3265">frontThread::m_httpServerPort</a></div><div class="ttdeci">unsigned short m_httpServerPort</div><div class="ttdef"><b>Definition:</b> <a href="liveThread_8hpp_source.html#l00039">liveThread.hpp:39</a></div></div>
+<div class="ttc" id="aclassfrontThread_html_a61c71c2cf84d0411032b651f0c7cd841"><div class="ttname"><a href="classfrontThread.html#a61c71c2cf84d0411032b651f0c7cd841">frontThread::exec</a></div><div class="ttdeci">virtual void exec()</div><div class="ttdef"><b>Definition:</b> <a href="liveThread_8cpp_source.html#l00014">liveThread.cpp:14</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

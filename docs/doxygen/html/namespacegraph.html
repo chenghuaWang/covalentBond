@@ -63,10 +63,70 @@ $(function() {
 
 </div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle">
 <div class="title">graph Namespace Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgraph_1_1cbComputeGraph.html">cbComputeGraph</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgraph_1_1cbGraphSharedLuaStack.html">cbGraphSharedLuaStack</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgraph_1_1cbGraphSharedMem.html">cbGraphSharedMem</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The shared memory of compute graph. Include 2 basic components.  <a href="structgraph_1_1cbGraphSharedMem.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgraph_1_1cbNode.html">cbNode</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgraph_1_1cbOperatorNode.html">cbOperatorNode</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A operator node. Generate all go task. Then pass the output to the next node's inputs.  <a href="structgraph_1_1cbOperatorNode.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgraph_1_1cbVirtualDeviceNode.html">cbVirtualDeviceNode</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This node include virtual device infomation and perform the final operation of how to get the data from remote sql database.  <a href="structgraph_1_1cbVirtualDeviceNode.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a188d6573da2b2b6d01c6661ee9f7f49d"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegraph.html#a188d6573da2b2b6d01c6661ee9f7f49d">nodeType</a> : uint32_t { <a class="el" href="namespacegraph.html#a188d6573da2b2b6d01c6661ee9f7f49dac3b5e1f7de11d645fb1da6c5415b1fa5">nodeType::Leaf</a> = 1, 
+<a class="el" href="namespacegraph.html#a188d6573da2b2b6d01c6661ee9f7f49da29c2c02a361c9d7028472e5d92cd4a54">nodeType::Output</a> = 2, 
+<a class="el" href="namespacegraph.html#a188d6573da2b2b6d01c6661ee9f7f49dae1b3ec89ead7f83a9245ed5c9cacfdbf">nodeType::Operator</a> = 3
+ }</td></tr>
+<tr class="separator:a188d6573da2b2b6d01c6661ee9f7f49d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a188d6573da2b2b6d01c6661ee9f7f49d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a188d6573da2b2b6d01c6661ee9f7f49d">&#9670;&nbsp;</a></span>nodeType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespacegraph.html#a188d6573da2b2b6d01c6661ee9f7f49d">graph::nodeType</a> : uint32_t</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a188d6573da2b2b6d01c6661ee9f7f49dac3b5e1f7de11d645fb1da6c5415b1fa5"></a>Leaf&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a188d6573da2b2b6d01c6661ee9f7f49da29c2c02a361c9d7028472e5d92cd4a54"></a>Output&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a188d6573da2b2b6d01c6661ee9f7f49dae1b3ec89ead7f83a9245ed5c9cacfdbf"></a>Operator&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8hpp_source.html#l00037">37</a> of file <a class="el" href="cbComputeGraph_8hpp_source.html">cbComputeGraph.hpp</a>.</p>
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -1,0 +1,8 @@
+<map id="cbOpNotTable" name="cbOpNotTable">
+<area shape="rect" id="node1" title=" " alt="" coords="76,349,188,376"/>
+<area shape="rect" id="node2" href="$structbaseOp.html" title="basic operator." alt="" coords="97,273,167,300"/>
+<area shape="rect" id="node3" href="$structcbOpIO.html" title="The input and output of one Operator." alt="" coords="97,184,167,211"/>
+<area shape="rect" id="node4" href="$classcbVirtualTable.html" title="cbVirtualTable works as a reference from shared memory. It only use a shape and SqlCell to define dif..." alt="" coords="75,95,189,121"/>
+<area shape="rect" id="node5" href="$structcbShape.html" title=" " alt="" coords="5,5,120,32"/>
+<area shape="rect" id="node6" href="$classcbMySQLField.html" title="A copy move from workflow MySQLResult.h and .inl file." alt="" coords="145,5,258,32"/>
+</map>

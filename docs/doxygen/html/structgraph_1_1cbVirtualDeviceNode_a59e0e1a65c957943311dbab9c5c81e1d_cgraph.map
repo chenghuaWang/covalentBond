@@ -1,0 +1,13 @@
+<map id="graph::cbVirtualDeviceNode::generateTask" name="graph::cbVirtualDeviceNode::generateTask">
+<area shape="rect" id="node1" title="generate a SQL wf task for now." alt="" coords="5,247,209,288"/>
+<area shape="rect" id="node2" href="$cbTable_8cpp.html#aa7e1365c230649b7120d4efd062c34ff" title=" " alt="" coords="268,225,415,251"/>
+<area shape="rect" id="node11" href="$structtrivial_1_1cbMySqlDevice.html#afbc77741d1ff6131db48437093401c64" title=" " alt="" coords="257,276,425,317"/>
+<area shape="rect" id="node3" href="$classcbVirtualSharedTable.html#a1c0eb733856c6661bfcd1a300a89435d" title=" " alt="" coords="491,5,650,47"/>
+<area shape="rect" id="node4" href="$classcbVirtualTable.html#a794954a9b9f944ea784a960bd215a88d" title=" " alt="" coords="483,71,658,98"/>
+<area shape="rect" id="node5" href="$classcbVirtualSharedTable.html#a1ebce84c8c5a4dc5c74ad70eca2bce74" title="Get the Info object." alt="" coords="491,123,650,164"/>
+<area shape="rect" id="node6" href="$classcbVirtualSharedTable.html#a7806f68d7c9d78b64967c37cde5643df" title="Get the Shape object." alt="" coords="491,188,650,229"/>
+<area shape="rect" id="node7" href="$classcbVirtualTable.html#ab167a7d9e14a36b08cba7537f9dee4af" title="Get the Shape object." alt="" coords="479,254,662,281"/>
+<area shape="rect" id="node8" href="$cbTable_8hpp.html#a1efb642b144c336a653bb6f91f334ebd" title=" " alt="" coords="510,305,631,331"/>
+<area shape="rect" id="node9" href="$classcbVirtualTable.html#a4951b75acc04023657f9a9687e7ae926" title=" " alt="" coords="473,355,668,382"/>
+<area shape="rect" id="node10" href="$classcbVirtualTable.html#a6f612970ee62242f23edf660d35a2dc2" title=" " alt="" coords="487,406,654,433"/>
+</map>

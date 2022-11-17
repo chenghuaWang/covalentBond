@@ -1,0 +1,4 @@
+<map id="cb::cbLRUCache::eraseTail" name="cb::cbLRUCache::eraseTail">
+<area shape="rect" id="node1" title="delete the last element of list" alt="" coords="219,5,411,32"/>
+<area shape="rect" id="node2" href="$classcb_1_1cbLRUCache.html#a8cc7aca13b63fca3731c80125d0f08a9" title="Push key and value into cache. If key has been existed, the corresponding value will be update." alt="" coords="5,5,171,32"/>
+</map>

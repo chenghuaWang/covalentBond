@@ -1,0 +1,9 @@
+<map id="cbOpTableWise" name="cbOpTableWise">
+<area shape="rect" id="node1" title=" " alt="" coords="231,80,352,107"/>
+<area shape="rect" id="node3" href="$classcbOpAverage.html" title=" " alt="" coords="5,155,113,181"/>
+<area shape="rect" id="node4" href="$classcbOpFilter.html" title=" " alt="" coords="138,155,226,181"/>
+<area shape="rect" id="node5" href="$classcbOpSort.html" title=" " alt="" coords="251,155,332,181"/>
+<area shape="rect" id="node6" href="$classcbOpSum.html" title=" " alt="" coords="356,155,440,181"/>
+<area shape="rect" id="node7" href="$classcbOpVar.html" title=" " alt="" coords="464,155,540,181"/>
+<area shape="rect" id="node2" href="$structbaseOp.html" title="basic operator." alt="" coords="256,5,327,32"/>
+</map>

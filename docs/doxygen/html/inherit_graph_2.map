@@ -1,0 +1,13 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$structbaseOp.html" title="basic operator." alt="" coords="5,56,76,83"/>
+<area shape="rect" id="node2" href="$classcbOpNotTable.html" title=" " alt="" coords="129,5,241,32"/>
+<area shape="rect" id="node3" href="$classcbOpRowWise.html" title=" " alt="" coords="127,56,242,83"/>
+<area shape="rect" id="node6" href="$classcbOpTableWise.html" title=" " alt="" coords="124,183,245,209"/>
+<area shape="rect" id="node4" href="$classcbOpCombine.html" title=" " alt="" coords="295,5,408,32"/>
+<area shape="rect" id="node5" href="$classcbOpMultiMap.html" title=" " alt="" coords="293,56,409,83"/>
+<area shape="rect" id="node7" href="$classcbOpAverage.html" title=" " alt="" coords="297,107,405,133"/>
+<area shape="rect" id="node8" href="$classcbOpFilter.html" title=" " alt="" coords="307,157,395,184"/>
+<area shape="rect" id="node9" href="$classcbOpSort.html" title=" " alt="" coords="311,208,392,235"/>
+<area shape="rect" id="node10" href="$classcbOpSum.html" title=" " alt="" coords="309,259,393,285"/>
+<area shape="rect" id="node11" href="$classcbOpVar.html" title=" " alt="" coords="313,309,389,336"/>
+</map>

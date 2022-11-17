@@ -1,0 +1,15 @@
+<map id="graph::cbVirtualDeviceNode" name="graph::cbVirtualDeviceNode">
+<area shape="rect" id="node1" title="This node include virtual device infomation and perform the final operation of how to get the data fr..." alt="" coords="1187,144,1391,171"/>
+<area shape="rect" id="node2" href="$structgraph_1_1cbNode.html" title=" " alt="" coords="929,119,1045,145"/>
+<area shape="rect" id="node3" href="$structcbOpIO.html" title="The input and output of one Operator." alt="" coords="689,45,758,72"/>
+<area shape="rect" id="node4" href="$classcbVirtualTable.html" title="cbVirtualTable works as a reference from shared memory. It only use a shape and SqlCell to define dif..." alt="" coords="287,31,402,57"/>
+<area shape="rect" id="node5" href="$structcbShape.html" title=" " alt="" coords="5,5,120,32"/>
+<area shape="rect" id="node6" href="$classcbMySQLField.html" title="A copy move from workflow MySQLResult.h and .inl file." alt="" coords="6,56,119,83"/>
+<area shape="rect" id="node7" href="$classgraph_1_1cbComputeGraph.html" title=" " alt="" coords="633,119,813,145"/>
+<area shape="rect" id="node8" href="$structgraph_1_1cbGraphSharedMem.html" title="The shared memory of compute graph. Include 2 basic components." alt="" coords="245,81,444,108"/>
+<area shape="rect" id="node9" href="$structgraph_1_1cbGraphSharedLuaStack.html" title=" " alt="" coords="232,132,457,159"/>
+<area shape="rect" id="node10" href="$classluaJitThread.html" title=" " alt="" coords="13,132,113,159"/>
+<area shape="rect" id="node11" href="$classtrivial_1_1cbVirtualDeviceManager.html" title=" " alt="" coords="259,183,430,225"/>
+<area shape="rect" id="node12" href="$structtrivial_1_1cbMySqlDevice.html" title=" " alt="" coords="903,169,1071,196"/>
+<area shape="rect" id="node13" href="$structtrivial_1_1cbVirtualDevice.html" title=" " alt="" coords="638,169,809,196"/>
+</map>

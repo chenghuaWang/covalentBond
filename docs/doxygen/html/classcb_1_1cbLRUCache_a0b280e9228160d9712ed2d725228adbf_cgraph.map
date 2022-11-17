@@ -1,0 +1,4 @@
+<map id="cb::cbLRUCache::update" name="cb::cbLRUCache::update">
+<area shape="rect" id="node1" title="move the node has been used recently to the top of cache list" alt="" coords="5,5,184,32"/>
+<area shape="rect" id="node2" href="$classcb_1_1cbLRUCache.html#a2368acdee826f07ac224617d9882e1b1" title="transit the node choosen to the top of list" alt="" coords="232,5,425,32"/>
+</map>

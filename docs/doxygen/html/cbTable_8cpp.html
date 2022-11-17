@@ -76,16 +76,19 @@ $(function() {
 
 <p>The impl of table.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;cbTable.hpp&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="cbTable_8hpp_source.html">cbTable.hpp</a>&quot;</code><br />
 <code>#include &lt;workflow/MySQLResult.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for cbTable.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="cbTable_8cpp__incl.png" border="0" usemap="#_2home_2wang_2covalentBond_2src_2core_2server_2task_2cbTable_8cpp" alt=""/></div>
 <map name="_2home_2wang_2covalentBond_2src_2core_2server_2task_2cbTable_8cpp" id="_2home_2wang_2covalentBond_2src_2core_2server_2task_2cbTable_8cpp">
-<area shape="rect" title="The impl of table." alt="" coords="40,5,235,61"/>
-<area shape="rect" title=" " alt="" coords="5,109,104,136"/>
-<area shape="rect" title=" " alt="" coords="129,109,311,136"/>
+<area shape="rect" title="The impl of table." alt="" coords="229,5,423,61"/>
+<area shape="rect" href="cbTable_8hpp.html" title="the virtual table and shared table." alt="" coords="215,109,314,136"/>
+<area shape="rect" title=" " alt="" coords="335,184,517,211"/>
+<area shape="rect" title=" " alt="" coords="5,184,73,211"/>
+<area shape="rect" title=" " alt="" coords="97,184,195,211"/>
+<area shape="rect" title=" " alt="" coords="219,184,311,211"/>
 </map>
 </div>
 </div>
@@ -93,9 +96,9 @@ Include dependency graph for cbTable.cpp:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aa7e1365c230649b7120d4efd062c34ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cbTable_8cpp.html#aa7e1365c230649b7120d4efd062c34ff">mapShared2Virtual</a> (cbVirtualSharedTable *sharedT, cbVirtualTable *virtualT)</td></tr>
+<tr class="memitem:aa7e1365c230649b7120d4efd062c34ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cbTable_8cpp.html#aa7e1365c230649b7120d4efd062c34ff">mapShared2Virtual</a> (<a class="el" href="classcbVirtualSharedTable.html">cbVirtualSharedTable</a> *sharedT, <a class="el" href="classcbVirtualTable.html">cbVirtualTable</a> *virtualT)</td></tr>
 <tr class="separator:aa7e1365c230649b7120d4efd062c34ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a60d706e920151b2f6392c27f7bc4aae7"><td class="memItemLeft" align="right" valign="top">std::vector&lt; cbMySQLCell * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cbTable_8cpp.html#a60d706e920151b2f6392c27f7bc4aae7">__luaPackedCellAsVec</a> (cbMySQLCell *v)</td></tr>
+<tr class="memitem:a60d706e920151b2f6392c27f7bc4aae7"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classcbMySQLCell.html">cbMySQLCell</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cbTable_8cpp.html#a60d706e920151b2f6392c27f7bc4aae7">__luaPackedCellAsVec</a> (<a class="el" href="classcbMySQLCell.html">cbMySQLCell</a> *v)</td></tr>
 <tr class="separator:a60d706e920151b2f6392c27f7bc4aae7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3627c73cd70fabe18c70c271f9a3d548"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cbTable_8cpp.html#a3627c73cd70fabe18c70c271f9a3d548">__luaPackedStringAsVec</a> ()</td></tr>
 <tr class="separator:a3627c73cd70fabe18c70c271f9a3d548"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -116,9 +119,9 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;cbMySQLCell*&gt; __luaPackedCellAsVec </td>
+          <td class="memname">std::vector&lt;<a class="el" href="classcbMySQLCell.html">cbMySQLCell</a>*&gt; __luaPackedCellAsVec </td>
           <td>(</td>
-          <td class="paramtype">cbMySQLCell *&#160;</td>
+          <td class="paramtype"><a class="el" href="classcbMySQLCell.html">cbMySQLCell</a> *&#160;</td>
           <td class="paramname"><em>v</em></td><td>)</td>
           <td></td>
         </tr>
@@ -126,6 +129,17 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="cbTable_8cpp_source.html#l00402">402</a> of file <a class="el" href="cbTable_8cpp_source.html">cbTable.cpp</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00120">graph::cbComputeGraph::cbComputeGraph()</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="cbTable_8cpp_a60d706e920151b2f6392c27f7bc4aae7_icgraph.png" border="0" usemap="#cbTable_8cpp_a60d706e920151b2f6392c27f7bc4aae7_icgraph" alt=""/></div>
+<map name="cbTable_8cpp_a60d706e920151b2f6392c27f7bc4aae7_icgraph" id="cbTable_8cpp_a60d706e920151b2f6392c27f7bc4aae7_icgraph">
+<area shape="rect" title=" " alt="" coords="233,13,399,39"/>
+<area shape="rect" href="classgraph_1_1cbComputeGraph.html#a957671e0e37714251be904aa94dab344" title=" " alt="" coords="5,5,185,47"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -146,6 +160,17 @@ Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="cbTable_8cpp_source.html#l00409">409</a> of file <a class="el" href="cbTable_8cpp_source.html">cbTable.cpp</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00120">graph::cbComputeGraph::cbComputeGraph()</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="cbTable_8cpp_a3627c73cd70fabe18c70c271f9a3d548_icgraph.png" border="0" usemap="#cbTable_8cpp_a3627c73cd70fabe18c70c271f9a3d548_icgraph" alt=""/></div>
+<map name="cbTable_8cpp_a3627c73cd70fabe18c70c271f9a3d548_icgraph" id="cbTable_8cpp_a3627c73cd70fabe18c70c271f9a3d548_icgraph">
+<area shape="rect" title=" " alt="" coords="233,13,412,39"/>
+<area shape="rect" href="classgraph_1_1cbComputeGraph.html#a957671e0e37714251be904aa94dab344" title=" " alt="" coords="5,5,185,47"/>
+</map>
+</div>
+
 </div>
 </div>
 <a id="aa7e1365c230649b7120d4efd062c34ff"></a>
@@ -157,13 +182,13 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void mapShared2Virtual </td>
           <td>(</td>
-          <td class="paramtype">cbVirtualSharedTable *&#160;</td>
+          <td class="paramtype"><a class="el" href="classcbVirtualSharedTable.html">cbVirtualSharedTable</a> *&#160;</td>
           <td class="paramname"><em>sharedT</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">cbVirtualTable *&#160;</td>
+          <td class="paramtype"><a class="el" href="classcbVirtualTable.html">cbVirtualTable</a> *&#160;</td>
           <td class="paramname"><em>virtualT</em>&#160;</td>
         </tr>
         <tr>
@@ -175,6 +200,35 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="cbTable_8cpp_source.html#l00184">184</a> of file <a class="el" href="cbTable_8cpp_source.html">cbTable.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="cbTable_8cpp_source.html#l00077">cbVirtualSharedTable::atPtr()</a>, <a class="el" href="cbTable_8cpp_source.html#l00117">cbVirtualTable::atPtrRef()</a>, <a class="el" href="cbTable_8hpp_source.html#l00560">cbVirtualSharedTable::getInfo()</a>, <a class="el" href="cbTable_8hpp_source.html#l00535">cbVirtualSharedTable::getShape()</a>, <a class="el" href="cbTable_8hpp_source.html#l00648">cbVirtualTable::getShape()</a>, <a class="el" href="cbTable_8hpp_source.html#l00191">makeShapeFull()</a>, <a class="el" href="cbTable_8cpp_source.html#l00098">cbVirtualTable::resetShape()</a>, and <a class="el" href="cbTable_8cpp_source.html#l00111">cbVirtualTable::setInfo()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00053">graph::cbVirtualDeviceNode::generateTask()</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="cbTable_8cpp_aa7e1365c230649b7120d4efd062c34ff_cgraph.png" border="0" usemap="#cbTable_8cpp_aa7e1365c230649b7120d4efd062c34ff_cgraph" alt=""/></div>
+<map name="cbTable_8cpp_aa7e1365c230649b7120d4efd062c34ff_cgraph" id="cbTable_8cpp_aa7e1365c230649b7120d4efd062c34ff_cgraph">
+<area shape="rect" title=" " alt="" coords="5,225,152,251"/>
+<area shape="rect" href="classcbVirtualSharedTable.html#a1c0eb733856c6661bfcd1a300a89435d" title=" " alt="" coords="218,5,377,47"/>
+<area shape="rect" href="classcbVirtualTable.html#a794954a9b9f944ea784a960bd215a88d" title=" " alt="" coords="210,71,385,98"/>
+<area shape="rect" href="classcbVirtualSharedTable.html#a1ebce84c8c5a4dc5c74ad70eca2bce74" title="Get the Info object." alt="" coords="218,123,377,164"/>
+<area shape="rect" href="classcbVirtualSharedTable.html#a7806f68d7c9d78b64967c37cde5643df" title="Get the Shape object." alt="" coords="218,188,377,229"/>
+<area shape="rect" href="classcbVirtualTable.html#ab167a7d9e14a36b08cba7537f9dee4af" title="Get the Shape object." alt="" coords="206,254,389,281"/>
+<area shape="rect" href="cbTable_8hpp.html#a1efb642b144c336a653bb6f91f334ebd" title=" " alt="" coords="237,305,358,331"/>
+<area shape="rect" href="classcbVirtualTable.html#a4951b75acc04023657f9a9687e7ae926" title=" " alt="" coords="200,355,395,382"/>
+<area shape="rect" href="classcbVirtualTable.html#a6f612970ee62242f23edf660d35a2dc2" title=" " alt="" coords="214,406,381,433"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="cbTable_8cpp_aa7e1365c230649b7120d4efd062c34ff_icgraph.png" border="0" usemap="#cbTable_8cpp_aa7e1365c230649b7120d4efd062c34ff_icgraph" alt=""/></div>
+<map name="cbTable_8cpp_aa7e1365c230649b7120d4efd062c34ff_icgraph" id="cbTable_8cpp_aa7e1365c230649b7120d4efd062c34ff_icgraph">
+<area shape="rect" title=" " alt="" coords="257,13,404,39"/>
+<area shape="rect" href="structgraph_1_1cbVirtualDeviceNode.html#a59e0e1a65c957943311dbab9c5c81e1d" title="generate a SQL wf task for now." alt="" coords="5,5,209,47"/>
+</map>
+</div>
 
 </div>
 </div>

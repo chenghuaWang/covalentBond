@@ -1,0 +1,8 @@
+<map id="/home/wang/covalentBond/src/core/server/trivial/cbVirtualDevice.hpp" name="/home/wang/covalentBond/src/core/server/trivial/cbVirtualDevice.hpp">
+<area shape="rect" id="node1" title="abstract virtual device. Provide MySql/Redis/Kafka warper. All virtual device will handle the connect..." alt="" coords="354,5,549,61"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,109,103,136"/>
+<area shape="rect" id="node3" title=" " alt="" coords="127,109,309,136"/>
+<area shape="rect" id="node4" title=" " alt="" coords="333,109,569,136"/>
+<area shape="rect" id="node5" title=" " alt="" coords="594,109,789,136"/>
+<area shape="rect" id="node6" title=" " alt="" coords="813,109,1004,136"/>
+</map>
