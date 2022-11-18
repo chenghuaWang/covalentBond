@@ -13,8 +13,6 @@
 namespace cb {
 namespace utils {
 
-WFFacilities::WaitGroup cbWebserver::__wait_group = WFFacilities::WaitGroup(1);
-
 cbWebserver::~cbWebserver() { delete m_server; }
 
 cbWebserver::cbWebserver(const int32_t& port, const std::string& root)
@@ -90,7 +88,6 @@ void cbWebserver::execMain() {
 
   signal(SIGTERM, signal_kill);
   if (m_server->start(m_port) == 0) {
-    __wait_group.wait();
     m_server->stop();
   } else {
     perror("Cannot start server");
@@ -98,7 +95,9 @@ void cbWebserver::execMain() {
   }
 }
 
-void cbWebserver::signal_kill(int signo) { __wait_group.done(); }
+WFHttpServer* cbWebserver::getServer() { return m_server; }
+
+void cbWebserver::signal_kill(int signo) {}
 
 }  // namespace utils
 }  // namespace cb

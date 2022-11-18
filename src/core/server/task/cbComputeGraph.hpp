@@ -26,6 +26,7 @@
 
 typedef std::function<void(WFGraphTask*)> graph_callback;
 
+namespace cb {
 namespace graph {
 
 class cbComputeGraph;
@@ -341,12 +342,11 @@ class cbComputeGraph {
   std::vector<cbNode*> m_nodes;
   cbGraphSharedMem* m_sharedMem = nullptr;
   cbGraphSharedLuaStack* m_sharedLuaStack = nullptr;
-  // For wait the graph done.
-  WFFacilities::WaitGroup m_waitGroup;
   // Have the state of all Virtual device
   trivial::cbVirtualDeviceManager* m_virtualDevice = nullptr;
 };
 
 };  // namespace graph
+}  // namespace cb
 
 #endif  //!__SERVER_CB_COMPUTE_GRAPH_HPP_

@@ -1,6 +1,7 @@
 #include "cbComputeGraph.hpp"
 #include <workflow/WFGraphTask.h>
 
+namespace cb {
 namespace graph {
 
 cbGraphSharedMem::~cbGraphSharedMem() {
@@ -120,8 +121,7 @@ void cbOperatorNode::overload(sol::function& funcPtr) { Op->overload(funcPtr); }
 cbComputeGraph::cbComputeGraph(int32_t idx)
     : m_idx(idx),
       m_sharedMem(new cbGraphSharedMem()),
-      m_sharedLuaStack(new cbGraphSharedLuaStack()),
-      m_waitGroup(1) {
+      m_sharedLuaStack(new cbGraphSharedLuaStack()) {
   // bind all functions to lua state.
   auto covalentBound = m_sharedLuaStack->get()()["Cb"].get_or_create<sol::table>();
   auto covalentBoundF = covalentBound["F"].get_or_create<sol::table>();
@@ -349,7 +349,6 @@ WFGraphTask* cbComputeGraph::generateGraphTask(const graph_callback& func) {
   WFGraphTask* graph = WFTaskFactory::create_graph_task([=](WFGraphTask* task) {
     fmt::print(fg(fmt::color::steel_blue) | fmt::emphasis::italic,
                "Graph task {} complete. Wakeup main process\n", m_idx);
-    m_waitGroup.done();
   });
   if (!(isDAG() && isSingleOutput())) {
     fmt::print(fg(fmt::color::red), "The graph {} is not DAG or has multi output\n", m_idx);
@@ -376,7 +375,6 @@ WFGraphTask* cbComputeGraph::generateGraphTask(const graph_callback& func) {
 void cbComputeGraph::execMain(WFGraphTask* task, cbComputeGraph* graph) {
   if (task != nullptr && graph != nullptr) {
     task->start();
-    graph->m_waitGroup.wait();
   } else {
     fmt::print(fg(fmt::color::red), "The pointer to task or graph is nullptr\n");
   }
@@ -389,3 +387,4 @@ void cbComputeGraph::execScriptFile(const std::string& filePath) {
 void cbComputeGraph::execScript(const std::string& script) { m_sharedLuaStack->execScript(script); }
 
 };  // namespace graph
+}  // namespace cb

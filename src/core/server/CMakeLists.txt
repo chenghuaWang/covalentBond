@@ -13,6 +13,8 @@ project(
 )
 
 set(TASK_FILES
+./pipeline.cpp
+./pipeline.hpp
 ./task/luaEngine.cpp
 ./task/luaEngine.hpp
 ./task/cbTable.cpp

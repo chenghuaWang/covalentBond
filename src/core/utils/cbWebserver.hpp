@@ -67,12 +67,18 @@ class cbWebserver {
    */
   void execMain();
 
+  /**
+   * @brief Get the Server object
+   *
+   * @return WFHttpServer*
+   */
+  WFHttpServer* getServer();
+
  private:
   static void signal_kill(int signo);
 
   int32_t m_port;
   std::string m_root;
-  static WFFacilities::WaitGroup __wait_group;
   WFHttpServer* m_server;
 };
 
