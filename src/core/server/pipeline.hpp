@@ -1,3 +1,13 @@
+/**
+ * @file pipeline.hpp
+ * @author chenghua Wang (chenghua.wang.edu@gmail.com)
+ * @brief The main pipeline, manage all resources.
+ * @version 0.1
+ * @date 2022-11-19
+ *
+ * @copyright Copyright (c) 2022
+ *
+ */
 #ifndef __SERVER_PIPELINE_HPP_
 #define __SERVER_PIPELINE_HPP_
 

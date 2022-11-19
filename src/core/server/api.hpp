@@ -1,3 +1,13 @@
+/**
+ * @file api.hpp
+ * @author chenghua Wang (chenghua.wang.edu@gmail.com)
+ * @brief The C plus plus API section.
+ * @version 0.1
+ * @date 2022-11-19
+ *
+ * @copyright Copyright (c) 2022
+ *
+ */
 #ifndef __SERVER_API_HPP_
 #define __SERVER_API_HPP_
 

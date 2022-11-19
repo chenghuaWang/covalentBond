@@ -49,12 +49,43 @@ void app::initRHttp() {
   m_rHttp().POST("/add_graph", [this](const HttpReq* req, HttpResp* resp) {
     if (req->content_type() != APPLICATION_JSON) {
       resp->set_status(HttpStatusBadRequest);
+      resp->set_header_pair("Content-Type", "application/json");
+      resp->append_output_body("{\"res\": \"False\"}");
       return;
     }
     Json& kv = req->json();
     auto t =
         cb::apiCPP::addGraph(kv["id"].get<int>(), kv["script"].get<std::string>(), &this->m_VDM);
+    if (!t) {
+      resp->set_status(HttpStatusBadRequest);
+      resp->set_header_pair("Content-Type", "application/json");
+      resp->append_output_body("{\"res\": \"False\"}");
+      return;
+    }
     this->m_graphs.addGraph(t);
+    resp->set_header_pair("Content-Type", "application/json");
+    resp->append_output_body("{\"res\": \"True\"}");
+  });
+
+  m_rHttp().POST("/add_device", [this](const HttpReq* req, HttpResp* resp) {
+    if (req->content_type() != APPLICATION_JSON) {
+      resp->set_status(HttpStatusBadRequest);
+      resp->set_header_pair("Content-Type", "application/json");
+      resp->append_output_body("{\"res\": \"False\"}");
+      return;
+    }
+    Json& kv = req->json();
+    std::string deviceType = kv["deviceType"].get<std::string>();
+    std::string host = kv["host"].get<std::string>();
+    std::string port = kv["port"].get<std::string>();
+    std::string usrName = kv["usrName"].get<std::string>();
+    std::string password = kv["password"].get<std::string>();
+    std::string databaseName = kv["databaseName"].get<std::string>();
+    int32_t curIdx = trivial::cbVirtualDeviceManager::m_numsMySql;
+    this->m_VDM.addMySqlDevice(new trivial::cbMySqlDevice(
+        trivial::cbVirtualDeviceManager::m_numsMySql, port, host, usrName, password, databaseName));
+    resp->set_header_pair("Content-Type", "application/json");
+    resp->append_output_body(fmt::format("{}\"res\": \"{}\" {}", "{", curIdx, "}"));
   });
 }
 
