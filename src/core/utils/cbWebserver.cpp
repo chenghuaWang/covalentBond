@@ -88,12 +88,15 @@ void cbWebserver::execMain() {
 
   signal(SIGTERM, signal_kill);
   if (m_server->start(m_port) == 0) {
-    m_server->stop();
+    fmt::print(fg(fmt::color::steel_blue) | fmt::emphasis::italic,
+               "[ info ] server successfully started.\n");
   } else {
     perror("Cannot start server");
     exit(1);
   }
 }
+
+void cbWebserver::stopMain() { m_server->stop(); }
 
 WFHttpServer* cbWebserver::getServer() { return m_server; }
 

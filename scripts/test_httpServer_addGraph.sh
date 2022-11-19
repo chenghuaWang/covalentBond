@@ -1,0 +1,2 @@
+#!/bin/bash
+curl -H "Content-Type: application/json" -X POST -d "{\"id\": 100, \"script\": \"node_vd_1 = ThisGraph:createVirtualDeviceNode(0);\nnode_vd_2 = ThisGraph:createVirtualDeviceNode(1);\nnode_vd_1:addQuery(\"SELECT * FROM runoob_tbl;\");\nnode_vd_2:addQuery(\"SELECT * FROM runoob_tbl;\");\nnode_vd_1:PointTo(Cb.F.refNode(node_vd_2));\"}" "http://localhost:8080/add_graph"

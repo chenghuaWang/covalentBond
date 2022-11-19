@@ -11,7 +11,7 @@
 #include "luaEngine.hpp"
 
 void bindAllFuncByDefault(sol::state* handle) {
-  (*handle).script_file("../scripts/libCB.lua");
+  (*handle).script_file("/home/wang/covalentBond/scripts/libCB.lua");
 
   auto covalentBound = (*handle)["Cb"].get_or_create<sol::table>();
   auto covalentBoundF = covalentBound["F"].get_or_create<sol::table>();

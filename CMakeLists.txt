@@ -106,6 +106,15 @@ find_package(fmt)
 include(${CB_CMAKE_DIR}/FindLuaJit.cmake)
 include_directories(${LUAJIT_INCLUDE_DIR})
 
+# wfrest
+find_package(wfrest REQUIRED CONFIG HINTS ..)
+include_directories(${WFREST_INCLUDE_DIR})
+if (APPLE)
+	set(WFREST_LIB wfrest workflow pthread OpenSSL::SSL OpenSSL::Crypto protobuf z)
+else ()
+	set(WFREST_LIB wfrest)
+endif ()
+
 # srpc
 find_package(srpc REQUIRED CONFIG HINTS ..)
 set(protobuf_MODULE_COMPATIBLE ON CACHE BOOL "")

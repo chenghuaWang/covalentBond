@@ -1,10 +1,14 @@
 #include "pipeline.hpp"
-#include "cbWebserver.hpp"
 
-using namespace cb::utils;
-using namespace cb::pipeline;
+static WFFacilities::WaitGroup wait_group(3);
 
-static WFFacilities::WaitGroup wait_group(1);
+void sig_handler(int signo) {
+  fmt::print("Bye.\n");
+  wait_group.done();
+  wait_group.done();
+  wait_group.done();
+  exit(0);
+}
 
 int main() {
   // cbComputeGraph* cbg = new cbComputeGraph(0);
@@ -35,9 +39,15 @@ int main() {
 
   // delete cbg;
   // delete cbVDM;
-  auto g = graphContainer(5);
-  auto w = cbWebserver(8888, "/home/wang/covalentBond/bin/");
-  g.execMain();
-  w.getServer()->start(8888);
+  signal(SIGINT, sig_handler);
+  char root[] = "/home/wang/covalentBond/bin/";
+  auto App = cb::pipeline::app(cb::pipeline::appCfg{
+      .webPort = 8888,
+      .webRoot = root,
+      .rHttpPort = 8080,
+      .graphExecSec = 5,
+  });
+  App.execMain();
   wait_group.wait();
+  App.stopMain();
 }

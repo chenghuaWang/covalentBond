@@ -13,6 +13,8 @@ project(
 )
 
 set(TASK_FILES
+./api.cpp
+./api.hpp
 ./pipeline.cpp
 ./pipeline.hpp
 ./task/luaEngine.cpp
@@ -40,7 +42,7 @@ liveThread.cpp
 ${UTILS_FILE_SRC} 
 ${UTILS_FILE_HEAD} 
 ${TASK_FILES})
-target_link_libraries(cb-server ${WORKFLOW_LIB} ${SRPC_LIB})
+target_link_libraries(cb-server ${WORKFLOW_LIB} ${SRPC_LIB} ${WFREST_LIB})
 if(GLOG_FOUND)
-target_link_libraries(cb-server glog fmt::fmt ${LUAJIT_LIBRARY})
+target_link_libraries(cb-server glog fmt::fmt ${LUAJIT_LIBRARY} ${WORKFLOW_LIB} ${SRPC_LIB} ${WFREST_LIB})
 endif(GLOG_FOUND)

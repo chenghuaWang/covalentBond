@@ -15,7 +15,9 @@
 #include <workflow/WFTaskFactory.h>
 
 #include "cbWebserver.hpp"
+#include "cbRestfulHttpServer.hpp"
 #include "task/cbComputeGraph.hpp"
+#include "trivial/cbVirtualDevice.hpp"
 
 namespace cb {
 namespace pipeline {
@@ -37,9 +39,40 @@ class graphContainer {
   int32_t m_loopTime = 10;  ///! nano seconds.
 };
 
+struct appCfg {
+  unsigned short webPort;
+  char* webRoot;
+  unsigned short rHttpPort;
+  int32_t graphExecSec;
+};
+
 class app {
  public:
+  app(const appCfg& cfg);
+
+  /**
+   * @brief
+   *
+   */
+  void initRHttp();
+
+  /**
+   * @brief
+   *
+   */
+  void execMain();
+
+  /**
+   * @brief
+   *
+   */
+  void stopMain();
+
  private:
+  graphContainer m_graphs;
+  utils::cbWebserver m_web;
+  utils::cbRestfulHttpServer m_rHttp;
+  trivial::cbVirtualDeviceManager m_VDM;
 };
 
 }  // namespace pipeline

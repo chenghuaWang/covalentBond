@@ -23,7 +23,6 @@
 #ifndef __UTILS_CB_WEB_SERVER_HPP_
 #define __UTILS_CB_WEB_SERVER_HPP_
 
-#include <cstdint>
 #ifdef _WIN32
 #if _MSC_VER > 1000
 #pragma once
@@ -66,6 +65,12 @@ class cbWebserver {
    *
    */
   void execMain();
+
+  /**
+   * @brief
+   *
+   */
+  void stopMain();
 
   /**
    * @brief Get the Server object

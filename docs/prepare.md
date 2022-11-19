@@ -119,6 +119,15 @@ cd ..
 cd ..
 ```
 
+#### wfrest
+
+```shell
+git clone --recursive https://github.com/wfrest/wfrest
+cd wfrest
+make CC=clang
+sudo make install
+```
+
 ### Frontend components
 
 We adopt [flutter](https://flutter.dev) to build our front end. The dart packages we used is illustrated bellow:
