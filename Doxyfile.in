@@ -8,7 +8,7 @@ INPUT               = @CMAKE_CURRENT_LIST_DIR@/src/core/server \
                       @CMAKE_CURRENT_LIST_DIR@/src/core/server/task \
                       @CMAKE_CURRENT_LIST_DIR@/src/core/server/mem \
                       @CMAKE_CURRENT_LIST_DIR@/src/core/server/trivial \
-                      @CMAKE_CURRENT_LIST_DIR@/src/core/util \
+                      @CMAKE_CURRENT_LIST_DIR@/src/core/utils \
                       @CMAKE_CURRENT_LIST_DIR@/src/core/pch.cpp \ 
                       @CMAKE_CURRENT_LIST_DIR@/src/core/pch.hpp 
  

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['cbmysqltype_791',['cbMySQLType',['../cbTable_8hpp.html#a01c5c0e4626767df64f713f605c4b847',1,'cbTable.hpp']]],
-  ['cbtableslice_792',['cbTableSlice',['../cbTable_8hpp.html#ad9d4d513448f20ba8f4fe5f8fa768cd7',1,'cbTable.hpp']]]
+  ['arg_5ftype_912',['arg_type',['../namespaceargp.html#adb7f0dbc4bdf6ac1cd05eb9c9c84e385',1,'argp']]]
 ];

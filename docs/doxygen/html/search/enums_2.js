@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['optype_794',['opType',['../cbOperator_8hpp.html#a39f86f1414ae2e84c17fdede1fa78343',1,'cbOperator.hpp']]]
+  ['nodetype_915',['nodeType',['../namespacecb_1_1graph.html#a26e08891d43431120278270dcc0822d6',1,'cb::graph']]]
 ];

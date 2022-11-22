@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['trivial_395',['trivial',['../namespacetrivial.html',1,'']]]
+  ['trivial_528',['trivial',['../namespacetrivial.html',1,'']]]
 ];

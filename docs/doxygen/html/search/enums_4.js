@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['virtualdevicetype_796',['virtualDeviceType',['../namespacetrivial.html#af058f77cc92ec5e68b23e8b725bc4620',1,'trivial']]]
+  ['typetype_917',['typeType',['../cbTable_8hpp.html#a3a97832253f4f33229075c2c6fc9e43f',1,'cbTable.hpp']]]
 ];

@@ -1,4 +1,6 @@
 <map id="cb::pipeline::app::stopMain" name="cb::pipeline::app::stopMain">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,143,47"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,71,143,112"/>
 <area shape="rect" id="node2" href="$classcb_1_1pipeline_1_1graphContainer.html#a14463012d9f1ace2cfbd7a5e25a67501" title=" " alt="" coords="191,5,396,47"/>
+<area shape="rect" id="node3" href="$classcb_1_1utils_1_1cbRestfulHttpServer.html#ad2a072c6c9711cdad56c7aea87794e7e" title=" " alt="" coords="208,71,379,112"/>
+<area shape="rect" id="node4" href="$classcb_1_1utils_1_1cbWebserver.html#adf181ee51d7da83f320155f9620c420d" title=" " alt="" coords="211,136,376,177"/>
 </map>

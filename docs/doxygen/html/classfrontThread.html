@@ -81,8 +81,9 @@ Collaboration diagram for frontThread:</div>
 <div class="dyncontent">
 <div class="center"><img src="classfrontThread__coll__graph.png" border="0" usemap="#frontThread_coll__map" alt="Collaboration graph"/></div>
 <map name="frontThread_coll__map" id="frontThread_coll__map">
-<area shape="rect" title="_WIN32" alt="" coords="21,95,119,121"/>
+<area shape="rect" title="_WIN32" alt="" coords="97,95,195,121"/>
 <area shape="rect" href="structtrivial_1_1cacheFile.html" title=" " alt="" coords="5,5,135,32"/>
+<area shape="rect" href="structcb_1_1utils_1_1sysInfo.html" title=" " alt="" coords="159,5,287,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -97,7 +98,7 @@ Public Member Functions</h2></td></tr>
 Private Attributes</h2></td></tr>
 <tr class="memitem:ae16904d984d93348b740500fd8ee3265"><td class="memItemLeft" align="right" valign="top">unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfrontThread.html#ae16904d984d93348b740500fd8ee3265">m_httpServerPort</a> = 8888</td></tr>
 <tr class="separator:ae16904d984d93348b740500fd8ee3265"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac6cf2a68f2f39769013375b8a9692101"><td class="memItemLeft" align="right" valign="top">cb::utils::sysInfo&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfrontThread.html#ac6cf2a68f2f39769013375b8a9692101">m_sysInfo</a></td></tr>
+<tr class="memitem:ac6cf2a68f2f39769013375b8a9692101"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structcb_1_1utils_1_1sysInfo.html">cb::utils::sysInfo</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfrontThread.html#ac6cf2a68f2f39769013375b8a9692101">m_sysInfo</a></td></tr>
 <tr class="separator:ac6cf2a68f2f39769013375b8a9692101"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b6d5e32d0243c091284ded2bff98f07"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtrivial_1_1cacheFile.html">trivial::cacheFile</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfrontThread.html#a6b6d5e32d0243c091284ded2bff98f07">m_cacheFile</a></td></tr>
 <tr class="separator:a6b6d5e32d0243c091284ded2bff98f07"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -150,14 +151,16 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="liveThread_8hpp_source.html#l00019">19</a> of file <a class="el" href="liveThread_8hpp_source.html">liveThread.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cfgIO_8hpp_source.html#l00035">trivial::cacheFile::describe</a>, <a class="el" href="liveThread_8hpp_source.html#l00041">m_cacheFile</a>, <a class="el" href="liveThread_8hpp_source.html#l00040">m_sysInfo</a>, <a class="el" href="cfgIO_8hpp_source.html#l00034">trivial::cacheFile::name</a>, <a class="el" href="cfgIO_8hpp_source.html#l00036">trivial::cacheFile::osInfo</a>, and <a class="el" href="cfgIO_8cpp_source.html#l00005">trivial::writeCacheFileBinary()</a>.</p>
+<p class="reference">References <a class="el" href="cfgIO_8hpp_source.html#l00035">trivial::cacheFile::describe</a>, <a class="el" href="sysStatus_8cpp_source.html#l00006">cb::utils::getMemoryInfo()</a>, <a class="el" href="sysStatus_8cpp_source.html#l00017">cb::utils::getOsInfo()</a>, <a class="el" href="liveThread_8hpp_source.html#l00041">m_cacheFile</a>, <a class="el" href="sysStatus_8hpp_source.html#l00039">cb::utils::sysInfo::m_osInfo</a>, <a class="el" href="liveThread_8hpp_source.html#l00040">m_sysInfo</a>, <a class="el" href="cfgIO_8hpp_source.html#l00034">trivial::cacheFile::name</a>, <a class="el" href="cfgIO_8hpp_source.html#l00036">trivial::cacheFile::osInfo</a>, and <a class="el" href="cfgIO_8cpp_source.html#l00005">trivial::writeCacheFileBinary()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classfrontThread_a85195922d59180188da9c36ca8b0c88b_cgraph.png" border="0" usemap="#classfrontThread_a85195922d59180188da9c36ca8b0c88b_cgraph" alt=""/></div>
 <map name="classfrontThread_a85195922d59180188da9c36ca8b0c88b_cgraph" id="classfrontThread_a85195922d59180188da9c36ca8b0c88b_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,188,32"/>
-<area shape="rect" href="namespacetrivial.html#afecfd2ba702b796530fa861471240988" title=" " alt="" coords="236,5,443,32"/>
+<area shape="rect" title=" " alt="" coords="5,56,188,83"/>
+<area shape="rect" href="namespacecb_1_1utils.html#aecb9f2ac2d79cf91cad4b0095a572f89" title=" " alt="" coords="249,5,430,32"/>
+<area shape="rect" href="namespacecb_1_1utils.html#aac59d98b8587788fd3400f8836683cb1" title=" " alt="" coords="267,56,411,83"/>
+<area shape="rect" href="namespacetrivial.html#afecfd2ba702b796530fa861471240988" title=" " alt="" coords="236,107,443,133"/>
 </map>
 </div>
 
@@ -189,7 +192,7 @@ Here is the call graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="liveThread_8cpp_source.html#l00014">14</a> of file <a class="el" href="liveThread_8cpp_source.html">liveThread.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="liveThread_8hpp_source.html#l00039">m_httpServerPort</a>, and <a class="el" href="liveThread_8hpp_source.html#l00040">m_sysInfo</a>.</p>
+<p class="reference">References <a class="el" href="liveThread_8hpp_source.html#l00039">m_httpServerPort</a>, <a class="el" href="sysStatus_8hpp_source.html#l00039">cb::utils::sysInfo::m_osInfo</a>, and <a class="el" href="liveThread_8hpp_source.html#l00040">m_sysInfo</a>.</p>
 
 </div>
 </div>
@@ -256,7 +259,7 @@ Here is the call graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">cb::utils::sysInfo frontThread::m_sysInfo</td>
+          <td class="memname"><a class="el" href="structcb_1_1utils_1_1sysInfo.html">cb::utils::sysInfo</a> frontThread::m_sysInfo</td>
         </tr>
       </table>
   </td>
