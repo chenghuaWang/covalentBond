@@ -1,53 +1,54 @@
+#include <cstring>
+#include "argparse.hpp"
 #include "pipeline.hpp"
 
-static WFFacilities::WaitGroup wait_group(3);
+#define HELP_STR ""
 
-void sig_handler(int signo) {
-  fmt::print("Bye.\n");
-  wait_group.done();
-  wait_group.done();
-  wait_group.done();
-  exit(0);
-}
+static WFFacilities::WaitGroup wait_group(1);
+static WFFacilities::WaitGroup wait_group_end(1);
 
-int main() {
-  // cbComputeGraph* cbg = new cbComputeGraph(0);
-  // cbVirtualDeviceManager* cbVDM = new cbVirtualDeviceManager();
+void sig_handler(int signo) { wait_group.done(); }
 
-  // // Connection 0
-  // cbVDM->addMySqlDevice(new cbMySqlDevice(cbVirtualDeviceManager::m_numsMySql, "3306",
-  //                                         "27.208.84.114", "django_user", "django_user",
-  //                                         "testdb"));
+int main(int argc, char* argv[]) {
+  argp::parser args;
+  args.add_arg("--help", "-H", false);
+  args.add_arg<std::string>("--webRoot", "-R", argp::arg_type::t_string, ".", true);
+  args.add_arg<int>("--webPort", "-Wp", argp::arg_type::t_int, 8888, true);
+  args.add_arg<int>("--httpPort", "-Hp", argp::arg_type::t_int, 8080, true);
+  args.add_arg<int>("--execSec", "-S", argp::arg_type::t_int, 10, false);
 
-  // // Connection 1
-  // cbVDM->addMySqlDevice(new cbMySqlDevice(cbVirtualDeviceManager::m_numsMySql, "3306",
-  //                                         "27.208.84.114", "django_user", "django_user",
-  //                                         "testdb"));
+  args.parse(argc, argv);
 
-  // cbg->setVirtualDeviceManager(cbVDM);
+  if (args.has_item("help")) {
+    std::cout << HELP_STR << std::endl;
+    args.show_all_defined();
+    exit(0);
+  }
 
-  // cbg->execScript(
-  //     "node_vd_1 = ThisGraph:createVirtualDeviceNode(0);"
-  //     "node_vd_2 = ThisGraph:createVirtualDeviceNode(1);"
-  //     "node_vd_1:addQuery(\"SELECT * FROM runoob_tbl;\");"
-  //     "node_vd_2:addQuery(\"SELECT * FROM runoob_tbl;\");"
-  //     "node_combine_op = ThisGraph:createCombineNode(Cb.F.PackedStringToVec(\"a\", \"b\"));"
-  //     "node_vd_1:PointTo(Cb.F.refNode(node_combine_op));"
-  //     "node_vd_2:PointTo(Cb.F.refNode(node_combine_op));");
+  cb::pipeline::appCfg cfg;
 
-  // cbComputeGraph::execMain(cbg->generateGraphTask(), cbg);
+  cfg.webPort = args.get_item<int>("webPort");
+  cfg.webRoot = args.get_item<std::string>("webRoot").c_str();
+  cfg.rHttpPort = args.get_item<int>("httpPort");
+  cfg.graphExecSec = args.get_item<int>("execSec");
 
-  // delete cbg;
-  // delete cbVDM;
   signal(SIGINT, sig_handler);
-  char root[] = "/home/wang/covalentBond/bin/";
-  auto App = cb::pipeline::app(cb::pipeline::appCfg{
-      .webPort = 8888,
-      .webRoot = root,
-      .rHttpPort = 8080,
-      .graphExecSec = 5,
-  });
+  signal(SIGTERM, sig_handler);
+  signal(SIGKILL, sig_handler);
+
+  auto App = cb::pipeline::app(cfg);
   App.execMain();
   wait_group.wait();
   App.stopMain();
+  // Waiting for 10 sec for graph tasks in queue done.
+  fmt::print(fg(fmt::color::steel_blue) | fmt::emphasis::italic,
+             "Waiting about 10 sec for graph tasks in queue done.\n");
+  WFTimerTask* timerToEnd = WFTaskFactory::create_timer_task(10, 0, [=](WFTimerTask* task) {
+    fmt::print(fg(fmt::color::steel_blue) | fmt::emphasis::italic, "All tasks were done.\n");
+    wait_group_end.done();
+  });
+  timerToEnd->start();
+  wait_group_end.wait();
+  fmt::print("\nBye.\n");
+  return 0;
 }

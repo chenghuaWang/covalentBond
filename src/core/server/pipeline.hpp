@@ -43,15 +43,17 @@ class graphContainer {
 
   void addGraph(graph::cbComputeGraph* g);
   void execMain();
+  void setTerminated(bool enable);
 
  private:
+  bool m_isTerminated = false;
   std::vector<graph::cbComputeGraph*> m_graphs;
   int32_t m_loopTime = 10;  ///! nano seconds.
 };
 
 struct appCfg {
   unsigned short webPort;
-  char* webRoot;
+  const char* webRoot;
   unsigned short rHttpPort;
   int32_t graphExecSec;
 };
