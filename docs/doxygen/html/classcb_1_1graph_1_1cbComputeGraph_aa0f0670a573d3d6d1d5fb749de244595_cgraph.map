@@ -1,0 +1,6 @@
+<map id="cb::graph::cbComputeGraph::createVirtualDeviceNode" name="cb::graph::cbComputeGraph::createVirtualDeviceNode">
+<area shape="rect" id="node1" title="create nodes belongs to this graph." alt="" coords="5,71,208,112"/>
+<area shape="rect" id="node2" href="$classtrivial_1_1cbVirtualDeviceManager.html#a5043a1d0223e6a54a9bb83c66f7af65f" title=" " alt="" coords="261,5,454,47"/>
+<area shape="rect" id="node3" href="$classcb_1_1graph_1_1cbComputeGraph.html#a7a1c29e13a0088b9cb1530e80b4f8a6b" title="register a node. Not used by lua binding." alt="" coords="256,71,459,112"/>
+<area shape="rect" id="node4" href="$structcb_1_1graph_1_1cbVirtualDeviceNode.html#a64c4b3d0a76f4e93477ae52f2072bab2" title=" " alt="" coords="261,136,454,177"/>
+</map>

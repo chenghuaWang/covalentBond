@@ -1,9 +1,13 @@
 <map id="/home/wang/covalentBond/src/core/server/task/luaEngine.hpp" name="/home/wang/covalentBond/src/core/server/task/luaEngine.hpp">
-<area shape="rect" id="node1" title="A lua engine for execute all c++ embedding in struct. A warper of lua JIT engine." alt="" coords="249,5,444,61"/>
-<area shape="rect" id="node2" href="$cbComputeGraph_8hpp.html" title="The compute graph(DAG), a prepared graph for task flow to execute. It works as a state machine." alt="" coords="115,213,309,269"/>
-<area shape="rect" id="node5" href="$cbOperator_8hpp.html" title="The operator of compute graph." alt="" coords="249,109,444,165"/>
-<area shape="rect" id="node7" href="$luaEngine_8cpp.html" title="The impl of lua engine and meta class." alt="" coords="468,109,663,165"/>
-<area shape="rect" id="node3" href="$main_8cpp.html" title=" " alt="" coords="5,325,200,366"/>
-<area shape="rect" id="node4" href="$cbComputeGraph_8cpp.html" title=" " alt="" coords="224,317,419,373"/>
-<area shape="rect" id="node6" href="$cbOperator_8cpp.html" title=" " alt="" coords="333,213,528,269"/>
+<area shape="rect" id="node1" title="A lua engine for execute all c++ embedding in struct. A warper of lua JIT engine." alt="" coords="476,5,671,61"/>
+<area shape="rect" id="node2" href="$cbComputeGraph_8hpp.html" title="The compute graph(DAG), a prepared graph for task flow to execute. It works as a state machine." alt="" coords="341,213,536,269"/>
+<area shape="rect" id="node9" href="$cbOperator_8hpp.html" title="The operator of compute graph." alt="" coords="476,109,671,165"/>
+<area shape="rect" id="node11" href="$luaEngine_8cpp.html" title="The impl of lua engine and meta class." alt="" coords="695,109,889,165"/>
+<area shape="rect" id="node3" href="$api_8hpp.html" title="The C plus plus API section." alt="" coords="116,325,311,366"/>
+<area shape="rect" id="node6" href="$pipeline_8hpp.html" title="The main pipeline, manage all resources." alt="" coords="335,325,542,366"/>
+<area shape="rect" id="node8" href="$cbComputeGraph_8cpp.html" title=" " alt="" coords="567,317,761,373"/>
+<area shape="rect" id="node4" href="$api_8cpp.html" title=" " alt="" coords="5,421,200,463"/>
+<area shape="rect" id="node5" href="$pipeline_8cpp.html" title=" " alt="" coords="224,421,429,463"/>
+<area shape="rect" id="node7" href="$main_8cpp.html" title=" " alt="" coords="453,421,648,463"/>
+<area shape="rect" id="node10" href="$cbOperator_8cpp.html" title=" " alt="" coords="560,213,755,269"/>
 </map>

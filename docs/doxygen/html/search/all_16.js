@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['writecachefilebinary_328',['writeCacheFileBinary',['../namespacetrivial.html#afecfd2ba702b796530fa861471240988',1,'trivial']]]
+  ['virtualdevicetype_378',['virtualDeviceType',['../namespacetrivial.html#af058f77cc92ec5e68b23e8b725bc4620',1,'trivial']]]
 ];

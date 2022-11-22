@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['baseop_353',['baseOp',['../structbaseOp.html',1,'']]]
+  ['app_409',['app',['../classcb_1_1pipeline_1_1app.html',1,'cb::pipeline']]],
+  ['appcfg_410',['appCfg',['../structcb_1_1pipeline_1_1appCfg.html',1,'cb::pipeline']]]
 ];

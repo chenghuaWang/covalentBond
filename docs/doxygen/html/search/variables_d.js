@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['url_700',['Url',['../structtrivial_1_1cbVirtualDevice.html#a3382b83d6b644d59f516748becf3944b',1,'trivial::cbVirtualDevice']]],
-  ['usrname_701',['usrName',['../structtrivial_1_1cbVirtualDevice.html#a0a979b77431179fa4d1b041bbb1af01c',1,'trivial::cbVirtualDevice']]]
+  ['task_778',['task',['../structcb_1_1graph_1_1cbNode.html#a6b28c6eb0d32d01a2dffbe0dd32f7231',1,'cb::graph::cbNode']]],
+  ['type_779',['type',['../structbaseOp.html#a278a8f122fe6cff63c08d7d16eefd746',1,'baseOp']]]
 ];

@@ -1,8 +1,9 @@
 var searchData=
 [
-  ['ull_322',['ULL',['../cbTable_8hpp.html#a01c5c0e4626767df64f713f605c4b847a0011c24087481b2df247907c37792abb',1,'cbTable.hpp']]],
-  ['update_323',['update',['../classcb_1_1cbLRUCache.html#a0b280e9228160d9712ed2d725228adbf',1,'cb::cbLRUCache']]],
-  ['updateurl_324',['updateUrl',['../structtrivial_1_1cbVirtualDevice.html#acb3ab9149e096faeca30788786394f28',1,'trivial::cbVirtualDevice::updateUrl()'],['../structtrivial_1_1cbMySqlDevice.html#ae6b1c36738c19c18e553fbbb06a55f96',1,'trivial::cbMySqlDevice::updateUrl()'],['../structtrivial_1_1cbRedisDevice.html#a1492a39e6925e1ed91675190b9a25147',1,'trivial::cbRedisDevice::updateUrl()'],['../structtrivial_1_1cbKafkaDevice.html#a7b467464528819ce0fe8b892587a0ac8',1,'trivial::cbKafkaDevice::updateUrl()']]],
-  ['url_325',['Url',['../structtrivial_1_1cbVirtualDevice.html#a3382b83d6b644d59f516748becf3944b',1,'trivial::cbVirtualDevice']]],
-  ['usrname_326',['usrName',['../structtrivial_1_1cbVirtualDevice.html#a0a979b77431179fa4d1b041bbb1af01c',1,'trivial::cbVirtualDevice']]]
+  ['tablewise_367',['tableWise',['../cbOperator_8hpp.html#a39f86f1414ae2e84c17fdede1fa78343ad4379f6daa91d6bf584dd96c7cdf9057',1,'cbOperator.hpp']]],
+  ['task_368',['task',['../structcb_1_1graph_1_1cbNode.html#a6b28c6eb0d32d01a2dffbe0dd32f7231',1,'cb::graph::cbNode']]],
+  ['time_369',['Time',['../cbTable_8hpp.html#a01c5c0e4626767df64f713f605c4b847aa76d4ef5f3f6a672bbfab2865563e530',1,'cbTable.hpp']]],
+  ['trivial_370',['trivial',['../namespacetrivial.html',1,'']]],
+  ['type_371',['type',['../structbaseOp.html#a278a8f122fe6cff63c08d7d16eefd746',1,'baseOp']]],
+  ['typetype_372',['typeType',['../cbTable_8hpp.html#a3a97832253f4f33229075c2c6fc9e43f',1,'cbTable.hpp']]]
 ];

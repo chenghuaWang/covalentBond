@@ -71,7 +71,42 @@ $(function() {
 <div class="title">api.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="api_8hpp.html">Go to the documentation of this file.</a><div class="fragment"></div><!-- fragment --></div><!-- contents -->
+<a href="api_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#ifndef __SERVER_API_HPP_</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#define __SERVER_API_HPP_</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#ifdef _WIN32</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#if _MSC_VER &gt; 1000</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#endif  </span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor"></span> </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#if defined(__unix__) &amp;&amp; defined(__clang__)</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#endif  </span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor"></span> </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;../pch.hpp&quot;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="cbComputeGraph_8hpp.html">task/cbComputeGraph.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="cbVirtualDevice_8hpp.html">trivial/cbVirtualDevice.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacecb.html">cb</a> {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">namespace </span>apiCPP {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<a class="code" href="classcb_1_1graph_1_1cbComputeGraph.html">cb::graph::cbComputeGraph</a>* <a class="code" href="namespacecb_1_1apiCPP.html#ab11ed93ce05b63c36406158a26bce167">addGraph</a>(int32_t idx, <span class="keyword">const</span> std::string&amp; cmd,</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                                    <a class="code" href="classtrivial_1_1cbVirtualDeviceManager.html">trivial::cbVirtualDeviceManager</a>* vdm);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;}  <span class="comment">// namespace apiCPP</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}  <span class="comment">// namespace cb</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#endif  //! __SERVER_API_HPP_</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclasscb_1_1graph_1_1cbComputeGraph_html"><div class="ttname"><a href="classcb_1_1graph_1_1cbComputeGraph.html">cb::graph::cbComputeGraph</a></div><div class="ttdef"><b>Definition:</b> <a href="cbComputeGraph_8hpp_source.html#l00193">cbComputeGraph.hpp:193</a></div></div>
+<div class="ttc" id="anamespacecb_html"><div class="ttname"><a href="namespacecb.html">cb</a></div><div class="ttdoc">_WIN32</div><div class="ttdef"><b>Definition:</b> <a href="api_8cpp_source.html#l00003">api.cpp:3</a></div></div>
+<div class="ttc" id="acbComputeGraph_8hpp_html"><div class="ttname"><a href="cbComputeGraph_8hpp.html">cbComputeGraph.hpp</a></div><div class="ttdoc">The compute graph(DAG), a prepared graph for task flow to execute. It works as a state machine.</div></div>
+<div class="ttc" id="aclasstrivial_1_1cbVirtualDeviceManager_html"><div class="ttname"><a href="classtrivial_1_1cbVirtualDeviceManager.html">trivial::cbVirtualDeviceManager</a></div><div class="ttdef"><b>Definition:</b> <a href="cbVirtualDevice_8hpp_source.html#l00236">cbVirtualDevice.hpp:236</a></div></div>
+<div class="ttc" id="acbVirtualDevice_8hpp_html"><div class="ttname"><a href="cbVirtualDevice_8hpp.html">cbVirtualDevice.hpp</a></div><div class="ttdoc">abstract virtual device. Provide MySql/Redis/Kafka warper. All virtual device will handle the connect...</div></div>
+<div class="ttc" id="anamespacecb_1_1apiCPP_html_ab11ed93ce05b63c36406158a26bce167"><div class="ttname"><a href="namespacecb_1_1apiCPP.html#ab11ed93ce05b63c36406158a26bce167">cb::apiCPP::addGraph</a></div><div class="ttdeci">cb::graph::cbComputeGraph * addGraph(int32_t idx, const std::string &amp;cmd, trivial::cbVirtualDeviceManager *vdm)</div><div class="ttdef"><b>Definition:</b> <a href="api_8cpp_source.html#l00006">api.cpp:6</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

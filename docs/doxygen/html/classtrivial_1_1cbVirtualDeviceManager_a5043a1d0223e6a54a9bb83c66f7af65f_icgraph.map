@@ -1,5 +1,5 @@
 <map id="trivial::cbVirtualDeviceManager::getMySqlDevice" name="trivial::cbVirtualDeviceManager::getMySqlDevice">
-<area shape="rect" id="node1" title=" " alt="" coords="475,5,668,47"/>
-<area shape="rect" id="node2" href="$classgraph_1_1cbComputeGraph.html#a8cb8284f35d6e846f31c7f8198cd7299" title="create nodes belongs to this graph." alt="" coords="233,5,427,47"/>
-<area shape="rect" id="node3" href="$classgraph_1_1cbComputeGraph.html#a957671e0e37714251be904aa94dab344" title=" " alt="" coords="5,5,185,47"/>
+<area shape="rect" id="node1" title=" " alt="" coords="507,5,700,47"/>
+<area shape="rect" id="node2" href="$classcb_1_1graph_1_1cbComputeGraph.html#aa0f0670a573d3d6d1d5fb749de244595" title="create nodes belongs to this graph." alt="" coords="256,5,459,47"/>
+<area shape="rect" id="node3" href="$classcb_1_1graph_1_1cbComputeGraph.html#a13c2949f64f239419580ce105a4dd23c" title=" " alt="" coords="5,5,208,47"/>
 </map>
