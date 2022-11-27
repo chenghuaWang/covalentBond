@@ -66,8 +66,8 @@ void cbRedisDevice::updateUrl() {
   } else {
     ss << "redis://:";
   }
-  ss << passWord << "@" << host << ":" << port << "/" << std::to_string(m_dbnum)
-     << "?query#fragment";
+  ss << passWord << "@" << host << ":" << port << "/" << std::to_string(m_dbnum);
+  //  << "?query#fragment";
   Url = ss.str();
 }
 
@@ -81,9 +81,24 @@ WFRedisTask* cbRedisDevice::set(const std::vector<std::string>& params,
   return task;
 }
 
-WFRedisTask* cbRedisDevice::get() {
-  // TODO
-  return nullptr;
+WFRedisTask* cbRedisDevice::get(const std::vector<std::string>& params,
+                                const redis_callback& callback_func, void* usrData,
+                                int32_t retryTimes) {
+  WFRedisTask* task = WFTaskFactory::create_redis_task(Url, retryTimes, callback_func);
+  protocol::RedisRequest* req = task->get_req();
+  req->set_request("GET", params);
+  task->user_data = usrData;
+  return task;
+}
+
+WFRedisTask* cbRedisDevice::exists(const std::vector<std::string>& params,
+                                   const redis_callback& callback_func, void* usrData,
+                                   int32_t retryTimes) {
+  WFRedisTask* task = WFTaskFactory::create_redis_task(Url, retryTimes, callback_func);
+  protocol::RedisRequest* req = task->get_req();
+  req->set_request("EXISTS", params);
+  task->user_data = usrData;
+  return task;
 }
 
 void cbRedisDevice::execMain(WFRedisTask* task) { task->start(); }

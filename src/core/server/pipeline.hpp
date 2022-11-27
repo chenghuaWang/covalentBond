@@ -56,6 +56,11 @@ struct appCfg {
   const char* webRoot;
   unsigned short rHttpPort;
   int32_t graphExecSec;
+  const char* redisHost;
+  const char* redisPassword;
+  const char* redisPort;
+  int32_t redisDBNum = 1;
+  bool redisSSL = false;
 };
 
 class app {

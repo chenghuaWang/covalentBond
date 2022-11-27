@@ -45,7 +45,12 @@ void graphContainer::execMain() {
 void graphContainer::setTerminated(bool enable) { m_isTerminated = enable; }
 
 app::app(const appCfg& cfg)
-    : m_graphs(cfg.graphExecSec), m_web(cfg.webPort, cfg.webRoot), m_rHttp(cfg.rHttpPort) {}
+    : m_graphs(cfg.graphExecSec), m_web(cfg.webPort, cfg.webRoot), m_rHttp(cfg.rHttpPort) {
+  // connect Redis
+  this->m_VDM.addRedisDevice(new trivial::cbRedisDevice(
+      trivial::cbVirtualDeviceManager::m_numsRedis++, cfg.redisPort, cfg.redisHost, "",
+      cfg.redisPassword, cfg.redisDBNum, cfg.redisSSL));
+}
 
 void app::initRHttp() {
   /**

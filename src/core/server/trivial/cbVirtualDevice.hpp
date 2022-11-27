@@ -205,7 +205,31 @@ struct cbRedisDevice final : public cbVirtualDevice {
                    const redis_callback& callback_func = nullptr, void* usrData = nullptr,
                    int32_t retryTimes = 3);
 
-  WFRedisTask* get();
+  /**
+   * @brief
+   *
+   * @param params
+   * @param callback_func
+   * @param usrData
+   * @param retryTimes
+   * @return WFRedisTask*
+   */
+  WFRedisTask* get(const std::vector<std::string>& params,
+                   const redis_callback& callback_func = nullptr, void* usrData = nullptr,
+                   int32_t retryTimes = 3);
+
+  /**
+   * @brief
+   *
+   * @param params
+   * @param callback_func
+   * @param usrData
+   * @param retryTimes
+   * @return WFRedisTask*
+   */
+  WFRedisTask* exists(const std::vector<std::string>& params,
+                      const redis_callback& callback_func = nullptr, void* usrData = nullptr,
+                      int32_t retryTimes = 3);
 
   /**
    * @brief User should not use this function. All task should be added to graph node in order to

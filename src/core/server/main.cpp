@@ -28,13 +28,25 @@ int main(int argc, char* argv[]) {
   args.add_arg<int>("--webPort", "-Wp", argp::arg_type::t_int, 8888, true);
   args.add_arg<int>("--httpPort", "-Hp", argp::arg_type::t_int, 8080, true);
   args.add_arg<int>("--execSec", "-S", argp::arg_type::t_int, 10, false);
+  args.add_arg<std::string>("--redisHost", "-Rh", argp::arg_type::t_string, true);
+  args.add_arg<std::string>("--redisPassword", "-Rpa", argp::arg_type::t_string, true);
+  args.add_arg<std::string>("--redisPort", "-Rpo", argp::arg_type::t_string, true);
+  args.add_arg<int>("--redisDBNum", "-RDBNum", argp::arg_type::t_int, 1, false);
+  args.add_arg<int>("--redisSSL", "-Rs", argp::arg_type::t_int, 0, false);
 
   args.parse(argc, argv);
 
   if (args.has_item("help")) {
     std::cout << HELP_STR << std::endl;
     args.show_all_defined();
-    exit(0);
+    exit(1);
+  }
+
+  if (!(args.has_item("redisHost") && args.has_item("redisPassword")
+        && args.has_item("redisPort"))) {
+    std::cout << HELP_STR << std::endl;
+    args.show_all_defined();
+    exit(1);
   }
 
   cb::pipeline::appCfg cfg;
@@ -43,6 +55,11 @@ int main(int argc, char* argv[]) {
   cfg.webRoot = args.get_item<std::string>("webRoot").c_str();
   cfg.rHttpPort = args.get_item<int>("httpPort");
   cfg.graphExecSec = args.get_item<int>("execSec");
+  cfg.redisHost = args.get_item<std::string>("redisHost").c_str();
+  cfg.redisPassword = args.get_item<std::string>("redisPassword").c_str();
+  cfg.redisPort = args.get_item<std::string>("redisPort").c_str();
+  cfg.redisDBNum = args.get_item<int>("redisDBNum");
+  cfg.redisSSL = args.get_item<int>("redisSSL") == 0 ? false : true;
 
   signal(SIGINT, sig_handler);
   signal(SIGTERM, sig_handler);
