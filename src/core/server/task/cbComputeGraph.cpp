@@ -1,5 +1,6 @@
 #include "cbComputeGraph.hpp"
 #include <workflow/WFGraphTask.h>
+#include <sol/forward.hpp>
 
 namespace cb {
 namespace graph {
@@ -29,6 +30,13 @@ int32_t cbGraphSharedMem::getCellNum() {
     tmp += __shape[0] * __shape[1];
   }
   return tmp;
+}
+
+void cbGraphSharedMem::clear() {
+  for (auto item : m_dataFromDevice) { delete item; }
+  for (auto item : m_dataPool) { delete item; }
+  m_dataFromDevice.clear();
+  m_dataPool.clear();
 }
 
 void cbGraphSharedLuaStack::execScriptFile(const std::string& filePath) {
@@ -111,6 +119,7 @@ void* cbOperatorNode::generateTask() {
       fmt::print(fg(fmt::color::red), "Go Task exec failed.");
       return;
     }
+    Op->io.I.clear();
   });
 
   return (void*)goTask;
@@ -173,7 +182,9 @@ cbComputeGraph::cbComputeGraph(int32_t idx)
 
       "getCol", &cbVirtualTable::getCol,
 
-      "getRow", &cbVirtualTable::getRow
+      "getRow", &cbVirtualTable::getRow,
+
+      "print", &cbVirtualTable::str
 
   );
 
@@ -225,6 +236,24 @@ cbComputeGraph::cbComputeGraph(int32_t idx)
 
   );
 
+  // bind base Op
+  covalentBound.new_usertype<baseOp>(
+
+      "cbBaseOp",
+
+      "io", &baseOp::io
+
+  );
+
+  // bind CombineOp
+  covalentBound.new_usertype<cbOpCombine>(
+
+      "cbOpCombine",
+
+      "overrideFunc", &cbOpCombine::overload
+
+  );
+
   // bind cbVirtualDeviceNode
   covalentBound.new_usertype<cbVirtualDeviceNode>(
 
@@ -245,7 +274,9 @@ cbComputeGraph::cbComputeGraph(int32_t idx)
 
       "PointTo", &cbOperatorNode::PointTo,
 
-      "io", &cbOperatorNode::io
+      "io", &cbOperatorNode::io,
+
+      "Op", &cbOperatorNode::Op
 
   );
 }
@@ -329,6 +360,9 @@ cbVirtualDeviceNode* cbComputeGraph::createVirtualDeviceNode(int32_t idx) {
 
 cbOperatorNode* cbComputeGraph::createCombineNode(const std::vector<std::string>& keys) {
   cbOpCombine* ansOp = new cbOpCombine(keys);
+
+  ansOp->overload(this->m_sharedLuaStack->get()()["Cb"]["Op"]["CombineOp"]);
+
   cbOperatorNode* ans = new cbOperatorNode(ansOp);
   this->registerNode(ans);
   return ans;
@@ -349,6 +383,10 @@ WFGraphTask* cbComputeGraph::generateGraphTask(const graph_callback& func) {
   WFGraphTask* graph = WFTaskFactory::create_graph_task([=](WFGraphTask* task) {
     fmt::print(fg(fmt::color::steel_blue) | fmt::emphasis::italic,
                "Graph task {} complete. Wakeup main process\n", m_idx);
+    fmt::print(fg(fmt::color::steel_blue) | fmt::emphasis::italic,
+               "--------------------------------------------------\n");
+    m_sharedMem->clear();
+    for (auto& item : m_nodes) { item->io.I.clear(); }
   });
   if (!(isDAG() && isSingleOutput())) {
     fmt::print(fg(fmt::color::red), "The graph {} is not DAG or has multi output\n", m_idx);
@@ -374,6 +412,8 @@ WFGraphTask* cbComputeGraph::generateGraphTask(const graph_callback& func) {
 
 void cbComputeGraph::execMain(WFGraphTask* task, cbComputeGraph* graph) {
   if (task != nullptr && graph != nullptr) {
+    fmt::print(fg(fmt::color::steel_blue) | fmt::emphasis::italic,
+               "--------------------------------------------------\n");
     task->start();
   } else {
     fmt::print(fg(fmt::color::red), "The pointer to task or graph is nullptr\n");

@@ -53,26 +53,11 @@ function Cb.Op.CombineOp(baseOpPtr, primaryKeys)
         print("[ CB engine Error ] when execute Cb.Op.CombineOp. #inputs ~= #primaryKeys");
         return;
     end
-    local inputs_len = #inputs;
-    local colum_size = 0;
-    local keys = {};
-    local visited = {};
-    -- get the index of primaryKeys, and calculate all colum_size.
-    for i = 1, inputs_len do
-        colum_size = colum_size + #inputs[i];
-        keys.add(inputs[i]:KeyBy(primaryKeys[i]));
-        visited[i] = {};
-        for j = 1, #inputs[i] do
-            visited[i][j] = false;
-        end
-    end
-    -- reunit the Header info of virtual table.
-    -- loop all Keys' index. And combine all.
-    for i = 1, #keys do
-        local cpp_vec_row = {};
-        -- some fancy logic.
-        -- TODO. How std::map works in lua table state?
-        -- push to output's table.
-        output:pushRow(cpp_vec_row);
+    row = inputs[1]:getShape()[0];
+    col = inputs[1]:getShape()[1];
+    print(inputs[1]:colNameAt(0), inputs[1]:colNameAt(1), inputs[1]:colNameAt(2), inputs[1]:colNameAt(3));
+    for i = 1, row do
+        print(inputs[1]:atPtrRef(i - 1, 0):asInt(), inputs[1]:atPtrRef(i - 1, 1):asString(),
+            inputs[1]:atPtrRef(i - 1, 2):asString(), inputs[1]:atPtrRef(i - 1, 3):asString());
     end
 end

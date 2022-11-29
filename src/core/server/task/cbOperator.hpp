@@ -48,7 +48,7 @@ struct baseOp {
   virtual ~baseOp();
   baseOp(const opType& ot);
 
-  virtual void overload(sol::function& func) = 0;
+  virtual void overload(const sol::function& func) = 0;
   virtual void execMain() = 0;
 
   cbOpIO io;
@@ -68,7 +68,7 @@ class cbOpRowWise : public baseOp {
  public:
   ~cbOpRowWise();
   cbOpRowWise();
-  virtual void overload(sol::function& func) = 0;
+  virtual void overload(const sol::function& func) = 0;
   virtual void execMain() = 0;
   virtual void __innerFunc(baseOp* thisOp = nullptr) = 0;  ///! Stream.
 };
@@ -81,7 +81,7 @@ class cbOpTableWise : public baseOp {
  public:
   ~cbOpTableWise();
   cbOpTableWise();
-  virtual void overload(sol::function& func) = 0;
+  virtual void overload(const sol::function& func) = 0;
   virtual void execMain() = 0;
   virtual void __innerFunc(baseOp* thisOp = nullptr) = 0;  ///! Batch.
 };
@@ -94,7 +94,7 @@ class cbOpNotTable : public baseOp {
  public:
   ~cbOpNotTable();
   cbOpNotTable();
-  virtual void overload(sol::function& func) = 0;
+  virtual void overload(const sol::function& func) = 0;
   virtual void execMain() = 0;
   virtual void __innerFunc(baseOp* thisOp = nullptr) = 0;  ///! Batch
 };
@@ -109,7 +109,7 @@ class cbOpCombine final : public cbOpRowWise {
  public:
   ~cbOpCombine() override;
   cbOpCombine(const std::vector<std::string>& key);
-  void overload(sol::function& func) override final;
+  void overload(const sol::function& func) override final;
   void execMain() override final;
   void __innerFunc(baseOp* thisOp = nullptr) override final;
 
@@ -125,7 +125,7 @@ class cbOpMultiMap : public cbOpRowWise {
  public:
   ~cbOpMultiMap() override;
   cbOpMultiMap() = default;
-  void overload(sol::function& func) override final;
+  void overload(const sol::function& func) override final;
   void execMain() override final;
   void __innerFunc(baseOp* thisOp = nullptr) override final;
 };
@@ -138,7 +138,7 @@ class cbOpFilter : public cbOpTableWise {
  public:
   ~cbOpFilter() override;
   cbOpFilter() = default;
-  void overload(sol::function& func) override final;
+  void overload(const sol::function& func) override final;
   void execMain() override final;
   void __innerFunc(baseOp* thisOp = nullptr) override final;
 };
@@ -151,7 +151,7 @@ class cbOpSort : public cbOpTableWise {
  public:
   ~cbOpSort() override;
   cbOpSort() = default;
-  void overload(sol::function& func) override final;
+  void overload(const sol::function& func) override final;
   void execMain() override final;
   void __innerFunc(baseOp* thisOp = nullptr) override final;
 };
@@ -164,7 +164,7 @@ class cbOpAverage : public cbOpTableWise {
  public:
   ~cbOpAverage() override;
   cbOpAverage() = default;
-  void overload(sol::function& func) override final;
+  void overload(const sol::function& func) override final;
   void execMain() override final;
   void __innerFunc(baseOp* thisOp = nullptr) override final;
 };
@@ -177,7 +177,7 @@ class cbOpVar : public cbOpTableWise {
  public:
   ~cbOpVar() override;
   cbOpVar() = default;
-  void overload(sol::function& func) override final;
+  void overload(const sol::function& func) override final;
   void execMain() override final;
   void __innerFunc(baseOp* thisOp = nullptr) override final;
 };
@@ -190,7 +190,7 @@ class cbOpSum : public cbOpTableWise {
  public:
   ~cbOpSum() override;
   cbOpSum() = default;
-  void overload(sol::function& func) override final;
+  void overload(const sol::function& func) override final;
   void execMain() override final;
   void __innerFunc(baseOp* thisOp = nullptr) override final;
 };

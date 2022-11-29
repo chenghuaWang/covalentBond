@@ -61,6 +61,8 @@ struct cbGraphSharedMem {
   size_t getMemUsed();
   int32_t getCellNum();
 
+  void clear();
+
  private:
   std::vector<cbVirtualSharedTable*> m_dataFromDevice;
   std::vector<cbMySQLCell*> m_dataPool;
@@ -118,6 +120,7 @@ struct cbNode {
   cbOpIO io;
 
   // others
+  bool visited = false;
   nodeType nodeT;
   void* task = nullptr;
   cbNode* nextNode = nullptr;

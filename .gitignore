@@ -4,3 +4,8 @@ build/
 scripts/tmpd/
 bin/
 src/frontend/cb_native/.dist/
+scripts/utils/testBinding.lua
+scripts/utils/postScript.json
+scripts/utils/postScript2.json
+scripts/utils/test_httpServer_addDevice.sh
+scripts/utils/test_httpServer_addGraph.sh

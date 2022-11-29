@@ -8,7 +8,7 @@ parser.add_argument('--idx')
 
 if __name__ == "__main__":
     args = parser.parse_args()
-    data = {'id': args.idx}
+    data = {'id': int(args.idx)}
     with open(args.src, 'r') as f:
         strs = f.read()
     data.update({'script': strs})

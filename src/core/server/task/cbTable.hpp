@@ -712,6 +712,12 @@ class cbVirtualTable {
    */
   std::string colTypeAt(int32_t i);
 
+  /**
+   * @brief
+   *
+   */
+  void str();
+
  private:
   cbMySQLField** m_info = nullptr;
   cbShape<2> m_shape;

@@ -21,6 +21,8 @@ void graphContainer::execMain() {
     WFGraphTask* graph = WFTaskFactory::create_graph_task([=](WFGraphTask* task) {
       fmt::print(fg(fmt::color::steel_blue) | fmt::emphasis::italic,
                  "Graph task complete. Wakeup main process\n");
+      fmt::print(fg(fmt::color::steel_blue) | fmt::emphasis::italic,
+                 "**************************************************\n");
     });
     WFTimerTask* timer = WFTaskFactory::create_timer_task(m_loopTime, 0, [=](WFTimerTask* task) {
       fmt::print("Loops Graphs by {} sec.\n", m_loopTime);
@@ -35,6 +37,8 @@ void graphContainer::execMain() {
     for (auto& item : m_graphs) {
       (graph->create_graph_node(item->generateGraphTask()))-- > (*timerNode);
     }
+    fmt::print(fg(fmt::color::steel_blue) | fmt::emphasis::italic,
+               "**************************************************\n");
     graph->start();
   } else {
     fmt::print(fg(fmt::color::steel_blue) | fmt::emphasis::italic,

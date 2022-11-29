@@ -30,16 +30,12 @@ cbOpCombine::~cbOpCombine() {}
 
 cbOpCombine::cbOpCombine(const std::vector<std::string>& key) : m_key(key) {}
 
-void cbOpCombine::overload(sol::function& func) {
+void cbOpCombine::overload(const sol::function& func) {
   luaOverrideFunc = func;
   isOverload = true;
 }
 
-void cbOpCombine::execMain() {
-  // TODO
-  // pass the output to the next node. (in node's stage, not op stage)
-  std::cout << "Go Task runs here!!!\n";
-}
+void cbOpCombine::execMain() { __innerFunc(this); }
 
 void cbOpCombine::__innerFunc(baseOp* thisOp) {
   if (isOverload) {
@@ -51,7 +47,7 @@ void cbOpCombine::__innerFunc(baseOp* thisOp) {
 
 cbOpMultiMap::~cbOpMultiMap() {}
 
-void cbOpMultiMap::overload(sol::function& func) {
+void cbOpMultiMap::overload(const sol::function& func) {
   luaOverrideFunc = func;
   isOverload = true;
 }
@@ -69,7 +65,7 @@ void cbOpMultiMap::__innerFunc(baseOp* thisOp) {
 
 cbOpFilter::~cbOpFilter() {}
 
-void cbOpFilter::overload(sol::function& func) {
+void cbOpFilter::overload(const sol::function& func) {
   luaOverrideFunc = func;
   isOverload = true;
 }
@@ -87,7 +83,7 @@ void cbOpFilter::__innerFunc(baseOp* thisOp) {
 
 cbOpSort::~cbOpSort() {}
 
-void cbOpSort::overload(sol::function& func) {
+void cbOpSort::overload(const sol::function& func) {
   luaOverrideFunc = func;
   isOverload = true;
 }
@@ -105,7 +101,7 @@ void cbOpSort::__innerFunc(baseOp* thisOp) {
 
 cbOpAverage::~cbOpAverage() {}
 
-void cbOpAverage::overload(sol::function& func) {
+void cbOpAverage::overload(const sol::function& func) {
   luaOverrideFunc = func;
   isOverload = true;
 }
@@ -123,7 +119,7 @@ void cbOpAverage::__innerFunc(baseOp* thisOp) {
 
 cbOpVar::~cbOpVar() {}
 
-void cbOpVar::overload(sol::function& func) {
+void cbOpVar::overload(const sol::function& func) {
   luaOverrideFunc = func;
   isOverload = true;
 }
@@ -141,7 +137,7 @@ void cbOpVar::__innerFunc(baseOp* thisOp) {
 
 cbOpSum::~cbOpSum() {}
 
-void cbOpSum::overload(sol::function& func) {
+void cbOpSum::overload(const sol::function& func) {
   luaOverrideFunc = func;
   isOverload = true;
 }

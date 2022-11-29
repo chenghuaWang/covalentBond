@@ -181,6 +181,11 @@ std::string cbVirtualTable::colNameAt(int32_t i) { return m_info[i]->getName(); 
 
 std::string cbVirtualTable::colTypeAt(int32_t i) { return datatype2str(m_info[i]->getDataType()); }
 
+void cbVirtualTable::str() {
+  fmt::print(fg(fmt::color::hot_pink) | fmt::emphasis::italic, "<Table, row={}, col={}>\n",
+             m_shape[0], m_shape[1]);
+}
+
 void mapShared2Virtual(cbVirtualSharedTable* sharedT, cbVirtualTable* virtualT) {
   virtualT->resetShape(sharedT->getShape());
   int32_t row = virtualT->getShape()[0];
