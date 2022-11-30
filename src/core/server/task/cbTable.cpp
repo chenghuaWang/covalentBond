@@ -186,6 +186,32 @@ void cbVirtualTable::str() {
              m_shape[0], m_shape[1]);
 }
 
+cbOutputTableStruct::cbOutputTableStruct(const cbShape<2>& shape, cbMySQLField** info)
+    : m_shape(shape) {
+  int32_t col = m_shape[1];
+  for (int32_t i = 0; i < col; ++i) { m_info.push_back(cbMySQLField(info[i])); }
+}
+
+void cbOutputTableStruct::clear() {
+  m_info.clear();
+  m_info.shrink_to_fit();
+  m_shape[0] = 0;
+  m_shape[1] = 0;
+}
+
+void cbOutputTableStruct::update(const cbShape<2>& shape, cbMySQLField** info) {
+  clear();
+  m_shape = shape;
+  int32_t col = m_shape[1];
+  for (int32_t i = 0; i < col; ++i) { m_info.push_back(cbMySQLField(info[i])); }
+}
+
+std::string cbOutputTableStruct::genKey4Redis(int32_t row, int32_t col) {
+  std::stringstream ss;
+  ss << m_info[col].getTable() << ":" << row << ":" << m_info[col].getName();
+  return ss.str();
+}
+
 void mapShared2Virtual(cbVirtualSharedTable* sharedT, cbVirtualTable* virtualT) {
   virtualT->resetShape(sharedT->getShape());
   int32_t row = virtualT->getShape()[0];
@@ -212,6 +238,21 @@ cbMySQLField::cbMySQLField(const protocol::MySQLField* wfPtr) {
   m_decimals = wfPtr->get_decimals();
   m_charsetnr = wfPtr->get_charsetnr();
   m_data_type = wfPtr->get_data_type();
+}
+
+cbMySQLField::cbMySQLField(const cbMySQLField* ptr) {
+  m_name = ptr->getName();
+  m_orgName = ptr->getOrgName();
+  m_table = ptr->getTable();
+  m_orgTable = ptr->getOrgTable();
+  m_db = ptr->getDB();
+  m_catalog = ptr->getCatalog();
+  m_def = ptr->getDef();
+  m_length = ptr->getLength();
+  m_flags = ptr->getFlags();
+  m_decimals = ptr->getDecimals();
+  m_charsetnr = ptr->getCharsetnr();
+  m_data_type = ptr->getDataType();
 }
 
 // get data.

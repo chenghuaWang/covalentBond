@@ -39,7 +39,7 @@ int main(int argc, char* argv[]) {
   if (args.has_item("help")) {
     std::cout << HELP_STR << std::endl;
     args.show_all_defined();
-    exit(1);
+    exit(0);
   }
 
   if (!(args.has_item("redisHost") && args.has_item("redisPassword")
@@ -75,10 +75,11 @@ int main(int argc, char* argv[]) {
   // Waiting for 10 sec for graph tasks in queue done.
   fmt::print(fg(fmt::color::steel_blue) | fmt::emphasis::italic,
              "Waiting about 10 sec for graph tasks in queue done.\n");
-  WFTimerTask* timerToEnd = WFTaskFactory::create_timer_task(10, 0, [=](WFTimerTask* task) {
-    fmt::print(fg(fmt::color::steel_blue) | fmt::emphasis::italic, "All tasks were done.\n");
-    wait_group_end.done();
-  });
+  WFTimerTask* timerToEnd =
+      WFTaskFactory::create_timer_task(cfg.graphExecSec, 0, [=](WFTimerTask* task) {
+        fmt::print(fg(fmt::color::steel_blue) | fmt::emphasis::italic, "All tasks were done.\n");
+        wait_group_end.done();
+      });
   timerToEnd->start();
   wait_group_end.wait();
   fmt::print("\nBye.\n");

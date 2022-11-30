@@ -57,13 +57,16 @@ struct cbGraphSharedMem {
 
   void push(cbVirtualSharedTable* v);
   void push(cbMySQLCell* v);
+  void setOutStruct(const cbShape<2>& shape, cbMySQLField** info);
 
   size_t getMemUsed();
   int32_t getCellNum();
+  cbOutputTableStruct* getOutStruct();
 
   void clear();
 
  private:
+  cbOutputTableStruct* m_outStruct = nullptr;
   std::vector<cbVirtualSharedTable*> m_dataFromDevice;
   std::vector<cbMySQLCell*> m_dataPool;
 };
@@ -120,6 +123,7 @@ struct cbNode {
   cbOpIO io;
 
   // others
+  bool isFinalOutput = false;
   bool visited = false;
   nodeType nodeT;
   void* task = nullptr;
@@ -161,12 +165,36 @@ struct cbVirtualDeviceNode final : public cbNode {
   std::vector<std::string> m_queries;
 };
 
+struct cbRedisCachingNode final : public cbNode {
+  friend cbComputeGraph;
+
+  ~cbRedisCachingNode() override final;
+  cbRedisCachingNode() = delete;
+  cbRedisCachingNode(int32_t idx);
+  cbRedisCachingNode(const cbRedisCachingNode& v) = delete;
+
+  cbRedisCachingNode operator=(const cbRedisCachingNode& v) = delete;
+
+  void* generateTask() override final;
+
+  WFRedisTask* _generateSetTask(const std::vector<std::string>& params,
+                                const redis_callback& callback_func = nullptr,
+                                void* usrData = nullptr, int32_t retryTimes = 3);
+
+ private:
+  void setRedisDevice(trivial::cbRedisDevice* device = nullptr);
+  int32_t m_idx;
+  trivial::cbRedisDevice* m_device = nullptr;
+};
+
 /**
  * @brief A operator node. Generate all go task. Then pass the output
  * to the next node's inputs.
  *
  */
 struct cbOperatorNode : public cbNode {
+  friend cbComputeGraph;
+
   ~cbOperatorNode() override;
   cbOperatorNode(baseOp* op);
 
@@ -196,6 +224,8 @@ struct cbOperatorNode : public cbNode {
 class cbComputeGraph {
  public:
   friend cbVirtualDeviceNode;
+  friend cbRedisCachingNode;
+  friend cbOperatorNode;
 
   cbComputeGraph(int32_t idx);
   ~cbComputeGraph();
@@ -282,6 +312,14 @@ class cbComputeGraph {
   cbVirtualDeviceNode* createVirtualDeviceNode(int32_t idx);  ///! for sql only, now.
 
   /**
+   * @brief Create a Redis Caching Node object
+   *
+   * @param idx
+   * @return cbRedisCachingNode*
+   */
+  cbRedisCachingNode* createRedisCachingNode(int32_t idx);
+
+  /**
    * @brief Create a Combine Node object
    *
    * @param keys
@@ -340,9 +378,17 @@ class cbComputeGraph {
    */
   void execScript(const std::string& script);
 
+  /**
+   * @brief The cache server node. Lua binding in.
+   *
+   * @param v the redis caching server node.
+   */
+  void addCacheServer(cbRedisCachingNode* v);
+
  private:
   int32_t m_idx = 0;
   std::vector<cbNode*> m_nodes;
+  cbRedisCachingNode* m_cacheNode = nullptr;
   cbGraphSharedMem* m_sharedMem = nullptr;
   cbGraphSharedLuaStack* m_sharedLuaStack = nullptr;
   // Have the state of all Virtual device

@@ -409,6 +409,8 @@ class cbMySQLField {
    */
   cbMySQLField(const protocol::MySQLField* wfPtr);
 
+  cbMySQLField(const cbMySQLField* ptr);
+
   // get data.
   std::string getName() const;
   std::string getOrgName() const;
@@ -722,6 +724,20 @@ class cbVirtualTable {
   cbMySQLField** m_info = nullptr;
   cbShape<2> m_shape;
   std::vector<std::vector<cbMySQLCell*>> m_data;
+};
+
+struct cbOutputTableStruct {
+  cbOutputTableStruct() = delete;
+  cbOutputTableStruct(const cbShape<2>& shape, cbMySQLField** info);
+
+  void clear();
+
+  void update(const cbShape<2>& shape, cbMySQLField** info);
+
+  std::string genKey4Redis(int32_t row, int32_t col);
+
+  cbShape<2> m_shape;
+  std::vector<cbMySQLField> m_info;
 };
 
 void mapShared2Virtual(cbVirtualSharedTable* sharedT, cbVirtualTable* virtualT);

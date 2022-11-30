@@ -60,4 +60,5 @@ function Cb.Op.CombineOp(baseOpPtr, primaryKeys)
         print(inputs[1]:atPtrRef(i - 1, 0):asInt(), inputs[1]:atPtrRef(i - 1, 1):asString(),
             inputs[1]:atPtrRef(i - 1, 2):asString(), inputs[1]:atPtrRef(i - 1, 3):asString());
     end
+    output:resetShape(Cb.F.makeShapeFull(0, 0));
 end
