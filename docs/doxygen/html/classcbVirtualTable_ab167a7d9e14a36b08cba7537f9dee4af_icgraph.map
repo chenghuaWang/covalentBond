@@ -1,6 +1,6 @@
 <map id="cbVirtualTable::getShape" name="cbVirtualTable::getShape">
-<area shape="rect" id="node1" title="Get the Shape object." alt="" coords="497,42,680,69"/>
+<area shape="rect" id="node1" title="Get the Shape object." alt="" coords="497,71,680,98"/>
 <area shape="rect" id="node2" href="$classcb_1_1graph_1_1cbComputeGraph.html#a13c2949f64f239419580ce105a4dd23c" title=" " alt="" coords="247,5,449,47"/>
-<area shape="rect" id="node3" href="$cbTable_8hpp.html#aa7e1365c230649b7120d4efd062c34ff" title=" " alt="" coords="275,71,421,98"/>
-<area shape="rect" id="node4" href="$structcb_1_1graph_1_1cbVirtualDeviceNode.html#aed0f0a7b067ce70295d862beb7d31e82" title="generate a SQL wf task for now." alt="" coords="5,64,199,105"/>
+<area shape="rect" id="node3" href="$structcb_1_1graph_1_1cbVirtualDeviceNode.html#aed0f0a7b067ce70295d862beb7d31e82" title="generate a SQL wf task for now." alt="" coords="5,89,199,131"/>
+<area shape="rect" id="node4" href="$cbTable_8hpp.html#aa7e1365c230649b7120d4efd062c34ff" title=" " alt="" coords="275,122,421,149"/>
 </map>

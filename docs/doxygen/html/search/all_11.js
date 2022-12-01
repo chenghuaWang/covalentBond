@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['query_360',['query',['../structtrivial_1_1cbMySqlDevice.html#afbc77741d1ff6131db48437093401c64',1,'trivial::cbMySqlDevice']]]
+  ['query_374',['query',['../structtrivial_1_1cbMySqlDevice.html#afbc77741d1ff6131db48437093401c64',1,'trivial::cbMySqlDevice']]]
 ];

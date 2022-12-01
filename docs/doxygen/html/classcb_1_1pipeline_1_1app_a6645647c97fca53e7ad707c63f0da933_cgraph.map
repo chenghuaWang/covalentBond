@@ -3,11 +3,12 @@
 <area shape="rect" id="node2" href="$classcb_1_1utils_1_1cbRestfulHttpServer.html#ac5b64d423c8d1d0f0a333b20a3d8c00f" title=" " alt="" coords="208,5,379,47"/>
 <area shape="rect" id="node3" href="$classcb_1_1pipeline_1_1graphContainer.html#a74da89e1b682344fec0de64b9defa3f7" title=" " alt="" coords="191,71,396,112"/>
 <area shape="rect" id="node4" href="$classcb_1_1utils_1_1cbWebserver.html#a0698f711fbc006ae4e8832dac0a28366" title=" " alt="" coords="211,136,376,177"/>
-<area shape="rect" id="node6" href="$classcb_1_1pipeline_1_1app.html#ab504d5aa722f36c284cd43f0ad399993" title=" " alt="" coords="225,201,362,243"/>
-<area shape="rect" id="node5" href="$classcb_1_1utils_1_1cbWebserver.html#a35e3d1033ef3cf88f5e8a255a97d607d" title=" " alt="" coords="464,136,629,177"/>
-<area shape="rect" id="node7" href="$namespacecb_1_1apiCPP.html#ab11ed93ce05b63c36406158a26bce167" title=" " alt="" coords="466,205,627,231"/>
-<area shape="rect" id="node11" href="$classcb_1_1pipeline_1_1graphContainer.html#ab097285ed1da9f9138f6877512108d8d" title=" " alt="" coords="444,256,649,297"/>
-<area shape="rect" id="node8" href="$classcb_1_1graph_1_1cbComputeGraph.html#a58961056d82259216916a60fa7cdf70c" title="execute the script" alt="" coords="697,164,900,205"/>
-<area shape="rect" id="node10" href="$classcb_1_1graph_1_1cbComputeGraph.html#adec5abcba678492b291f7855be49aa6b" title="Set the Virtual Device Manager object." alt="" coords="697,229,900,271"/>
-<area shape="rect" id="node9" href="$structcb_1_1graph_1_1cbGraphSharedLuaStack.html#a3f64e6d8395f288a7c92e82000b77ed1" title="execute the hard coded script." alt="" coords="948,164,1137,205"/>
+<area shape="rect" id="node6" href="$classcb_1_1pipeline_1_1app.html#ab504d5aa722f36c284cd43f0ad399993" title=" " alt="" coords="225,215,362,256"/>
+<area shape="rect" id="node5" href="$classcb_1_1utils_1_1cbWebserver.html#a35e3d1033ef3cf88f5e8a255a97d607d" title=" " alt="" coords="464,123,629,164"/>
+<area shape="rect" id="node7" href="$namespacecb_1_1apiCPP.html#ab11ed93ce05b63c36406158a26bce167" title=" " alt="" coords="466,189,627,215"/>
+<area shape="rect" id="node11" href="$classcb_1_1pipeline_1_1graphContainer.html#ab097285ed1da9f9138f6877512108d8d" title=" " alt="" coords="444,240,649,281"/>
+<area shape="rect" id="node12" href="$classtrivial_1_1cbVirtualDeviceManager.html#a899211bd1b354d2ec86de7e277c0ae40" title=" " alt="" coords="449,305,645,347"/>
+<area shape="rect" id="node8" href="$classcb_1_1graph_1_1cbComputeGraph.html#a58961056d82259216916a60fa7cdf70c" title="execute the script" alt="" coords="697,149,900,191"/>
+<area shape="rect" id="node10" href="$classcb_1_1graph_1_1cbComputeGraph.html#adec5abcba678492b291f7855be49aa6b" title="Set the Virtual Device Manager object." alt="" coords="697,215,900,256"/>
+<area shape="rect" id="node9" href="$structcb_1_1graph_1_1cbGraphSharedLuaStack.html#a3f64e6d8395f288a7c92e82000b77ed1" title="execute the hard coded script." alt="" coords="948,149,1137,191"/>
 </map>

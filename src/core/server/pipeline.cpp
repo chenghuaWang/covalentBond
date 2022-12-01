@@ -118,6 +118,11 @@ void app::initRHttp() {
       resp->set_header_pair("Content-Type", "application/json");
       resp->append_output_body(fmt::format("{}\"res\": \"{}\" {}", "{", curIdx, "}"));
     } else if (deviceType == "Redis") {
+      std::string host = kv["host"].get<std::string>();
+      std::string port = kv["port"].get<std::string>();
+      std::string usrName = kv["usrName"].get<std::string>();
+      std::string password = kv["password"].get<std::string>();
+      // TODO
     }
   });
 }

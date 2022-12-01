@@ -1,14 +1,18 @@
 <map id="cb::graph::cbVirtualDeviceNode::generateTask" name="cb::graph::cbVirtualDeviceNode::generateTask">
-<area shape="rect" id="node1" title="generate a SQL wf task for now." alt="" coords="5,276,199,317"/>
-<area shape="rect" id="node2" href="$cbTable_8cpp.html#aa7e1365c230649b7120d4efd062c34ff" title=" " alt="" coords="268,225,415,251"/>
-<area shape="rect" id="node11" href="$structcb_1_1graph_1_1cbGraphSharedMem.html#acf71e5b4dfb962e47daa31af0401db93" title=" " alt="" coords="247,276,436,317"/>
-<area shape="rect" id="node12" href="$structtrivial_1_1cbMySqlDevice.html#afbc77741d1ff6131db48437093401c64" title=" " alt="" coords="257,341,425,383"/>
-<area shape="rect" id="node3" href="$classcbVirtualSharedTable.html#a1c0eb733856c6661bfcd1a300a89435d" title=" " alt="" coords="502,5,661,47"/>
-<area shape="rect" id="node4" href="$classcbVirtualTable.html#a794954a9b9f944ea784a960bd215a88d" title=" " alt="" coords="494,71,669,98"/>
-<area shape="rect" id="node5" href="$classcbVirtualSharedTable.html#a1ebce84c8c5a4dc5c74ad70eca2bce74" title="Get the Info object." alt="" coords="502,123,661,164"/>
-<area shape="rect" id="node6" href="$classcbVirtualSharedTable.html#a7806f68d7c9d78b64967c37cde5643df" title="Get the Shape object." alt="" coords="502,188,661,229"/>
-<area shape="rect" id="node7" href="$classcbVirtualTable.html#ab167a7d9e14a36b08cba7537f9dee4af" title="Get the Shape object." alt="" coords="490,254,673,281"/>
-<area shape="rect" id="node8" href="$cbTable_8hpp.html#a1efb642b144c336a653bb6f91f334ebd" title=" " alt="" coords="521,305,642,331"/>
-<area shape="rect" id="node9" href="$classcbVirtualTable.html#a4951b75acc04023657f9a9687e7ae926" title=" " alt="" coords="484,355,679,382"/>
-<area shape="rect" id="node10" href="$classcbVirtualTable.html#a6f612970ee62242f23edf660d35a2dc2" title=" " alt="" coords="498,406,665,433"/>
+<area shape="rect" id="node1" title="generate a SQL wf task for now." alt="" coords="5,237,199,278"/>
+<area shape="rect" id="node2" href="$classcbVirtualTable.html#a8ef41bf67361cdd1252ec51b07597b63" title="Get the Info object." alt="" coords="257,113,425,140"/>
+<area shape="rect" id="node3" href="$classcbVirtualTable.html#ab167a7d9e14a36b08cba7537f9dee4af" title="Get the Shape object." alt="" coords="490,5,673,32"/>
+<area shape="rect" id="node4" href="$cbTable_8cpp.html#aa7e1365c230649b7120d4efd062c34ff" title=" " alt="" coords="268,215,415,241"/>
+<area shape="rect" id="node12" href="$structcb_1_1graph_1_1cbGraphSharedMem.html#acf71e5b4dfb962e47daa31af0401db93" title=" " alt="" coords="247,266,436,307"/>
+<area shape="rect" id="node13" href="$structtrivial_1_1cbMySqlDevice.html#afbc77741d1ff6131db48437093401c64" title=" " alt="" coords="257,331,425,373"/>
+<area shape="rect" id="node14" href="$structcb_1_1graph_1_1cbGraphSharedMem.html#a838dff8a5fd259431386fa5c9ab6b79e" title=" " alt="" coords="247,411,436,453"/>
+<area shape="rect" id="node5" href="$classcbVirtualSharedTable.html#a1c0eb733856c6661bfcd1a300a89435d" title=" " alt="" coords="502,57,661,98"/>
+<area shape="rect" id="node6" href="$classcbVirtualTable.html#a794954a9b9f944ea784a960bd215a88d" title=" " alt="" coords="494,123,669,149"/>
+<area shape="rect" id="node7" href="$classcbVirtualSharedTable.html#a1ebce84c8c5a4dc5c74ad70eca2bce74" title="Get the Info object." alt="" coords="502,174,661,215"/>
+<area shape="rect" id="node8" href="$classcbVirtualSharedTable.html#a7806f68d7c9d78b64967c37cde5643df" title="Get the Shape object." alt="" coords="502,239,661,281"/>
+<area shape="rect" id="node9" href="$cbTable_8hpp.html#a1efb642b144c336a653bb6f91f334ebd" title=" " alt="" coords="521,305,642,332"/>
+<area shape="rect" id="node10" href="$classcbVirtualTable.html#a4951b75acc04023657f9a9687e7ae926" title=" " alt="" coords="484,356,679,383"/>
+<area shape="rect" id="node11" href="$classcbVirtualTable.html#a6f612970ee62242f23edf660d35a2dc2" title=" " alt="" coords="498,407,665,433"/>
+<area shape="rect" id="node15" href="$structcbOutputTableStruct.html#acc043d7548b281d79783d117acbad365" title=" " alt="" coords="505,458,658,499"/>
+<area shape="rect" id="node16" href="$structcbOutputTableStruct.html#a3acd69d3d131daac0d679a3965dae7cd" title=" " alt="" coords="727,458,880,499"/>
 </map>

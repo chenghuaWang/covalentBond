@@ -1,15 +1,20 @@
 var searchData=
 [
-  ['readcachefilebinary_361',['readCacheFileBinary',['../namespacetrivial.html#aeac1f11f2c7e66f3f011911bdf14e1e0',1,'trivial']]],
-  ['redis_362',['Redis',['../namespacetrivial.html#af058f77cc92ec5e68b23e8b725bc4620ae111446745a1825b862f8727ae63bce4',1,'trivial']]],
-  ['redis_5fcallback_363',['redis_callback',['../cbVirtualDevice_8hpp.html#a2c63a819f4227271b0b2c1b87c732bd0',1,'cbVirtualDevice.hpp']]],
-  ['registernode_364',['registerNode',['../classcb_1_1graph_1_1cbComputeGraph.html#a7a1c29e13a0088b9cb1530e80b4f8a6b',1,'cb::graph::cbComputeGraph']]],
-  ['reloadconnection_365',['reloadConnection',['../structtrivial_1_1cbVirtualDevice.html#ac4a576f3c51b2e51b8b0a59ab6cbc1f2',1,'trivial::cbVirtualDevice']]],
-  ['removekafkadevice_366',['removeKafkaDevice',['../classtrivial_1_1cbVirtualDeviceManager.html#a1f6ec8c0c8e437421eadc0dee4e6c8e9',1,'trivial::cbVirtualDeviceManager']]],
-  ['removemysqldevice_367',['removeMySqlDevice',['../classtrivial_1_1cbVirtualDeviceManager.html#af87763a591403176eafeccb24ce6a999',1,'trivial::cbVirtualDeviceManager']]],
-  ['removeredisdevice_368',['removeRedisDevice',['../classtrivial_1_1cbVirtualDeviceManager.html#a6ae8ee509ec815ef9effc87f77ca3e61',1,'trivial::cbVirtualDeviceManager']]],
-  ['resetfieldinfo_369',['resetFieldInfo',['../classcbVirtualSharedTable.html#acfc9e573644cc0941147553f85f885d9',1,'cbVirtualSharedTable']]],
-  ['resetshape_370',['resetShape',['../classcbVirtualSharedTable.html#ab1aa93f11ac6acf50202e49b322ef1b6',1,'cbVirtualSharedTable::resetShape()'],['../classcbVirtualTable.html#a4951b75acc04023657f9a9687e7ae926',1,'cbVirtualTable::resetShape()']]],
-  ['rhttpport_371',['rHttpPort',['../structcb_1_1pipeline_1_1appCfg.html#aea62b28c04ada621268ca9277dd2c948',1,'cb::pipeline::appCfg']]],
-  ['rowwise_372',['rowWise',['../cbOperator_8hpp.html#a39f86f1414ae2e84c17fdede1fa78343a66377278c6bfd043656b1835b52d7fce',1,'cbOperator.hpp']]]
+  ['readcachefilebinary_375',['readCacheFileBinary',['../namespacetrivial.html#aeac1f11f2c7e66f3f011911bdf14e1e0',1,'trivial']]],
+  ['redis_376',['Redis',['../namespacetrivial.html#af058f77cc92ec5e68b23e8b725bc4620ae111446745a1825b862f8727ae63bce4',1,'trivial']]],
+  ['redis_5fcallback_377',['redis_callback',['../cbVirtualDevice_8hpp.html#a2c63a819f4227271b0b2c1b87c732bd0',1,'cbVirtualDevice.hpp']]],
+  ['redisdbnum_378',['redisDBNum',['../structcb_1_1pipeline_1_1appCfg.html#a4e01bbf48b991b9ad48b4ab794e819f1',1,'cb::pipeline::appCfg']]],
+  ['redishost_379',['redisHost',['../structcb_1_1pipeline_1_1appCfg.html#a469021c0de141fcb09791281c6620f9d',1,'cb::pipeline::appCfg']]],
+  ['redispassword_380',['redisPassword',['../structcb_1_1pipeline_1_1appCfg.html#aa6c5ad3a76f263e91a6c724f35617905',1,'cb::pipeline::appCfg']]],
+  ['redisport_381',['redisPort',['../structcb_1_1pipeline_1_1appCfg.html#aabe547f46f8c91d216252ec23c572ab8',1,'cb::pipeline::appCfg']]],
+  ['redisssl_382',['redisSSL',['../structcb_1_1pipeline_1_1appCfg.html#a426c70514887c33743032d39346d41b6',1,'cb::pipeline::appCfg']]],
+  ['registernode_383',['registerNode',['../classcb_1_1graph_1_1cbComputeGraph.html#a7a1c29e13a0088b9cb1530e80b4f8a6b',1,'cb::graph::cbComputeGraph']]],
+  ['reloadconnection_384',['reloadConnection',['../structtrivial_1_1cbVirtualDevice.html#ac4a576f3c51b2e51b8b0a59ab6cbc1f2',1,'trivial::cbVirtualDevice']]],
+  ['removekafkadevice_385',['removeKafkaDevice',['../classtrivial_1_1cbVirtualDeviceManager.html#a1f6ec8c0c8e437421eadc0dee4e6c8e9',1,'trivial::cbVirtualDeviceManager']]],
+  ['removemysqldevice_386',['removeMySqlDevice',['../classtrivial_1_1cbVirtualDeviceManager.html#af87763a591403176eafeccb24ce6a999',1,'trivial::cbVirtualDeviceManager']]],
+  ['removeredisdevice_387',['removeRedisDevice',['../classtrivial_1_1cbVirtualDeviceManager.html#a6ae8ee509ec815ef9effc87f77ca3e61',1,'trivial::cbVirtualDeviceManager']]],
+  ['resetfieldinfo_388',['resetFieldInfo',['../classcbVirtualSharedTable.html#acfc9e573644cc0941147553f85f885d9',1,'cbVirtualSharedTable']]],
+  ['resetshape_389',['resetShape',['../classcbVirtualSharedTable.html#ab1aa93f11ac6acf50202e49b322ef1b6',1,'cbVirtualSharedTable::resetShape()'],['../classcbVirtualTable.html#a4951b75acc04023657f9a9687e7ae926',1,'cbVirtualTable::resetShape()']]],
+  ['rhttpport_390',['rHttpPort',['../structcb_1_1pipeline_1_1appCfg.html#aea62b28c04ada621268ca9277dd2c948',1,'cb::pipeline::appCfg']]],
+  ['rowwise_391',['rowWise',['../cbOperator_8hpp.html#a39f86f1414ae2e84c17fdede1fa78343a66377278c6bfd043656b1835b52d7fce',1,'cbOperator.hpp']]]
 ];

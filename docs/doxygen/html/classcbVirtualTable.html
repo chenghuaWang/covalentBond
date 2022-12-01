@@ -97,8 +97,6 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a4f0ab2c3904de2e63776cbee052d27cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a45931d22ecbd75c1027402a3843615f6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcbVirtualTable.html#a45931d22ecbd75c1027402a3843615f6">cbVirtualTable</a> (const <a class="el" href="structcbShape.html">cbShape</a>&lt; 2 &gt; &amp;shape)</td></tr>
 <tr class="separator:a45931d22ecbd75c1027402a3843615f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab66bc37df5b7828ef712d6462f08d43b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcbVirtualTable.html">cbVirtualTable</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcbVirtualTable.html#ab66bc37df5b7828ef712d6462f08d43b">operator=</a> (const <a class="el" href="classcbVirtualTable.html">cbVirtualTable</a> &amp;rhsOp)</td></tr>
-<tr class="separator:ab66bc37df5b7828ef712d6462f08d43b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4951b75acc04023657f9a9687e7ae926"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcbVirtualTable.html#a4951b75acc04023657f9a9687e7ae926">resetShape</a> (const <a class="el" href="structcbShape.html">cbShape</a>&lt; 2 &gt; &amp;shape)</td></tr>
 <tr class="separator:a4951b75acc04023657f9a9687e7ae926"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ef41bf67361cdd1252ec51b07597b63"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcbMySQLField.html">cbMySQLField</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcbVirtualTable.html#a8ef41bf67361cdd1252ec51b07597b63">getInfo</a> ()</td></tr>
@@ -131,6 +129,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a3f09b2a37a34919a147fc4883227a702"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afccc3d60c43f857f6459fa868052d08a"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcbVirtualTable.html#afccc3d60c43f857f6459fa868052d08a">colTypeAt</a> (int32_t i)</td></tr>
 <tr class="separator:afccc3d60c43f857f6459fa868052d08a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00623ee8c16dc3758587b5881d2e4795"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcbVirtualTable.html#a00623ee8c16dc3758587b5881d2e4795">str</a> ()</td></tr>
+<tr class="separator:a00623ee8c16dc3758587b5881d2e4795"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -144,7 +144,7 @@ Private Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classcbVirtualTable.html" title="cbVirtualTable works as a reference from shared memory. It only use a shape and SqlCell to define dif...">cbVirtualTable</a> works as a reference from shared memory. It only use a shape and SqlCell to define different tables. </p>
 
-<p class="definition">Definition at line <a class="el" href="cbTable_8hpp_source.html#l00596">596</a> of file <a class="el" href="cbTable_8hpp_source.html">cbTable.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbTable_8hpp_source.html#l00605">605</a> of file <a class="el" href="cbTable_8hpp_source.html">cbTable.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a6a0729869f0f880e34cb40639ab6354a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6a0729869f0f880e34cb40639ab6354a">&#9670;&nbsp;</a></span>cbVirtualTable() <span class="overload">[1/4]</span></h2>
@@ -208,9 +208,9 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cbTable_8hpp_source.html#l00599">599</a> of file <a class="el" href="cbTable_8hpp_source.html">cbTable.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbTable_8hpp_source.html#l00608">608</a> of file <a class="el" href="cbTable_8hpp_source.html">cbTable.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cbTable_8hpp_source.html#l00718">m_data</a>, <a class="el" href="cbTable_8hpp_source.html#l00716">m_info</a>, and <a class="el" href="cbTable_8hpp_source.html#l00717">m_shape</a>.</p>
+<p class="reference">References <a class="el" href="cbTable_8hpp_source.html#l00733">m_data</a>, <a class="el" href="cbTable_8hpp_source.html#l00731">m_info</a>, and <a class="el" href="cbTable_8hpp_source.html#l00732">m_shape</a>.</p>
 
 </div>
 </div>
@@ -238,9 +238,9 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cbTable_8hpp_source.html#l00604">604</a> of file <a class="el" href="cbTable_8hpp_source.html">cbTable.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbTable_8hpp_source.html#l00613">613</a> of file <a class="el" href="cbTable_8hpp_source.html">cbTable.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cbTable_8hpp_source.html#l00718">m_data</a>.</p>
+<p class="reference">References <a class="el" href="cbTable_8hpp_source.html#l00733">m_data</a>.</p>
 
 </div>
 </div>
@@ -268,9 +268,9 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cbTable_8hpp_source.html#l00608">608</a> of file <a class="el" href="cbTable_8hpp_source.html">cbTable.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbTable_8hpp_source.html#l00617">617</a> of file <a class="el" href="cbTable_8hpp_source.html">cbTable.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cbTable_8hpp_source.html#l00718">m_data</a>.</p>
+<p class="reference">References <a class="el" href="cbTable_8hpp_source.html#l00733">m_data</a>.</p>
 
 </div>
 </div>
@@ -313,7 +313,18 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="cbTable_8cpp_source.html#l00115">115</a> of file <a class="el" href="cbTable_8cpp_source.html">cbTable.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cbTable_8hpp_source.html#l00718">m_data</a>.</p>
+<p class="reference">References <a class="el" href="cbTable_8hpp_source.html#l00733">m_data</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00427">cb::graph::cbComputeGraph::generateGraphTask()</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classcbVirtualTable_a4953d9c93da9e0bad9f20ffa51a37fd9_icgraph.png" border="0" usemap="#classcbVirtualTable_a4953d9c93da9e0bad9f20ffa51a37fd9_icgraph" alt=""/></div>
+<map name="classcbVirtualTable_a4953d9c93da9e0bad9f20ffa51a37fd9_icgraph" id="classcbVirtualTable_a4953d9c93da9e0bad9f20ffa51a37fd9_icgraph">
+<area shape="rect" title="row major" alt="" coords="256,13,409,39"/>
+<area shape="rect" href="classcb_1_1graph_1_1cbComputeGraph.html#adfac399f6587dc092ee699f093f7e20d" title="Create the graph task." alt="" coords="5,5,208,47"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -353,9 +364,9 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="cbTable_8cpp_source.html#l00117">117</a> of file <a class="el" href="cbTable_8cpp_source.html">cbTable.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cbTable_8hpp_source.html#l00718">m_data</a>.</p>
+<p class="reference">References <a class="el" href="cbTable_8hpp_source.html#l00733">m_data</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00121">cb::graph::cbComputeGraph::cbComputeGraph()</a>, <a class="el" href="cbTable_8cpp_source.html#l00130">getCol()</a>, <a class="el" href="cbTable_8cpp_source.html#l00119">getRow()</a>, and <a class="el" href="cbTable_8cpp_source.html#l00184">mapShared2Virtual()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00159">cb::graph::cbComputeGraph::cbComputeGraph()</a>, <a class="el" href="cbTable_8cpp_source.html#l00130">getCol()</a>, <a class="el" href="cbTable_8cpp_source.html#l00119">getRow()</a>, and <a class="el" href="cbTable_8cpp_source.html#l00215">mapShared2Virtual()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -397,9 +408,9 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="cbTable_8cpp_source.html#l00180">180</a> of file <a class="el" href="cbTable_8cpp_source.html">cbTable.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cbTable_8cpp_source.html#l00213">cbMySQLField::getName()</a>, and <a class="el" href="cbTable_8hpp_source.html#l00716">m_info</a>.</p>
+<p class="reference">References <a class="el" href="cbTable_8cpp_source.html#l00259">cbMySQLField::getName()</a>, and <a class="el" href="cbTable_8hpp_source.html#l00731">m_info</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00121">cb::graph::cbComputeGraph::cbComputeGraph()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00159">cb::graph::cbComputeGraph::cbComputeGraph()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -446,9 +457,9 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="cbTable_8cpp_source.html#l00182">182</a> of file <a class="el" href="cbTable_8cpp_source.html">cbTable.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cbTable_8hpp_source.html#l00716">m_info</a>.</p>
+<p class="reference">References <a class="el" href="cbTable_8hpp_source.html#l00731">m_info</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00121">cb::graph::cbComputeGraph::cbComputeGraph()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00159">cb::graph::cbComputeGraph::cbComputeGraph()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -488,9 +499,9 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="cbTable_8cpp_source.html#l00130">130</a> of file <a class="el" href="cbTable_8cpp_source.html">cbTable.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cbTable_8cpp_source.html#l00117">atPtrRef()</a>, <a class="el" href="classcbVirtualTable.html#a6a0729869f0f880e34cb40639ab6354a">cbVirtualTable()</a>, <a class="el" href="cbTable_8cpp_source.html#l00109">getInfo()</a>, <a class="el" href="cbTable_8hpp_source.html#l00717">m_shape</a>, <a class="el" href="cbTable_8hpp_source.html#l00191">makeShapeFull()</a>, and <a class="el" href="cbTable_8cpp_source.html#l00111">setInfo()</a>.</p>
+<p class="reference">References <a class="el" href="cbTable_8cpp_source.html#l00117">atPtrRef()</a>, <a class="el" href="classcbVirtualTable.html#a6a0729869f0f880e34cb40639ab6354a">cbVirtualTable()</a>, <a class="el" href="cbTable_8cpp_source.html#l00109">getInfo()</a>, <a class="el" href="cbTable_8hpp_source.html#l00732">m_shape</a>, <a class="el" href="cbTable_8hpp_source.html#l00198">makeShapeFull()</a>, and <a class="el" href="cbTable_8cpp_source.html#l00111">setInfo()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00121">cb::graph::cbComputeGraph::cbComputeGraph()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00159">cb::graph::cbComputeGraph::cbComputeGraph()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -536,7 +547,7 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="cbTable_8cpp_source.html#l00113">113</a> of file <a class="el" href="cbTable_8cpp_source.html">cbTable.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cbTable_8hpp_source.html#l00718">m_data</a>.</p>
+<p class="reference">References <a class="el" href="cbTable_8hpp_source.html#l00733">m_data</a>.</p>
 
 </div>
 </div>
@@ -560,17 +571,18 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="cbTable_8cpp_source.html#l00109">109</a> of file <a class="el" href="cbTable_8cpp_source.html">cbTable.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cbTable_8hpp_source.html#l00716">m_info</a>.</p>
+<p class="reference">References <a class="el" href="cbTable_8hpp_source.html#l00731">m_info</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cbTable_8cpp_source.html#l00130">getCol()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00072">cb::graph::cbVirtualDeviceNode::generateTask()</a>, and <a class="el" href="cbTable_8cpp_source.html#l00130">getCol()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classcbVirtualTable_a8ef41bf67361cdd1252ec51b07597b63_icgraph.png" border="0" usemap="#classcbVirtualTable_a8ef41bf67361cdd1252ec51b07597b63_icgraph" alt=""/></div>
 <map name="classcbVirtualTable_a8ef41bf67361cdd1252ec51b07597b63_icgraph" id="classcbVirtualTable_a8ef41bf67361cdd1252ec51b07597b63_icgraph">
-<area shape="rect" title="Get the Info object." alt="" coords="468,13,636,39"/>
-<area shape="rect" href="classcbVirtualTable.html#a4592ef60e70faf69abccc8e4956666c5" title="Get the Col object." alt="" coords="256,13,420,39"/>
-<area shape="rect" href="classcb_1_1graph_1_1cbComputeGraph.html#a13c2949f64f239419580ce105a4dd23c" title=" " alt="" coords="5,5,208,47"/>
+<area shape="rect" title="Get the Info object." alt="" coords="497,42,665,69"/>
+<area shape="rect" href="structcb_1_1graph_1_1cbVirtualDeviceNode.html#aed0f0a7b067ce70295d862beb7d31e82" title="generate a SQL wf task for now." alt="" coords="256,5,449,47"/>
+<area shape="rect" href="classcbVirtualTable.html#a4592ef60e70faf69abccc8e4956666c5" title="Get the Col object." alt="" coords="271,71,435,98"/>
+<area shape="rect" href="classcb_1_1graph_1_1cbComputeGraph.html#a13c2949f64f239419580ce105a4dd23c" title=" " alt="" coords="5,64,208,105"/>
 </map>
 </div>
 
@@ -603,9 +615,9 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="cbTable_8cpp_source.html#l00119">119</a> of file <a class="el" href="cbTable_8cpp_source.html">cbTable.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cbTable_8cpp_source.html#l00117">atPtrRef()</a>, <a class="el" href="classcbVirtualTable.html#a6a0729869f0f880e34cb40639ab6354a">cbVirtualTable()</a>, <a class="el" href="cbTable_8hpp_source.html#l00716">m_info</a>, <a class="el" href="cbTable_8hpp_source.html#l00717">m_shape</a>, <a class="el" href="cbTable_8hpp_source.html#l00191">makeShapeFull()</a>, and <a class="el" href="cbTable_8cpp_source.html#l00111">setInfo()</a>.</p>
+<p class="reference">References <a class="el" href="cbTable_8cpp_source.html#l00117">atPtrRef()</a>, <a class="el" href="classcbVirtualTable.html#a6a0729869f0f880e34cb40639ab6354a">cbVirtualTable()</a>, <a class="el" href="cbTable_8hpp_source.html#l00731">m_info</a>, <a class="el" href="cbTable_8hpp_source.html#l00732">m_shape</a>, <a class="el" href="cbTable_8hpp_source.html#l00198">makeShapeFull()</a>, and <a class="el" href="cbTable_8cpp_source.html#l00111">setInfo()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00121">cb::graph::cbComputeGraph::cbComputeGraph()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00159">cb::graph::cbComputeGraph::cbComputeGraph()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -656,20 +668,20 @@ Here is the caller graph for this function:</div>
 <p>Get the Shape object. </p>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="structcbShape.html">cbShape&lt;2&gt;</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cbTable_8hpp_source.html#l00648">648</a> of file <a class="el" href="cbTable_8hpp_source.html">cbTable.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbTable_8hpp_source.html#l00657">657</a> of file <a class="el" href="cbTable_8hpp_source.html">cbTable.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cbTable_8hpp_source.html#l00717">m_shape</a>.</p>
+<p class="reference">References <a class="el" href="cbTable_8hpp_source.html#l00732">m_shape</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00121">cb::graph::cbComputeGraph::cbComputeGraph()</a>, and <a class="el" href="cbTable_8cpp_source.html#l00184">mapShared2Virtual()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00159">cb::graph::cbComputeGraph::cbComputeGraph()</a>, <a class="el" href="cbComputeGraph_8cpp_source.html#l00072">cb::graph::cbVirtualDeviceNode::generateTask()</a>, and <a class="el" href="cbTable_8cpp_source.html#l00215">mapShared2Virtual()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classcbVirtualTable_ab167a7d9e14a36b08cba7537f9dee4af_icgraph.png" border="0" usemap="#classcbVirtualTable_ab167a7d9e14a36b08cba7537f9dee4af_icgraph" alt=""/></div>
 <map name="classcbVirtualTable_ab167a7d9e14a36b08cba7537f9dee4af_icgraph" id="classcbVirtualTable_ab167a7d9e14a36b08cba7537f9dee4af_icgraph">
-<area shape="rect" title="Get the Shape object." alt="" coords="497,42,680,69"/>
+<area shape="rect" title="Get the Shape object." alt="" coords="497,71,680,98"/>
 <area shape="rect" href="classcb_1_1graph_1_1cbComputeGraph.html#a13c2949f64f239419580ce105a4dd23c" title=" " alt="" coords="247,5,449,47"/>
-<area shape="rect" href="cbTable_8hpp.html#aa7e1365c230649b7120d4efd062c34ff" title=" " alt="" coords="275,71,421,98"/>
-<area shape="rect" href="structcb_1_1graph_1_1cbVirtualDeviceNode.html#aed0f0a7b067ce70295d862beb7d31e82" title="generate a SQL wf task for now." alt="" coords="5,64,199,105"/>
+<area shape="rect" href="structcb_1_1graph_1_1cbVirtualDeviceNode.html#aed0f0a7b067ce70295d862beb7d31e82" title="generate a SQL wf task for now." alt="" coords="5,89,199,131"/>
+<area shape="rect" href="cbTable_8hpp.html#aa7e1365c230649b7120d4efd062c34ff" title=" " alt="" coords="275,122,421,149"/>
 </map>
 </div>
 
@@ -700,9 +712,9 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="cbTable_8cpp_source.html#l00141">141</a> of file <a class="el" href="cbTable_8cpp_source.html">cbTable.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cbTable_8hpp.html#a01c5c0e4626767df64f713f605c4b847a751ff04bac891c1eb4983b0d74a3376e">DataTime</a>, <a class="el" href="cbTable_8hpp.html#a01c5c0e4626767df64f713f605c4b847a44749712dbec183e983dcd78a7736c41">Date</a>, <a class="el" href="cbTable_8hpp.html#a01c5c0e4626767df64f713f605c4b847ad909d38d705ce75386dd86e611a82f5b">Double</a>, <a class="el" href="cbTable_8hpp.html#a01c5c0e4626767df64f713f605c4b847a22ae0e2b89e5e3d477f988cc36d3272b">Float</a>, <a class="el" href="cbTable_8hpp.html#a01c5c0e4626767df64f713f605c4b847a1686a6c336b71b36d77354cea19a8b52">Int</a>, <a class="el" href="cbTable_8hpp_source.html#l00718">m_data</a>, <a class="el" href="cbTable_8hpp_source.html#l00716">m_info</a>, <a class="el" href="cbTable_8hpp_source.html#l00717">m_shape</a>, <a class="el" href="cbTable_8hpp.html#a01c5c0e4626767df64f713f605c4b847abbb93ef26e3c101ff11cdd21cab08a94">Null</a>, <a class="el" href="cbTable_8hpp.html#a01c5c0e4626767df64f713f605c4b847a27118326006d3829667a400ad23d5d98">String</a>, <a class="el" href="cbTable_8hpp.html#a01c5c0e4626767df64f713f605c4b847aa76d4ef5f3f6a672bbfab2865563e530">Time</a>, and <a class="el" href="cbTable_8hpp.html#a01c5c0e4626767df64f713f605c4b847a0011c24087481b2df247907c37792abb">ULL</a>.</p>
+<p class="reference">References <a class="el" href="cbTable_8hpp.html#a01c5c0e4626767df64f713f605c4b847a751ff04bac891c1eb4983b0d74a3376e">DataTime</a>, <a class="el" href="cbTable_8hpp.html#a01c5c0e4626767df64f713f605c4b847a44749712dbec183e983dcd78a7736c41">Date</a>, <a class="el" href="cbTable_8hpp.html#a01c5c0e4626767df64f713f605c4b847ad909d38d705ce75386dd86e611a82f5b">Double</a>, <a class="el" href="cbTable_8hpp.html#a01c5c0e4626767df64f713f605c4b847a22ae0e2b89e5e3d477f988cc36d3272b">Float</a>, <a class="el" href="cbTable_8hpp.html#a01c5c0e4626767df64f713f605c4b847a1686a6c336b71b36d77354cea19a8b52">Int</a>, <a class="el" href="cbTable_8hpp_source.html#l00733">m_data</a>, <a class="el" href="cbTable_8hpp_source.html#l00731">m_info</a>, <a class="el" href="cbTable_8hpp_source.html#l00732">m_shape</a>, <a class="el" href="cbTable_8hpp.html#a01c5c0e4626767df64f713f605c4b847abbb93ef26e3c101ff11cdd21cab08a94">Null</a>, <a class="el" href="cbTable_8hpp.html#a01c5c0e4626767df64f713f605c4b847a27118326006d3829667a400ad23d5d98">String</a>, <a class="el" href="cbTable_8hpp.html#a01c5c0e4626767df64f713f605c4b847aa76d4ef5f3f6a672bbfab2865563e530">Time</a>, and <a class="el" href="cbTable_8hpp.html#a01c5c0e4626767df64f713f605c4b847a0011c24087481b2df247907c37792abb">ULL</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00121">cb::graph::cbComputeGraph::cbComputeGraph()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00159">cb::graph::cbComputeGraph::cbComputeGraph()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -712,36 +724,6 @@ Here is the caller graph for this function:</div>
 <area shape="rect" href="classcb_1_1graph_1_1cbComputeGraph.html#a13c2949f64f239419580ce105a4dd23c" title=" " alt="" coords="5,5,208,47"/>
 </map>
 </div>
-
-</div>
-</div>
-<a id="ab66bc37df5b7828ef712d6462f08d43b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab66bc37df5b7828ef712d6462f08d43b">&#9670;&nbsp;</a></span>operator=()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classcbVirtualTable.html">cbVirtualTable</a> cbVirtualTable::operator= </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classcbVirtualTable.html">cbVirtualTable</a> &amp;&#160;</td>
-          <td class="paramname"><em>rhsOp</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="cbTable_8hpp_source.html#l00613">613</a> of file <a class="el" href="cbTable_8hpp_source.html">cbTable.hpp</a>.</p>
-
-<p class="reference">References <a class="el" href="cbTable_8hpp_source.html#l00718">m_data</a>, <a class="el" href="cbTable_8hpp_source.html#l00716">m_info</a>, and <a class="el" href="cbTable_8hpp_source.html#l00717">m_shape</a>.</p>
 
 </div>
 </div>
@@ -769,9 +751,9 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="cbTable_8cpp_source.html#l00174">174</a> of file <a class="el" href="cbTable_8cpp_source.html">cbTable.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cbTable_8hpp_source.html#l00718">m_data</a>, and <a class="el" href="cbTable_8hpp_source.html#l00717">m_shape</a>.</p>
+<p class="reference">References <a class="el" href="cbTable_8hpp_source.html#l00733">m_data</a>, and <a class="el" href="cbTable_8hpp_source.html#l00732">m_shape</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00121">cb::graph::cbComputeGraph::cbComputeGraph()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00159">cb::graph::cbComputeGraph::cbComputeGraph()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -808,9 +790,9 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="cbTable_8cpp_source.html#l00098">98</a> of file <a class="el" href="cbTable_8cpp_source.html">cbTable.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cbTable_8hpp_source.html#l00718">m_data</a>, and <a class="el" href="cbTable_8hpp_source.html#l00717">m_shape</a>.</p>
+<p class="reference">References <a class="el" href="cbTable_8hpp_source.html#l00733">m_data</a>, and <a class="el" href="cbTable_8hpp_source.html#l00732">m_shape</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00121">cb::graph::cbComputeGraph::cbComputeGraph()</a>, and <a class="el" href="cbTable_8cpp_source.html#l00184">mapShared2Virtual()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00159">cb::graph::cbComputeGraph::cbComputeGraph()</a>, and <a class="el" href="cbTable_8cpp_source.html#l00215">mapShared2Virtual()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -843,9 +825,9 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="cbTable_8cpp_source.html#l00111">111</a> of file <a class="el" href="cbTable_8cpp_source.html">cbTable.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cbTable_8hpp_source.html#l00716">m_info</a>.</p>
+<p class="reference">References <a class="el" href="cbTable_8hpp_source.html#l00731">m_info</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cbTable_8cpp_source.html#l00130">getCol()</a>, <a class="el" href="cbTable_8cpp_source.html#l00119">getRow()</a>, and <a class="el" href="cbTable_8cpp_source.html#l00184">mapShared2Virtual()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cbTable_8cpp_source.html#l00130">getCol()</a>, <a class="el" href="cbTable_8cpp_source.html#l00119">getRow()</a>, and <a class="el" href="cbTable_8cpp_source.html#l00215">mapShared2Virtual()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -857,6 +839,38 @@ Here is the caller graph for this function:</div>
 <area shape="rect" href="cbTable_8hpp.html#aa7e1365c230649b7120d4efd062c34ff" title=" " alt="" coords="268,107,415,133"/>
 <area shape="rect" href="classcb_1_1graph_1_1cbComputeGraph.html#a13c2949f64f239419580ce105a4dd23c" title=" " alt="" coords="5,17,208,58"/>
 <area shape="rect" href="structcb_1_1graph_1_1cbVirtualDeviceNode.html#aed0f0a7b067ce70295d862beb7d31e82" title="generate a SQL wf task for now." alt="" coords="10,99,203,141"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a00623ee8c16dc3758587b5881d2e4795"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00623ee8c16dc3758587b5881d2e4795">&#9670;&nbsp;</a></span>str()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void cbVirtualTable::str </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="cbTable_8cpp_source.html#l00184">184</a> of file <a class="el" href="cbTable_8cpp_source.html">cbTable.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="cbTable_8hpp_source.html#l00732">m_shape</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00159">cb::graph::cbComputeGraph::cbComputeGraph()</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classcbVirtualTable_a00623ee8c16dc3758587b5881d2e4795_icgraph.png" border="0" usemap="#classcbVirtualTable_a00623ee8c16dc3758587b5881d2e4795_icgraph" alt=""/></div>
+<map name="classcbVirtualTable_a00623ee8c16dc3758587b5881d2e4795_icgraph" id="classcbVirtualTable_a00623ee8c16dc3758587b5881d2e4795_icgraph">
+<area shape="rect" title=" " alt="" coords="256,13,395,39"/>
+<area shape="rect" href="classcb_1_1graph_1_1cbComputeGraph.html#a13c2949f64f239419580ce105a4dd23c" title=" " alt="" coords="5,5,208,47"/>
 </map>
 </div>
 
@@ -883,9 +897,9 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cbTable_8hpp_source.html#l00718">718</a> of file <a class="el" href="cbTable_8hpp_source.html">cbTable.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbTable_8hpp_source.html#l00733">733</a> of file <a class="el" href="cbTable_8hpp_source.html">cbTable.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cbTable_8cpp_source.html#l00115">atPtr()</a>, <a class="el" href="cbTable_8cpp_source.html#l00117">atPtrRef()</a>, <a class="el" href="cbTable_8hpp_source.html#l00599">cbVirtualTable()</a>, <a class="el" href="cbTable_8cpp_source.html#l00113">getData()</a>, <a class="el" href="cbTable_8cpp_source.html#l00141">keyBy()</a>, <a class="el" href="cbTable_8hpp_source.html#l00613">operator=()</a>, <a class="el" href="cbTable_8cpp_source.html#l00174">pushRow()</a>, and <a class="el" href="cbTable_8cpp_source.html#l00098">resetShape()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cbTable_8cpp_source.html#l00115">atPtr()</a>, <a class="el" href="cbTable_8cpp_source.html#l00117">atPtrRef()</a>, <a class="el" href="cbTable_8hpp_source.html#l00608">cbVirtualTable()</a>, <a class="el" href="cbTable_8cpp_source.html#l00113">getData()</a>, <a class="el" href="cbTable_8cpp_source.html#l00141">keyBy()</a>, <a class="el" href="cbTable_8cpp_source.html#l00174">pushRow()</a>, and <a class="el" href="cbTable_8cpp_source.html#l00098">resetShape()</a>.</p>
 
 </div>
 </div>
@@ -909,9 +923,9 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cbTable_8hpp_source.html#l00716">716</a> of file <a class="el" href="cbTable_8hpp_source.html">cbTable.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbTable_8hpp_source.html#l00731">731</a> of file <a class="el" href="cbTable_8hpp_source.html">cbTable.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cbTable_8hpp_source.html#l00599">cbVirtualTable()</a>, <a class="el" href="cbTable_8cpp_source.html#l00180">colNameAt()</a>, <a class="el" href="cbTable_8cpp_source.html#l00182">colTypeAt()</a>, <a class="el" href="cbTable_8cpp_source.html#l00109">getInfo()</a>, <a class="el" href="cbTable_8cpp_source.html#l00119">getRow()</a>, <a class="el" href="cbTable_8cpp_source.html#l00141">keyBy()</a>, <a class="el" href="cbTable_8hpp_source.html#l00613">operator=()</a>, and <a class="el" href="cbTable_8cpp_source.html#l00111">setInfo()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cbTable_8hpp_source.html#l00608">cbVirtualTable()</a>, <a class="el" href="cbTable_8cpp_source.html#l00180">colNameAt()</a>, <a class="el" href="cbTable_8cpp_source.html#l00182">colTypeAt()</a>, <a class="el" href="cbTable_8cpp_source.html#l00109">getInfo()</a>, <a class="el" href="cbTable_8cpp_source.html#l00119">getRow()</a>, <a class="el" href="cbTable_8cpp_source.html#l00141">keyBy()</a>, and <a class="el" href="cbTable_8cpp_source.html#l00111">setInfo()</a>.</p>
 
 </div>
 </div>
@@ -935,9 +949,9 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cbTable_8hpp_source.html#l00717">717</a> of file <a class="el" href="cbTable_8hpp_source.html">cbTable.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbTable_8hpp_source.html#l00732">732</a> of file <a class="el" href="cbTable_8hpp_source.html">cbTable.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cbTable_8hpp_source.html#l00599">cbVirtualTable()</a>, <a class="el" href="cbTable_8cpp_source.html#l00130">getCol()</a>, <a class="el" href="cbTable_8cpp_source.html#l00119">getRow()</a>, <a class="el" href="cbTable_8hpp_source.html#l00648">getShape()</a>, <a class="el" href="cbTable_8cpp_source.html#l00141">keyBy()</a>, <a class="el" href="cbTable_8hpp_source.html#l00613">operator=()</a>, <a class="el" href="cbTable_8cpp_source.html#l00174">pushRow()</a>, and <a class="el" href="cbTable_8cpp_source.html#l00098">resetShape()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cbTable_8hpp_source.html#l00608">cbVirtualTable()</a>, <a class="el" href="cbTable_8cpp_source.html#l00130">getCol()</a>, <a class="el" href="cbTable_8cpp_source.html#l00119">getRow()</a>, <a class="el" href="cbTable_8hpp_source.html#l00657">getShape()</a>, <a class="el" href="cbTable_8cpp_source.html#l00141">keyBy()</a>, <a class="el" href="cbTable_8cpp_source.html#l00174">pushRow()</a>, <a class="el" href="cbTable_8cpp_source.html#l00098">resetShape()</a>, and <a class="el" href="cbTable_8cpp_source.html#l00184">str()</a>.</p>
 
 </div>
 </div>

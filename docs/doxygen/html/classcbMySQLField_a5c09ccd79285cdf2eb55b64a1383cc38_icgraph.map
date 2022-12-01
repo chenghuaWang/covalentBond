@@ -1,5 +1,6 @@
 <map id="cbMySQLField::getName" name="cbMySQLField::getName">
-<area shape="rect" id="node1" title=" " alt="" coords="499,13,680,39"/>
-<area shape="rect" id="node2" href="$classcbVirtualTable.html#a3f09b2a37a34919a147fc4883227a702" title=" " alt="" coords="256,13,451,39"/>
-<area shape="rect" id="node3" href="$classcb_1_1graph_1_1cbComputeGraph.html#a13c2949f64f239419580ce105a4dd23c" title=" " alt="" coords="5,5,208,47"/>
+<area shape="rect" id="node1" title=" " alt="" coords="516,31,697,57"/>
+<area shape="rect" id="node2" href="$classcbMySQLField.html#aec5fdb90685ad66152f923a36a324c12" title=" " alt="" coords="256,5,468,32"/>
+<area shape="rect" id="node3" href="$classcbVirtualTable.html#a3f09b2a37a34919a147fc4883227a702" title=" " alt="" coords="265,56,459,83"/>
+<area shape="rect" id="node4" href="$classcb_1_1graph_1_1cbComputeGraph.html#a13c2949f64f239419580ce105a4dd23c" title=" " alt="" coords="5,49,208,90"/>
 </map>

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['webport_902',['webPort',['../structcb_1_1pipeline_1_1appCfg.html#aa2cd220ca9eaa97c747edaed1f33ba88',1,'cb::pipeline::appCfg']]],
-  ['webroot_903',['webRoot',['../structcb_1_1pipeline_1_1appCfg.html#af5400682407683901b0330b2266d97e3',1,'cb::pipeline::appCfg']]]
+  ['visited_956',['visited',['../structcb_1_1graph_1_1cbNode.html#ad3627b68c9278e48f9f462d1377587ad',1,'cb::graph::cbNode']]]
 ];

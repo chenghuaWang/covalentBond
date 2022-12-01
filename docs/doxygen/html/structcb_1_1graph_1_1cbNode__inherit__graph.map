@@ -1,5 +1,6 @@
 <map id="cb::graph::cbNode" name="cb::graph::cbNode">
-<area shape="rect" id="node1" title=" " alt="" coords="151,5,290,32"/>
-<area shape="rect" id="node2" href="$structcb_1_1graph_1_1cbOperatorNode.html" title="A operator node. Generate all go task. Then pass the output to the next node&#39;s inputs." alt="" coords="5,80,201,107"/>
-<area shape="rect" id="node3" href="$structcb_1_1graph_1_1cbVirtualDeviceNode.html" title="This node include virtual device infomation and perform the final operation of how to get the data fr..." alt="" coords="226,80,453,107"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,56,144,83"/>
+<area shape="rect" id="node2" href="$structcb_1_1graph_1_1cbOperatorNode.html" title="A operator node. Generate all go task. Then pass the output to the next node&#39;s inputs." alt="" coords="207,5,403,32"/>
+<area shape="rect" id="node3" href="$structcb_1_1graph_1_1cbRedisCachingNode.html" title=" " alt="" coords="192,56,419,83"/>
+<area shape="rect" id="node4" href="$structcb_1_1graph_1_1cbVirtualDeviceNode.html" title="This node include virtual device infomation and perform the final operation of how to get the data fr..." alt="" coords="192,107,419,133"/>
 </map>

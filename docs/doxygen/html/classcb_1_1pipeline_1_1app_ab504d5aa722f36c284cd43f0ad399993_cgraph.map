@@ -1,7 +1,8 @@
 <map id="cb::pipeline::app::initRHttp" name="cb::pipeline::app::initRHttp">
-<area shape="rect" id="node1" title=" " alt="" coords="5,67,143,108"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,96,143,137"/>
 <area shape="rect" id="node2" href="$namespacecb_1_1apiCPP.html#ab11ed93ce05b63c36406158a26bce167" title=" " alt="" coords="213,45,374,71"/>
 <area shape="rect" id="node6" href="$classcb_1_1pipeline_1_1graphContainer.html#ab097285ed1da9f9138f6877512108d8d" title=" " alt="" coords="191,96,396,137"/>
+<area shape="rect" id="node7" href="$classtrivial_1_1cbVirtualDeviceManager.html#a899211bd1b354d2ec86de7e277c0ae40" title=" " alt="" coords="195,161,391,203"/>
 <area shape="rect" id="node3" href="$classcb_1_1graph_1_1cbComputeGraph.html#a58961056d82259216916a60fa7cdf70c" title="execute the script" alt="" coords="444,5,647,47"/>
 <area shape="rect" id="node5" href="$classcb_1_1graph_1_1cbComputeGraph.html#adec5abcba678492b291f7855be49aa6b" title="Set the Virtual Device Manager object." alt="" coords="444,71,647,112"/>
 <area shape="rect" id="node4" href="$structcb_1_1graph_1_1cbGraphSharedLuaStack.html#a3f64e6d8395f288a7c92e82000b77ed1" title="execute the hard coded script." alt="" coords="695,5,884,47"/>

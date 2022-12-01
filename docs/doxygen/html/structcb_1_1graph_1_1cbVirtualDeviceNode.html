@@ -96,19 +96,22 @@ Collaboration diagram for cb::graph::cbVirtualDeviceNode:</div>
 <div class="dyncontent">
 <div class="center"><img src="structcb_1_1graph_1_1cbVirtualDeviceNode__coll__graph.png" border="0" usemap="#cb_1_1graph_1_1cbVirtualDeviceNode_coll__map" alt="Collaboration graph"/></div>
 <map name="cb_1_1graph_1_1cbVirtualDeviceNode_coll__map" id="cb_1_1graph_1_1cbVirtualDeviceNode_coll__map">
-<area shape="rect" title="This node include virtual device infomation and perform the final operation of how to get the data fr..." alt="" coords="1207,192,1433,219"/>
-<area shape="rect" href="structcb_1_1graph_1_1cbNode.html" title=" " alt="" coords="937,167,1076,193"/>
-<area shape="rect" href="classcb_1_1graph_1_1cbComputeGraph.html" title=" " alt="" coords="631,87,833,113"/>
-<area shape="rect" href="structcb_1_1graph_1_1cbGraphSharedMem.html" title="The shared memory of compute graph. Include 2 basic components." alt="" coords="232,5,455,32"/>
-<area shape="rect" href="structcb_1_1graph_1_1cbGraphSharedLuaStack.html" title=" " alt="" coords="249,57,438,98"/>
-<area shape="rect" href="classluaJitThread.html" title=" " alt="" coords="13,64,113,91"/>
-<area shape="rect" href="classtrivial_1_1cbVirtualDeviceManager.html" title=" " alt="" coords="258,122,429,163"/>
-<area shape="rect" href="structcbOpIO.html" title="The input and output of one Operator." alt="" coords="697,167,767,193"/>
-<area shape="rect" href="classcbVirtualTable.html" title="cbVirtualTable works as a reference from shared memory. It only use a shape and SqlCell to define dif..." alt="" coords="286,188,401,215"/>
-<area shape="rect" href="structcbShape.html" title=" " alt="" coords="5,163,120,189"/>
-<area shape="rect" href="classcbMySQLField.html" title="A copy move from workflow MySQLResult.h and .inl file." alt="" coords="6,213,119,240"/>
-<area shape="rect" href="structtrivial_1_1cbMySqlDevice.html" title=" " alt="" coords="923,217,1091,244"/>
-<area shape="rect" href="structtrivial_1_1cbVirtualDevice.html" title=" " alt="" coords="647,217,817,244"/>
+<area shape="rect" title="This node include virtual device infomation and perform the final operation of how to get the data fr..." alt="" coords="1276,156,1503,183"/>
+<area shape="rect" href="structcb_1_1graph_1_1cbNode.html" title=" " alt="" coords="973,188,1112,215"/>
+<area shape="rect" href="structcb_1_1graph_1_1cbRedisCachingNode.html" title=" " alt="" coords="1276,105,1503,132"/>
+<area shape="rect" href="classcb_1_1graph_1_1cbComputeGraph.html" title=" " alt="" coords="1679,208,1881,235"/>
+<area shape="rect" href="structtrivial_1_1cbRedisDevice.html" title=" " alt="" coords="961,48,1125,75"/>
+<area shape="rect" href="structtrivial_1_1cbVirtualDevice.html" title=" " alt="" coords="517,72,688,99"/>
+<area shape="rect" href="structtrivial_1_1cbMySqlDevice.html" title=" " alt="" coords="959,99,1127,125"/>
+<area shape="rect" href="structcb_1_1graph_1_1cbGraphSharedMem.html" title="The shared memory of compute graph. Include 2 basic components." alt="" coords="712,7,935,33"/>
+<area shape="rect" href="structcbOutputTableStruct.html" title=" " alt="" coords="232,19,385,45"/>
+<area shape="rect" href="structcbShape.html" title=" " alt="" coords="5,59,120,85"/>
+<area shape="rect" href="classcbVirtualTable.html" title="cbVirtualTable works as a reference from shared memory. It only use a shape and SqlCell to define dif..." alt="" coords="251,129,366,156"/>
+<area shape="rect" href="structcb_1_1graph_1_1cbGraphSharedLuaStack.html" title=" " alt="" coords="1295,270,1484,311"/>
+<area shape="rect" href="classluaJitThread.html" title=" " alt="" coords="993,277,1093,304"/>
+<area shape="rect" href="classtrivial_1_1cbVirtualDeviceManager.html" title=" " alt="" coords="1304,335,1475,377"/>
+<area shape="rect" href="structcbOpIO.html" title="The input and output of one Operator." alt="" coords="568,137,637,164"/>
+<area shape="rect" href="classcbMySQLField.html" title="A copy move from workflow MySQLResult.h and .inl file." alt="" coords="6,129,119,156"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -139,6 +142,10 @@ Public Attributes</h2></td></tr>
 <tr class="inherit_header pub_attribs_structcb_1_1graph_1_1cbNode"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_structcb_1_1graph_1_1cbNode')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="structcb_1_1graph_1_1cbNode.html">cb::graph::cbNode</a></td></tr>
 <tr class="memitem:ab977004e31f6cf587dba2e883872c8c7 inherit pub_attribs_structcb_1_1graph_1_1cbNode"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structcbOpIO.html">cbOpIO</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcb_1_1graph_1_1cbNode.html#ab977004e31f6cf587dba2e883872c8c7">io</a></td></tr>
 <tr class="separator:ab977004e31f6cf587dba2e883872c8c7 inherit pub_attribs_structcb_1_1graph_1_1cbNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d9f4028608627a324728c8030a9f818 inherit pub_attribs_structcb_1_1graph_1_1cbNode"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcb_1_1graph_1_1cbNode.html#a7d9f4028608627a324728c8030a9f818">isFinalOutput</a> = false</td></tr>
+<tr class="separator:a7d9f4028608627a324728c8030a9f818 inherit pub_attribs_structcb_1_1graph_1_1cbNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3627b68c9278e48f9f462d1377587ad inherit pub_attribs_structcb_1_1graph_1_1cbNode"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcb_1_1graph_1_1cbNode.html#ad3627b68c9278e48f9f462d1377587ad">visited</a> = false</td></tr>
+<tr class="separator:ad3627b68c9278e48f9f462d1377587ad inherit pub_attribs_structcb_1_1graph_1_1cbNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a1986856c311d93cd9bdaa2ddc47e90 inherit pub_attribs_structcb_1_1graph_1_1cbNode"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacecb_1_1graph.html#a26e08891d43431120278270dcc0822d6">nodeType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcb_1_1graph_1_1cbNode.html#a1a1986856c311d93cd9bdaa2ddc47e90">nodeT</a></td></tr>
 <tr class="separator:a1a1986856c311d93cd9bdaa2ddc47e90 inherit pub_attribs_structcb_1_1graph_1_1cbNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b28c6eb0d32d01a2dffbe0dd32f7231 inherit pub_attribs_structcb_1_1graph_1_1cbNode"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcb_1_1graph_1_1cbNode.html#a6b28c6eb0d32d01a2dffbe0dd32f7231">task</a> = nullptr</td></tr>
@@ -172,7 +179,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="textblock"><p>This node include virtual device infomation and perform the final operation of how to get the data from remote sql database. </p>
 <dl class="section note"><dt>Note</dt><dd>This node just support SQL for now. But it's quite easy to extened to other relationship database. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8hpp_source.html#l00135">135</a> of file <a class="el" href="cbComputeGraph_8hpp_source.html">cbComputeGraph.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8hpp_source.html#l00142">142</a> of file <a class="el" href="cbComputeGraph_8hpp_source.html">cbComputeGraph.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aa8daa0139331641309f824301aa88d08"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa8daa0139331641309f824301aa88d08">&#9670;&nbsp;</a></span>~cbVirtualDeviceNode()</h2>
@@ -197,7 +204,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00050">50</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00068">68</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
 
 </div>
 </div>
@@ -216,7 +223,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00094">94</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00113">113</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
 
 <p class="reference">References <a class="el" href="namespacecb_1_1graph.html#a26e08891d43431120278270dcc0822d6ac3b5e1f7de11d645fb1da6c5415b1fa5">cb::graph::Leaf</a>.</p>
 
@@ -247,11 +254,11 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00090">90</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00109">109</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cbComputeGraph_8hpp_source.html#l00158">m_queries</a>.</p>
+<p class="reference">References <a class="el" href="cbComputeGraph_8hpp_source.html#l00165">m_queries</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00121">cb::graph::cbComputeGraph::cbComputeGraph()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00159">cb::graph::cbComputeGraph::cbComputeGraph()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -292,26 +299,30 @@ Here is the caller graph for this function:</div>
 
 <p>Implements <a class="el" href="structcb_1_1graph_1_1cbNode.html#a40d2ae8a7b0404bb9d1396097ea40df5">cb::graph::cbNode</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00054">54</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00072">72</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cbComputeGraph_8hpp_source.html#l00124">cb::graph::cbNode::graph</a>, <a class="el" href="cbOperator_8hpp_source.html#l00039">cbOpIO::I</a>, <a class="el" href="cbComputeGraph_8hpp_source.html#l00118">cb::graph::cbNode::io</a>, <a class="el" href="cbComputeGraph_8hpp_source.html#l00157">m_device</a>, <a class="el" href="cbComputeGraph_8hpp_source.html#l00158">m_queries</a>, <a class="el" href="cbComputeGraph_8hpp_source.html#l00343">cb::graph::cbComputeGraph::m_sharedMem</a>, <a class="el" href="cbTable_8cpp_source.html#l00184">mapShared2Virtual()</a>, <a class="el" href="cbComputeGraph_8hpp_source.html#l00123">cb::graph::cbNode::nextNode</a>, <a class="el" href="cbOperator_8hpp_source.html#l00040">cbOpIO::O</a>, <a class="el" href="cbComputeGraph_8cpp_source.html#l00012">cb::graph::cbGraphSharedMem::push()</a>, <a class="el" href="cbVirtualDevice_8cpp_source.html#l00031">trivial::cbMySqlDevice::query()</a>, and <a class="el" href="cbComputeGraph_8hpp_source.html#l00122">cb::graph::cbNode::task</a>.</p>
+<p class="reference">References <a class="el" href="cbTable_8cpp_source.html#l00109">cbVirtualTable::getInfo()</a>, <a class="el" href="cbTable_8hpp_source.html#l00657">cbVirtualTable::getShape()</a>, <a class="el" href="cbComputeGraph_8hpp_source.html#l00131">cb::graph::cbNode::graph</a>, <a class="el" href="cbOperator_8hpp_source.html#l00039">cbOpIO::I</a>, <a class="el" href="cbComputeGraph_8hpp_source.html#l00123">cb::graph::cbNode::io</a>, <a class="el" href="cbComputeGraph_8hpp_source.html#l00126">cb::graph::cbNode::isFinalOutput</a>, <a class="el" href="cbComputeGraph_8hpp_source.html#l00164">m_device</a>, <a class="el" href="cbComputeGraph_8hpp_source.html#l00165">m_queries</a>, <a class="el" href="cbComputeGraph_8hpp_source.html#l00392">cb::graph::cbComputeGraph::m_sharedMem</a>, <a class="el" href="cbTable_8cpp_source.html#l00215">mapShared2Virtual()</a>, <a class="el" href="cbComputeGraph_8hpp_source.html#l00130">cb::graph::cbNode::nextNode</a>, <a class="el" href="cbOperator_8hpp_source.html#l00040">cbOpIO::O</a>, <a class="el" href="cbComputeGraph_8cpp_source.html#l00012">cb::graph::cbGraphSharedMem::push()</a>, <a class="el" href="cbVirtualDevice_8cpp_source.html#l00031">trivial::cbMySqlDevice::query()</a>, <a class="el" href="cbComputeGraph_8cpp_source.html#l00016">cb::graph::cbGraphSharedMem::setOutStruct()</a>, and <a class="el" href="cbComputeGraph_8hpp_source.html#l00129">cb::graph::cbNode::task</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="structcb_1_1graph_1_1cbVirtualDeviceNode_aed0f0a7b067ce70295d862beb7d31e82_cgraph.png" border="0" usemap="#structcb_1_1graph_1_1cbVirtualDeviceNode_aed0f0a7b067ce70295d862beb7d31e82_cgraph" alt=""/></div>
 <map name="structcb_1_1graph_1_1cbVirtualDeviceNode_aed0f0a7b067ce70295d862beb7d31e82_cgraph" id="structcb_1_1graph_1_1cbVirtualDeviceNode_aed0f0a7b067ce70295d862beb7d31e82_cgraph">
-<area shape="rect" title="generate a SQL wf task for now." alt="" coords="5,276,199,317"/>
-<area shape="rect" href="cbTable_8cpp.html#aa7e1365c230649b7120d4efd062c34ff" title=" " alt="" coords="268,225,415,251"/>
-<area shape="rect" href="structcb_1_1graph_1_1cbGraphSharedMem.html#acf71e5b4dfb962e47daa31af0401db93" title=" " alt="" coords="247,276,436,317"/>
-<area shape="rect" href="structtrivial_1_1cbMySqlDevice.html#afbc77741d1ff6131db48437093401c64" title=" " alt="" coords="257,341,425,383"/>
-<area shape="rect" href="classcbVirtualSharedTable.html#a1c0eb733856c6661bfcd1a300a89435d" title=" " alt="" coords="502,5,661,47"/>
-<area shape="rect" href="classcbVirtualTable.html#a794954a9b9f944ea784a960bd215a88d" title=" " alt="" coords="494,71,669,98"/>
-<area shape="rect" href="classcbVirtualSharedTable.html#a1ebce84c8c5a4dc5c74ad70eca2bce74" title="Get the Info object." alt="" coords="502,123,661,164"/>
-<area shape="rect" href="classcbVirtualSharedTable.html#a7806f68d7c9d78b64967c37cde5643df" title="Get the Shape object." alt="" coords="502,188,661,229"/>
-<area shape="rect" href="classcbVirtualTable.html#ab167a7d9e14a36b08cba7537f9dee4af" title="Get the Shape object." alt="" coords="490,254,673,281"/>
-<area shape="rect" href="cbTable_8hpp.html#a1efb642b144c336a653bb6f91f334ebd" title=" " alt="" coords="521,305,642,331"/>
-<area shape="rect" href="classcbVirtualTable.html#a4951b75acc04023657f9a9687e7ae926" title=" " alt="" coords="484,355,679,382"/>
-<area shape="rect" href="classcbVirtualTable.html#a6f612970ee62242f23edf660d35a2dc2" title=" " alt="" coords="498,406,665,433"/>
+<area shape="rect" title="generate a SQL wf task for now." alt="" coords="5,237,199,278"/>
+<area shape="rect" href="classcbVirtualTable.html#a8ef41bf67361cdd1252ec51b07597b63" title="Get the Info object." alt="" coords="257,113,425,140"/>
+<area shape="rect" href="classcbVirtualTable.html#ab167a7d9e14a36b08cba7537f9dee4af" title="Get the Shape object." alt="" coords="490,5,673,32"/>
+<area shape="rect" href="cbTable_8cpp.html#aa7e1365c230649b7120d4efd062c34ff" title=" " alt="" coords="268,215,415,241"/>
+<area shape="rect" href="structcb_1_1graph_1_1cbGraphSharedMem.html#acf71e5b4dfb962e47daa31af0401db93" title=" " alt="" coords="247,266,436,307"/>
+<area shape="rect" href="structtrivial_1_1cbMySqlDevice.html#afbc77741d1ff6131db48437093401c64" title=" " alt="" coords="257,331,425,373"/>
+<area shape="rect" href="structcb_1_1graph_1_1cbGraphSharedMem.html#a838dff8a5fd259431386fa5c9ab6b79e" title=" " alt="" coords="247,411,436,453"/>
+<area shape="rect" href="classcbVirtualSharedTable.html#a1c0eb733856c6661bfcd1a300a89435d" title=" " alt="" coords="502,57,661,98"/>
+<area shape="rect" href="classcbVirtualTable.html#a794954a9b9f944ea784a960bd215a88d" title=" " alt="" coords="494,123,669,149"/>
+<area shape="rect" href="classcbVirtualSharedTable.html#a1ebce84c8c5a4dc5c74ad70eca2bce74" title="Get the Info object." alt="" coords="502,174,661,215"/>
+<area shape="rect" href="classcbVirtualSharedTable.html#a7806f68d7c9d78b64967c37cde5643df" title="Get the Shape object." alt="" coords="502,239,661,281"/>
+<area shape="rect" href="cbTable_8hpp.html#a1efb642b144c336a653bb6f91f334ebd" title=" " alt="" coords="521,305,642,332"/>
+<area shape="rect" href="classcbVirtualTable.html#a4951b75acc04023657f9a9687e7ae926" title=" " alt="" coords="484,356,679,383"/>
+<area shape="rect" href="classcbVirtualTable.html#a6f612970ee62242f23edf660d35a2dc2" title=" " alt="" coords="498,407,665,433"/>
+<area shape="rect" href="structcbOutputTableStruct.html#acc043d7548b281d79783d117acbad365" title=" " alt="" coords="505,458,658,499"/>
+<area shape="rect" href="structcbOutputTableStruct.html#a3acd69d3d131daac0d679a3965dae7cd" title=" " alt="" coords="727,458,880,499"/>
 </map>
 </div>
 
@@ -341,11 +352,11 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00092">92</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00111">111</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cbComputeGraph_8hpp_source.html#l00157">m_device</a>.</p>
+<p class="reference">References <a class="el" href="cbComputeGraph_8hpp_source.html#l00164">m_device</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00323">cb::graph::cbComputeGraph::createVirtualDeviceNode()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00393">cb::graph::cbComputeGraph::createVirtualDeviceNode()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -372,7 +383,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8hpp_source.html#l00136">136</a> of file <a class="el" href="cbComputeGraph_8hpp_source.html">cbComputeGraph.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8hpp_source.html#l00143">143</a> of file <a class="el" href="cbComputeGraph_8hpp_source.html">cbComputeGraph.hpp</a>.</p>
 
 </div>
 </div>
@@ -396,9 +407,9 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8hpp_source.html#l00157">157</a> of file <a class="el" href="cbComputeGraph_8hpp_source.html">cbComputeGraph.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8hpp_source.html#l00164">164</a> of file <a class="el" href="cbComputeGraph_8hpp_source.html">cbComputeGraph.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00054">generateTask()</a>, and <a class="el" href="cbComputeGraph_8cpp_source.html#l00092">setMySQLDevice()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00072">generateTask()</a>, and <a class="el" href="cbComputeGraph_8cpp_source.html#l00111">setMySQLDevice()</a>.</p>
 
 </div>
 </div>
@@ -422,9 +433,9 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8hpp_source.html#l00158">158</a> of file <a class="el" href="cbComputeGraph_8hpp_source.html">cbComputeGraph.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8hpp_source.html#l00165">165</a> of file <a class="el" href="cbComputeGraph_8hpp_source.html">cbComputeGraph.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00090">addQuery()</a>, and <a class="el" href="cbComputeGraph_8cpp_source.html#l00054">generateTask()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00109">addQuery()</a>, and <a class="el" href="cbComputeGraph_8cpp_source.html#l00072">generateTask()</a>.</p>
 
 </div>
 </div>

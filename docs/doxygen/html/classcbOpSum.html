@@ -103,8 +103,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ae8785a950dc7f3d572bc7a55cdb55c18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac181cbd495f127e0dc50de33c1870fe4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcbOpSum.html#ac181cbd495f127e0dc50de33c1870fe4">cbOpSum</a> ()=default</td></tr>
 <tr class="separator:ac181cbd495f127e0dc50de33c1870fe4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4c4e3c63b18bac4800c5b46f9e4210c4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcbOpSum.html#a4c4e3c63b18bac4800c5b46f9e4210c4">overload</a> (sol::function &amp;func) override final</td></tr>
-<tr class="separator:a4c4e3c63b18bac4800c5b46f9e4210c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab34cb3b45d0ab0df4b2d5b4ea7cceb4e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcbOpSum.html#ab34cb3b45d0ab0df4b2d5b4ea7cceb4e">overload</a> (const sol::function &amp;func) override final</td></tr>
+<tr class="separator:ab34cb3b45d0ab0df4b2d5b4ea7cceb4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c0a9de72e2e543e46cc462472dcbbb9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcbOpSum.html#a4c0a9de72e2e543e46cc462472dcbbb9">execMain</a> () override final</td></tr>
 <tr class="separator:a4c0a9de72e2e543e46cc462472dcbbb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab5485982ae053f2746a31e5f12a7bde0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcbOpSum.html#ab5485982ae053f2746a31e5f12a7bde0">__innerFunc</a> (<a class="el" href="structbaseOp.html">baseOp</a> *thisOp=nullptr) override final</td></tr>
@@ -159,7 +159,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cbOperator_8cpp_source.html#l00142">142</a> of file <a class="el" href="cbOperator_8cpp_source.html">cbOperator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbOperator_8cpp_source.html#l00138">138</a> of file <a class="el" href="cbOperator_8cpp_source.html">cbOperator.cpp</a>.</p>
 
 </div>
 </div>
@@ -215,7 +215,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classcbOpTableWise.html#af8dcd5ef662bd035b651ad05105b0d1d">cbOpTableWise</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="cbOperator_8cpp_source.html#l00153">153</a> of file <a class="el" href="cbOperator_8cpp_source.html">cbOperator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbOperator_8cpp_source.html#l00149">149</a> of file <a class="el" href="cbOperator_8cpp_source.html">cbOperator.cpp</a>.</p>
 
 <p class="reference">References <a class="el" href="cbOperator_8hpp_source.html#l00057">baseOp::isOverload</a>.</p>
 
@@ -246,12 +246,12 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classcbOpTableWise.html#a9e809f1e6d6937f6aa46f9484c90984f">cbOpTableWise</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="cbOperator_8cpp_source.html#l00149">149</a> of file <a class="el" href="cbOperator_8cpp_source.html">cbOperator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbOperator_8cpp_source.html#l00145">145</a> of file <a class="el" href="cbOperator_8cpp_source.html">cbOperator.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a4c4e3c63b18bac4800c5b46f9e4210c4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4c4e3c63b18bac4800c5b46f9e4210c4">&#9670;&nbsp;</a></span>overload()</h2>
+<a id="ab34cb3b45d0ab0df4b2d5b4ea7cceb4e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab34cb3b45d0ab0df4b2d5b4ea7cceb4e">&#9670;&nbsp;</a></span>overload()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -262,7 +262,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">void cbOpSum::overload </td>
           <td>(</td>
-          <td class="paramtype">sol::function &amp;&#160;</td>
+          <td class="paramtype">const sol::function &amp;&#160;</td>
           <td class="paramname"><em>func</em></td><td>)</td>
           <td></td>
         </tr>
@@ -274,9 +274,9 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="classcbOpTableWise.html#aaa60d0a5163e8a2e3b95e2121bf721dc">cbOpTableWise</a>.</p>
+<p>Implements <a class="el" href="classcbOpTableWise.html#a4d90e4c4d663ad65b739f690e9d5f54f">cbOpTableWise</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="cbOperator_8cpp_source.html#l00144">144</a> of file <a class="el" href="cbOperator_8cpp_source.html">cbOperator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbOperator_8cpp_source.html#l00140">140</a> of file <a class="el" href="cbOperator_8cpp_source.html">cbOperator.cpp</a>.</p>
 
 <p class="reference">References <a class="el" href="cbOperator_8hpp_source.html#l00057">baseOp::isOverload</a>, and <a class="el" href="cbOperator_8hpp_source.html#l00058">baseOp::luaOverrideFunc</a>.</p>
 

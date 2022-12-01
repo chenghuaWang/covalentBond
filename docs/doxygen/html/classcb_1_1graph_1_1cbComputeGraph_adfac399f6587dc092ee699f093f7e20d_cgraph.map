@@ -1,5 +1,11 @@
 <map id="cb::graph::cbComputeGraph::generateGraphTask" name="cb::graph::cbComputeGraph::generateGraphTask">
-<area shape="rect" id="node1" title="Create the graph task." alt="" coords="5,35,208,76"/>
-<area shape="rect" id="node2" href="$classcb_1_1graph_1_1cbComputeGraph.html#aee452d3e7bb404b00462550433ec69b1" title="To judge the Graph is DAG or not." alt="" coords="256,5,459,47"/>
-<area shape="rect" id="node3" href="$classcb_1_1graph_1_1cbComputeGraph.html#a9c1de1697f7609414f00c693c5ec2acc" title="To judge the graph has single output or not." alt="" coords="507,35,709,76"/>
+<area shape="rect" id="node1" title="Create the graph task." alt="" coords="5,156,208,197"/>
+<area shape="rect" id="node2" href="$structcb_1_1graph_1_1cbRedisCachingNode.html#a03ada8f734ce11ae9a86d0acd3759fb2" title=" " alt="" coords="261,5,454,47"/>
+<area shape="rect" id="node4" href="$classcbVirtualTable.html#a4953d9c93da9e0bad9f20ffa51a37fd9" title="row major" alt="" coords="281,71,434,98"/>
+<area shape="rect" id="node5" href="$structcb_1_1graph_1_1cbGraphSharedMem.html#a98209839fbd2804ec83e2ecd69c20ba0" title=" " alt="" coords="263,123,452,164"/>
+<area shape="rect" id="node7" href="$structcb_1_1graph_1_1cbGraphSharedMem.html#a1886db9ba429aafc77f7bf152b2fa834" title=" " alt="" coords="263,188,452,229"/>
+<area shape="rect" id="node8" href="$classcb_1_1graph_1_1cbComputeGraph.html#aee452d3e7bb404b00462550433ec69b1" title="To judge the Graph is DAG or not." alt="" coords="256,253,459,295"/>
+<area shape="rect" id="node9" href="$classcb_1_1graph_1_1cbComputeGraph.html#a9c1de1697f7609414f00c693c5ec2acc" title="To judge the graph has single output or not." alt="" coords="507,283,709,324"/>
+<area shape="rect" id="node3" href="$structtrivial_1_1cbRedisDevice.html#ac0027ea21a307994c2e7f7321892b7df" title=" " alt="" coords="512,13,704,39"/>
+<area shape="rect" id="node6" href="$structcbOutputTableStruct.html#a3acd69d3d131daac0d679a3965dae7cd" title=" " alt="" coords="531,123,685,164"/>
 </map>

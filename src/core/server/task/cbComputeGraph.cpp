@@ -300,6 +300,9 @@ cbComputeGraph::cbComputeGraph(int32_t idx)
 
   );
 
+  // bind caching node
+  covalentBound.new_usertype<cbRedisCachingNode>("RedisCachingNode");
+
   // bind operation node
   covalentBound.new_usertype<cbOperatorNode>(
 

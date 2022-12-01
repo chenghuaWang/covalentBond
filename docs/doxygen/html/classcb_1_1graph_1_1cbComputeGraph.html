@@ -84,11 +84,20 @@ Collaboration diagram for cb::graph::cbComputeGraph:</div>
 <div class="dyncontent">
 <div class="center"><img src="classcb_1_1graph_1_1cbComputeGraph__coll__graph.png" border="0" usemap="#cb_1_1graph_1_1cbComputeGraph_coll__map" alt="Collaboration graph"/></div>
 <map name="cb_1_1graph_1_1cbComputeGraph_coll__map" id="cb_1_1graph_1_1cbComputeGraph_coll__map">
-<area shape="rect" title=" " alt="" coords="597,64,800,91"/>
-<area shape="rect" href="structcb_1_1graph_1_1cbGraphSharedMem.html" title="The shared memory of compute graph. Include 2 basic components." alt="" coords="199,5,421,32"/>
-<area shape="rect" href="structcb_1_1graph_1_1cbGraphSharedLuaStack.html" title=" " alt="" coords="215,57,405,98"/>
-<area shape="rect" href="classluaJitThread.html" title=" " alt="" coords="5,64,105,91"/>
-<area shape="rect" href="classtrivial_1_1cbVirtualDeviceManager.html" title=" " alt="" coords="225,122,395,163"/>
+<area shape="rect" title=" " alt="" coords="916,153,1119,180"/>
+<area shape="rect" href="structcb_1_1graph_1_1cbNode.html" title=" " alt="" coords="1221,101,1359,128"/>
+<area shape="rect" href="structcb_1_1graph_1_1cbRedisCachingNode.html" title=" " alt="" coords="1488,101,1715,128"/>
+<area shape="rect" href="structcbOpIO.html" title="The input and output of one Operator." alt="" coords="793,65,863,92"/>
+<area shape="rect" href="classcbVirtualTable.html" title="cbVirtualTable works as a reference from shared memory. It only use a shape and SqlCell to define dif..." alt="" coords="251,45,366,72"/>
+<area shape="rect" href="structcbShape.html" title=" " alt="" coords="5,76,120,103"/>
+<area shape="rect" href="structcbOutputTableStruct.html" title=" " alt="" coords="232,96,385,123"/>
+<area shape="rect" href="classcbMySQLField.html" title="A copy move from workflow MySQLResult.h and .inl file." alt="" coords="6,5,119,32"/>
+<area shape="rect" href="structtrivial_1_1cbRedisDevice.html" title=" " alt="" coords="1208,12,1372,39"/>
+<area shape="rect" href="structtrivial_1_1cbVirtualDevice.html" title=" " alt="" coords="932,12,1103,39"/>
+<area shape="rect" href="structcb_1_1graph_1_1cbGraphSharedMem.html" title="The shared memory of compute graph. Include 2 basic components." alt="" coords="517,96,740,123"/>
+<area shape="rect" href="structcb_1_1graph_1_1cbGraphSharedLuaStack.html" title=" " alt="" coords="534,213,723,254"/>
+<area shape="rect" href="classluaJitThread.html" title=" " alt="" coords="259,220,359,247"/>
+<area shape="rect" href="classtrivial_1_1cbVirtualDeviceManager.html" title=" " alt="" coords="543,147,714,189"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -128,8 +137,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa0f0670a573d3d6d1d5fb749de244595"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structcb_1_1graph_1_1cbVirtualDeviceNode.html">cbVirtualDeviceNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcb_1_1graph_1_1cbComputeGraph.html#aa0f0670a573d3d6d1d5fb749de244595">createVirtualDeviceNode</a> (int32_t idx)</td></tr>
 <tr class="memdesc:aa0f0670a573d3d6d1d5fb749de244595"><td class="mdescLeft">&#160;</td><td class="mdescRight">create nodes belongs to this graph.  <a href="classcb_1_1graph_1_1cbComputeGraph.html#aa0f0670a573d3d6d1d5fb749de244595">More...</a><br /></td></tr>
 <tr class="separator:aa0f0670a573d3d6d1d5fb749de244595"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b4d8326acddc74cadc614ea58ef5754"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structcb_1_1graph_1_1cbRedisCachingNode.html">cbRedisCachingNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcb_1_1graph_1_1cbComputeGraph.html#a2b4d8326acddc74cadc614ea58ef5754">createRedisCachingNode</a> (int32_t idx)</td></tr>
+<tr class="memdesc:a2b4d8326acddc74cadc614ea58ef5754"><td class="mdescLeft">&#160;</td><td class="mdescRight">! for sql only, now.  <a href="classcb_1_1graph_1_1cbComputeGraph.html#a2b4d8326acddc74cadc614ea58ef5754">More...</a><br /></td></tr>
+<tr class="separator:a2b4d8326acddc74cadc614ea58ef5754"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ed8f1e0c4f9a1786391d5628457d221"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structcb_1_1graph_1_1cbOperatorNode.html">cbOperatorNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcb_1_1graph_1_1cbComputeGraph.html#a0ed8f1e0c4f9a1786391d5628457d221">createCombineNode</a> (const std::vector&lt; std::string &gt; &amp;keys)</td></tr>
-<tr class="memdesc:a0ed8f1e0c4f9a1786391d5628457d221"><td class="mdescLeft">&#160;</td><td class="mdescRight">! for sql only, now.  <a href="classcb_1_1graph_1_1cbComputeGraph.html#a0ed8f1e0c4f9a1786391d5628457d221">More...</a><br /></td></tr>
+<tr class="memdesc:a0ed8f1e0c4f9a1786391d5628457d221"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a Combine Node object.  <a href="classcb_1_1graph_1_1cbComputeGraph.html#a0ed8f1e0c4f9a1786391d5628457d221">More...</a><br /></td></tr>
 <tr class="separator:a0ed8f1e0c4f9a1786391d5628457d221"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adec5abcba678492b291f7855be49aa6b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcb_1_1graph_1_1cbComputeGraph.html#adec5abcba678492b291f7855be49aa6b">setVirtualDeviceManager</a> (<a class="el" href="classtrivial_1_1cbVirtualDeviceManager.html">trivial::cbVirtualDeviceManager</a> *virtualDeviceM)</td></tr>
 <tr class="memdesc:adec5abcba678492b291f7855be49aa6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Virtual Device Manager object.  <a href="classcb_1_1graph_1_1cbComputeGraph.html#adec5abcba678492b291f7855be49aa6b">More...</a><br /></td></tr>
@@ -149,6 +161,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a58961056d82259216916a60fa7cdf70c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcb_1_1graph_1_1cbComputeGraph.html#a58961056d82259216916a60fa7cdf70c">execScript</a> (const std::string &amp;script)</td></tr>
 <tr class="memdesc:a58961056d82259216916a60fa7cdf70c"><td class="mdescLeft">&#160;</td><td class="mdescRight">execute the script  <a href="classcb_1_1graph_1_1cbComputeGraph.html#a58961056d82259216916a60fa7cdf70c">More...</a><br /></td></tr>
 <tr class="separator:a58961056d82259216916a60fa7cdf70c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae461b685a9cbd3edbcd2b1b2541e034d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcb_1_1graph_1_1cbComputeGraph.html#ae461b685a9cbd3edbcd2b1b2541e034d">addCacheServer</a> (<a class="el" href="structcb_1_1graph_1_1cbRedisCachingNode.html">cbRedisCachingNode</a> *v)</td></tr>
+<tr class="memdesc:ae461b685a9cbd3edbcd2b1b2541e034d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The cache server node. Lua binding in.  <a href="classcb_1_1graph_1_1cbComputeGraph.html#ae461b685a9cbd3edbcd2b1b2541e034d">More...</a><br /></td></tr>
+<tr class="separator:ae461b685a9cbd3edbcd2b1b2541e034d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -160,6 +175,10 @@ Static Public Member Functions</h2></td></tr>
 Public Attributes</h2></td></tr>
 <tr class="memitem:ac7b3e3f1e192123e6a94c1bb06a2db6f"><td class="memItemLeft" align="right" valign="top">friend&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcb_1_1graph_1_1cbComputeGraph.html#ac7b3e3f1e192123e6a94c1bb06a2db6f">cbVirtualDeviceNode</a></td></tr>
 <tr class="separator:ac7b3e3f1e192123e6a94c1bb06a2db6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac385ae8faff06e71eb128351ee59ac94"><td class="memItemLeft" align="right" valign="top">friend&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcb_1_1graph_1_1cbComputeGraph.html#ac385ae8faff06e71eb128351ee59ac94">cbRedisCachingNode</a></td></tr>
+<tr class="separator:ac385ae8faff06e71eb128351ee59ac94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7454be3f178cec487839fbf51c7100c"><td class="memItemLeft" align="right" valign="top">friend&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcb_1_1graph_1_1cbComputeGraph.html#af7454be3f178cec487839fbf51c7100c">cbOperatorNode</a></td></tr>
+<tr class="separator:af7454be3f178cec487839fbf51c7100c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -167,6 +186,8 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a91e34faec2663c19553813cca4f6cf98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8561089d8e54c1c77a9e77e261115319"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structcb_1_1graph_1_1cbNode.html">cbNode</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcb_1_1graph_1_1cbComputeGraph.html#a8561089d8e54c1c77a9e77e261115319">m_nodes</a></td></tr>
 <tr class="separator:a8561089d8e54c1c77a9e77e261115319"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8187845c8c39d9142a35388503d8136c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structcb_1_1graph_1_1cbRedisCachingNode.html">cbRedisCachingNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcb_1_1graph_1_1cbComputeGraph.html#a8187845c8c39d9142a35388503d8136c">m_cacheNode</a> = nullptr</td></tr>
+<tr class="separator:a8187845c8c39d9142a35388503d8136c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2769c700693d67e3ba6e79c5b80c79e4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structcb_1_1graph_1_1cbGraphSharedMem.html">cbGraphSharedMem</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcb_1_1graph_1_1cbComputeGraph.html#a2769c700693d67e3ba6e79c5b80c79e4">m_sharedMem</a> = nullptr</td></tr>
 <tr class="separator:a2769c700693d67e3ba6e79c5b80c79e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a83343cac0cde6c46d0be7d563f78f95d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structcb_1_1graph_1_1cbGraphSharedLuaStack.html">cbGraphSharedLuaStack</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcb_1_1graph_1_1cbComputeGraph.html#a83343cac0cde6c46d0be7d563f78f95d">m_sharedLuaStack</a> = nullptr</td></tr>
@@ -176,7 +197,7 @@ Private Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8hpp_source.html#l00193">193</a> of file <a class="el" href="cbComputeGraph_8hpp_source.html">cbComputeGraph.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8hpp_source.html#l00224">224</a> of file <a class="el" href="cbComputeGraph_8hpp_source.html">cbComputeGraph.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a13c2949f64f239419580ce105a4dd23c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a13c2949f64f239419580ce105a4dd23c">&#9670;&nbsp;</a></span>cbComputeGraph()</h2>
@@ -194,45 +215,51 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00121">121</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00159">159</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cbTable_8cpp_source.html#l00402">__luaPackedCellAsVec()</a>, <a class="el" href="cbTable_8cpp_source.html#l00409">__luaPackedStringAsVec()</a>, <a class="el" href="cbComputeGraph_8cpp_source.html#l00090">cb::graph::cbVirtualDeviceNode::addQuery()</a>, <a class="el" href="cbTable_8cpp_source.html#l00117">cbVirtualTable::atPtrRef()</a>, <a class="el" href="cbTable_8cpp_source.html#l00180">cbVirtualTable::colNameAt()</a>, <a class="el" href="cbTable_8cpp_source.html#l00182">cbVirtualTable::colTypeAt()</a>, <a class="el" href="cbComputeGraph_8cpp_source.html#l00281">createCell()</a>, <a class="el" href="cbComputeGraph_8cpp_source.html#l00330">createCombineNode()</a>, <a class="el" href="cbComputeGraph_8cpp_source.html#l00323">createVirtualDeviceNode()</a>, <a class="el" href="cbTable_8hpp_source.html#l00724">fetchShapeIndex()</a>, <a class="el" href="cbComputeGraph_8cpp_source.html#l00040">cb::graph::cbGraphSharedLuaStack::get()</a>, <a class="el" href="cbTable_8cpp_source.html#l00130">cbVirtualTable::getCol()</a>, <a class="el" href="cbTable_8cpp_source.html#l00119">cbVirtualTable::getRow()</a>, <a class="el" href="cbTable_8hpp_source.html#l00648">cbVirtualTable::getShape()</a>, <a class="el" href="cbOperator_8hpp_source.html#l00039">cbOpIO::I</a>, <a class="el" href="cbComputeGraph_8hpp_source.html#l00118">cb::graph::cbNode::io</a>, <a class="el" href="cbComputeGraph_8cpp_source.html#l00259">isDAG()</a>, <a class="el" href="cbComputeGraph_8cpp_source.html#l00273">isSingleOutput()</a>, <a class="el" href="cbTable_8cpp_source.html#l00141">cbVirtualTable::keyBy()</a>, <a class="el" href="cbComputeGraph_8hpp_source.html#l00344">m_sharedLuaStack</a>, <a class="el" href="pch_8hpp_source.html#l00182">MAKE_SHARED</a>, <a class="el" href="cbOperator_8hpp_source.html#l00040">cbOpIO::O</a>, <a class="el" href="cbComputeGraph_8cpp_source.html#l00044">cb::graph::cbNode::PointTo()</a>, <a class="el" href="cbTable_8cpp_source.html#l00174">cbVirtualTable::pushRow()</a>, <a class="el" href="cbTable_8cpp_source.html#l00098">cbVirtualTable::resetShape()</a>, and <a class="el" href="cbTable_8hpp_source.html#l00729">storeShapeIndex()</a>.</p>
+<p class="reference">References <a class="el" href="cbTable_8cpp_source.html#l00448">__luaPackedCellAsVec()</a>, <a class="el" href="cbTable_8cpp_source.html#l00455">__luaPackedStringAsVec()</a>, <a class="el" href="cbComputeGraph_8cpp_source.html#l00517">addCacheServer()</a>, <a class="el" href="cbComputeGraph_8cpp_source.html#l00109">cb::graph::cbVirtualDeviceNode::addQuery()</a>, <a class="el" href="cbTable_8cpp_source.html#l00117">cbVirtualTable::atPtrRef()</a>, <a class="el" href="cbTable_8cpp_source.html#l00180">cbVirtualTable::colNameAt()</a>, <a class="el" href="cbTable_8cpp_source.html#l00182">cbVirtualTable::colTypeAt()</a>, <a class="el" href="cbComputeGraph_8cpp_source.html#l00351">createCell()</a>, <a class="el" href="cbComputeGraph_8cpp_source.html#l00406">createCombineNode()</a>, <a class="el" href="cbComputeGraph_8cpp_source.html#l00400">createRedisCachingNode()</a>, <a class="el" href="cbComputeGraph_8cpp_source.html#l00393">createVirtualDeviceNode()</a>, <a class="el" href="cbTable_8hpp_source.html#l00753">fetchShapeIndex()</a>, <a class="el" href="cbComputeGraph_8cpp_source.html#l00058">cb::graph::cbGraphSharedLuaStack::get()</a>, <a class="el" href="cbTable_8cpp_source.html#l00130">cbVirtualTable::getCol()</a>, <a class="el" href="cbTable_8cpp_source.html#l00119">cbVirtualTable::getRow()</a>, <a class="el" href="cbTable_8hpp_source.html#l00657">cbVirtualTable::getShape()</a>, <a class="el" href="cbOperator_8hpp_source.html#l00039">cbOpIO::I</a>, <a class="el" href="cbOperator_8hpp_source.html#l00054">baseOp::io</a>, <a class="el" href="cbComputeGraph_8hpp_source.html#l00123">cb::graph::cbNode::io</a>, <a class="el" href="cbComputeGraph_8cpp_source.html#l00326">isDAG()</a>, <a class="el" href="cbComputeGraph_8cpp_source.html#l00340">isSingleOutput()</a>, <a class="el" href="cbTable_8cpp_source.html#l00141">cbVirtualTable::keyBy()</a>, <a class="el" href="cbComputeGraph_8hpp_source.html#l00393">m_sharedLuaStack</a>, <a class="el" href="pch_8hpp_source.html#l00182">MAKE_SHARED</a>, <a class="el" href="cbOperator_8hpp_source.html#l00040">cbOpIO::O</a>, <a class="el" href="cbComputeGraph_8hpp_source.html#l00215">cb::graph::cbOperatorNode::Op</a>, <a class="el" href="cbOperator_8cpp_source.html#l00033">cbOpCombine::overload()</a>, <a class="el" href="cbComputeGraph_8cpp_source.html#l00062">cb::graph::cbNode::PointTo()</a>, <a class="el" href="cbTable_8cpp_source.html#l00174">cbVirtualTable::pushRow()</a>, <a class="el" href="cbTable_8cpp_source.html#l00098">cbVirtualTable::resetShape()</a>, <a class="el" href="cbTable_8hpp_source.html#l00758">storeShapeIndex()</a>, and <a class="el" href="cbTable_8cpp_source.html#l00184">cbVirtualTable::str()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classcb_1_1graph_1_1cbComputeGraph_a13c2949f64f239419580ce105a4dd23c_cgraph.png" border="0" usemap="#classcb_1_1graph_1_1cbComputeGraph_a13c2949f64f239419580ce105a4dd23c_cgraph" alt=""/></div>
 <map name="classcb_1_1graph_1_1cbComputeGraph_a13c2949f64f239419580ce105a4dd23c_cgraph" id="classcb_1_1graph_1_1cbComputeGraph_a13c2949f64f239419580ce105a4dd23c_cgraph">
-<area shape="rect" title=" " alt="" coords="5,558,208,599"/>
+<area shape="rect" title=" " alt="" coords="5,661,208,702"/>
 <area shape="rect" href="cbTable_8cpp.html#a60d706e920151b2f6392c27f7bc4aae7" title=" " alt="" coords="275,5,440,32"/>
 <area shape="rect" href="cbTable_8cpp.html#a3627c73cd70fabe18c70c271f9a3d548" title=" " alt="" coords="268,56,447,83"/>
-<area shape="rect" href="structcb_1_1graph_1_1cbVirtualDeviceNode.html#a0a7275d8f94f4351e698ff38b8790d25" title="Add a String type sql sentence to this node. Waiting to be execute." alt="" coords="261,107,454,149"/>
-<area shape="rect" href="classcbVirtualTable.html#a794954a9b9f944ea784a960bd215a88d" title=" " alt="" coords="521,107,695,133"/>
-<area shape="rect" href="classcbVirtualTable.html#a3f09b2a37a34919a147fc4883227a702" title=" " alt="" coords="260,325,455,352"/>
-<area shape="rect" href="classcbVirtualTable.html#afccc3d60c43f857f6459fa868052d08a" title=" " alt="" coords="265,376,450,403"/>
-<area shape="rect" href="classcb_1_1graph_1_1cbComputeGraph.html#abcc9e44cfa5307a372c2a619e75620d8" title="Create a Cell object." alt="" coords="256,427,459,469"/>
-<area shape="rect" href="classcb_1_1graph_1_1cbComputeGraph.html#a0ed8f1e0c4f9a1786391d5628457d221" title="! for sql only, now." alt="" coords="256,493,459,534"/>
-<area shape="rect" href="classcb_1_1graph_1_1cbComputeGraph.html#aa0f0670a573d3d6d1d5fb749de244595" title="create nodes belongs to this graph." alt="" coords="256,558,459,599"/>
-<area shape="rect" href="cbTable_8hpp.html#a6f43ad738c4139bf445eaa3be5aa2179" title=" " alt="" coords="292,624,423,651"/>
-<area shape="rect" href="structcb_1_1graph_1_1cbGraphSharedLuaStack.html#a8f9958b3e79f3f8d82518e99795f9577" title="get the lua state." alt="" coords="263,675,452,717"/>
-<area shape="rect" href="classcbVirtualTable.html#a4592ef60e70faf69abccc8e4956666c5" title="Get the Col object." alt="" coords="275,275,439,301"/>
-<area shape="rect" href="classcbVirtualTable.html#a61b0c53703e018038ed36c22859b2ce1" title="Get the Row object." alt="" coords="272,224,443,251"/>
-<area shape="rect" href="classcbVirtualTable.html#ab167a7d9e14a36b08cba7537f9dee4af" title="Get the Shape object." alt="" coords="266,741,449,768"/>
-<area shape="rect" href="classcb_1_1graph_1_1cbComputeGraph.html#aee452d3e7bb404b00462550433ec69b1" title="To judge the Graph is DAG or not." alt="" coords="256,793,459,834"/>
-<area shape="rect" href="classcb_1_1graph_1_1cbComputeGraph.html#a9c1de1697f7609414f00c693c5ec2acc" title="To judge the graph has single output or not." alt="" coords="507,822,709,863"/>
-<area shape="rect" href="classcbVirtualTable.html#ae33af93717f76635d4aadd1e8b96fb6a" title=" " alt="" coords="276,909,439,936"/>
-<area shape="rect" href="structcb_1_1graph_1_1cbNode.html#a8ce5c1e79b4b76c1e77514de087bfbab" title=" " alt="" coords="284,961,431,1002"/>
-<area shape="rect" href="classcbVirtualTable.html#a805a9f8bcdb98ea6447d39d8608321af" title=" " alt="" coords="267,1027,448,1053"/>
-<area shape="rect" href="classcbVirtualTable.html#a4951b75acc04023657f9a9687e7ae926" title=" " alt="" coords="260,1077,455,1104"/>
-<area shape="rect" href="cbTable_8hpp.html#a14c4048f2ca5b0369e97dc516195b0cc" title=" " alt="" coords="292,1128,423,1155"/>
-<area shape="rect" href="classcbMySQLField.html#a5c09ccd79285cdf2eb55b64a1383cc38" title=" " alt="" coords="517,376,699,403"/>
-<area shape="rect" href="structcb_1_1graph_1_1cbGraphSharedMem.html#acf71e5b4dfb962e47daa31af0401db93" title=" " alt="" coords="513,427,703,469"/>
-<area shape="rect" href="classcb_1_1graph_1_1cbComputeGraph.html#a7a1c29e13a0088b9cb1530e80b4f8a6b" title="register a node. Not used by lua binding." alt="" coords="507,493,709,534"/>
-<area shape="rect" href="classtrivial_1_1cbVirtualDeviceManager.html#a5043a1d0223e6a54a9bb83c66f7af65f" title=" " alt="" coords="511,623,705,665"/>
-<area shape="rect" href="structcb_1_1graph_1_1cbVirtualDeviceNode.html#a64c4b3d0a76f4e93477ae52f2072bab2" title=" " alt="" coords="511,558,705,599"/>
-<area shape="rect" href="classcbVirtualTable.html#a6a0729869f0f880e34cb40639ab6354a" title=" " alt="" coords="518,158,698,199"/>
-<area shape="rect" href="classcbVirtualTable.html#a8ef41bf67361cdd1252ec51b07597b63" title="Get the Info object." alt="" coords="524,325,692,352"/>
-<area shape="rect" href="cbTable_8hpp.html#a1efb642b144c336a653bb6f91f334ebd" title=" " alt="" coords="547,224,669,251"/>
-<area shape="rect" href="classcbVirtualTable.html#a6f612970ee62242f23edf660d35a2dc2" title=" " alt="" coords="525,275,691,301"/>
+<area shape="rect" href="classcb_1_1graph_1_1cbComputeGraph.html#ae461b685a9cbd3edbcd2b1b2541e034d" title="The cache server node. Lua binding in." alt="" coords="256,107,459,149"/>
+<area shape="rect" href="structcb_1_1graph_1_1cbVirtualDeviceNode.html#a0a7275d8f94f4351e698ff38b8790d25" title="Add a String type sql sentence to this node. Waiting to be execute." alt="" coords="261,173,454,214"/>
+<area shape="rect" href="classcbVirtualTable.html#a794954a9b9f944ea784a960bd215a88d" title=" " alt="" coords="521,172,695,199"/>
+<area shape="rect" href="classcbVirtualTable.html#a3f09b2a37a34919a147fc4883227a702" title=" " alt="" coords="260,391,455,417"/>
+<area shape="rect" href="classcbVirtualTable.html#afccc3d60c43f857f6459fa868052d08a" title=" " alt="" coords="265,441,450,468"/>
+<area shape="rect" href="classcb_1_1graph_1_1cbComputeGraph.html#abcc9e44cfa5307a372c2a619e75620d8" title="Create a Cell object." alt="" coords="256,493,459,534"/>
+<area shape="rect" href="classcb_1_1graph_1_1cbComputeGraph.html#a0ed8f1e0c4f9a1786391d5628457d221" title="Create a Combine Node object." alt="" coords="256,661,459,702"/>
+<area shape="rect" href="structcb_1_1graph_1_1cbGraphSharedLuaStack.html#a8f9958b3e79f3f8d82518e99795f9577" title="get the lua state." alt="" coords="513,558,703,599"/>
+<area shape="rect" href="classcbOpCombine.html#a833db41fbd883e60dc22573c62369338" title=" " alt="" coords="519,624,697,651"/>
+<area shape="rect" href="classcb_1_1graph_1_1cbComputeGraph.html#a2b4d8326acddc74cadc614ea58ef5754" title="! for sql only, now." alt="" coords="256,791,459,833"/>
+<area shape="rect" href="classcb_1_1graph_1_1cbComputeGraph.html#aa0f0670a573d3d6d1d5fb749de244595" title="create nodes belongs to this graph." alt="" coords="256,726,459,767"/>
+<area shape="rect" href="cbTable_8hpp.html#a6f43ad738c4139bf445eaa3be5aa2179" title=" " alt="" coords="292,857,423,884"/>
+<area shape="rect" href="classcbVirtualTable.html#a4592ef60e70faf69abccc8e4956666c5" title="Get the Col object." alt="" coords="275,340,439,367"/>
+<area shape="rect" href="classcbVirtualTable.html#a61b0c53703e018038ed36c22859b2ce1" title="Get the Row object." alt="" coords="272,289,443,316"/>
+<area shape="rect" href="classcbVirtualTable.html#ab167a7d9e14a36b08cba7537f9dee4af" title="Get the Shape object." alt="" coords="266,908,449,935"/>
+<area shape="rect" href="classcb_1_1graph_1_1cbComputeGraph.html#aee452d3e7bb404b00462550433ec69b1" title="To judge the Graph is DAG or not." alt="" coords="256,959,459,1001"/>
+<area shape="rect" href="classcb_1_1graph_1_1cbComputeGraph.html#a9c1de1697f7609414f00c693c5ec2acc" title="To judge the graph has single output or not." alt="" coords="507,1010,709,1051"/>
+<area shape="rect" href="classcbVirtualTable.html#ae33af93717f76635d4aadd1e8b96fb6a" title=" " alt="" coords="276,1076,439,1103"/>
+<area shape="rect" href="structcb_1_1graph_1_1cbNode.html#a8ce5c1e79b4b76c1e77514de087bfbab" title=" " alt="" coords="284,1127,431,1169"/>
+<area shape="rect" href="classcbVirtualTable.html#a805a9f8bcdb98ea6447d39d8608321af" title=" " alt="" coords="267,1193,448,1220"/>
+<area shape="rect" href="classcbVirtualTable.html#a4951b75acc04023657f9a9687e7ae926" title=" " alt="" coords="260,1244,455,1271"/>
+<area shape="rect" href="cbTable_8hpp.html#a14c4048f2ca5b0369e97dc516195b0cc" title=" " alt="" coords="292,1295,423,1321"/>
+<area shape="rect" href="classcbVirtualTable.html#a00623ee8c16dc3758587b5881d2e4795" title=" " alt="" coords="288,1345,427,1372"/>
+<area shape="rect" href="classcbMySQLField.html#a5c09ccd79285cdf2eb55b64a1383cc38" title=" " alt="" coords="517,441,699,468"/>
+<area shape="rect" href="structcb_1_1graph_1_1cbGraphSharedMem.html#acf71e5b4dfb962e47daa31af0401db93" title=" " alt="" coords="513,493,703,534"/>
+<area shape="rect" href="classcb_1_1graph_1_1cbComputeGraph.html#a7a1c29e13a0088b9cb1530e80b4f8a6b" title="register a node. Not used by lua binding." alt="" coords="507,675,709,717"/>
+<area shape="rect" href="classtrivial_1_1cbVirtualDeviceManager.html#a56ed3f0d6135f2311d1ab06a0c3e8798" title=" " alt="" coords="513,937,703,978"/>
+<area shape="rect" href="structcb_1_1graph_1_1cbRedisCachingNode.html#a47932b9caf571d390f7952b3a3ad94b9" title=" " alt="" coords="511,871,705,913"/>
+<area shape="rect" href="classtrivial_1_1cbVirtualDeviceManager.html#a5043a1d0223e6a54a9bb83c66f7af65f" title=" " alt="" coords="511,806,705,847"/>
+<area shape="rect" href="structcb_1_1graph_1_1cbVirtualDeviceNode.html#a64c4b3d0a76f4e93477ae52f2072bab2" title=" " alt="" coords="511,741,705,782"/>
+<area shape="rect" href="classcbVirtualTable.html#a6a0729869f0f880e34cb40639ab6354a" title=" " alt="" coords="518,223,698,265"/>
+<area shape="rect" href="classcbVirtualTable.html#a8ef41bf67361cdd1252ec51b07597b63" title="Get the Info object." alt="" coords="524,391,692,417"/>
+<area shape="rect" href="cbTable_8hpp.html#a1efb642b144c336a653bb6f91f334ebd" title=" " alt="" coords="547,289,669,316"/>
+<area shape="rect" href="classcbVirtualTable.html#a6f612970ee62242f23edf660d35a2dc2" title=" " alt="" coords="525,340,691,367"/>
 </map>
 </div>
 
@@ -253,13 +280,54 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00253">253</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00320">320</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cbComputeGraph_8hpp_source.html#l00342">m_nodes</a>, <a class="el" href="cbComputeGraph_8hpp_source.html#l00344">m_sharedLuaStack</a>, and <a class="el" href="cbComputeGraph_8hpp_source.html#l00343">m_sharedMem</a>.</p>
+<p class="reference">References <a class="el" href="cbComputeGraph_8hpp_source.html#l00390">m_nodes</a>, <a class="el" href="cbComputeGraph_8hpp_source.html#l00393">m_sharedLuaStack</a>, and <a class="el" href="cbComputeGraph_8hpp_source.html#l00392">m_sharedMem</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="ae461b685a9cbd3edbcd2b1b2541e034d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae461b685a9cbd3edbcd2b1b2541e034d">&#9670;&nbsp;</a></span>addCacheServer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void cb::graph::cbComputeGraph::addCacheServer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcb_1_1graph_1_1cbRedisCachingNode.html">cbRedisCachingNode</a> *&#160;</td>
+          <td class="paramname"><em>v</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The cache server node. Lua binding in. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>the redis caching server node. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00517">517</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="cbComputeGraph_8hpp_source.html#l00131">cb::graph::cbNode::graph</a>, and <a class="el" href="cbComputeGraph_8hpp_source.html#l00391">m_cacheNode</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00159">cbComputeGraph()</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classcb_1_1graph_1_1cbComputeGraph_ae461b685a9cbd3edbcd2b1b2541e034d_icgraph.png" border="0" usemap="#classcb_1_1graph_1_1cbComputeGraph_ae461b685a9cbd3edbcd2b1b2541e034d_icgraph" alt=""/></div>
+<map name="classcb_1_1graph_1_1cbComputeGraph_ae461b685a9cbd3edbcd2b1b2541e034d_icgraph" id="classcb_1_1graph_1_1cbComputeGraph_ae461b685a9cbd3edbcd2b1b2541e034d_icgraph">
+<area shape="rect" title="The cache server node. Lua binding in." alt="" coords="256,5,459,47"/>
+<area shape="rect" href="classcb_1_1graph_1_1cbComputeGraph.html#a13c2949f64f239419580ce105a4dd23c" title=" " alt="" coords="5,5,208,47"/>
+</map>
+</div>
+
+</div>
+</div>
 <a id="abcc9e44cfa5307a372c2a619e75620d8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abcc9e44cfa5307a372c2a619e75620d8">&#9670;&nbsp;</a></span>createCell() <span class="overload">[1/7]</span></h2>
 
@@ -278,11 +346,11 @@ Here is the call graph for this function:</div>
 <p>Create a Cell object. </p>
 <dl class="section return"><dt>Returns</dt><dd>cbMySQLCell* </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00281">281</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00351">351</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cbComputeGraph_8hpp_source.html#l00343">m_sharedMem</a>, and <a class="el" href="cbComputeGraph_8cpp_source.html#l00012">cb::graph::cbGraphSharedMem::push()</a>.</p>
+<p class="reference">References <a class="el" href="cbComputeGraph_8hpp_source.html#l00392">m_sharedMem</a>, and <a class="el" href="cbComputeGraph_8cpp_source.html#l00012">cb::graph::cbGraphSharedMem::push()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00121">cbComputeGraph()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00159">cbComputeGraph()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -329,9 +397,9 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>cbMySQLCell* </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00311">311</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00381">381</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cbComputeGraph_8hpp_source.html#l00343">m_sharedMem</a>, and <a class="el" href="cbComputeGraph_8cpp_source.html#l00012">cb::graph::cbGraphSharedMem::push()</a>.</p>
+<p class="reference">References <a class="el" href="cbComputeGraph_8hpp_source.html#l00392">m_sharedMem</a>, and <a class="el" href="cbComputeGraph_8cpp_source.html#l00012">cb::graph::cbGraphSharedMem::push()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -380,9 +448,9 @@ Here is the call graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>cbMySQLCell* </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00317">317</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00387">387</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cbComputeGraph_8hpp_source.html#l00343">m_sharedMem</a>, and <a class="el" href="cbComputeGraph_8cpp_source.html#l00012">cb::graph::cbGraphSharedMem::push()</a>.</p>
+<p class="reference">References <a class="el" href="cbComputeGraph_8hpp_source.html#l00392">m_sharedMem</a>, and <a class="el" href="cbComputeGraph_8cpp_source.html#l00012">cb::graph::cbGraphSharedMem::push()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -420,9 +488,9 @@ Here is the call graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>cbMySQLCell* </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00299">299</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00369">369</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cbComputeGraph_8hpp_source.html#l00343">m_sharedMem</a>, and <a class="el" href="cbComputeGraph_8cpp_source.html#l00012">cb::graph::cbGraphSharedMem::push()</a>.</p>
+<p class="reference">References <a class="el" href="cbComputeGraph_8hpp_source.html#l00392">m_sharedMem</a>, and <a class="el" href="cbComputeGraph_8cpp_source.html#l00012">cb::graph::cbGraphSharedMem::push()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -460,9 +528,9 @@ Here is the call graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>cbMySQLCell* </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00293">293</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00363">363</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cbComputeGraph_8hpp_source.html#l00343">m_sharedMem</a>, and <a class="el" href="cbComputeGraph_8cpp_source.html#l00012">cb::graph::cbGraphSharedMem::push()</a>.</p>
+<p class="reference">References <a class="el" href="cbComputeGraph_8hpp_source.html#l00392">m_sharedMem</a>, and <a class="el" href="cbComputeGraph_8cpp_source.html#l00012">cb::graph::cbGraphSharedMem::push()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -500,9 +568,9 @@ Here is the call graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>cbMySQLCell* </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00287">287</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00357">357</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cbComputeGraph_8hpp_source.html#l00343">m_sharedMem</a>, and <a class="el" href="cbComputeGraph_8cpp_source.html#l00012">cb::graph::cbGraphSharedMem::push()</a>.</p>
+<p class="reference">References <a class="el" href="cbComputeGraph_8hpp_source.html#l00392">m_sharedMem</a>, and <a class="el" href="cbComputeGraph_8cpp_source.html#l00012">cb::graph::cbGraphSharedMem::push()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -540,9 +608,9 @@ Here is the call graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>cbMySQLCell* </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00305">305</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00375">375</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cbComputeGraph_8hpp_source.html#l00343">m_sharedMem</a>, and <a class="el" href="cbComputeGraph_8cpp_source.html#l00012">cb::graph::cbGraphSharedMem::push()</a>.</p>
+<p class="reference">References <a class="el" href="cbComputeGraph_8hpp_source.html#l00392">m_sharedMem</a>, and <a class="el" href="cbComputeGraph_8cpp_source.html#l00012">cb::graph::cbGraphSharedMem::push()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -571,8 +639,7 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>! for sql only, now. </p>
-<p>Create a Combine Node object</p>
+<p>Create a Combine Node object. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">keys</td><td></td></tr>
@@ -581,18 +648,20 @@ Here is the call graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>cbOperatorNode* </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00330">330</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00406">406</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cbComputeGraph_8cpp_source.html#l00341">registerNode()</a>.</p>
+<p class="reference">References <a class="el" href="cbComputeGraph_8hpp_source.html#l00228">cbOperatorNode</a>, <a class="el" href="cbComputeGraph_8cpp_source.html#l00058">cb::graph::cbGraphSharedLuaStack::get()</a>, <a class="el" href="cbComputeGraph_8hpp_source.html#l00393">m_sharedLuaStack</a>, <a class="el" href="cbOperator_8cpp_source.html#l00033">cbOpCombine::overload()</a>, and <a class="el" href="cbComputeGraph_8cpp_source.html#l00420">registerNode()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00121">cbComputeGraph()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00159">cbComputeGraph()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classcb_1_1graph_1_1cbComputeGraph_a0ed8f1e0c4f9a1786391d5628457d221_cgraph.png" border="0" usemap="#classcb_1_1graph_1_1cbComputeGraph_a0ed8f1e0c4f9a1786391d5628457d221_cgraph" alt=""/></div>
 <map name="classcb_1_1graph_1_1cbComputeGraph_a0ed8f1e0c4f9a1786391d5628457d221_cgraph" id="classcb_1_1graph_1_1cbComputeGraph_a0ed8f1e0c4f9a1786391d5628457d221_cgraph">
-<area shape="rect" title="! for sql only, now." alt="" coords="5,5,208,47"/>
-<area shape="rect" href="classcb_1_1graph_1_1cbComputeGraph.html#a7a1c29e13a0088b9cb1530e80b4f8a6b" title="register a node. Not used by lua binding." alt="" coords="256,5,459,47"/>
+<area shape="rect" title="Create a Combine Node object." alt="" coords="5,64,208,105"/>
+<area shape="rect" href="structcb_1_1graph_1_1cbGraphSharedLuaStack.html#a8f9958b3e79f3f8d82518e99795f9577" title="get the lua state." alt="" coords="263,5,452,47"/>
+<area shape="rect" href="classcbOpCombine.html#a833db41fbd883e60dc22573c62369338" title=" " alt="" coords="268,71,447,98"/>
+<area shape="rect" href="classcb_1_1graph_1_1cbComputeGraph.html#a7a1c29e13a0088b9cb1530e80b4f8a6b" title="register a node. Not used by lua binding." alt="" coords="256,123,459,164"/>
 </map>
 </div>
 <div class="dynheader">
@@ -600,6 +669,59 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classcb_1_1graph_1_1cbComputeGraph_a0ed8f1e0c4f9a1786391d5628457d221_icgraph.png" border="0" usemap="#classcb_1_1graph_1_1cbComputeGraph_a0ed8f1e0c4f9a1786391d5628457d221_icgraph" alt=""/></div>
 <map name="classcb_1_1graph_1_1cbComputeGraph_a0ed8f1e0c4f9a1786391d5628457d221_icgraph" id="classcb_1_1graph_1_1cbComputeGraph_a0ed8f1e0c4f9a1786391d5628457d221_icgraph">
+<area shape="rect" title="Create a Combine Node object." alt="" coords="256,5,459,47"/>
+<area shape="rect" href="classcb_1_1graph_1_1cbComputeGraph.html#a13c2949f64f239419580ce105a4dd23c" title=" " alt="" coords="5,5,208,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a2b4d8326acddc74cadc614ea58ef5754"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b4d8326acddc74cadc614ea58ef5754">&#9670;&nbsp;</a></span>createRedisCachingNode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structcb_1_1graph_1_1cbRedisCachingNode.html">cbRedisCachingNode</a> * cb::graph::cbComputeGraph::createRedisCachingNode </td>
+          <td>(</td>
+          <td class="paramtype">int32_t&#160;</td>
+          <td class="paramname"><em>idx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>! for sql only, now. </p>
+<p>Create a Redis Caching Node object</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">idx</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>cbRedisCachingNode* </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00400">400</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="cbComputeGraph_8hpp_source.html#l00227">cbRedisCachingNode</a>, <a class="el" href="cbVirtualDevice_8cpp_source.html#l00146">trivial::cbVirtualDeviceManager::getRedisDevice()</a>, <a class="el" href="cbComputeGraph_8hpp_source.html#l00395">m_virtualDevice</a>, and <a class="el" href="cbComputeGraph_8cpp_source.html#l00130">cb::graph::cbRedisCachingNode::setRedisDevice()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00159">cbComputeGraph()</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classcb_1_1graph_1_1cbComputeGraph_a2b4d8326acddc74cadc614ea58ef5754_cgraph.png" border="0" usemap="#classcb_1_1graph_1_1cbComputeGraph_a2b4d8326acddc74cadc614ea58ef5754_cgraph" alt=""/></div>
+<map name="classcb_1_1graph_1_1cbComputeGraph_a2b4d8326acddc74cadc614ea58ef5754_cgraph" id="classcb_1_1graph_1_1cbComputeGraph_a2b4d8326acddc74cadc614ea58ef5754_cgraph">
+<area shape="rect" title="! for sql only, now." alt="" coords="5,39,208,80"/>
+<area shape="rect" href="classtrivial_1_1cbVirtualDeviceManager.html#a56ed3f0d6135f2311d1ab06a0c3e8798" title=" " alt="" coords="258,5,447,47"/>
+<area shape="rect" href="structcb_1_1graph_1_1cbRedisCachingNode.html#a47932b9caf571d390f7952b3a3ad94b9" title=" " alt="" coords="256,71,449,112"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classcb_1_1graph_1_1cbComputeGraph_a2b4d8326acddc74cadc614ea58ef5754_icgraph.png" border="0" usemap="#classcb_1_1graph_1_1cbComputeGraph_a2b4d8326acddc74cadc614ea58ef5754_icgraph" alt=""/></div>
+<map name="classcb_1_1graph_1_1cbComputeGraph_a2b4d8326acddc74cadc614ea58ef5754_icgraph" id="classcb_1_1graph_1_1cbComputeGraph_a2b4d8326acddc74cadc614ea58ef5754_icgraph">
 <area shape="rect" title="! for sql only, now." alt="" coords="256,5,459,47"/>
 <area shape="rect" href="classcb_1_1graph_1_1cbComputeGraph.html#a13c2949f64f239419580ce105a4dd23c" title=" " alt="" coords="5,5,208,47"/>
 </map>
@@ -632,11 +754,11 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>cbVirtualDeviceNode* </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00323">323</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00393">393</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cbComputeGraph_8hpp_source.html#l00195">cbVirtualDeviceNode</a>, <a class="el" href="cbVirtualDevice_8cpp_source.html#l00126">trivial::cbVirtualDeviceManager::getMySqlDevice()</a>, <a class="el" href="cbComputeGraph_8hpp_source.html#l00346">m_virtualDevice</a>, <a class="el" href="cbComputeGraph_8cpp_source.html#l00341">registerNode()</a>, and <a class="el" href="cbComputeGraph_8cpp_source.html#l00092">cb::graph::cbVirtualDeviceNode::setMySQLDevice()</a>.</p>
+<p class="reference">References <a class="el" href="cbComputeGraph_8hpp_source.html#l00226">cbVirtualDeviceNode</a>, <a class="el" href="cbVirtualDevice_8cpp_source.html#l00141">trivial::cbVirtualDeviceManager::getMySqlDevice()</a>, <a class="el" href="cbComputeGraph_8hpp_source.html#l00395">m_virtualDevice</a>, <a class="el" href="cbComputeGraph_8cpp_source.html#l00420">registerNode()</a>, and <a class="el" href="cbComputeGraph_8cpp_source.html#l00111">cb::graph::cbVirtualDeviceNode::setMySQLDevice()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00121">cbComputeGraph()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00159">cbComputeGraph()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -703,7 +825,7 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00375">375</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00501">501</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
 
 </div>
 </div>
@@ -731,9 +853,9 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00387">387</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00515">515</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cbComputeGraph_8cpp_source.html#l00038">cb::graph::cbGraphSharedLuaStack::execScript()</a>, and <a class="el" href="cbComputeGraph_8hpp_source.html#l00344">m_sharedLuaStack</a>.</p>
+<p class="reference">References <a class="el" href="cbComputeGraph_8cpp_source.html#l00056">cb::graph::cbGraphSharedLuaStack::execScript()</a>, and <a class="el" href="cbComputeGraph_8hpp_source.html#l00393">m_sharedLuaStack</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="api_8cpp_source.html#l00006">cb::apiCPP::addGraph()</a>.</p>
 <div class="dynheader">
@@ -783,9 +905,9 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00383">383</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00511">511</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cbComputeGraph_8cpp_source.html#l00034">cb::graph::cbGraphSharedLuaStack::execScriptFile()</a>, and <a class="el" href="cbComputeGraph_8hpp_source.html#l00344">m_sharedLuaStack</a>.</p>
+<p class="reference">References <a class="el" href="cbComputeGraph_8cpp_source.html#l00052">cb::graph::cbGraphSharedLuaStack::execScriptFile()</a>, and <a class="el" href="cbComputeGraph_8hpp_source.html#l00393">m_sharedLuaStack</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -823,17 +945,23 @@ Here is the call graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>WFGraphTask* </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00348">348</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00427">427</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cbComputeGraph_8cpp_source.html#l00259">isDAG()</a>, <a class="el" href="cbComputeGraph_8cpp_source.html#l00273">isSingleOutput()</a>, <a class="el" href="namespacecb_1_1graph.html#a26e08891d43431120278270dcc0822d6ac3b5e1f7de11d645fb1da6c5415b1fa5">cb::graph::Leaf</a>, <a class="el" href="cbComputeGraph_8hpp_source.html#l00341">m_idx</a>, <a class="el" href="cbComputeGraph_8hpp_source.html#l00342">m_nodes</a>, <a class="el" href="namespacecb_1_1graph.html#a26e08891d43431120278270dcc0822d6ae1b3ec89ead7f83a9245ed5c9cacfdbf">cb::graph::Operator</a>, and <a class="el" href="namespacecb_1_1graph.html#a26e08891d43431120278270dcc0822d6a29c2c02a361c9d7028472e5d92cd4a54">cb::graph::Output</a>.</p>
+<p class="reference">References <a class="el" href="cbComputeGraph_8cpp_source.html#l00124">cb::graph::cbRedisCachingNode::_generateSetTask()</a>, <a class="el" href="cbTable_8cpp_source.html#l00115">cbVirtualTable::atPtr()</a>, <a class="el" href="cbComputeGraph_8cpp_source.html#l00044">cb::graph::cbGraphSharedMem::clear()</a>, <a class="el" href="cbComputeGraph_8cpp_source.html#l00042">cb::graph::cbGraphSharedMem::getOutStruct()</a>, <a class="el" href="cbComputeGraph_8hpp_source.html#l00123">cb::graph::cbNode::io</a>, <a class="el" href="cbComputeGraph_8cpp_source.html#l00326">isDAG()</a>, <a class="el" href="cbComputeGraph_8cpp_source.html#l00340">isSingleOutput()</a>, <a class="el" href="namespacecb_1_1graph.html#a26e08891d43431120278270dcc0822d6ac3b5e1f7de11d645fb1da6c5415b1fa5">cb::graph::Leaf</a>, <a class="el" href="cbComputeGraph_8hpp_source.html#l00391">m_cacheNode</a>, <a class="el" href="cbComputeGraph_8hpp_source.html#l00389">m_idx</a>, <a class="el" href="cbComputeGraph_8hpp_source.html#l00390">m_nodes</a>, <a class="el" href="cbTable_8hpp_source.html#l00746">cbOutputTableStruct::m_shape</a>, <a class="el" href="cbComputeGraph_8hpp_source.html#l00392">m_sharedMem</a>, <a class="el" href="cbOperator_8hpp_source.html#l00040">cbOpIO::O</a>, <a class="el" href="namespacecb_1_1graph.html#a26e08891d43431120278270dcc0822d6ae1b3ec89ead7f83a9245ed5c9cacfdbf">cb::graph::Operator</a>, and <a class="el" href="namespacecb_1_1graph.html#a26e08891d43431120278270dcc0822d6a29c2c02a361c9d7028472e5d92cd4a54">cb::graph::Output</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classcb_1_1graph_1_1cbComputeGraph_adfac399f6587dc092ee699f093f7e20d_cgraph.png" border="0" usemap="#classcb_1_1graph_1_1cbComputeGraph_adfac399f6587dc092ee699f093f7e20d_cgraph" alt=""/></div>
 <map name="classcb_1_1graph_1_1cbComputeGraph_adfac399f6587dc092ee699f093f7e20d_cgraph" id="classcb_1_1graph_1_1cbComputeGraph_adfac399f6587dc092ee699f093f7e20d_cgraph">
-<area shape="rect" title="Create the graph task." alt="" coords="5,35,208,76"/>
-<area shape="rect" href="classcb_1_1graph_1_1cbComputeGraph.html#aee452d3e7bb404b00462550433ec69b1" title="To judge the Graph is DAG or not." alt="" coords="256,5,459,47"/>
-<area shape="rect" href="classcb_1_1graph_1_1cbComputeGraph.html#a9c1de1697f7609414f00c693c5ec2acc" title="To judge the graph has single output or not." alt="" coords="507,35,709,76"/>
+<area shape="rect" title="Create the graph task." alt="" coords="5,156,208,197"/>
+<area shape="rect" href="structcb_1_1graph_1_1cbRedisCachingNode.html#a03ada8f734ce11ae9a86d0acd3759fb2" title=" " alt="" coords="261,5,454,47"/>
+<area shape="rect" href="classcbVirtualTable.html#a4953d9c93da9e0bad9f20ffa51a37fd9" title="row major" alt="" coords="281,71,434,98"/>
+<area shape="rect" href="structcb_1_1graph_1_1cbGraphSharedMem.html#a98209839fbd2804ec83e2ecd69c20ba0" title=" " alt="" coords="263,123,452,164"/>
+<area shape="rect" href="structcb_1_1graph_1_1cbGraphSharedMem.html#a1886db9ba429aafc77f7bf152b2fa834" title=" " alt="" coords="263,188,452,229"/>
+<area shape="rect" href="classcb_1_1graph_1_1cbComputeGraph.html#aee452d3e7bb404b00462550433ec69b1" title="To judge the Graph is DAG or not." alt="" coords="256,253,459,295"/>
+<area shape="rect" href="classcb_1_1graph_1_1cbComputeGraph.html#a9c1de1697f7609414f00c693c5ec2acc" title="To judge the graph has single output or not." alt="" coords="507,283,709,324"/>
+<area shape="rect" href="structtrivial_1_1cbRedisDevice.html#ac0027ea21a307994c2e7f7321892b7df" title=" " alt="" coords="512,13,704,39"/>
+<area shape="rect" href="structcbOutputTableStruct.html#a3acd69d3d131daac0d679a3965dae7cd" title=" " alt="" coords="531,123,685,164"/>
 </map>
 </div>
 
@@ -857,9 +985,9 @@ Here is the call graph for this function:</div>
 <p>Get the Id object. </p>
 <dl class="section return"><dt>Returns</dt><dd>int32_t </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00346">346</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00425">425</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cbComputeGraph_8hpp_source.html#l00341">m_idx</a>.</p>
+<p class="reference">References <a class="el" href="cbComputeGraph_8hpp_source.html#l00389">m_idx</a>.</p>
 
 </div>
 </div>
@@ -883,11 +1011,11 @@ Here is the call graph for this function:</div>
 <dd>
 false </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00259">259</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00326">326</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cbComputeGraph_8cpp_source.html#l00273">isSingleOutput()</a>, <a class="el" href="cbComputeGraph_8hpp_source.html#l00342">m_nodes</a>, and <a class="el" href="cbComputeGraph_8hpp_source.html#l00123">cb::graph::cbNode::nextNode</a>.</p>
+<p class="reference">References <a class="el" href="cbComputeGraph_8cpp_source.html#l00340">isSingleOutput()</a>, <a class="el" href="cbComputeGraph_8hpp_source.html#l00390">m_nodes</a>, and <a class="el" href="cbComputeGraph_8hpp_source.html#l00130">cb::graph::cbNode::nextNode</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00121">cbComputeGraph()</a>, and <a class="el" href="cbComputeGraph_8cpp_source.html#l00348">generateGraphTask()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00159">cbComputeGraph()</a>, and <a class="el" href="cbComputeGraph_8cpp_source.html#l00427">generateGraphTask()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -930,11 +1058,11 @@ Here is the caller graph for this function:</div>
 <dd>
 false </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00273">273</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00340">340</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cbComputeGraph_8hpp_source.html#l00342">m_nodes</a>.</p>
+<p class="reference">References <a class="el" href="cbComputeGraph_8hpp_source.html#l00390">m_nodes</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00121">cbComputeGraph()</a>, <a class="el" href="cbComputeGraph_8cpp_source.html#l00348">generateGraphTask()</a>, and <a class="el" href="cbComputeGraph_8cpp_source.html#l00259">isDAG()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00159">cbComputeGraph()</a>, <a class="el" href="cbComputeGraph_8cpp_source.html#l00427">generateGraphTask()</a>, and <a class="el" href="cbComputeGraph_8cpp_source.html#l00326">isDAG()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -973,18 +1101,18 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00341">341</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00420">420</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cbComputeGraph_8hpp_source.html#l00342">m_nodes</a>.</p>
+<p class="reference">References <a class="el" href="cbComputeGraph_8hpp_source.html#l00390">m_nodes</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00330">createCombineNode()</a>, and <a class="el" href="cbComputeGraph_8cpp_source.html#l00323">createVirtualDeviceNode()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00406">createCombineNode()</a>, and <a class="el" href="cbComputeGraph_8cpp_source.html#l00393">createVirtualDeviceNode()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classcb_1_1graph_1_1cbComputeGraph_a7a1c29e13a0088b9cb1530e80b4f8a6b_icgraph.png" border="0" usemap="#classcb_1_1graph_1_1cbComputeGraph_a7a1c29e13a0088b9cb1530e80b4f8a6b_icgraph" alt=""/></div>
 <map name="classcb_1_1graph_1_1cbComputeGraph_a7a1c29e13a0088b9cb1530e80b4f8a6b_icgraph" id="classcb_1_1graph_1_1cbComputeGraph_a7a1c29e13a0088b9cb1530e80b4f8a6b_icgraph">
 <area shape="rect" title="register a node. Not used by lua binding." alt="" coords="507,39,709,80"/>
-<area shape="rect" href="classcb_1_1graph_1_1cbComputeGraph.html#a0ed8f1e0c4f9a1786391d5628457d221" title="! for sql only, now." alt="" coords="256,5,459,47"/>
+<area shape="rect" href="classcb_1_1graph_1_1cbComputeGraph.html#a0ed8f1e0c4f9a1786391d5628457d221" title="Create a Combine Node object." alt="" coords="256,5,459,47"/>
 <area shape="rect" href="classcb_1_1graph_1_1cbComputeGraph.html#aa0f0670a573d3d6d1d5fb749de244595" title="create nodes belongs to this graph." alt="" coords="256,71,459,112"/>
 <area shape="rect" href="classcb_1_1graph_1_1cbComputeGraph.html#a13c2949f64f239419580ce105a4dd23c" title=" " alt="" coords="5,39,208,80"/>
 </map>
@@ -1016,9 +1144,9 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00337">337</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8cpp_source.html#l00416">416</a> of file <a class="el" href="cbComputeGraph_8cpp_source.html">cbComputeGraph.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cbComputeGraph_8hpp_source.html#l00346">m_virtualDevice</a>.</p>
+<p class="reference">References <a class="el" href="cbComputeGraph_8hpp_source.html#l00395">m_virtualDevice</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="api_8cpp_source.html#l00006">cb::apiCPP::addGraph()</a>.</p>
 <div class="dynheader">
@@ -1036,6 +1164,42 @@ Here is the caller graph for this function:</div>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="af7454be3f178cec487839fbf51c7100c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7454be3f178cec487839fbf51c7100c">&#9670;&nbsp;</a></span>cbOperatorNode</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend cb::graph::cbComputeGraph::cbOperatorNode</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8hpp_source.html#l00228">228</a> of file <a class="el" href="cbComputeGraph_8hpp_source.html">cbComputeGraph.hpp</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00406">createCombineNode()</a>.</p>
+
+</div>
+</div>
+<a id="ac385ae8faff06e71eb128351ee59ac94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac385ae8faff06e71eb128351ee59ac94">&#9670;&nbsp;</a></span>cbRedisCachingNode</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend cb::graph::cbComputeGraph::cbRedisCachingNode</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8hpp_source.html#l00227">227</a> of file <a class="el" href="cbComputeGraph_8hpp_source.html">cbComputeGraph.hpp</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00400">createRedisCachingNode()</a>.</p>
+
+</div>
+</div>
 <a id="ac7b3e3f1e192123e6a94c1bb06a2db6f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac7b3e3f1e192123e6a94c1bb06a2db6f">&#9670;&nbsp;</a></span>cbVirtualDeviceNode</h2>
 
@@ -1048,9 +1212,35 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8hpp_source.html#l00195">195</a> of file <a class="el" href="cbComputeGraph_8hpp_source.html">cbComputeGraph.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8hpp_source.html#l00226">226</a> of file <a class="el" href="cbComputeGraph_8hpp_source.html">cbComputeGraph.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00323">createVirtualDeviceNode()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00393">createVirtualDeviceNode()</a>.</p>
+
+</div>
+</div>
+<a id="a8187845c8c39d9142a35388503d8136c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8187845c8c39d9142a35388503d8136c">&#9670;&nbsp;</a></span>m_cacheNode</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structcb_1_1graph_1_1cbRedisCachingNode.html">cbRedisCachingNode</a>* cb::graph::cbComputeGraph::m_cacheNode = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8hpp_source.html#l00391">391</a> of file <a class="el" href="cbComputeGraph_8hpp_source.html">cbComputeGraph.hpp</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00517">addCacheServer()</a>, and <a class="el" href="cbComputeGraph_8cpp_source.html#l00427">generateGraphTask()</a>.</p>
 
 </div>
 </div>
@@ -1074,9 +1264,9 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8hpp_source.html#l00341">341</a> of file <a class="el" href="cbComputeGraph_8hpp_source.html">cbComputeGraph.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8hpp_source.html#l00389">389</a> of file <a class="el" href="cbComputeGraph_8hpp_source.html">cbComputeGraph.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00348">generateGraphTask()</a>, and <a class="el" href="cbComputeGraph_8cpp_source.html#l00346">getId()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00427">generateGraphTask()</a>, and <a class="el" href="cbComputeGraph_8cpp_source.html#l00425">getId()</a>.</p>
 
 </div>
 </div>
@@ -1100,9 +1290,9 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8hpp_source.html#l00342">342</a> of file <a class="el" href="cbComputeGraph_8hpp_source.html">cbComputeGraph.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8hpp_source.html#l00390">390</a> of file <a class="el" href="cbComputeGraph_8hpp_source.html">cbComputeGraph.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00348">generateGraphTask()</a>, <a class="el" href="cbComputeGraph_8cpp_source.html#l00259">isDAG()</a>, <a class="el" href="cbComputeGraph_8cpp_source.html#l00273">isSingleOutput()</a>, <a class="el" href="cbComputeGraph_8cpp_source.html#l00341">registerNode()</a>, and <a class="el" href="cbComputeGraph_8cpp_source.html#l00253">~cbComputeGraph()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00427">generateGraphTask()</a>, <a class="el" href="cbComputeGraph_8cpp_source.html#l00326">isDAG()</a>, <a class="el" href="cbComputeGraph_8cpp_source.html#l00340">isSingleOutput()</a>, <a class="el" href="cbComputeGraph_8cpp_source.html#l00420">registerNode()</a>, and <a class="el" href="cbComputeGraph_8cpp_source.html#l00320">~cbComputeGraph()</a>.</p>
 
 </div>
 </div>
@@ -1126,9 +1316,9 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8hpp_source.html#l00344">344</a> of file <a class="el" href="cbComputeGraph_8hpp_source.html">cbComputeGraph.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8hpp_source.html#l00393">393</a> of file <a class="el" href="cbComputeGraph_8hpp_source.html">cbComputeGraph.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00121">cbComputeGraph()</a>, <a class="el" href="cbComputeGraph_8cpp_source.html#l00387">execScript()</a>, <a class="el" href="cbComputeGraph_8cpp_source.html#l00383">execScriptFile()</a>, and <a class="el" href="cbComputeGraph_8cpp_source.html#l00253">~cbComputeGraph()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00159">cbComputeGraph()</a>, <a class="el" href="cbComputeGraph_8cpp_source.html#l00406">createCombineNode()</a>, <a class="el" href="cbComputeGraph_8cpp_source.html#l00515">execScript()</a>, <a class="el" href="cbComputeGraph_8cpp_source.html#l00511">execScriptFile()</a>, and <a class="el" href="cbComputeGraph_8cpp_source.html#l00320">~cbComputeGraph()</a>.</p>
 
 </div>
 </div>
@@ -1152,9 +1342,9 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8hpp_source.html#l00343">343</a> of file <a class="el" href="cbComputeGraph_8hpp_source.html">cbComputeGraph.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8hpp_source.html#l00392">392</a> of file <a class="el" href="cbComputeGraph_8hpp_source.html">cbComputeGraph.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00281">createCell()</a>, <a class="el" href="cbComputeGraph_8cpp_source.html#l00054">cb::graph::cbVirtualDeviceNode::generateTask()</a>, and <a class="el" href="cbComputeGraph_8cpp_source.html#l00253">~cbComputeGraph()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00351">createCell()</a>, <a class="el" href="cbComputeGraph_8cpp_source.html#l00427">generateGraphTask()</a>, <a class="el" href="cbComputeGraph_8cpp_source.html#l00072">cb::graph::cbVirtualDeviceNode::generateTask()</a>, and <a class="el" href="cbComputeGraph_8cpp_source.html#l00320">~cbComputeGraph()</a>.</p>
 
 </div>
 </div>
@@ -1178,9 +1368,9 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8hpp_source.html#l00346">346</a> of file <a class="el" href="cbComputeGraph_8hpp_source.html">cbComputeGraph.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbComputeGraph_8hpp_source.html#l00395">395</a> of file <a class="el" href="cbComputeGraph_8hpp_source.html">cbComputeGraph.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00323">createVirtualDeviceNode()</a>, and <a class="el" href="cbComputeGraph_8cpp_source.html#l00337">setVirtualDeviceManager()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00400">createRedisCachingNode()</a>, <a class="el" href="cbComputeGraph_8cpp_source.html#l00393">createVirtualDeviceNode()</a>, and <a class="el" href="cbComputeGraph_8cpp_source.html#l00416">setVirtualDeviceManager()</a>.</p>
 
 </div>
 </div>
