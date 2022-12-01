@@ -140,11 +140,18 @@ struct cbShape {
     this->m_stride = rhs.m_stride;
   }
   cbShape(const std::initializer_list<int32_t>& rhs) : m_dims(rhs) {}
+  //   cbShape<Dims> operator=(const cbShape<Dims>& s) {
+  //     cbShape<Dims> ans;
+  // #pragma unroll
+  //     for (int32_t i = 0; i < Dims; ++i) { ans.m_dims[i] = s.m_dims[i]; }
+  //     ans.m_stride = s.m_stride;
+  //     return ans;
+  //   }
 
   inline int32_t& operator[](int32_t idx) { return m_dims[idx]; }
   inline int32_t const operator[](int32_t idx) const { return m_dims[idx]; }
 
-  int32_t numElements() {
+  inline int32_t numElements() {
     int32_t ans = 1;
 #pragma unroll
     for (int32_t i = 0; i < Dims; ++i) { ans *= m_dims[i]; }
@@ -612,13 +619,13 @@ class cbVirtualTable {
     m_data.shrink_to_fit();
   }
 
-  cbVirtualTable operator=(const cbVirtualTable& rhsOp) {
-    cbVirtualTable ans;
-    ans.m_data = rhsOp.m_data;
-    ans.m_info = rhsOp.m_info;
-    ans.m_shape = rhsOp.m_shape;
-    return ans;
-  }
+  // cbVirtualTable operator=(const cbVirtualTable& rhsOp) {
+  //   cbVirtualTable ans;
+  //   ans.m_data = rhsOp.m_data;
+  //   ans.m_info = rhsOp.m_info;
+  //   ans.m_shape = rhsOp.m_shape;
+  //   return ans;
+  // }
 
   /**
    * @brief

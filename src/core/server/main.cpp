@@ -74,7 +74,7 @@ int main(int argc, char* argv[]) {
   App.stopMain();
   // Waiting for 10 sec for graph tasks in queue done.
   fmt::print(fg(fmt::color::steel_blue) | fmt::emphasis::italic,
-             "Waiting about 10 sec for graph tasks in queue done.\n");
+             "Waiting about {} sec for graph tasks in queue done.\n", cfg.graphExecSec);
   WFTimerTask* timerToEnd =
       WFTaskFactory::create_timer_task(cfg.graphExecSec, 0, [=](WFTimerTask* task) {
         fmt::print(fg(fmt::color::steel_blue) | fmt::emphasis::italic, "All tasks were done.\n");

@@ -1,6 +1,4 @@
 #include "cbComputeGraph.hpp"
-#include <workflow/WFGraphTask.h>
-#include <sol/forward.hpp>
 #include "trivial/cbVirtualDevice.hpp"
 
 namespace cb {
@@ -143,10 +141,8 @@ void* cbOperatorNode::generateTask() {
 
   goTask->set_callback([=](WFGoTask* task) {
     if (task->get_state() == WFT_STATE_SUCCESS) {
-      io.O = Op->io.O;  // TODO bug. Op->io.O can't copy to io.O
-      if (isFinalOutput) {
-        graph->m_sharedMem->setOutStruct(Op->io.O.getShape(), Op->io.O.getInfo());
-      }  // TODO change Op->io to io only.
+      io.O = Op->io.O;
+      if (isFinalOutput) { graph->m_sharedMem->setOutStruct(io.O.getShape(), io.O.getInfo()); }
       if (nextNode) { nextNode->io.I.push_back(io.O); }
     } else {
       fmt::print(fg(fmt::color::red), "Go Task exec failed.");
@@ -466,14 +462,33 @@ WFGraphTask* cbComputeGraph::generateGraphTask(const graph_callback& func) {
   if (m_cacheNode) {
     int32_t row = m_sharedMem->getOutStruct()->m_shape[0];
     int32_t col = m_sharedMem->getOutStruct()->m_shape[1];
+    auto gos = m_sharedMem->getOutStruct();
     for (int32_t i = 0; i < row; ++i) {
       for (int32_t j = 0; j < col; ++j) {
-        // TODO
         // To String and get packed to key and value.
+        std::vector<std::string> kv;
+        kv.push_back(gos->genKey4Redis(i, j));
+        auto cell = __tailNode->io.O.atPtr(i, j);
+        if (cell->isDate() || cell->isDatetime() || cell->isString()) {
+          kv.push_back(cell->asString());
+        } else if (cell->isInt()) {
+          kv.push_back(std::to_string(cell->asInt()));
+        } else if (cell->isFloat()) {
+          kv.push_back(std::to_string(cell->asFloat()));
+        } else if (cell->isULL()) {
+          kv.push_back(std::to_string(cell->asULL()));
+        } else if (cell->asDouble()) {
+          kv.push_back(std::to_string(cell->asDouble()));
+        }
 
         // Generate redis tasks.
+        auto redisSetTask = m_cacheNode->_generateSetTask(
+            kv, [](WFRedisTask* task) {}, nullptr, 3);
 
         // And push to compute graph.
+        WFGraphNode* redisSetTaskToNode = &graph->create_graph_node(redisSetTask);
+        (*__tail)-- > (*redisSetTaskToNode);
+        __tail = redisSetTaskToNode;
       }
     }
   }

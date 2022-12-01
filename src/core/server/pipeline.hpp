@@ -42,6 +42,7 @@ class graphContainer {
   graphContainer operator=(const graphContainer&) = delete;
 
   void addGraph(graph::cbComputeGraph* g);
+  graph::cbComputeGraph* getGraph(int32_t idx);
   void execMain();
   void setTerminated(bool enable);
 
