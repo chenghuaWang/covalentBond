@@ -101,7 +101,10 @@ void* cbVirtualDeviceNode::generateTask() {
     // Store the virtual table to the io.O port. And pass to the next Node's inputs port.
     mapShared2Virtual(__data, &io.O);
     if (nextNode) { nextNode->io.I.push_back(io.O); }
-    if (isFinalOutput) { graph->m_sharedMem->setOutStruct(io.O.getShape(), io.O.getInfo()); }
+    if (isFinalOutput) {
+      graph->m_sharedMem->setOutStruct(io.O.getShape(), io.O.getInfo());
+      graph->io.O = io.O;
+    }
     return;
   });
 }
@@ -142,7 +145,10 @@ void* cbOperatorNode::generateTask() {
   goTask->set_callback([=](WFGoTask* task) {
     if (task->get_state() == WFT_STATE_SUCCESS) {
       io.O = Op->io.O;
-      if (isFinalOutput) { graph->m_sharedMem->setOutStruct(io.O.getShape(), io.O.getInfo()); }
+      if (isFinalOutput) {
+        graph->m_sharedMem->setOutStruct(io.O.getShape(), io.O.getInfo());
+        graph->io.O = io.O;
+      }
       if (nextNode) { nextNode->io.I.push_back(io.O); }
     } else {
       fmt::print(fg(fmt::color::red), "Go Task exec failed.");
@@ -218,7 +224,19 @@ cbComputeGraph::cbComputeGraph(int32_t idx)
   );
 
   // bind enumerate cbMySQLType
-  // TODO
+  covalentBound.new_enum<cbMySQLType>(
+
+      "CellType", {{"Float", cbMySQLType::Float},
+                   {"Double", cbMySQLType::Double},
+                   {"Int", cbMySQLType::Int},
+                   {"ULL", cbMySQLType::ULL},
+                   {"String", cbMySQLType::String},
+                   {"Date", cbMySQLType::Date},
+                   {"Time", cbMySQLType::Time},
+                   {"DataTime", cbMySQLType::DataTime},
+                   {"Null", cbMySQLType::Null}}
+
+  );
 
   // bind graph.
   covalentBound.new_usertype<cbComputeGraph>(
@@ -462,7 +480,7 @@ WFGraphTask* cbComputeGraph::generateGraphTask(const graph_callback& func) {
     }
   }
   // If the caching set is not nullptr. Caching all table to l3 redis server.
-  if (m_cacheNode) {
+  if (m_cacheNode && m_sharedMem->getOutStruct() != nullptr) {
     int32_t row = m_sharedMem->getOutStruct()->m_shape[0];
     int32_t col = m_sharedMem->getOutStruct()->m_shape[1];
     auto gos = m_sharedMem->getOutStruct();
@@ -518,6 +536,8 @@ void cbComputeGraph::addCacheServer(cbRedisCachingNode* v) {
   m_cacheNode = v;
   v->graph = this;
 }
+
+cbOutputTableStruct* cbComputeGraph::getOutput() { return m_sharedMem->getOutStruct(); }
 
 };  // namespace graph
 }  // namespace cb

@@ -45,6 +45,20 @@ function Cb.F.createKVCell(graph, value, celltype)
     return graph:createKVCell(value, celltype);
 end
 
+function Cb.F.value(_cpp_value)
+    if _cpp_value:isFloat() then
+        return _cpp_value:asFloat();
+    elseif _cpp_value:isInt() then
+        return _cpp_value:asInt();
+    elseif _cpp_value:isULL() then
+        return _cpp_value:asULL();
+    elseif _cpp_value:isDataTime() or _cpp_value:isTime() or _cpp_value:isString() then
+        return _cpp_value:asString();
+    elseif _cpp_value:isDouble() then
+        return _cpp_value:asDouble();
+    end
+end
+
 function Cb.Op.CombineOp(baseOpPtr, primaryKeys)
     local inputs = baseOpPtr.io.I; -- vector.
     local output = baseOpPtr.io.O; -- virtual table.

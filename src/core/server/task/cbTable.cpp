@@ -193,10 +193,10 @@ cbOutputTableStruct::cbOutputTableStruct(const cbShape<2>& shape, cbMySQLField**
 }
 
 void cbOutputTableStruct::clear() {
-  m_info.clear();
-  m_info.shrink_to_fit();
-  m_shape[0] = 0;
-  m_shape[1] = 0;
+  // m_info.clear();
+  // m_info.shrink_to_fit();
+  // m_shape[0] = 0;
+  // m_shape[1] = 0;
 }
 
 void cbOutputTableStruct::update(const cbShape<2>& shape, cbMySQLField** info) {

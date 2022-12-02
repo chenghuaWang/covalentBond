@@ -10,3 +10,4 @@ scripts/utils/postScript2.json
 scripts/utils/test_httpServer_addDevice.sh
 scripts/utils/test_httpServer_addRDevice.sh
 scripts/utils/test_httpServer_addGraph.sh
+scripts/utils/test_httpServer_getTable.sh

@@ -385,8 +385,16 @@ class cbComputeGraph {
    */
   void addCacheServer(cbRedisCachingNode* v);
 
+  /**
+   * @brief Get the Output object
+   *
+   * @return cbOutputTableStruct*
+   */
+  cbOutputTableStruct* getOutput();
+
  private:
   int32_t m_idx = 0;
+  cbOpIO io;
   std::vector<cbNode*> m_nodes;
   cbRedisCachingNode* m_cacheNode = nullptr;
   cbGraphSharedMem* m_sharedMem = nullptr;

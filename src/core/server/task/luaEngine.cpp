@@ -45,6 +45,8 @@ void bindAllFuncByDefault(sol::state* handle) {
 
       "asFloat", &cbMySQLCell::asFloat,
 
+      "asDouble", &cbMySQLCell::asDouble,
+
       "asULL", &cbMySQLCell::asULL,
 
       "asString", &cbMySQLCell::asString,
@@ -75,7 +77,9 @@ void bindAllFuncByDefault(sol::state* handle) {
 
       "isTime", &cbMySQLCell::isTime,
 
-      "isDataTime", &cbMySQLCell::isDatetime
+      "isDataTime", &cbMySQLCell::isDatetime,
+
+      "isDouble", &cbMySQLCell::isDouble
 
   );
 }
