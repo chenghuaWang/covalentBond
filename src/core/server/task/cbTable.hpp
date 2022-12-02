@@ -605,6 +605,9 @@ class cbVirtualSharedTable {
 class cbVirtualTable {
  public:
   cbVirtualTable() = default;
+  ~cbVirtualTable() {
+    if (m_isInfoExtent) { delete[] m_info; }
+  }
   cbVirtualTable(const cbVirtualTable& rhs) {
     this->m_shape = rhs.m_shape;
     this->m_data = rhs.m_data;
@@ -635,12 +638,39 @@ class cbVirtualTable {
   void resetShape(const cbShape<2>& shape);
 
   /**
+   * @brief
+   *
+   * @param shape
+   * @param withHead
+   */
+  void resetShapeH(const cbShape<2>& shape);
+
+  /**
    * @brief Get the Info object
    *
    * @return cbMySQLField**
    */
   cbMySQLField** getInfo();
+
+  /**
+   * @brief Set the Info object
+   *
+   * @param v
+   */
   void setInfo(cbMySQLField** v);
+
+  /**
+   * @brief Set the Info At object
+   *
+   * @param v
+   */
+  void setInfoAt(int32_t i, cbMySQLField* v);
+
+  /**
+   * @brief Get the Info At object
+   *
+   */
+  cbMySQLField* getInfoAt(int32_t i);
 
   /**
    * @brief Get the Data object
@@ -673,6 +703,15 @@ class cbVirtualTable {
    * @return cbMySQLCell*&
    */
   cbMySQLCell*& atPtrRef(int32_t i, int32_t j);
+
+  /**
+   * @brief Set the Ptr At object
+   *
+   * @param i
+   * @param j
+   * @param v
+   */
+  void setPtrAt(int32_t i, int32_t j, cbMySQLCell* v);
 
   /**
    * @brief Get the Row object
@@ -728,6 +767,7 @@ class cbVirtualTable {
   void str();
 
  private:
+  bool m_isInfoExtent = false;
   cbMySQLField** m_info = nullptr;
   cbShape<2> m_shape;
   std::vector<std::vector<cbMySQLCell*>> m_data;

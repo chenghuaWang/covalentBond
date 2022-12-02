@@ -57,6 +57,7 @@ struct cbGraphSharedMem {
 
   void push(cbVirtualSharedTable* v);
   void push(cbMySQLCell* v);
+  void push(cbMySQLField* v);
   void setOutStruct(const cbShape<2>& shape, cbMySQLField** info);
 
   size_t getMemUsed();
@@ -69,6 +70,7 @@ struct cbGraphSharedMem {
   cbOutputTableStruct* m_outStruct = nullptr;
   std::vector<cbVirtualSharedTable*> m_dataFromDevice;
   std::vector<cbMySQLCell*> m_dataPool;
+  std::vector<cbMySQLField*> m_fields;
 };
 
 /**

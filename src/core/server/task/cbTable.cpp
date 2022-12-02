@@ -106,15 +106,30 @@ void cbVirtualTable::resetShape(const cbShape<2>& shape) {
   m_data.shrink_to_fit();
 }
 
+void cbVirtualTable::resetShapeH(const cbShape<2>& shape) {
+  resetShape(shape);
+  m_isInfoExtent = true;
+  m_info = new cbMySQLField*[shape[1]];
+}
+
 cbMySQLField** cbVirtualTable::getInfo() { return m_info; }
 
 void cbVirtualTable::setInfo(cbMySQLField** v) { m_info = v; }
+
+void cbVirtualTable::setInfoAt(int32_t i, cbMySQLField* v) {
+  m_isInfoExtent = true;
+  m_info[i] = v;
+}
+
+cbMySQLField* cbVirtualTable::getInfoAt(int32_t i) { return m_info[i]; }
 
 std::vector<std::vector<cbMySQLCell*>>& cbVirtualTable::getData() { return m_data; }
 
 cbMySQLCell* cbVirtualTable::atPtr(int32_t i, int32_t j) { return m_data[i][j]; }
 
 cbMySQLCell*& cbVirtualTable::atPtrRef(int32_t i, int32_t j) { return m_data[i][j]; }
+
+void cbVirtualTable::setPtrAt(int32_t i, int32_t j, cbMySQLCell* v) { atPtrRef(i, j) = v; }
 
 cbVirtualTable cbVirtualTable::getRow(int32_t i) {
   if (i >= 0 && i < m_shape[0]) [[likely]] {
@@ -224,6 +239,8 @@ void mapShared2Virtual(cbVirtualSharedTable* sharedT, cbVirtualTable* virtualT) 
     for (int32_t j = 0; j < col; ++j) { virtualT->atPtrRef(i, j) = sharedT->atPtr(i, j); }
   }
 }
+
+cbMySQLField::cbMySQLField() {}
 
 cbMySQLField::cbMySQLField(const protocol::MySQLField* wfPtr) {
   m_name = wfPtr->get_name();

@@ -13,6 +13,8 @@ void cbGraphSharedMem::push(cbVirtualSharedTable* v) { m_dataFromDevice.push_bac
 
 void cbGraphSharedMem::push(cbMySQLCell* v) { m_dataPool.push_back(v); }
 
+void cbGraphSharedMem::push(cbMySQLField* v) { m_fields.push_back(v); }
+
 void cbGraphSharedMem::setOutStruct(const cbShape<2>& shape, cbMySQLField** info) {
   if (!m_outStruct) {
     m_outStruct = new cbOutputTableStruct(shape, info);
@@ -44,8 +46,10 @@ cbOutputTableStruct* cbGraphSharedMem::getOutStruct() { return m_outStruct; }
 void cbGraphSharedMem::clear() {
   for (auto item : m_dataFromDevice) { delete item; }
   for (auto item : m_dataPool) { delete item; }
+  for (auto item : m_fields) { delete item; }
   m_dataFromDevice.clear();
   m_dataPool.clear();
+  m_fields.clear();
   m_outStruct->clear();
 }
 
@@ -203,7 +207,17 @@ cbComputeGraph::cbComputeGraph(int32_t idx)
 
       "resetShape", &cbVirtualTable::resetShape,
 
+      "resetShapeH", &cbVirtualTable::resetShapeH,
+
+      "setInfoAt", &cbVirtualTable::setInfoAt,
+
+      "getInfoAt", &cbVirtualTable::getInfoAt,
+
+      "setPtrAt", &cbVirtualTable::setPtrAt,
+
       "getShape", &cbVirtualTable::getShape,
+
+      "atPtr", &cbVirtualTable::atPtr,
 
       "atPtrRef", &cbVirtualTable::atPtrRef,
 
@@ -222,6 +236,8 @@ cbComputeGraph::cbComputeGraph(int32_t idx)
       "print", &cbVirtualTable::str
 
   );
+
+  covalentBound.new_usertype<cbMySQLField>("KVField");
 
   // bind enumerate cbMySQLType
   covalentBound.new_enum<cbMySQLType>(
