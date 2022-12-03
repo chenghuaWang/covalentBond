@@ -558,5 +558,7 @@ void cbComputeGraph::addCacheServer(cbRedisCachingNode* v) {
 
 cbOutputTableStruct* cbComputeGraph::getOutput() { return m_sharedMem->getOutStruct(); }
 
+std::vector<cbNode*> cbComputeGraph::getNodes() { return m_nodes; }
+
 };  // namespace graph
 }  // namespace cb

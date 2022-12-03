@@ -16,6 +16,16 @@
 #ifndef __SERVER_CB_COMPUTE_GRAPH_HPP_
 #define __SERVER_CB_COMPUTE_GRAPH_HPP_
 
+#ifdef _WIN32
+#if _MSC_VER > 1000
+#pragma once
+#endif
+#endif  //! _WIN32
+
+#if defined(__unix__) && defined(__clang__)
+#pragma once
+#endif  //! defined(__unix__) && defined(__clang__)
+
 #include <workflow/WFGraphTask.h>
 #include <workflow/WFFacilities.h>
 #include <workflow/WFTaskFactory.h>
@@ -32,7 +42,10 @@ namespace graph {
 class cbComputeGraph;
 
 /**
- * @brief
+ * @brief The node of compute graphs has 3 types:
+ * Leaf: the input, mostly the Sql device
+ * Output: the virtual table.
+ * Operator: Combine, sort, mean, avg, etc.
  *
  */
 enum class nodeType : uint32_t {
@@ -45,23 +58,100 @@ enum class nodeType : uint32_t {
  * @brief The shared memory of compute graph. Include 2 basic components.
  * 1. The Virtual Shared Table
  * 2. The Shared memory pool. Worked as a vector.
+ *
  */
 struct cbGraphSharedMem {
  public:
+  /**
+   * @brief Construct a new cb Graph Shared Mem object
+   *
+   */
   cbGraphSharedMem() = default;
+
+  /**
+   * @brief Construct a new cb Graph Shared Mem object
+   *
+   * @param rhs  deleted
+   */
   cbGraphSharedMem(cbGraphSharedMem& rhs) = delete;
+
+  /**
+   * @brief Construct a new cb Graph Shared Mem object
+   *
+   * @param rhs
+   */
   cbGraphSharedMem(const cbGraphSharedMem& rhs) = delete;
+
+  /**
+   * @brief operator of = is deleted
+   *
+   * @param rhs
+   * @return cbGraphSharedMem
+   */
   cbGraphSharedMem operator=(cbGraphSharedMem& rhs) = delete;
+
+  /**
+   * @brief operator of const = is deleted
+   *
+   * @param rhs
+   * @return cbGraphSharedMem
+   */
   cbGraphSharedMem operator=(const cbGraphSharedMem& rhs) = delete;
+
+  /**
+   * @brief Destroy the cb Graph Shared Mem object
+   *
+   */
   ~cbGraphSharedMem();
 
+  /**
+   * @brief Push a virtual shared table to mem of graph
+   *
+   * @param v
+   */
   void push(cbVirtualSharedTable* v);
+
+  /**
+   * @brief Push a Sql Cell to mem of graph
+   *
+   * @param v
+   */
   void push(cbMySQLCell* v);
+
+  /**
+   * @brief Push a Sql field to mem of graph
+   *
+   * @param v
+   */
   void push(cbMySQLField* v);
+
+  /**
+   * @brief Set the Out Struct object
+   *
+   * @param shape the shape of output virtual table.
+   * @param info the ptr-ptr of sql field
+   */
   void setOutStruct(const cbShape<2>& shape, cbMySQLField** info);
 
+  /**
+   * @brief Get the Mem Used object
+   *
+   * @return size_t
+   */
   size_t getMemUsed();
+
+  /**
+   * @brief Get the Cell Num object
+   *
+   * @return int32_t
+   */
   int32_t getCellNum();
+
+  /**
+   * @brief Get the Out Struct object
+   *
+   * @return cbOutputTableStruct*
+   */
   cbOutputTableStruct* getOutStruct();
 
   void clear();
@@ -78,8 +168,23 @@ struct cbGraphSharedMem {
  *
  */
 struct cbGraphSharedLuaStack {
+  /**
+   * @brief Construct a new cb Graph Shared Lua Stack object
+   *
+   */
   cbGraphSharedLuaStack() = default;
+
+  /**
+   * @brief Construct a new cb Graph Shared Lua Stack object
+   * using const cbGraphSharedLuaStack& is deleted
+   */
   cbGraphSharedLuaStack(const cbGraphSharedLuaStack&) = delete;
+
+  /**
+   * @brief  operator of const = is deleted
+   *
+   * @return cbGraphSharedLuaStack
+   */
   cbGraphSharedLuaStack operator=(const cbGraphSharedLuaStack&) = delete;
 
   /**
@@ -112,7 +217,11 @@ struct cbGraphSharedLuaStack {
  *
  */
 struct cbNode {
-  virtual ~cbNode(){};  // TODO maybe bugs !!!
+  /**
+   * @brief Destroy the cb Node object
+   * Virtual function.
+   */
+  virtual ~cbNode(){};
   cbNode(const nodeType& nt);
   void PointTo(cbNode* ptr);
 
@@ -394,6 +503,13 @@ class cbComputeGraph {
    * @return cbOutputTableStruct*
    */
   cbOutputTableStruct* getOutput();
+
+  /**
+   * @brief Get the Nodes object
+   *
+   * @return std::vector<cbNode*>
+   */
+  std::vector<cbNode*> getNodes();
 
  private:
   int32_t m_idx = 0;
