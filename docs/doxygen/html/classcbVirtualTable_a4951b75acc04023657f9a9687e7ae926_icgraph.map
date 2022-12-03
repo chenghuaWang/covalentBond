@@ -1,6 +1,7 @@
 <map id="cbVirtualTable::resetShape" name="cbVirtualTable::resetShape">
-<area shape="rect" id="node1" title=" " alt="" coords="497,42,692,69"/>
-<area shape="rect" id="node2" href="$classcb_1_1graph_1_1cbComputeGraph.html#a13c2949f64f239419580ce105a4dd23c" title=" " alt="" coords="247,5,449,47"/>
-<area shape="rect" id="node3" href="$cbTable_8hpp.html#aa7e1365c230649b7120d4efd062c34ff" title=" " alt="" coords="275,71,421,98"/>
-<area shape="rect" id="node4" href="$structcb_1_1graph_1_1cbVirtualDeviceNode.html#aed0f0a7b067ce70295d862beb7d31e82" title="generate a SQL wf task for now." alt="" coords="5,64,199,105"/>
+<area shape="rect" id="node1" title=" " alt="" coords="509,45,704,71"/>
+<area shape="rect" id="node2" href="$classcb_1_1graph_1_1cbComputeGraph.html#a13c2949f64f239419580ce105a4dd23c" title=" " alt="" coords="5,5,208,47"/>
+<area shape="rect" id="node3" href="$cbTable_8hpp.html#aa7e1365c230649b7120d4efd062c34ff" title=" " alt="" coords="285,95,432,122"/>
+<area shape="rect" id="node5" href="$classcbVirtualTable.html#abab86146d6490cdb45750da1225071f2" title=" " alt="" coords="256,45,461,71"/>
+<area shape="rect" id="node4" href="$structcb_1_1graph_1_1cbVirtualDeviceNode.html#aed0f0a7b067ce70295d862beb7d31e82" title="generate a SQL wf task for now." alt="" coords="10,88,203,129"/>
 </map>

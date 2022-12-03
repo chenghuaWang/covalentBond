@@ -1,5 +1,7 @@
 <map id="cbMySQLCell::isDouble" name="cbMySQLCell::isDouble">
-<area shape="rect" id="node1" title=" " alt="" coords="235,31,407,57"/>
-<area shape="rect" id="node2" href="$classcbMySQLCell.html#ae1ef52cacbc9b18eb3dd77b6f52ff83a" title=" " alt="" coords="8,5,184,32"/>
-<area shape="rect" id="node3" href="$classcbMySQLCell.html#a3ea78a6f9e1653da3b19cec5baacc6ac" title=" " alt="" coords="5,56,187,83"/>
+<area shape="rect" id="node1" title=" " alt="" coords="680,56,852,83"/>
+<area shape="rect" id="node2" href="$classcbMySQLCell.html#ae1ef52cacbc9b18eb3dd77b6f52ff83a" title=" " alt="" coords="453,5,629,32"/>
+<area shape="rect" id="node3" href="$luaEngine_8hpp.html#ae84374a204d0c1dda8c17974084e3d75" title="_WIN32" alt="" coords="240,31,403,57"/>
+<area shape="rect" id="node5" href="$classcbMySQLCell.html#a3ea78a6f9e1653da3b19cec5baacc6ac" title=" " alt="" coords="451,107,632,133"/>
+<area shape="rect" id="node4" href="$classluaJitThread.html#aee68f6c63bf73905aed52146d3402dfd" title=" " alt="" coords="5,31,192,57"/>
 </map>

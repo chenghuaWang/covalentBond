@@ -1,4 +1,5 @@
 <map id="cbVirtualTable::atPtr" name="cbVirtualTable::atPtr">
-<area shape="rect" id="node1" title="row major" alt="" coords="256,13,409,39"/>
-<area shape="rect" id="node2" href="$classcb_1_1graph_1_1cbComputeGraph.html#adfac399f6587dc092ee699f093f7e20d" title="Create the graph task." alt="" coords="5,5,208,47"/>
+<area shape="rect" id="node1" title="row major" alt="" coords="256,46,409,73"/>
+<area shape="rect" id="node2" href="$classcb_1_1graph_1_1cbComputeGraph.html#a13c2949f64f239419580ce105a4dd23c" title=" " alt="" coords="5,5,208,47"/>
+<area shape="rect" id="node3" href="$classcb_1_1graph_1_1cbComputeGraph.html#adfac399f6587dc092ee699f093f7e20d" title="Create the graph task." alt="" coords="5,71,208,112"/>
 </map>

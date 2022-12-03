@@ -102,8 +102,8 @@ Collaboration diagram for cbOpCombine:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a1e211fc6e1850c18301e1d2490133948"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcbOpCombine.html#a1e211fc6e1850c18301e1d2490133948">~cbOpCombine</a> () override</td></tr>
 <tr class="separator:a1e211fc6e1850c18301e1d2490133948"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a665467abebb893a1d90af4cd7af120da"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcbOpCombine.html#a665467abebb893a1d90af4cd7af120da">cbOpCombine</a> (const std::vector&lt; std::string &gt; &amp;key)</td></tr>
-<tr class="separator:a665467abebb893a1d90af4cd7af120da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a11ca9d725426bffdc63d3c19f6c6b2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcbOpCombine.html#a2a11ca9d725426bffdc63d3c19f6c6b2">cbOpCombine</a> (const std::vector&lt; std::string &gt; &amp;key, const std::string name)</td></tr>
+<tr class="separator:a2a11ca9d725426bffdc63d3c19f6c6b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a833db41fbd883e60dc22573c62369338"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcbOpCombine.html#a833db41fbd883e60dc22573c62369338">overload</a> (const sol::function &amp;func) override final</td></tr>
 <tr class="separator:a833db41fbd883e60dc22573c62369338"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aecc8570f8ad2f2dfe9591649fb7f4b63"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcbOpCombine.html#aecc8570f8ad2f2dfe9591649fb7f4b63">execMain</a> () override final</td></tr>
@@ -123,6 +123,8 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
+<tr class="memitem:adb4a74ab75fb1f1c3917ee93b4223d5c"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcbOpCombine.html#adb4a74ab75fb1f1c3917ee93b4223d5c">m_tableName</a></td></tr>
+<tr class="separator:adb4a74ab75fb1f1c3917ee93b4223d5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a184904676cd4b33059fb3532f666dee9"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcbOpCombine.html#a184904676cd4b33059fb3532f666dee9">m_key</a></td></tr>
 <tr class="separator:a184904676cd4b33059fb3532f666dee9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -169,8 +171,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a665467abebb893a1d90af4cd7af120da"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a665467abebb893a1d90af4cd7af120da">&#9670;&nbsp;</a></span>cbOpCombine()</h2>
+<a id="a2a11ca9d725426bffdc63d3c19f6c6b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a11ca9d725426bffdc63d3c19f6c6b2">&#9670;&nbsp;</a></span>cbOpCombine()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -179,8 +181,18 @@ Additional Inherited Members</h2></td></tr>
           <td class="memname">cbOpCombine::cbOpCombine </td>
           <td>(</td>
           <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
-          <td class="paramname"><em>key</em></td><td>)</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const std::string&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -216,11 +228,11 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classcbOpRowWise.html#ad684cca927ab0288b6d7a4bf3ff7d0df">cbOpRowWise</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="cbOperator_8cpp_source.html#l00040">40</a> of file <a class="el" href="cbOperator_8cpp_source.html">cbOperator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbOperator_8cpp_source.html#l00041">41</a> of file <a class="el" href="cbOperator_8cpp_source.html">cbOperator.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cbOperator_8hpp_source.html#l00057">baseOp::isOverload</a>, <a class="el" href="cbOperator_8hpp_source.html#l00058">baseOp::luaOverrideFunc</a>, and <a class="el" href="cbOperator_8hpp_source.html#l00117">m_key</a>.</p>
+<p class="reference">References <a class="el" href="cbOperator_8hpp_source.html#l00057">baseOp::isOverload</a>, <a class="el" href="cbOperator_8hpp_source.html#l00058">baseOp::luaOverrideFunc</a>, <a class="el" href="cbOperator_8hpp_source.html#l00118">m_key</a>, and <a class="el" href="cbOperator_8hpp_source.html#l00117">m_tableName</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cbOperator_8cpp_source.html#l00038">execMain()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cbOperator_8cpp_source.html#l00039">execMain()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -258,9 +270,9 @@ Here is the caller graph for this function:</div>
 
 <p>Implements <a class="el" href="classcbOpRowWise.html#a8b79509f8c761d3a8e098a12b1af7b43">cbOpRowWise</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="cbOperator_8cpp_source.html#l00038">38</a> of file <a class="el" href="cbOperator_8cpp_source.html">cbOperator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbOperator_8cpp_source.html#l00039">39</a> of file <a class="el" href="cbOperator_8cpp_source.html">cbOperator.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cbOperator_8cpp_source.html#l00040">__innerFunc()</a>.</p>
+<p class="reference">References <a class="el" href="cbOperator_8cpp_source.html#l00041">__innerFunc()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -299,11 +311,11 @@ Here is the call graph for this function:</div>
 
 <p>Implements <a class="el" href="classcbOpRowWise.html#ae3cc569f2a3f7661b53a12c1d6e6ec65">cbOpRowWise</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="cbOperator_8cpp_source.html#l00033">33</a> of file <a class="el" href="cbOperator_8cpp_source.html">cbOperator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cbOperator_8cpp_source.html#l00034">34</a> of file <a class="el" href="cbOperator_8cpp_source.html">cbOperator.cpp</a>.</p>
 
 <p class="reference">References <a class="el" href="cbOperator_8hpp_source.html#l00057">baseOp::isOverload</a>, and <a class="el" href="cbOperator_8hpp_source.html#l00058">baseOp::luaOverrideFunc</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00159">cb::graph::cbComputeGraph::cbComputeGraph()</a>, and <a class="el" href="cbComputeGraph_8cpp_source.html#l00406">cb::graph::cbComputeGraph::createCombineNode()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cbComputeGraph_8cpp_source.html#l00171">cb::graph::cbComputeGraph::cbComputeGraph()</a>, and <a class="el" href="cbComputeGraph_8cpp_source.html#l00448">cb::graph::cbComputeGraph::createCombineNode()</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -311,7 +323,7 @@ Here is the caller graph for this function:</div>
 <map name="classcbOpCombine_a833db41fbd883e60dc22573c62369338_icgraph" id="classcbOpCombine_a833db41fbd883e60dc22573c62369338_icgraph">
 <area shape="rect" title=" " alt="" coords="507,13,685,39"/>
 <area shape="rect" href="classcb_1_1graph_1_1cbComputeGraph.html#a13c2949f64f239419580ce105a4dd23c" title=" " alt="" coords="5,5,208,47"/>
-<area shape="rect" href="classcb_1_1graph_1_1cbComputeGraph.html#a0ed8f1e0c4f9a1786391d5628457d221" title="Create a Combine Node object." alt="" coords="256,35,459,76"/>
+<area shape="rect" href="classcb_1_1graph_1_1cbComputeGraph.html#add4e1985a8be892d906c8d0b0c6cd451" title="Create a Combine Node object." alt="" coords="256,35,459,76"/>
 </map>
 </div>
 
@@ -338,9 +350,35 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="cbOperator_8hpp_source.html#l00118">118</a> of file <a class="el" href="cbOperator_8hpp_source.html">cbOperator.hpp</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="cbOperator_8cpp_source.html#l00041">__innerFunc()</a>.</p>
+
+</div>
+</div>
+<a id="adb4a74ab75fb1f1c3917ee93b4223d5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb4a74ab75fb1f1c3917ee93b4223d5c">&#9670;&nbsp;</a></span>m_tableName</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string cbOpCombine::m_tableName</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
 <p class="definition">Definition at line <a class="el" href="cbOperator_8hpp_source.html#l00117">117</a> of file <a class="el" href="cbOperator_8hpp_source.html">cbOperator.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cbOperator_8cpp_source.html#l00040">__innerFunc()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cbOperator_8cpp_source.html#l00041">__innerFunc()</a>.</p>
 
 </div>
 </div>
