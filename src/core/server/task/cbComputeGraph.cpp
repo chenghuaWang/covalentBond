@@ -115,6 +115,8 @@ void* cbVirtualDeviceNode::generateTask() {
 
 void cbVirtualDeviceNode::addQuery(const std::string& q) { m_queries.push_back(q); }
 
+trivial::cbMySqlDevice* cbVirtualDeviceNode::getDevice() { return m_device; }
+
 void cbVirtualDeviceNode::setMySQLDevice(trivial::cbMySqlDevice* device) { m_device = device; }
 
 cbVirtualDeviceNode::cbVirtualDeviceNode() : cbNode(nodeType::Leaf) {}

@@ -270,6 +270,13 @@ struct cbVirtualDeviceNode final : public cbNode {
    */
   void addQuery(const std::string& q);
 
+  /**
+   * @brief Get the Device object
+   *
+   * @return trivial::cbMySqlDevice*
+   */
+  trivial::cbMySqlDevice* getDevice();
+
  private:
   void setMySQLDevice(trivial::cbMySqlDevice* device = nullptr);
   trivial::cbMySqlDevice* m_device;
