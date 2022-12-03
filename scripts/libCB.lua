@@ -63,7 +63,14 @@ function Cb.F.value(_cpp_value)
     end
 end
 
-function Cb.Op.CombineOp(baseOpPtr, primaryKeys)
+function Cb.F.setTableName(table, tableName)
+    local col = table:getShape()[1];
+    for i = 1, col do
+        table:getInfoAt(i - 1):setTableName(tableName);
+    end
+end
+
+function Cb.Op.CombineOp(baseOpPtr, primaryKeys, newTableName)
     local inputs = baseOpPtr.io.I; -- vector.
     local output = baseOpPtr.io.O; -- virtual table.
     -- this program is a default behavior of combine operation.
@@ -202,6 +209,8 @@ function Cb.Op.CombineOp(baseOpPtr, primaryKeys)
             ::continue::
         end
     end
+
+    Cb.F.setTableName(output, newTableName);
 
     -- for c = 1, output:getShape()[1] do
     --     print(c, output:colNameAt(c - 1))

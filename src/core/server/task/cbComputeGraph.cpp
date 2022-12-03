@@ -237,7 +237,13 @@ cbComputeGraph::cbComputeGraph(int32_t idx)
 
   );
 
-  covalentBound.new_usertype<cbMySQLField>("KVField");
+  covalentBound.new_usertype<cbMySQLField>(
+
+      "KVField",
+
+      "setTableName", &cbMySQLField::setTable
+
+  );
 
   // bind enumerate cbMySQLType
   covalentBound.new_enum<cbMySQLType>(
@@ -437,8 +443,9 @@ cbRedisCachingNode* cbComputeGraph::createRedisCachingNode(int32_t idx) {
   return ans;
 }
 
-cbOperatorNode* cbComputeGraph::createCombineNode(const std::vector<std::string>& keys) {
-  cbOpCombine* ansOp = new cbOpCombine(keys);
+cbOperatorNode* cbComputeGraph::createCombineNode(const std::vector<std::string>& keys,
+                                                  const std::string& name) {
+  cbOpCombine* ansOp = new cbOpCombine(keys, name);
 
   ansOp->overload(this->m_sharedLuaStack->get()()["Cb"]["Op"]["CombineOp"]);
 
@@ -464,6 +471,38 @@ WFGraphTask* cbComputeGraph::generateGraphTask(const graph_callback& func) {
                "Graph task {} complete. Wakeup main process\n", m_idx);
     fmt::print(fg(fmt::color::steel_blue) | fmt::emphasis::italic,
                "--------------------------------------------------\n");
+
+    // If the caching set is not nullptr. Caching all table to l3 redis server.
+    if (m_cacheNode && m_sharedMem->getOutStruct() != nullptr) {
+      int32_t row = m_sharedMem->getOutStruct()->m_shape[0];
+      int32_t col = m_sharedMem->getOutStruct()->m_shape[1];
+      auto gos = m_sharedMem->getOutStruct();
+      for (int32_t i = 0; i < row; ++i) {
+        for (int32_t j = 0; j < col; ++j) {
+          // To String and get packed to key and value.
+          std::vector<std::string> kv;
+          kv.push_back(gos->genKey4Redis(i, j));
+          auto cell = io.O.atPtr(i, j);
+          if (cell->isDate() || cell->isDatetime() || cell->isString()) {
+            kv.push_back(cell->asString());
+          } else if (cell->isInt()) {
+            kv.push_back(std::to_string(cell->asInt()));
+          } else if (cell->isFloat()) {
+            kv.push_back(std::to_string(cell->asFloat()));
+          } else if (cell->isULL()) {
+            kv.push_back(std::to_string(cell->asULL()));
+          } else if (cell->asDouble()) {
+            kv.push_back(std::to_string(cell->asDouble()));
+          }
+
+          // Generate redis tasks.
+          auto redisSetTask = m_cacheNode->_generateSetTask(
+              kv, [](WFRedisTask* task) {}, nullptr, 3);
+          redisSetTask->start();
+        }
+      }
+    }
+    // clear tmp memory;
     m_sharedMem->clear();
     for (auto& item : m_nodes) { item->io.I.clear(); }
   });
@@ -474,7 +513,6 @@ WFGraphTask* cbComputeGraph::generateGraphTask(const graph_callback& func) {
   std::map<cbNode*, WFGraphNode*> __cb2WF;
 
   WFGraphNode* __tail = nullptr;
-  cbNode* __tailNode = nullptr;
 
   for (auto item : m_nodes) {
     switch (item->nodeT) {
@@ -492,41 +530,6 @@ WFGraphTask* cbComputeGraph::generateGraphTask(const graph_callback& func) {
       (*__cb2WF[item])-- > (*__cb2WF[item->nextNode]);
     } else {
       __tail = __cb2WF[item];
-      __tailNode = item;
-    }
-  }
-  // If the caching set is not nullptr. Caching all table to l3 redis server.
-  if (m_cacheNode && m_sharedMem->getOutStruct() != nullptr) {
-    int32_t row = m_sharedMem->getOutStruct()->m_shape[0];
-    int32_t col = m_sharedMem->getOutStruct()->m_shape[1];
-    auto gos = m_sharedMem->getOutStruct();
-    for (int32_t i = 0; i < row; ++i) {
-      for (int32_t j = 0; j < col; ++j) {
-        // To String and get packed to key and value.
-        std::vector<std::string> kv;
-        kv.push_back(gos->genKey4Redis(i, j));
-        auto cell = __tailNode->io.O.atPtr(i, j);
-        if (cell->isDate() || cell->isDatetime() || cell->isString()) {
-          kv.push_back(cell->asString());
-        } else if (cell->isInt()) {
-          kv.push_back(std::to_string(cell->asInt()));
-        } else if (cell->isFloat()) {
-          kv.push_back(std::to_string(cell->asFloat()));
-        } else if (cell->isULL()) {
-          kv.push_back(std::to_string(cell->asULL()));
-        } else if (cell->asDouble()) {
-          kv.push_back(std::to_string(cell->asDouble()));
-        }
-
-        // Generate redis tasks.
-        auto redisSetTask = m_cacheNode->_generateSetTask(
-            kv, [](WFRedisTask* task) {}, nullptr, 3);
-
-        // And push to compute graph.
-        WFGraphNode* redisSetTaskToNode = &graph->create_graph_node(redisSetTask);
-        (*__tail)-- > (*redisSetTaskToNode);
-        __tail = redisSetTaskToNode;
-      }
     }
   }
   return graph;

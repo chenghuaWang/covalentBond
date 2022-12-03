@@ -108,12 +108,13 @@ class cbOpNotTable : public baseOp {
 class cbOpCombine final : public cbOpRowWise {
  public:
   ~cbOpCombine() override;
-  cbOpCombine(const std::vector<std::string>& key);
+  cbOpCombine(const std::vector<std::string>& key, const std::string name);
   void overload(const sol::function& func) override final;
   void execMain() override final;
   void __innerFunc(baseOp* thisOp = nullptr) override final;
 
  private:
+  const std::string m_tableName;
   const std::vector<std::string> m_key;
 };
 

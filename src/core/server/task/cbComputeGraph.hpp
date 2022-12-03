@@ -325,9 +325,10 @@ class cbComputeGraph {
    * @brief Create a Combine Node object
    *
    * @param keys
+   * @param name
    * @return cbOperatorNode*
    */
-  cbOperatorNode* createCombineNode(const std::vector<std::string>& keys);
+  cbOperatorNode* createCombineNode(const std::vector<std::string>& keys, const std::string& name);
 
   /**
    * @brief Set the Virtual Device Manager object

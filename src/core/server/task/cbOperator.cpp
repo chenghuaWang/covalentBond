@@ -28,7 +28,8 @@ cbOpNotTable::cbOpNotTable() : baseOp(opType::notTableMatrix) {}
 
 cbOpCombine::~cbOpCombine() {}
 
-cbOpCombine::cbOpCombine(const std::vector<std::string>& key) : m_key(key) {}
+cbOpCombine::cbOpCombine(const std::vector<std::string>& key, const std::string name)
+    : m_tableName(name), m_key(key) {}
 
 void cbOpCombine::overload(const sol::function& func) {
   luaOverrideFunc = func;
@@ -39,7 +40,7 @@ void cbOpCombine::execMain() { __innerFunc(this); }
 
 void cbOpCombine::__innerFunc(baseOp* thisOp) {
   if (isOverload) {
-    luaOverrideFunc((baseOp*)this, m_key);
+    luaOverrideFunc((baseOp*)this, m_key, m_tableName);
   } else {
     // TODO
   }
