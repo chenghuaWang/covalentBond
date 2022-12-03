@@ -56,9 +56,9 @@ Hi there 👋
 
 ### [caibo Feng](https://github.com/caibofeng)
 
--I'm also focus on  computer vision and learn with professor.
--I join in this project to learn from our leader and group.
--I like Jay Zhou and JJ Lin.
+- I'm also focus on  computer vision and learn with professor.
+- I join in this project to learn from our leader and group.
+- I like Jay Zhou and JJ Lin.
 
 ## Reference
 
