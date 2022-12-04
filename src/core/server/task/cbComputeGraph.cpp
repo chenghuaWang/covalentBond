@@ -50,7 +50,7 @@ void cbGraphSharedMem::clear() {
   m_dataFromDevice.clear();
   m_dataPool.clear();
   m_fields.clear();
-  m_outStruct->clear();
+  // m_outStruct->clear();
 }
 
 void cbGraphSharedLuaStack::execScriptFile(const std::string& filePath) {
