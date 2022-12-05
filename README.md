@@ -125,6 +125,13 @@ Hi there 👋
 - I join in this project to learn from our leader and group.
 - I like Jay Zhou and JJ Lin.
 
+### [yunzi Sun](https://github.com/ketsurineko)
+_On the internet , U can tell me ice_neko._
+
+- I want to know lastest elctric and how to use it,such as PC.
+- I am willing to learn everything i am interested in.
+- I am new in computer vision and coding progarm. (really)
+
 ## Reference
 
 ## Thanks To All Contributors
