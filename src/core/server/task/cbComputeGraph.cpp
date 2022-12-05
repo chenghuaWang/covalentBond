@@ -138,7 +138,10 @@ WFRedisTask* cbRedisCachingNode::_generateSetTask(const std::vector<std::string>
 
 void cbRedisCachingNode::setRedisDevice(trivial::cbRedisDevice* device) { m_device = device; }
 
-cbOperatorNode::~cbOperatorNode() { delete Op; }
+cbOperatorNode::~cbOperatorNode() {
+  Op->luaOverrideFunc = sol::nil;
+  delete Op;
+}
 
 cbOperatorNode::cbOperatorNode(baseOp* op) : cbNode(nodeType::Operator), Op(op) {}
 
@@ -362,6 +365,7 @@ cbComputeGraph::cbComputeGraph(int32_t idx)
 cbComputeGraph::~cbComputeGraph() {
   delete m_sharedMem;
   delete m_sharedLuaStack;
+  if (!m_cacheNode) delete m_cacheNode;
   for (auto item : m_nodes) { delete item; }
 }
 
