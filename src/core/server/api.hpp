@@ -35,4 +35,16 @@ cb::graph::cbComputeGraph* addGraph(int32_t idx, const std::string& cmd,
 }  // namespace apiCPP
 }  // namespace cb
 
+namespace cb {
+namespace trans {
+void outbase(std::ofstream& oFile);
+void outDeviceNode(std::ofstream& oFile, trivial::cbMySqlDevice* deviceNode, int node_num,
+                   int device_num);
+void outOpNode(int nodenum, int inputnum, std::ofstream& oFile, int op_num);
+void outFinNode(int device_num, int op_num, std::ofstream& oFile);
+void Node_leaf_connect(int nodeleftnum, int noderightnum, int nowinputsnum, std::ofstream& oFile);
+void Node_op_connect(int nodeleftnum, int nowinputsnum, std::ofstream& oFile);
+void outbaseo(std::ofstream& oFile);
+}  // namespace trans
+}  // namespace cb
 #endif  //! __SERVER_API_HPP_

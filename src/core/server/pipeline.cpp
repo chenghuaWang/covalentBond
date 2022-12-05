@@ -152,6 +152,74 @@ void app::initRHttp() {
     kv["colName"] = _tmpColName;
     resp->Json(kv);
   });
+  m_rHttp().GET("/trans_graph", [=](const HttpReq* req, HttpResp* resp) {
+    if (!req->has_query("idx")) {
+      resp->set_status(500);
+      return;
+    }
+    remove("src/frontend/index.html");
+    int32_t _graphId = atoi(req->query("idx").c_str());
+    if (m_graphs.getGraph(_graphId) == nullptr) { return; }
+    auto outs = m_graphs.getGraph(_graphId);
+    auto nodes = outs->getNodes();
+    int nodenum = 0;
+    int device_num = 0;
+    int op_num = 0;
+    std::ofstream oFile;
+    oFile.open("src/frontend/index.html", std::ios::app);
+    cb::trans::outbase(oFile);
+    std::map<cb::graph::cbNode*, int32_t> mapinputs, mapinputsnow, mapnodenum;
+    std::map<int, int> mapoutputs_in;
+    for (auto item : nodes) {
+      switch (item->nodeT) {
+        case cb::graph::nodeType::Leaf: {
+          auto device_n = (graph::cbVirtualDeviceNode*)item;
+          auto deviceNode = device_n->getDevice();
+          nodenum++;
+          device_num++;
+          mapnodenum[item] = nodenum;
+          cb::trans::outDeviceNode(oFile, deviceNode, nodenum, device_num);
+          break;
+        }
+        case cb::graph::nodeType::Operator: {
+          nodenum++;
+          op_num++;
+          mapnodenum[item] = nodenum;
+          int inputnum = 0;
+          mapinputsnow[item] = 0;
+          for (auto itemp : nodes) {
+            if (itemp->nextNode == item) mapinputs[item] = ++inputnum;
+          }
+          cb::trans::outOpNode(nodenum, inputnum, oFile, op_num);
+          break;
+        }
+        case cb::graph::nodeType::Output: break;
+      }
+    }
+    cb::trans::outFinNode(device_num, op_num, oFile);
+    mapoutputs_in[0] = 0;
+    // for leaf connect
+    for (auto item : nodes) {
+      switch (item->nodeT) {
+        case cb::graph::nodeType::Leaf: {
+          int leftnodenum = mapnodenum[item];
+          int rightnodenum = mapnodenum[item->nextNode];
+          cb::trans::Node_leaf_connect(leftnodenum, rightnodenum, mapinputsnow[item->nextNode],
+                                       oFile);
+          mapinputsnow[item->nextNode]++;
+          break;
+        }
+        case cb::graph::nodeType::Operator: {
+          cb::trans::Node_op_connect(mapnodenum[item], mapoutputs_in[0]++, oFile);
+        }
+        case cb::graph::nodeType::Output: break;
+      }
+    }
+    cb::trans::outbaseo(oFile);
+    oFile.close();
+    resp->File("src/frontend/index.html");
+    // remove("index.html");
+  });
 }
 
 void app::execMain() {
