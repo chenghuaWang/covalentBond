@@ -1,6 +1,6 @@
 /**
  * @file pipeline.hpp
- * @author chenghua Wang (chenghua.wang.edu@gmail.com)
+ * @author chenghua Wang (chenghua.wang.edu@gmail.com), YunZi Sun
  * @brief The main pipeline, manage all resources.
  * @version 0.1
  * @date 2022-11-19

@@ -1,6 +1,6 @@
 /**
  * @file api.hpp
- * @author chenghua Wang (chenghua.wang.edu@gmail.com)
+ * @author chenghua Wang (chenghua.wang.edu@gmail.com), YunZi Sun
  * @brief The C plus plus API section.
  * @version 0.1
  * @date 2022-11-19
