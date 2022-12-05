@@ -11,6 +11,7 @@
 #ifndef __SERVER_API_HPP_
 #define __SERVER_API_HPP_
 
+#include "wfrest/HttpMsg.h"
 #ifdef _WIN32
 #if _MSC_VER > 1000
 #pragma once
@@ -23,9 +24,11 @@
 
 #include "../pch.hpp"
 
+#include <wfrest/json.hpp>
+
 #include "task/cbComputeGraph.hpp"
 #include "trivial/cbVirtualDevice.hpp"
-
+using namespace wfrest;
 namespace cb {
 namespace apiCPP {
 
@@ -37,14 +40,14 @@ cb::graph::cbComputeGraph* addGraph(int32_t idx, const std::string& cmd,
 
 namespace cb {
 namespace trans {
-void outbase(std::ofstream& oFile);
-void outDeviceNode(std::ofstream& oFile, trivial::cbMySqlDevice* deviceNode, int node_num,
+void outbase(HttpResp* resp);
+void outDeviceNode(HttpResp* resp, trivial::cbMySqlDevice* deviceNode, int node_num,
                    int device_num);
-void outOpNode(int nodenum, int inputnum, std::ofstream& oFile, int op_num);
-void outFinNode(int device_num, int op_num, std::ofstream& oFile);
-void Node_leaf_connect(int nodeleftnum, int noderightnum, int nowinputsnum, std::ofstream& oFile);
-void Node_op_connect(int nodeleftnum, int nowinputsnum, std::ofstream& oFile);
-void outbaseo(std::ofstream& oFile);
+void outOpNode(int nodenum, int inputnum, HttpResp* resp, int op_num);
+void outFinNode(int device_num, int op_num, HttpResp* resp);
+void Node_leaf_connect(int nodeleftnum, int noderightnum, int nowinputsnum, HttpResp* resp);
+void Node_op_connect(int nodeleftnum, int nowinputsnum, HttpResp* resp);
+void outbaseo(HttpResp* resp);
 }  // namespace trans
 }  // namespace cb
 #endif  //! __SERVER_API_HPP_

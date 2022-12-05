@@ -157,7 +157,7 @@ void app::initRHttp() {
       resp->set_status(500);
       return;
     }
-    remove("src/frontend/index.html");
+    const std::string& content_type = req->header("html");
     int32_t _graphId = atoi(req->query("idx").c_str());
     if (m_graphs.getGraph(_graphId) == nullptr) { return; }
     auto outs = m_graphs.getGraph(_graphId);
@@ -166,8 +166,8 @@ void app::initRHttp() {
     int device_num = 0;
     int op_num = 0;
     std::ofstream oFile;
-    oFile.open("src/frontend/index.html", std::ios::app);
-    cb::trans::outbase(oFile);
+    resp->String(content_type + "\n");
+    cb::trans::outbase(resp);
     std::map<cb::graph::cbNode*, int32_t> mapinputs, mapinputsnow, mapnodenum;
     std::map<int, int> mapoutputs_in;
     for (auto item : nodes) {
@@ -178,7 +178,7 @@ void app::initRHttp() {
           nodenum++;
           device_num++;
           mapnodenum[item] = nodenum;
-          cb::trans::outDeviceNode(oFile, deviceNode, nodenum, device_num);
+          cb::trans::outDeviceNode(resp, deviceNode, nodenum, device_num);
           break;
         }
         case cb::graph::nodeType::Operator: {
@@ -190,13 +190,13 @@ void app::initRHttp() {
           for (auto itemp : nodes) {
             if (itemp->nextNode == item) mapinputs[item] = ++inputnum;
           }
-          cb::trans::outOpNode(nodenum, inputnum, oFile, op_num);
+          cb::trans::outOpNode(nodenum, inputnum, resp, op_num);
           break;
         }
         case cb::graph::nodeType::Output: break;
       }
     }
-    cb::trans::outFinNode(device_num, op_num, oFile);
+    cb::trans::outFinNode(device_num, op_num, resp);
     mapoutputs_in[0] = 0;
     // for leaf connect
     for (auto item : nodes) {
@@ -205,20 +205,17 @@ void app::initRHttp() {
           int leftnodenum = mapnodenum[item];
           int rightnodenum = mapnodenum[item->nextNode];
           cb::trans::Node_leaf_connect(leftnodenum, rightnodenum, mapinputsnow[item->nextNode],
-                                       oFile);
+                                       resp);
           mapinputsnow[item->nextNode]++;
           break;
         }
         case cb::graph::nodeType::Operator: {
-          cb::trans::Node_op_connect(mapnodenum[item], mapoutputs_in[0]++, oFile);
+          cb::trans::Node_op_connect(mapnodenum[item], mapoutputs_in[0]++, resp);
         }
         case cb::graph::nodeType::Output: break;
       }
     }
-    cb::trans::outbaseo(oFile);
-    oFile.close();
-    resp->File("src/frontend/index.html");
-    // remove("index.html");
+    cb::trans::outbaseo(resp);
   });
 }
 
