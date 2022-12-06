@@ -84,7 +84,11 @@ void bindAllFuncByDefault(sol::state* handle) {
   );
 }
 
-luaJitThread::~luaJitThread() { delete m_luaHandle; }
+luaJitThread::~luaJitThread() {
+  m_luaHandle->collect_garbage();
+  m_luaHandle->collect_gc();
+  delete m_luaHandle;
+}
 
 luaJitThread::luaJitThread() : m_luaHandle(new sol::state()) {
   m_luaHandle->open_libraries(sol::lib::base);

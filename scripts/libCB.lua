@@ -1,5 +1,5 @@
 --[[
-    @author: chenghua Wang
+    @author: chenghua Wang, fengcai Bo
     @filen: libCB.lua
     @date: Nov 15, 2022
     @brief: This file is a lib for all lua script that need covalent bound
