@@ -21,12 +21,12 @@ void outbase(HttpResp* resp)  // 输入html框架
 {
   resp->String("<html>\n");
   resp->String("<head>\n");
-  resp->String(
-      "    <link "
-      "type=\"text/css\"rel=\"stylesheet\"href=\"//repo.bfw.wiki/bfwrepo/css/litegraph.css\">\n");
-  resp->String(
-      "    <script "
-      "type=\"text/javascript\"src=\"//repo.bfw.wiki/bfwrepo/js/litegraph.js\"></script>\n");
+  resp->String("    <link "
+               "type=\"text/css\"rel=\"stylesheet\"href=\"https://cdn.jsdelivr.net/npm/"
+               "litegraph.js@0.7.10/css/litegraph.css\">\n");
+  resp->String("    <script "
+               "type=\"text/javascript\"src=\"https://cdn.jsdelivr.net/npm/litegraph.js@0.7.10/"
+               "build/litegraph.min.js\"></script>\n");
   resp->String("</head>");
   resp->String("<body style='width:100%; height:100%'>\n");
   resp->String(
