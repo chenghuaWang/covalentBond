@@ -40,11 +40,23 @@ cb::graph::cbComputeGraph* addGraph(int32_t idx, const std::string& cmd,
 
 namespace cb {
 namespace trans {
+struct opMapStruct {
+  int nodeCode = 0;
+  std::vector<int> inputNodeCode;
+  int inputNum = 0;
+  int inputNumNow = 0;
+  int posy = 0;
+};
+struct leafMapStruct {
+  int nodeCode = 0;
+  int posy = 0;
+};
+
 void outbase(HttpResp* resp);
-void outDeviceNode(HttpResp* resp, trivial::cbMySqlDevice* deviceNode, int node_num,
-                   int device_num);
-void outOpNode(int nodenum, int inputnum, HttpResp* resp, int op_num);
-void outFinNode(int device_num, int op_num, HttpResp* resp);
+void createLeafNode(HttpResp* resp, cb::trans::leafMapStruct& leafMapStruct,
+                    trivial::cbMySqlDevice* leafNode);
+void createOpNode(HttpResp* resp, cb::trans::opMapStruct& opMapStruct);
+void createFinNode(int posy, int opCodeNow, HttpResp* resp);
 void Node_leaf_connect(int nodeleftnum, int noderightnum, int nowinputsnum, HttpResp* resp);
 void Node_op_connect(int nodeleftnum, int nowinputsnum, HttpResp* resp);
 void outbaseo(HttpResp* resp);

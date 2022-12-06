@@ -126,7 +126,7 @@ Hi there 👋
 - I like Jay Zhou and JJ Lin.
 
 ### [yunzi Sun](https://github.com/ketsurineko)
-_On the internet , U can tell me ice_neko._
+_On the internet , U can call me ice_neko too._
 
 - I want to know lastest elctric and how to use it,such as PC.
 - I am willing to learn everything i am interested in.
