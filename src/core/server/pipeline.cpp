@@ -162,60 +162,58 @@ void app::initRHttp() {
     if (m_graphs.getGraph(_graphId) == nullptr) { return; }
     auto outs = m_graphs.getGraph(_graphId);
     auto nodes = outs->getNodes();
-    resp->String(content_type);
-    trans::outbase(resp);
-    std::map<cb::graph::cbNode*, cb::trans::opMapStruct> mapOpNode;
-    std::map<cb::graph::cbNode*, cb::trans::leafMapStruct> mapLeafNode;
-    std::map<int, cb::graph::cbNode*> toLeaf, toOpNode;
-    int opCodeNow = 0;
-    int leafCodeNow = 0;
+    int nodenum = 0;
+    int device_num = 0;
+    int op_num = 0;
+    std::ofstream oFile;
+    resp->String(content_type + "\n");
+    cb::trans::outbase(resp);
+    std::map<cb::graph::cbNode*, int32_t> mapinputs, mapinputsnow, mapnodenum;
+    std::map<int, int> mapoutputs_in;
     for (auto item : nodes) {
       switch (item->nodeT) {
         case cb::graph::nodeType::Leaf: {
-          mapLeafNode[item].nodeCode = ++leafCodeNow;
-          mapOpNode[item->nextNode].inputNodeCode.push_back(leafCodeNow);
-          mapOpNode[item->nextNode].inputNum++;
-          toLeaf[leafCodeNow] = item;
+          auto device_n = (graph::cbVirtualDeviceNode*)item;
+          auto deviceNode = device_n->getDevice();
+          nodenum++;
+          device_num++;
+          mapnodenum[item] = nodenum;
+          cb::trans::outDeviceNode(resp, deviceNode, nodenum, device_num);
           break;
         }
         case cb::graph::nodeType::Operator: {
-          opCodeNow++;
-          mapOpNode[item].nodeCode = opCodeNow;
-          toOpNode[opCodeNow] = item;
+          nodenum++;
+          op_num++;
+          mapnodenum[item] = nodenum;
+          int inputnum = 0;
+          mapinputsnow[item] = 0;
+          for (auto itemp : nodes) {
+            if (itemp->nextNode == item) mapinputs[item] = ++inputnum;
+          }
+          cb::trans::outOpNode(nodenum, inputnum, resp, op_num);
           break;
         }
         case cb::graph::nodeType::Output: break;
       }
     }
-    // set the node of position(Y)
-    int firstPosy = 0;
-    for (int i = 1; i < opCodeNow + 1; i++) {
-      firstPosy = firstPosy + 100;
-      auto opnode = toOpNode[i];
-      mapOpNode[opnode].posy = firstPosy;
-      for (auto j : mapOpNode[opnode].inputNodeCode) {
-        auto leafNode = toLeaf[j];
-        mapLeafNode[leafNode].posy = firstPosy;
-        firstPosy = firstPosy + 200;
+    cb::trans::outFinNode(device_num, op_num, resp);
+    mapoutputs_in[0] = 0;
+    // for leaf connect
+    for (auto item : nodes) {
+      switch (item->nodeT) {
+        case cb::graph::nodeType::Leaf: {
+          int leftnodenum = mapnodenum[item];
+          int rightnodenum = mapnodenum[item->nextNode];
+          cb::trans::Node_leaf_connect(leftnodenum, rightnodenum, mapinputsnow[item->nextNode],
+                                       resp);
+          mapinputsnow[item->nextNode]++;
+          break;
+        }
+        case cb::graph::nodeType::Operator: {
+          cb::trans::Node_op_connect(mapnodenum[item], mapoutputs_in[0]++, resp);
+        }
+        case cb::graph::nodeType::Output: break;
       }
-      mapOpNode[opnode].posy = (firstPosy + mapOpNode[opnode].posy) / 2;
-    }
-
-    int finNodePosy = (mapOpNode[toOpNode[1]].posy + mapOpNode[toOpNode[opCodeNow]].posy) / 2;
-    trans::createFinNode(finNodePosy, opCodeNow, resp);
-    for (int i = 1; i < opCodeNow + 1; i++) {
-      auto opnode = toOpNode[i];
-      trans::createOpNode(resp, mapOpNode[opnode]);
-      for (auto j : mapOpNode[opnode].inputNodeCode) {
-        auto leafNode = toLeaf[j];
-        auto device_n = (graph::cbVirtualDeviceNode*)leafNode;
-        auto deviceNode = device_n->getDevice();
-        trans::createLeafNode(resp, mapLeafNode[leafNode], deviceNode);
-        trans::Node_leaf_connect(mapLeafNode[leafNode].nodeCode, i, mapOpNode[opnode].inputNumNow,
-                                 resp);
-        mapOpNode[opnode].inputNumNow++;
-      }
-      trans::Node_op_connect(i, i - 1, resp);
     }
     cb::trans::outbaseo(resp);
   });
