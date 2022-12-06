@@ -41,10 +41,40 @@ class graphContainer {
   graphContainer operator=(graphContainer&) = delete;
   graphContainer operator=(const graphContainer&) = delete;
 
+  /**
+   * @brief
+   *
+   * @param g
+   */
   void addGraph(graph::cbComputeGraph* g);
+
+  /**
+   * @brief Get the Graph object
+   *
+   * @param idx
+   * @return graph::cbComputeGraph*
+   */
   graph::cbComputeGraph* getGraph(int32_t idx);
+
+  /**
+   * @brief
+   *
+   */
   void execMain();
+
+  /**
+   * @brief Set the Terminated object
+   *
+   * @param enable
+   */
   void setTerminated(bool enable);
+
+  /**
+   * @brief
+   *
+   * @return size_t
+   */
+  size_t nums();
 
  private:
   bool m_isTerminated = false;
