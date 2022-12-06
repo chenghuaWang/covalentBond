@@ -55,6 +55,8 @@ void graphContainer::execMain() {
 
 void graphContainer::setTerminated(bool enable) { m_isTerminated = enable; }
 
+size_t graphContainer::nums() { return m_graphs.size(); }
+
 app::app(const appCfg& cfg)
     : m_graphs(cfg.graphExecSec), m_web(cfg.webPort, cfg.webRoot), m_rHttp(cfg.rHttpPort) {
   // connect Redis
@@ -152,6 +154,20 @@ void app::initRHttp() {
     kv["colName"] = _tmpColName;
     resp->Json(kv);
   });
+
+  m_rHttp().GET("/num", [=](const HttpReq* req, HttpResp* resp) {
+    std::string tp = req->query("type");
+    if (tp == "task" || tp == "api") {
+      Json kv;
+      kv["res"] = m_graphs.nums();
+      resp->Json(kv);
+    } else if (tp == "device") {
+      Json kv;
+      kv["res"] = trivial::cbVirtualDeviceManager::m_numsMySql - 1;
+      resp->Json(kv);
+    }
+  });
+
   m_rHttp().GET("/trans_graph", [=](const HttpReq* req, HttpResp* resp) {
     if (!req->has_query("idx")) {
       resp->set_status(500);
