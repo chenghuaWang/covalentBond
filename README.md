@@ -10,6 +10,7 @@ The cpp doxygen doc is activate on [cppDoc](https://chenghuawang.github.io/coval
 
 ## Architecture
 
+![image](https://user-images.githubusercontent.com/68260701/205858080-6dd02dd1-0d57-4a30-9a50-3bab4729e590.png)
 
 ## Usage
 
