@@ -132,16 +132,21 @@ class cbOpMultiMap : public cbOpRowWise {
 };
 
 /**
- * @brief
+ * @brief TODO
  *
  */
 class cbOpFilter : public cbOpTableWise {
  public:
   ~cbOpFilter() override;
   cbOpFilter() = default;
+  cbOpFilter(const sol::function& mapBool, const sol::function& mapLogic);
   void overload(const sol::function& func) override final;
   void execMain() override final;
   void __innerFunc(baseOp* thisOp = nullptr) override final;
+
+ private:
+  sol::function m_mapBoolFunc = sol::nil;
+  sol::function m_mapLogicFunc = sol::nil;
 };
 
 /**

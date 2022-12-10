@@ -59,25 +59,29 @@ void cbOpMultiMap::execMain() {
 
 void cbOpMultiMap::__innerFunc(baseOp* thisOp) {
   if (isOverload) {
-    // TODO
+    luaOverrideFunc((baseOp*)this);
   } else {
   }
 }
 
-cbOpFilter::~cbOpFilter() {}
+cbOpFilter::cbOpFilter(const sol::function& mapBool, const sol::function& mapLogic)
+    : m_mapBoolFunc(mapBool), m_mapLogicFunc(mapLogic) {}
+
+cbOpFilter::~cbOpFilter() {
+  // collect the lua GC.
+  m_mapBoolFunc = m_mapLogicFunc = sol::nil;
+}
 
 void cbOpFilter::overload(const sol::function& func) {
   luaOverrideFunc = func;
   isOverload = true;
 }
 
-void cbOpFilter::execMain() {
-  // TODO
-}
+void cbOpFilter::execMain() { __innerFunc(this); }
 
 void cbOpFilter::__innerFunc(baseOp* thisOp) {
   if (isOverload) {
-    // TODO
+    luaOverrideFunc((baseOp*)this, m_mapBoolFunc, m_mapLogicFunc);
   } else {
   }
 }
