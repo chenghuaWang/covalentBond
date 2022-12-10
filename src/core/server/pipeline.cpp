@@ -173,12 +173,18 @@ void app::initRHttp() {
       resp->set_status(500);
       return;
     }
-    const std::string& content_type = req->header("html");
     int32_t _graphId = atoi(req->query("idx").c_str());
     if (m_graphs.getGraph(_graphId) == nullptr) { return; }
     auto outs = m_graphs.getGraph(_graphId);
     auto nodes = outs->getNodes();
-    resp->String(content_type);
+
+    /*
+    resp->set_header_pair("Content-Type", "text/html");
+    resp->append_output_body("hhhhhhh");
+    resp->headers["Content-Type"] = "text/html";
+    return;
+    */
+    resp->headers["Content-Type"] = "text/html";
     trans::outbase(resp);
     std::map<cb::graph::cbNode*, cb::trans::opMapStruct> mapOpNode;
     std::map<cb::graph::cbNode*, cb::trans::leafMapStruct> mapLeafNode;
