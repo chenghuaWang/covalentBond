@@ -17,16 +17,15 @@ cb::graph::cbComputeGraph* addGraph(int32_t idx, const std::string& cmd,
 
 namespace cb {
 namespace trans {
-void outbase(HttpResp* resp)  // 输入html框架
-{
+void outbase(HttpResp* resp) {
   resp->String("<html>\n");
   resp->String("<head>\n");
-  resp->String(
-      "    <link "
-      "type=\"text/css\"rel=\"stylesheet\"href=\"//repo.bfw.wiki/bfwrepo/css/litegraph.css\">\n");
-  resp->String(
-      "    <script "
-      "type=\"text/javascript\"src=\"//repo.bfw.wiki/bfwrepo/js/litegraph.js\"></script>\n");
+  resp->String("    <link "
+               "type=\"text/css\"rel=\"stylesheet\"href=\"https://cdn.jsdelivr.net/npm/"
+               "litegraph.js@0.7.10/css/litegraph.css\">\n");
+  resp->String("    <script "
+               "type=\"text/javascript\"src=\"https://cdn.jsdelivr.net/npm/litegraph.js@0.7.10/"
+               "build/litegraph.min.js\"></script>\n");
   resp->String("</head>");
   resp->String("<body style='width:100%; height:100%'>\n");
   resp->String(
@@ -86,7 +85,7 @@ void createOpNode(HttpResp* resp, cb::trans::opMapStruct& opMapStruct) {
     outtext = "        this.addInput(\"inputdata_" + std::to_string(i) + "\", \"text\");\n";
     resp->String(outtext);
   }
-  outtext = "        this.addOutput(\"combined_data\", \"text\");}\n";
+  outtext = "        this.addOutput(\"output_data\", \"text\");}\n";
   resp->String(outtext);
   outtext = "        opNode" + std::to_string(nodeCode) + ".title = \"opNode\";\n";
   resp->String(outtext);
