@@ -447,6 +447,15 @@ class cbComputeGraph {
   cbOperatorNode* createCombineNode(const std::vector<std::string>& keys, const std::string& name);
 
   /**
+   * @brief Create a Filter Node object
+   *
+   * @param boolF
+   * @param exF
+   * @return cbOperatorNode*
+   */
+  cbOperatorNode* createFilterNode(const sol::function& boolF, const sol::function& exF);
+
+  /**
    * @brief Set the Virtual Device Manager object
    *
    * @param virtualDeviceM

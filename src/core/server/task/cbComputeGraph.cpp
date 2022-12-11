@@ -296,6 +296,16 @@ cbComputeGraph::cbComputeGraph(int32_t idx)
 
       "createRedisCachingNode", &cbComputeGraph::createRedisCachingNode,
 
+      "createFilterNode", &cbComputeGraph::createFilterNode,
+
+      "Device", &cbComputeGraph::createVirtualDeviceNode,
+
+      "Combine", &cbComputeGraph::createCombineNode,
+
+      "RedisCache", &cbComputeGraph::createRedisCachingNode,
+
+      "Filter", &cbComputeGraph::createFilterNode,
+
       "addCacheServer", &cbComputeGraph::addCacheServer
 
   );
@@ -455,6 +465,16 @@ cbOperatorNode* cbComputeGraph::createCombineNode(const std::vector<std::string>
 
   ansOp->overload(this->m_sharedLuaStack->get()()["Cb"]["Op"]["CombineOp"]);
 
+  cbOperatorNode* ans = new cbOperatorNode(ansOp);
+  this->registerNode(ans);
+  return ans;
+}
+
+cbOperatorNode* cbComputeGraph::createFilterNode(const sol::function& boolF,
+                                                 const sol::function& exF) {
+  cbOpFilter* ansOp = new cbOpFilter(boolF, exF);
+
+  ansOp->overload(this->m_sharedLuaStack->get()()["Cb"]["Op"]["Filter"]);
   cbOperatorNode* ans = new cbOperatorNode(ansOp);
   this->registerNode(ans);
   return ans;
