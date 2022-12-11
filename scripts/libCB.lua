@@ -215,7 +215,6 @@ function Cb.Op.CombineOp(baseOpPtr, primaryKeys, newTableName)
     -- for c = 1, output:getShape()[1] do
     --     print(c, output:colNameAt(c - 1))
     -- end
-
 end
 
 function Cb.Op.FilterOp(baseOpPtr, judgeMethod, modifyMethod)
@@ -238,6 +237,7 @@ function Cb.Op.FilterOp(baseOpPtr, judgeMethod, modifyMethod)
     local newRow = inputs:getShape()[0];
     local newCol = inputs:getShape()[1];
     local bufRow;
+
     output:resetShapeH(Cb.F.makeShapeFull(newRow, newCol));
     for r = 1, newRow do
         bufRow = inputs:getRow(r - 1)
@@ -250,7 +250,7 @@ function Cb.Op.FilterOp(baseOpPtr, judgeMethod, modifyMethod)
     end
 
     for c = 1, output:getShape()[1] do
-        output:setInfoAt(c-1, inputs:getInfoAt(c-1));
+        output:setInfoAt(c - 1, inputs:getInfoAt(c - 1));
     end
 
     Cb.F.setTableName(output, inputs:getInfoAt(0, 0):getTableName());

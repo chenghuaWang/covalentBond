@@ -1,4 +1,6 @@
 #include "cbComputeGraph.hpp"
+#include "task/cbOperator.hpp"
+#include "task/cbTable.hpp"
 #include "trivial/cbVirtualDevice.hpp"
 
 namespace cb {
@@ -246,7 +248,9 @@ cbComputeGraph::cbComputeGraph(int32_t idx)
 
       "KVField",
 
-      "setTableName", &cbMySQLField::setTable
+      "setTableName", &cbMySQLField::setTable,
+
+      "getTableName", &cbMySQLField::getTable
 
   );
 
@@ -339,6 +343,15 @@ cbComputeGraph::cbComputeGraph(int32_t idx)
       "cbOpCombine",
 
       "overrideFunc", &cbOpCombine::overload
+
+  );
+
+  // bind FilterOp
+  covalentBound.new_usertype<cbOpFilter>(
+
+      "cbOpFilter",
+
+      "overrideFunc", &cbOpFilter::overload
 
   );
 
@@ -474,7 +487,7 @@ cbOperatorNode* cbComputeGraph::createFilterNode(const sol::function& boolF,
                                                  const sol::function& exF) {
   cbOpFilter* ansOp = new cbOpFilter(boolF, exF);
 
-  ansOp->overload(this->m_sharedLuaStack->get()()["Cb"]["Op"]["Filter"]);
+  ansOp->overload(this->m_sharedLuaStack->get()()["Cb"]["Op"]["FilterOp"]);
   cbOperatorNode* ans = new cbOperatorNode(ansOp);
   this->registerNode(ans);
   return ans;
