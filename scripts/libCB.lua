@@ -226,12 +226,6 @@ function Cb.Op.FilterOp(baseOpPtr, judgeMethod, modifyMethod)
     local inputs = baseOpPtr.io.I[1]; -- vector.
     local output = baseOpPtr.io.O; -- virtual table.
 
-    for r = 1, inputs:getShape()[0] do
-        for c = 1, inputs:getShape()[1] do
-            print(Cb.F.value(inputs:atPtr(r - 1, c - 1)))
-        end
-    end
-
     if judgeMethod == nil then
         print("[ CB engine Error ] when execute Cb.Op.FilterOp. judgeMethod = nil");
         return;
