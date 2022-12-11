@@ -215,11 +215,9 @@ function Cb.Op.CombineOp(baseOpPtr, primaryKeys, newTableName)
     -- for c = 1, output:getShape()[1] do
     --     print(c, output:colNameAt(c - 1))
     -- end
-    print('combine ending')
 end
 
 function Cb.Op.FilterOp(baseOpPtr, judgeMethod, modifyMethod)
-    print('hhh')
     if #baseOpPtr.io.I ~= 1 then
         print("[ CB engine Warning ] when execute Cb.Op.FilterOp. #inputs ~= 1");
         return;
@@ -235,11 +233,11 @@ function Cb.Op.FilterOp(baseOpPtr, judgeMethod, modifyMethod)
         print("[ CB engine Error ] when execute Cb.Op.FilterOp. modifyMethod = nil");
         return;
     end
-    print('hhh')
+
     local newRow = inputs:getShape()[0];
     local newCol = inputs:getShape()[1];
     local bufRow;
-    print('hhh')
+
     output:resetShapeH(Cb.F.makeShapeFull(newRow, newCol));
     for r = 1, newRow do
         bufRow = inputs:getRow(r - 1)
@@ -250,10 +248,10 @@ function Cb.Op.FilterOp(baseOpPtr, judgeMethod, modifyMethod)
             output:setPtrAt(r - 1, c - 1, bufRow:atPtr(0, c - 1));
         end
     end
-    print('hhh')
+
     for c = 1, output:getShape()[1] do
         output:setInfoAt(c - 1, inputs:getInfoAt(c - 1));
     end
-    print('hhh')
+
     Cb.F.setTableName(output, inputs:getInfoAt(0, 0):getTableName());
 end
