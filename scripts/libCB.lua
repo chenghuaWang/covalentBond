@@ -215,5 +215,43 @@ function Cb.Op.CombineOp(baseOpPtr, primaryKeys, newTableName)
     -- for c = 1, output:getShape()[1] do
     --     print(c, output:colNameAt(c - 1))
     -- end
+end
 
+function Cb.Op.FilterOp(baseOpPtr, judgeMethod, modifyMethod)
+    if #baseOpPtr.io.I ~= 1 then
+        print("[ CB engine Warning ] when execute Cb.Op.FilterOp. #inputs ~= 1");
+        return;
+    end
+    local inputs = baseOpPtr.io.I[1]; -- vector.
+    local output = baseOpPtr.io.O; -- virtual table.
+
+    if judgeMethod == nil then
+        print("[ CB engine Error ] when execute Cb.Op.FilterOp. judgeMethod = nil");
+        return;
+    end
+    if modifyMethod == nil then
+        print("[ CB engine Error ] when execute Cb.Op.FilterOp. modifyMethod = nil");
+        return;
+    end
+
+    local newRow = inputs:getShape()[0];
+    local newCol = inputs:getShape()[1];
+    local bufRow;
+
+    output:resetShapeH(Cb.F.makeShapeFull(newRow, newCol));
+    for r = 1, newRow do
+        bufRow = inputs:getRow(r - 1)
+        if judgeMethod(bufRow) then
+            bufRow = modifyMethod(bufRow)
+        end
+        for c = 1, output:getShape()[1] do
+            output:setPtrAt(r - 1, c - 1, bufRow:atPtr(0, c - 1));
+        end
+    end
+
+    for c = 1, output:getShape()[1] do
+        output:setInfoAt(c - 1, inputs:getInfoAt(c - 1));
+    end
+
+    Cb.F.setTableName(output, inputs:getInfoAt(0, 0):getTableName());
 end
