@@ -1,6 +1,7 @@
 <map id="cb::graph::cbComputeGraph::registerNode" name="cb::graph::cbComputeGraph::registerNode">
-<area shape="rect" id="node1" title="register a node. Not used by lua binding." alt="" coords="507,39,709,80"/>
+<area shape="rect" id="node1" title="register a node. Not used by lua binding." alt="" coords="507,71,709,112"/>
 <area shape="rect" id="node2" href="$classcb_1_1graph_1_1cbComputeGraph.html#add4e1985a8be892d906c8d0b0c6cd451" title="Create a Combine Node object." alt="" coords="256,5,459,47"/>
-<area shape="rect" id="node4" href="$classcb_1_1graph_1_1cbComputeGraph.html#aa0f0670a573d3d6d1d5fb749de244595" title="create nodes belongs to this graph." alt="" coords="256,71,459,112"/>
-<area shape="rect" id="node3" href="$classcb_1_1graph_1_1cbComputeGraph.html#a13c2949f64f239419580ce105a4dd23c" title=" " alt="" coords="5,39,208,80"/>
+<area shape="rect" id="node4" href="$classcb_1_1graph_1_1cbComputeGraph.html#af15bb92eee447c4a56f6d50c08d0b798" title="Create a Filter Node object." alt="" coords="256,71,459,112"/>
+<area shape="rect" id="node5" href="$classcb_1_1graph_1_1cbComputeGraph.html#aa0f0670a573d3d6d1d5fb749de244595" title="create nodes belongs to this graph." alt="" coords="256,136,459,177"/>
+<area shape="rect" id="node3" href="$classcb_1_1graph_1_1cbComputeGraph.html#a13c2949f64f239419580ce105a4dd23c" title=" " alt="" coords="5,71,208,112"/>
 </map>

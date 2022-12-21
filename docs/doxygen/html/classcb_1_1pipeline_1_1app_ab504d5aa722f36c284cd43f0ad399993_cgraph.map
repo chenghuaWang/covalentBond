@@ -1,12 +1,21 @@
 <map id="cb::pipeline::app::initRHttp" name="cb::pipeline::app::initRHttp">
-<area shape="rect" id="node1" title=" " alt="" coords="5,161,143,203"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,413,143,455"/>
 <area shape="rect" id="node2" href="$namespacecb_1_1apiCPP.html#ab11ed93ce05b63c36406158a26bce167" title=" " alt="" coords="213,45,374,71"/>
 <area shape="rect" id="node6" href="$classcb_1_1pipeline_1_1graphContainer.html#ab097285ed1da9f9138f6877512108d8d" title=" " alt="" coords="191,96,396,137"/>
 <area shape="rect" id="node7" href="$classtrivial_1_1cbVirtualDeviceManager.html#a899211bd1b354d2ec86de7e277c0ae40" title=" " alt="" coords="195,161,391,203"/>
-<area shape="rect" id="node8" href="$classcb_1_1pipeline_1_1graphContainer.html#a90086a68e7832b1b903e87de94a966fe" title=" " alt="" coords="191,227,396,268"/>
-<area shape="rect" id="node9" href="$classcb_1_1graph_1_1cbComputeGraph.html#a475d2defec5dfb3b4ed1a614bfd12f74" title="Get the Output object." alt="" coords="192,292,395,333"/>
+<area shape="rect" id="node8" href="$namespacecb_1_1trans.html#a0d297d944c28b04ad55ec5dc1f450fe6" title=" " alt="" coords="203,227,383,254"/>
+<area shape="rect" id="node9" href="$namespacecb_1_1trans.html#aa3a901ae51d4f2e60016132d59380d0b" title=" " alt="" coords="199,278,388,305"/>
+<area shape="rect" id="node10" href="$namespacecb_1_1trans.html#a7b6f168d0277016e2518004ce5036de5" title=" " alt="" coords="204,329,383,355"/>
+<area shape="rect" id="node11" href="$classcb_1_1pipeline_1_1graphContainer.html#a90086a68e7832b1b903e87de94a966fe" title="Get the Graph object." alt="" coords="191,380,396,421"/>
+<area shape="rect" id="node12" href="$classcb_1_1graph_1_1cbComputeGraph.html#a5276365df1cd12c6caaeb6e38e02eb52" title="Get the Nodes object." alt="" coords="192,445,395,487"/>
+<area shape="rect" id="node13" href="$classcb_1_1graph_1_1cbComputeGraph.html#a475d2defec5dfb3b4ed1a614bfd12f74" title="Get the Output object." alt="" coords="192,511,395,552"/>
+<area shape="rect" id="node15" href="$namespacecb_1_1trans.html#a0e65391e92cc05109a94189a3f13aeaf" title=" " alt="" coords="217,576,369,617"/>
+<area shape="rect" id="node16" href="$namespacecb_1_1trans.html#ac82105f85a3bd613a06273e903a9a176" title=" " alt="" coords="222,641,365,683"/>
+<area shape="rect" id="node17" href="$classcb_1_1pipeline_1_1graphContainer.html#a724bb9bfc8a5316bb25c1f63fffb4a93" title=" " alt="" coords="191,707,396,748"/>
+<area shape="rect" id="node18" href="$namespacecb_1_1trans.html#a7e1d9a97efe1df0d061b408815794619" title=" " alt="" coords="224,773,363,799"/>
+<area shape="rect" id="node19" href="$namespacecb_1_1trans.html#afc707acf3cc684f14e236483a2fc2b13" title=" " alt="" coords="220,823,367,850"/>
 <area shape="rect" id="node3" href="$classcb_1_1graph_1_1cbComputeGraph.html#a58961056d82259216916a60fa7cdf70c" title="execute the script" alt="" coords="444,5,647,47"/>
 <area shape="rect" id="node5" href="$classcb_1_1graph_1_1cbComputeGraph.html#adec5abcba678492b291f7855be49aa6b" title="Set the Virtual Device Manager object." alt="" coords="444,71,647,112"/>
 <area shape="rect" id="node4" href="$structcb_1_1graph_1_1cbGraphSharedLuaStack.html#a3f64e6d8395f288a7c92e82000b77ed1" title="execute the hard coded script." alt="" coords="695,5,884,47"/>
-<area shape="rect" id="node10" href="$structcb_1_1graph_1_1cbGraphSharedMem.html#a1886db9ba429aafc77f7bf152b2fa834" title="Get the Out Struct object." alt="" coords="451,292,640,333"/>
+<area shape="rect" id="node14" href="$structcb_1_1graph_1_1cbGraphSharedMem.html#a1886db9ba429aafc77f7bf152b2fa834" title="Get the Out Struct object." alt="" coords="451,511,640,552"/>
 </map>

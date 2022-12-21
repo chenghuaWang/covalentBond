@@ -1,5 +1,6 @@
 <map id="cb::graph::cbGraphSharedLuaStack::get" name="cb::graph::cbGraphSharedLuaStack::get">
-<area shape="rect" id="node1" title="get the lua state." alt="" coords="507,5,696,47"/>
-<area shape="rect" id="node2" href="$classcb_1_1graph_1_1cbComputeGraph.html#a13c2949f64f239419580ce105a4dd23c" title=" " alt="" coords="5,5,208,47"/>
-<area shape="rect" id="node3" href="$classcb_1_1graph_1_1cbComputeGraph.html#add4e1985a8be892d906c8d0b0c6cd451" title="Create a Combine Node object." alt="" coords="256,35,459,76"/>
+<area shape="rect" id="node1" title="get the lua state." alt="" coords="507,26,696,67"/>
+<area shape="rect" id="node2" href="$classcb_1_1graph_1_1cbComputeGraph.html#a13c2949f64f239419580ce105a4dd23c" title=" " alt="" coords="5,26,208,67"/>
+<area shape="rect" id="node3" href="$classcb_1_1graph_1_1cbComputeGraph.html#add4e1985a8be892d906c8d0b0c6cd451" title="Create a Combine Node object." alt="" coords="256,26,459,67"/>
+<area shape="rect" id="node4" href="$classcb_1_1graph_1_1cbComputeGraph.html#af15bb92eee447c4a56f6d50c08d0b798" title="Create a Filter Node object." alt="" coords="256,91,459,132"/>
 </map>

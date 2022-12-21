@@ -68,6 +68,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
@@ -77,7 +78,9 @@ $(function() {
 
 <p>The C plus plus API section.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="pch_8hpp_source.html">../pch.hpp</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;wfrest/HttpMsg.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="pch_8hpp_source.html">../pch.hpp</a>&quot;</code><br />
+<code>#include &lt;wfrest/json.hpp&gt;</code><br />
 <code>#include &quot;<a class="el" href="cbComputeGraph_8hpp_source.html">task/cbComputeGraph.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="cbVirtualDevice_8hpp_source.html">trivial/cbVirtualDevice.hpp</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -85,10 +88,12 @@ Include dependency graph for api.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="api_8hpp__incl.png" border="0" usemap="#_2home_2wang_2covalentBond_2src_2core_2server_2api_8hpp" alt=""/></div>
 <map name="_2home_2wang_2covalentBond_2src_2core_2server_2api_8hpp" id="_2home_2wang_2covalentBond_2src_2core_2server_2api_8hpp">
-<area shape="rect" title="The C plus plus API section." alt="" coords="1323,5,1517,47"/>
+<area shape="rect" title="The C plus plus API section." alt="" coords="1389,5,1584,47"/>
+<area shape="rect" title=" " alt="" coords="947,95,1082,121"/>
 <area shape="rect" href="pch_8hpp.html" title="The precompiled head." alt="" coords="916,319,1001,345"/>
-<area shape="rect" href="cbComputeGraph_8hpp.html" title="The compute graph(DAG), a prepared graph for task flow to execute. It works as a state machine." alt="" coords="977,95,1172,121"/>
-<area shape="rect" href="cbVirtualDevice_8hpp.html" title="abstract virtual device. Provide MySql/Redis/Kafka warper. All virtual device will handle the connect..." alt="" coords="1323,169,1517,196"/>
+<area shape="rect" title=" " alt="" coords="1888,95,2011,121"/>
+<area shape="rect" href="cbComputeGraph_8hpp.html" title="The compute graph(DAG), a prepared graph for task flow to execute. It works as a state machine." alt="" coords="1107,95,1301,121"/>
+<area shape="rect" href="cbVirtualDevice_8hpp.html" title="abstract virtual device. Provide MySql/Redis/Kafka warper. All virtual device will handle the connect..." alt="" coords="1389,169,1584,196"/>
 <area shape="rect" title=" " alt="" coords="5,393,85,420"/>
 <area shape="rect" title=" " alt="" coords="109,393,168,420"/>
 <area shape="rect" title=" " alt="" coords="193,393,255,420"/>
@@ -108,7 +113,7 @@ Include dependency graph for api.hpp:</div>
 <area shape="rect" title=" " alt="" coords="1849,393,1988,420"/>
 <area shape="rect" title=" " alt="" coords="2013,393,2185,420"/>
 <area shape="rect" title=" " alt="" coords="2209,393,2324,420"/>
-<area shape="rect" title=" " alt="" coords="1112,169,1299,196"/>
+<area shape="rect" title=" " alt="" coords="1176,169,1363,196"/>
 <area shape="rect" title=" " alt="" coords="511,169,686,196"/>
 <area shape="rect" title=" " alt="" coords="1043,244,1234,271"/>
 <area shape="rect" href="luaEngine_8hpp.html" title="A lua engine for execute all c++ embedding in struct. A warper of lua JIT engine." alt="" coords="711,169,825,196"/>
@@ -139,6 +144,13 @@ This graph shows which files directly or indirectly include this file:</div>
 </div>
 <p><a href="api_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcb_1_1trans_1_1opMapStruct.html">cb::trans::opMapStruct</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcb_1_1trans_1_1leafMapStruct.html">cb::trans::leafMapStruct</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespacecb"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecb.html">cb</a></td></tr>
@@ -146,11 +158,27 @@ Namespaces</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespacecb_1_1apiCPP"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecb_1_1apiCPP.html">cb::apiCPP</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespacecb_1_1trans"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecb_1_1trans.html">cb::trans</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ab11ed93ce05b63c36406158a26bce167"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcb_1_1graph_1_1cbComputeGraph.html">cb::graph::cbComputeGraph</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecb_1_1apiCPP.html#ab11ed93ce05b63c36406158a26bce167">cb::apiCPP::addGraph</a> (int32_t idx, const std::string &amp;cmd, <a class="el" href="classtrivial_1_1cbVirtualDeviceManager.html">trivial::cbVirtualDeviceManager</a> *vdm)</td></tr>
 <tr class="separator:ab11ed93ce05b63c36406158a26bce167"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e1d9a97efe1df0d061b408815794619"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecb_1_1trans.html#a7e1d9a97efe1df0d061b408815794619">cb::trans::outbase</a> (HttpResp *resp)</td></tr>
+<tr class="separator:a7e1d9a97efe1df0d061b408815794619"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3a901ae51d4f2e60016132d59380d0b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecb_1_1trans.html#aa3a901ae51d4f2e60016132d59380d0b">cb::trans::createLeafNode</a> (HttpResp *resp, <a class="el" href="structcb_1_1trans_1_1leafMapStruct.html">cb::trans::leafMapStruct</a> &amp;leafMapStruct, <a class="el" href="structtrivial_1_1cbMySqlDevice.html">trivial::cbMySqlDevice</a> *leafNode)</td></tr>
+<tr class="separator:aa3a901ae51d4f2e60016132d59380d0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b6f168d0277016e2518004ce5036de5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecb_1_1trans.html#a7b6f168d0277016e2518004ce5036de5">cb::trans::createOpNode</a> (HttpResp *resp, <a class="el" href="structcb_1_1trans_1_1opMapStruct.html">cb::trans::opMapStruct</a> &amp;opMapStruct)</td></tr>
+<tr class="separator:a7b6f168d0277016e2518004ce5036de5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d297d944c28b04ad55ec5dc1f450fe6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecb_1_1trans.html#a0d297d944c28b04ad55ec5dc1f450fe6">cb::trans::createFinNode</a> (int posy, int opCodeNow, HttpResp *resp)</td></tr>
+<tr class="separator:a0d297d944c28b04ad55ec5dc1f450fe6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e65391e92cc05109a94189a3f13aeaf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecb_1_1trans.html#a0e65391e92cc05109a94189a3f13aeaf">cb::trans::Node_leaf_connect</a> (int nodeleftnum, int noderightnum, int nowinputsnum, HttpResp *resp)</td></tr>
+<tr class="separator:a0e65391e92cc05109a94189a3f13aeaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac82105f85a3bd613a06273e903a9a176"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecb_1_1trans.html#ac82105f85a3bd613a06273e903a9a176">cb::trans::Node_op_connect</a> (int nodeleftnum, int nowinputsnum, HttpResp *resp)</td></tr>
+<tr class="separator:ac82105f85a3bd613a06273e903a9a176"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc707acf3cc684f14e236483a2fc2b13"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecb_1_1trans.html#afc707acf3cc684f14e236483a2fc2b13">cb::trans::outbaseo</a> (HttpResp *resp)</td></tr>
+<tr class="separator:afc707acf3cc684f14e236483a2fc2b13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The C plus plus API section. </p>

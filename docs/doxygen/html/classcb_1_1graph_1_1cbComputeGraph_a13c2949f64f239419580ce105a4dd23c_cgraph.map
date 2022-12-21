@@ -1,5 +1,5 @@
 <map id="cb::graph::cbComputeGraph::cbComputeGraph" name="cb::graph::cbComputeGraph::cbComputeGraph">
-<area shape="rect" id="node1" title=" " alt="" coords="5,827,208,869"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,865,208,906"/>
 <area shape="rect" id="node2" href="$cbTable_8cpp.html#a60d706e920151b2f6392c27f7bc4aae7" title=" " alt="" coords="276,5,441,32"/>
 <area shape="rect" id="node3" href="$cbTable_8cpp.html#a3627c73cd70fabe18c70c271f9a3d548" title=" " alt="" coords="269,56,448,83"/>
 <area shape="rect" id="node4" href="$classcb_1_1graph_1_1cbComputeGraph.html#ae461b685a9cbd3edbcd2b1b2541e034d" title="The cache server node. Lua binding in." alt="" coords="257,107,460,149"/>
@@ -9,37 +9,39 @@
 <area shape="rect" id="node8" href="$classcbVirtualTable.html#a3f09b2a37a34919a147fc4883227a702" title=" " alt="" coords="261,492,456,519"/>
 <area shape="rect" id="node10" href="$classcbVirtualTable.html#afccc3d60c43f857f6459fa868052d08a" title=" " alt="" coords="266,543,451,569"/>
 <area shape="rect" id="node11" href="$classcb_1_1graph_1_1cbComputeGraph.html#abcc9e44cfa5307a372c2a619e75620d8" title="Create a Cell object." alt="" coords="257,594,460,635"/>
-<area shape="rect" id="node13" href="$classcb_1_1graph_1_1cbComputeGraph.html#add4e1985a8be892d906c8d0b0c6cd451" title="Create a Combine Node object." alt="" coords="257,762,460,803"/>
+<area shape="rect" id="node13" href="$classcb_1_1graph_1_1cbComputeGraph.html#add4e1985a8be892d906c8d0b0c6cd451" title="Create a Combine Node object." alt="" coords="257,777,460,818"/>
 <area shape="rect" id="node14" href="$structcb_1_1graph_1_1cbGraphSharedLuaStack.html#a8f9958b3e79f3f8d82518e99795f9577" title="get the lua state." alt="" coords="516,659,705,701"/>
-<area shape="rect" id="node15" href="$classcbOpCombine.html#a833db41fbd883e60dc22573c62369338" title=" " alt="" coords="521,725,700,752"/>
-<area shape="rect" id="node17" href="$classcb_1_1graph_1_1cbComputeGraph.html#a2b4d8326acddc74cadc614ea58ef5754" title="! for sql only, now." alt="" coords="257,893,460,934"/>
-<area shape="rect" id="node20" href="$classcb_1_1graph_1_1cbComputeGraph.html#aa0f0670a573d3d6d1d5fb749de244595" title="create nodes belongs to this graph." alt="" coords="257,827,460,869"/>
-<area shape="rect" id="node23" href="$cbTable_8hpp.html#a6f43ad738c4139bf445eaa3be5aa2179" title=" " alt="" coords="293,959,424,985"/>
-<area shape="rect" id="node24" href="$classcbVirtualTable.html#a4592ef60e70faf69abccc8e4956666c5" title="Get the Col object." alt="" coords="277,391,441,417"/>
-<area shape="rect" id="node29" href="$classcbVirtualTable.html#a7962f3a3cdc80492505e13d3b8bea0d7" title="Get the Info At object." alt="" coords="267,1009,450,1036"/>
-<area shape="rect" id="node30" href="$classcbVirtualTable.html#a61b0c53703e018038ed36c22859b2ce1" title="Get the Row object." alt="" coords="273,441,444,468"/>
-<area shape="rect" id="node31" href="$classcbVirtualTable.html#ab167a7d9e14a36b08cba7537f9dee4af" title="Get the Shape object." alt="" coords="267,1060,450,1087"/>
-<area shape="rect" id="node32" href="$classcb_1_1graph_1_1cbComputeGraph.html#aee452d3e7bb404b00462550433ec69b1" title="To judge the Graph is DAG or not." alt="" coords="257,1111,460,1153"/>
-<area shape="rect" id="node33" href="$classcb_1_1graph_1_1cbComputeGraph.html#a9c1de1697f7609414f00c693c5ec2acc" title="To judge the graph has single output or not." alt="" coords="509,1141,712,1182"/>
-<area shape="rect" id="node34" href="$classcbVirtualTable.html#ae33af93717f76635d4aadd1e8b96fb6a" title=" " alt="" coords="277,1228,440,1255"/>
-<area shape="rect" id="node35" href="$structcb_1_1graph_1_1cbNode.html#a8ce5c1e79b4b76c1e77514de087bfbab" title=" " alt="" coords="285,1279,432,1321"/>
-<area shape="rect" id="node36" href="$classcbVirtualTable.html#a805a9f8bcdb98ea6447d39d8608321af" title=" " alt="" coords="268,1345,449,1372"/>
-<area shape="rect" id="node37" href="$classcbVirtualTable.html#a4951b75acc04023657f9a9687e7ae926" title=" " alt="" coords="513,1421,708,1448"/>
-<area shape="rect" id="node38" href="$classcbVirtualTable.html#abab86146d6490cdb45750da1225071f2" title=" " alt="" coords="256,1396,461,1423"/>
-<area shape="rect" id="node39" href="$classcbVirtualTable.html#a163b88053a27b1f2c12b4515b2699b38" title="Set the Info At object." alt="" coords="268,1497,449,1524"/>
-<area shape="rect" id="node40" href="$classcbVirtualTable.html#a319e04b000a1090fec3c6c96b372db4d" title="Set the Ptr At object." alt="" coords="271,289,446,316"/>
-<area shape="rect" id="node41" href="$classcbMySQLField.html#a7091e32bd1df1d7a1d656cbe60902496" title=" " alt="" coords="271,1548,446,1575"/>
-<area shape="rect" id="node42" href="$cbTable_8hpp.html#a14c4048f2ca5b0369e97dc516195b0cc" title=" " alt="" coords="293,1599,424,1625"/>
-<area shape="rect" id="node43" href="$classcbVirtualTable.html#a00623ee8c16dc3758587b5881d2e4795" title=" " alt="" coords="289,1649,428,1676"/>
+<area shape="rect" id="node15" href="$classcbOpCombine.html#a833db41fbd883e60dc22573c62369338" title=" " alt="" coords="521,843,700,869"/>
+<area shape="rect" id="node17" href="$classcb_1_1graph_1_1cbComputeGraph.html#af15bb92eee447c4a56f6d50c08d0b798" title="Create a Filter Node object." alt="" coords="257,711,460,753"/>
+<area shape="rect" id="node19" href="$classcb_1_1graph_1_1cbComputeGraph.html#a2b4d8326acddc74cadc614ea58ef5754" title="! for sql only, now." alt="" coords="257,959,460,1001"/>
+<area shape="rect" id="node22" href="$classcb_1_1graph_1_1cbComputeGraph.html#aa0f0670a573d3d6d1d5fb749de244595" title="create nodes belongs to this graph." alt="" coords="257,894,460,935"/>
+<area shape="rect" id="node25" href="$cbTable_8hpp.html#a6f43ad738c4139bf445eaa3be5aa2179" title=" " alt="" coords="293,1025,424,1052"/>
+<area shape="rect" id="node26" href="$classcbVirtualTable.html#a4592ef60e70faf69abccc8e4956666c5" title="Get the Col object." alt="" coords="277,391,441,417"/>
+<area shape="rect" id="node31" href="$classcbVirtualTable.html#a7962f3a3cdc80492505e13d3b8bea0d7" title="Get the Info At object." alt="" coords="267,1076,450,1103"/>
+<area shape="rect" id="node32" href="$classcbVirtualTable.html#a61b0c53703e018038ed36c22859b2ce1" title="Get the Row object." alt="" coords="273,441,444,468"/>
+<area shape="rect" id="node33" href="$classcbVirtualTable.html#ab167a7d9e14a36b08cba7537f9dee4af" title="Get the Shape object." alt="" coords="267,1127,450,1153"/>
+<area shape="rect" id="node34" href="$classcb_1_1graph_1_1cbComputeGraph.html#aee452d3e7bb404b00462550433ec69b1" title="To judge the Graph is DAG or not." alt="" coords="257,1229,460,1270"/>
+<area shape="rect" id="node35" href="$classcb_1_1graph_1_1cbComputeGraph.html#a9c1de1697f7609414f00c693c5ec2acc" title="To judge the graph has single output or not." alt="" coords="509,1199,712,1241"/>
+<area shape="rect" id="node36" href="$classcbVirtualTable.html#ae33af93717f76635d4aadd1e8b96fb6a" title=" " alt="" coords="277,1295,440,1321"/>
+<area shape="rect" id="node37" href="$structcb_1_1graph_1_1cbNode.html#a8ce5c1e79b4b76c1e77514de087bfbab" title=" " alt="" coords="285,1346,432,1387"/>
+<area shape="rect" id="node38" href="$classcbVirtualTable.html#a805a9f8bcdb98ea6447d39d8608321af" title=" " alt="" coords="268,1412,449,1439"/>
+<area shape="rect" id="node39" href="$classcbVirtualTable.html#a4951b75acc04023657f9a9687e7ae926" title=" " alt="" coords="513,1488,708,1515"/>
+<area shape="rect" id="node40" href="$classcbVirtualTable.html#abab86146d6490cdb45750da1225071f2" title=" " alt="" coords="256,1513,461,1540"/>
+<area shape="rect" id="node41" href="$classcbVirtualTable.html#a163b88053a27b1f2c12b4515b2699b38" title="Set the Info At object." alt="" coords="268,1564,449,1591"/>
+<area shape="rect" id="node42" href="$classcbVirtualTable.html#a319e04b000a1090fec3c6c96b372db4d" title="Set the Ptr At object." alt="" coords="271,340,446,367"/>
+<area shape="rect" id="node43" href="$classcbMySQLField.html#a7091e32bd1df1d7a1d656cbe60902496" title=" " alt="" coords="271,1615,446,1641"/>
+<area shape="rect" id="node44" href="$cbTable_8hpp.html#a14c4048f2ca5b0369e97dc516195b0cc" title=" " alt="" coords="293,1665,424,1692"/>
+<area shape="rect" id="node45" href="$classcbVirtualTable.html#a00623ee8c16dc3758587b5881d2e4795" title=" " alt="" coords="289,1716,428,1743"/>
 <area shape="rect" id="node9" href="$classcbMySQLField.html#a5c09ccd79285cdf2eb55b64a1383cc38" title=" " alt="" coords="520,543,701,569"/>
 <area shape="rect" id="node12" href="$structcb_1_1graph_1_1cbGraphSharedMem.html#acf71e5b4dfb962e47daa31af0401db93" title="Push a virtual shared table to mem of graph." alt="" coords="516,594,705,635"/>
 <area shape="rect" id="node16" href="$classcb_1_1graph_1_1cbComputeGraph.html#a7a1c29e13a0088b9cb1530e80b4f8a6b" title="register a node. Not used by lua binding." alt="" coords="509,777,712,818"/>
-<area shape="rect" id="node18" href="$classtrivial_1_1cbVirtualDeviceManager.html#a56ed3f0d6135f2311d1ab06a0c3e8798" title=" " alt="" coords="516,973,705,1014"/>
-<area shape="rect" id="node19" href="$structcb_1_1graph_1_1cbRedisCachingNode.html#a47932b9caf571d390f7952b3a3ad94b9" title=" " alt="" coords="514,1038,707,1079"/>
-<area shape="rect" id="node21" href="$classtrivial_1_1cbVirtualDeviceManager.html#a5043a1d0223e6a54a9bb83c66f7af65f" title=" " alt="" coords="514,842,707,883"/>
-<area shape="rect" id="node22" href="$structcb_1_1graph_1_1cbVirtualDeviceNode.html#a64c4b3d0a76f4e93477ae52f2072bab2" title=" " alt="" coords="514,907,707,949"/>
-<area shape="rect" id="node25" href="$classcbVirtualTable.html#a6a0729869f0f880e34cb40639ab6354a" title=" " alt="" coords="521,375,701,417"/>
-<area shape="rect" id="node26" href="$classcbVirtualTable.html#a8ef41bf67361cdd1252ec51b07597b63" title="Get the Info object." alt="" coords="527,324,695,351"/>
-<area shape="rect" id="node27" href="$cbTable_8hpp.html#a1efb642b144c336a653bb6f91f334ebd" title=" " alt="" coords="550,441,671,468"/>
-<area shape="rect" id="node28" href="$classcbVirtualTable.html#a6f612970ee62242f23edf660d35a2dc2" title="Set the Info object." alt="" coords="527,492,694,519"/>
+<area shape="rect" id="node18" href="$classcbOpFilter.html#a020fc0a43948db022d7e2d524c88811b" title=" " alt="" coords="534,725,687,752"/>
+<area shape="rect" id="node20" href="$classtrivial_1_1cbVirtualDeviceManager.html#a56ed3f0d6135f2311d1ab06a0c3e8798" title=" " alt="" coords="516,1025,705,1066"/>
+<area shape="rect" id="node21" href="$structcb_1_1graph_1_1cbRedisCachingNode.html#a47932b9caf571d390f7952b3a3ad94b9" title=" " alt="" coords="514,1090,707,1131"/>
+<area shape="rect" id="node23" href="$classtrivial_1_1cbVirtualDeviceManager.html#a5043a1d0223e6a54a9bb83c66f7af65f" title=" " alt="" coords="514,959,707,1001"/>
+<area shape="rect" id="node24" href="$structcb_1_1graph_1_1cbVirtualDeviceNode.html#a64c4b3d0a76f4e93477ae52f2072bab2" title=" " alt="" coords="514,894,707,935"/>
+<area shape="rect" id="node27" href="$classcbVirtualTable.html#a6a0729869f0f880e34cb40639ab6354a" title=" " alt="" coords="521,426,701,467"/>
+<area shape="rect" id="node28" href="$classcbVirtualTable.html#a8ef41bf67361cdd1252ec51b07597b63" title="Get the Info object." alt="" coords="527,324,695,351"/>
+<area shape="rect" id="node29" href="$cbTable_8hpp.html#a1efb642b144c336a653bb6f91f334ebd" title=" " alt="" coords="550,492,671,519"/>
+<area shape="rect" id="node30" href="$classcbVirtualTable.html#a6f612970ee62242f23edf660d35a2dc2" title="Set the Info object." alt="" coords="527,375,694,401"/>
 </map>

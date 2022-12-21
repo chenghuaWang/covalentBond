@@ -39,7 +39,7 @@ var searchData=
   ['cboperator_2ecpp_92',['cbOperator.cpp',['../cbOperator_8cpp.html',1,'']]],
   ['cboperator_2ehpp_93',['cbOperator.hpp',['../cbOperator_8hpp.html',1,'']]],
   ['cboperatornode_94',['cbOperatorNode',['../structcb_1_1graph_1_1cbOperatorNode.html',1,'cb::graph::cbOperatorNode'],['../classcb_1_1graph_1_1cbComputeGraph.html#af7454be3f178cec487839fbf51c7100c',1,'cb::graph::cbComputeGraph::cbOperatorNode()'],['../structcb_1_1graph_1_1cbOperatorNode.html#a82ce177ab97319023b7a80caeb54f280',1,'cb::graph::cbOperatorNode::cbOperatorNode()']]],
-  ['cbopfilter_95',['cbOpFilter',['../classcbOpFilter.html',1,'cbOpFilter'],['../classcbOpFilter.html#a2280bb0e85a2b6614bf273125b2cf3d6',1,'cbOpFilter::cbOpFilter()']]],
+  ['cbopfilter_95',['cbOpFilter',['../classcbOpFilter.html',1,'cbOpFilter'],['../classcbOpFilter.html#a2280bb0e85a2b6614bf273125b2cf3d6',1,'cbOpFilter::cbOpFilter()=default'],['../classcbOpFilter.html#aaab1aaf3c19433f700224b9ad81e7e67',1,'cbOpFilter::cbOpFilter(const sol::function &amp;mapBool, const sol::function &amp;mapLogic)']]],
   ['cbopio_96',['cbOpIO',['../structcbOpIO.html',1,'']]],
   ['cbopmultimap_97',['cbOpMultiMap',['../classcbOpMultiMap.html',1,'cbOpMultiMap'],['../classcbOpMultiMap.html#a1786258e48dcb3dfa976963828feaaa9',1,'cbOpMultiMap::cbOpMultiMap()']]],
   ['cbopnottable_98',['cbOpNotTable',['../classcbOpNotTable.html',1,'cbOpNotTable'],['../classcbOpNotTable.html#a099c71407ab2f034693d209e644ad179',1,'cbOpNotTable::cbOpNotTable()']]],
@@ -95,9 +95,14 @@ var searchData=
   ['cover_5fkb2mb_148',['COVER_KB2MB',['../sysStatus_8hpp.html#aa48c747ff74e93cf2b5a8230bc8ee3e7',1,'sysStatus.hpp']]],
   ['createcell_149',['createCell',['../classcb_1_1graph_1_1cbComputeGraph.html#abcc9e44cfa5307a372c2a619e75620d8',1,'cb::graph::cbComputeGraph::createCell()'],['../classcb_1_1graph_1_1cbComputeGraph.html#ad1689fb5b08209bcfefdc0594bc2ff57',1,'cb::graph::cbComputeGraph::createCell(int value)'],['../classcb_1_1graph_1_1cbComputeGraph.html#a2c0a2baaf1fe2dc3e1eb242a5525c405',1,'cb::graph::cbComputeGraph::createCell(float value)'],['../classcb_1_1graph_1_1cbComputeGraph.html#a9b175d7cbe745811902affca04c7237a',1,'cb::graph::cbComputeGraph::createCell(double value)'],['../classcb_1_1graph_1_1cbComputeGraph.html#a057022a09bd77802766b68a5947beb49',1,'cb::graph::cbComputeGraph::createCell(unsigned long long value)'],['../classcb_1_1graph_1_1cbComputeGraph.html#a421bc18216d6ae894f111f78968ca103',1,'cb::graph::cbComputeGraph::createCell(const std::string &amp;value)'],['../classcb_1_1graph_1_1cbComputeGraph.html#af2f49d3485d921c396586467a7667612',1,'cb::graph::cbComputeGraph::createCell(const std::string &amp;value, const cbMySQLType &amp;t)']]],
   ['createcombinenode_150',['createCombineNode',['../classcb_1_1graph_1_1cbComputeGraph.html#add4e1985a8be892d906c8d0b0c6cd451',1,'cb::graph::cbComputeGraph']]],
-  ['createrediscachingnode_151',['createRedisCachingNode',['../classcb_1_1graph_1_1cbComputeGraph.html#a2b4d8326acddc74cadc614ea58ef5754',1,'cb::graph::cbComputeGraph']]],
-  ['createvirtualdevicenode_152',['createVirtualDeviceNode',['../classcb_1_1graph_1_1cbComputeGraph.html#aa0f0670a573d3d6d1d5fb749de244595',1,'cb::graph::cbComputeGraph']]],
-  ['graph_153',['graph',['../namespacecb_1_1graph.html',1,'cb']]],
-  ['pipeline_154',['pipeline',['../namespacecb_1_1pipeline.html',1,'cb']]],
-  ['utils_155',['utils',['../namespacecb_1_1utils.html',1,'cb']]]
+  ['createfilternode_151',['createFilterNode',['../classcb_1_1graph_1_1cbComputeGraph.html#af15bb92eee447c4a56f6d50c08d0b798',1,'cb::graph::cbComputeGraph']]],
+  ['createfinnode_152',['createFinNode',['../namespacecb_1_1trans.html#a0d297d944c28b04ad55ec5dc1f450fe6',1,'cb::trans']]],
+  ['createleafnode_153',['createLeafNode',['../namespacecb_1_1trans.html#aa3a901ae51d4f2e60016132d59380d0b',1,'cb::trans']]],
+  ['createopnode_154',['createOpNode',['../namespacecb_1_1trans.html#a7b6f168d0277016e2518004ce5036de5',1,'cb::trans']]],
+  ['createrediscachingnode_155',['createRedisCachingNode',['../classcb_1_1graph_1_1cbComputeGraph.html#a2b4d8326acddc74cadc614ea58ef5754',1,'cb::graph::cbComputeGraph']]],
+  ['createvirtualdevicenode_156',['createVirtualDeviceNode',['../classcb_1_1graph_1_1cbComputeGraph.html#aa0f0670a573d3d6d1d5fb749de244595',1,'cb::graph::cbComputeGraph']]],
+  ['graph_157',['graph',['../namespacecb_1_1graph.html',1,'cb']]],
+  ['pipeline_158',['pipeline',['../namespacecb_1_1pipeline.html',1,'cb']]],
+  ['trans_159',['trans',['../namespacecb_1_1trans.html',1,'cb']]],
+  ['utils_160',['utils',['../namespacecb_1_1utils.html',1,'cb']]]
 ];
