@@ -59,11 +59,95 @@ Welcome to CovalentBond.
 
 ### Add a device.
 
+You can use a http post require to add graph.
+
+`http://localhost:8080/add_device` is the url u need to send message to.
+
+The data send in should be reorganized to json.
+
+such as below:
+
+```shell
+curl -H "Content-Type: application/json" -X POST -d "{"host": "xxx.xxx.xxx.xxx","port": "3306","usrName": "django_user", "password": "django_user", "databaseName": "runoob", "deviceType": "MySQL"}" "http://localhost:8080/add_device"
+```
+
 ### Add a graph.
+
+pass a index of graph and it's corresponding lua script in json.
+
+such as below:
+
+```json
+{
+    "id": 100,
+    "script": "node_vd_1 = ThisGraph:createVirtualDeviceNode(0);\nnode_vd_2 = ThisGraph:createVirtualDeviceNode(1);\nnode_vd_1:addQuery(\"SELECT * FROM runoob_tbl;\");\nnode_vd_2:addQuery(\"SELECT * FROM runoob_tbl;\");\nnode_vd_1:PointTo(Cb.F.refNode(node_vd_2));"
+}
+```
 
 ### How to write graph in lua.
 
+You can check the wiki of this project.
+
+Briefly, the most simple lua script to build a graph is looks like this:
+
+```lua
+function testJudgeMethod(rowOfTable)
+    if rowOfTable:atPtr(0, 0):isInt() then
+        if Cb.F.value(rowOfTable:atPtr(0, 0)) < 10 then
+            return true;
+        end
+    end
+    return false;
+end
+
+function testModifyMethod(rowOfTable)
+    rowOfTable:setPtrAt(0, 0, ThisGraph:createKVCell(Cb.F.value(rowOfTable:atPtr(0, 0)) + 1));
+    return rowOfTable;
+end
+
+node_vd_1 = ThisGraph:createVirtualDeviceNode(0);
+node_vd_2 = ThisGraph:createVirtualDeviceNode(1);
+node_vd_1:addQuery("SELECT * FROM runoob_tbl;");
+node_vd_2:addQuery("SELECT * FROM myel;");
+
+node_vd_combine = ThisGraph:createCombineNode(Cb.F.PackedStringToVec("runoob_id", "runoob_id"), "NewTable");
+node_vd_1:PointTo(Cb.F.refNode(node_vd_combine));
+node_vd_2:PointTo(Cb.F.refNode(node_vd_combine));
+node_vd_filter = ThisGraph:createFilterNode(testJudgeMethod, testModifyMethod);
+node_vd_combine:PointTo(Cb.F.refNode(node_vd_filter))
+
+ThisGraph:addCacheServer(ThisGraph:createRedisCachingNode(0));
+```
+
 ### How to overload the default behavior of OPs.
+
+The default behaviours of every Ops can be overload using `overrideFunc` member function in Ops.
+
+```lua
+node_vd_1 = ThisGraph:createVirtualDeviceNode(0);
+node_vd_2 = ThisGraph:createVirtualDeviceNode(1);
+node_vd_1:addQuery("SELECT * FROM runoob_tbl;");
+node_vd_2:addQuery("SELECT * FROM runoob_tbl_2;");
+
+node_vd_combine = ThisGraph:createCombineNode({"PrimaryKey1", "PrimaryKey2"}, "NewTables");
+node_vd_1:PointTo(cb.F.refNode(node_vd_combine));
+node_vd_2:PointTo(cb.F.refNode(node_vd_combine));
+
+function myCombineOp(baseOpPtr, primaryKeys)
+    local inputs = baseOpPtr.io.I; -- vector.
+    local output = baseOpPtr.io.O; -- virtual table.
+    -- this program is a default behavior of combine operation.
+    if #inputs ~= #primaryKeys then
+        print("[ CB engine Error ] when execute Cb.Op.CombineOp. #inputs ~= #primaryKeys");
+        return;
+    end
+    -- some logic to combine tables.
+end
+
+node_vd_combine.overrideFunc(myCombineOp);
+
+ThisGraph:addCacheServer(ThisGraph:createRedisCachingNode(0));
+```
 
 ## Conventional
 
